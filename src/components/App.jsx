@@ -1,3 +1,5 @@
+import { AddTaskBtn } from './AddTaskBtn/AddTaskBtn';
+
 export const App = () => {
   return (
     <div
@@ -10,7 +12,7 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      <p>Hello</p>
+      <AddTaskBtn />
     </div>
   );
 };
