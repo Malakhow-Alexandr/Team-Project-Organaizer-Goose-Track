@@ -51,15 +51,38 @@ export const createTask = createAsyncThunk(
 
 export const updateTask = createAsyncThunk(
   'tasks/updateTask',
-  async (data, thunkAPI) => {}
-);
-
-export const changeTaskPriority = createAsyncThunk(
-  'tasks/changeTaskPriority',
-  async (data, thunkAPI) => {}
+  async ({ id, title, start, end, priority, category, date }, thunkAPI) => {
+    try {
+      const response = await axios.patch(`/tasks/${id}`, {
+        title,
+        start,
+        end,
+        priority,
+        category,
+        date,
+      });
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error.message);
+    }
+  }
 );
 
 export const deleteTask = createAsyncThunk(
   'tasks/deleteTask',
-  async (id, thunkAPI) => {}
+  async (id, thunkAPI) => {
+    try {
+      await axios.delete(`/tasks/${id}`);
+      return id;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+// Not ready
+export const changeTaskPriority = createAsyncThunk(
+  'tasks/changeTaskPriority',
+  async ({ id, priority }, thunkAPI) => {}
 );

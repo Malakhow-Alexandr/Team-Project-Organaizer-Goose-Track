@@ -17,7 +17,7 @@ export const registerUser = createAsyncThunk(
   'auth/registerUser ',
   async ({ name, email, password }, thunkAPI) => {
     try {
-      const response = await axios.post('/users/register', {
+      const response = await axios.post('/register', {
         name,
         email,
         password,
@@ -35,7 +35,7 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser ',
   async ({ email, password }, thunkAPI) => {
     try {
-      const response = await axios.post('/users/login', { email, password });
+      const response = await axios.post('/login', { email, password });
       console.log(response.data);
       setAuthHeader(response.data.accessToken);
       return response.data;
@@ -49,7 +49,7 @@ export const logoutUser = createAsyncThunk(
   'auth/logoutUser',
   async (_, thunkAPI) => {
     try {
-      await axios.post('/users/logout');
+      await axios.post('/logout');
       clearAuthHeader();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -70,8 +70,8 @@ export const currentUser = createAsyncThunk(
 
     try {
       const response = await axios.get('');
-      console.log(response);
-      return response;
+      console.log(response.data);
+      return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -97,7 +97,7 @@ export const updateUser = createAsyncThunk(
       //   },
       // });
 
-      const response = await axios.patch('/users/update', {
+      const response = await axios.patch('/update', {
         username,
         birthday,
         phone,
