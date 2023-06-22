@@ -5,7 +5,7 @@ import {
   registerUser,
   loginUser,
   logoutUser,
-  refreshUser,
+  currentUser,
   updateUser,
 } from './operations';
 
@@ -37,7 +37,7 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.fulfilled, (state, { payload }) => {
         state.user = payload.user;
-        state.accessToken = payload.token;
+        state.accessToken = payload.accessToken;
         state.isLoggedIn = true;
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
@@ -49,17 +49,20 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
         state.isRefreshing = false;
       })
-      .addCase(refreshUser.pending, state => {
+      .addCase(currentUser.pending, state => {
         state.isRefreshing = true;
       })
 
-      .addCase(refreshUser.fulfilled, (state, { payload }) => {
+      .addCase(currentUser.fulfilled, (state, { payload }) => {
         state.user = payload.user;
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
-      .addCase(refreshUser.rejected, state => {
+      .addCase(currentUser.rejected, state => {
         state.isRefreshing = false;
+      })
+      .addCase(updateUser.fulfilled, (state, { payload }) => {
+        state.user = payload;
       });
   },
 });

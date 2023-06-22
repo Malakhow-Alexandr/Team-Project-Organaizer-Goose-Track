@@ -11,17 +11,20 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
+const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+
 export const registerUser = createAsyncThunk(
   'auth/registerUser ',
   async ({ name, email, password }, thunkAPI) => {
     try {
-      const response = await axios.post('/users/signup', {
+      const response = await axios.post('/users/register', {
         name,
         email,
         password,
       });
+      console.log(response.data);
+      setAuthHeader(response.data.accessToken);
       return response.data;
-      // setAuthHeader(data.token);
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -34,7 +37,7 @@ export const loginUser = createAsyncThunk(
     try {
       const response = await axios.post('/users/login', { email, password });
       console.log(response.data);
-      setAuthHeader(response.data);
+      setAuthHeader(response.data.accessToken);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -46,7 +49,7 @@ export const logoutUser = createAsyncThunk(
   'auth/logoutUser',
   async (_, thunkAPI) => {
     try {
-      await axios.post('/users/signout');
+      await axios.post('/users/logout');
       clearAuthHeader();
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -54,15 +57,15 @@ export const logoutUser = createAsyncThunk(
   }
 );
 
-export const refreshUser = createAsyncThunk(
-  'auth/refreshUser',
+export const currentUser = createAsyncThunk(
+  'auth/currentUser',
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
-    const persistedToken = state.auth.token;
+    const persistedToken = state.auth.accessToken;
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
-    setAuthHeader('TOKEN');
+    setAuthHeader(persistedToken);
 
     try {
       const response = await axios.get('');
@@ -74,13 +77,12 @@ export const refreshUser = createAsyncThunk(
   }
 );
 
-const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
-
 export const updateUser = createAsyncThunk(
   'auth/updateUser ',
   async ({ username, birthday, phone, skype, email }, thunkAPI) => {
     try {
       // const formData = new FormData();
+      // formData.append('avatar', avatar);
       // formData.append('name', username);
       // formData.append('email', email);
       // formData.append('phone', phone || '');
