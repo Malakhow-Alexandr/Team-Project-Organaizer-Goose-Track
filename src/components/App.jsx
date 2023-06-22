@@ -17,6 +17,9 @@ const UserForm = lazy(() => import('./UserForm/UserForm'));
 const CalendarPage = lazy(() => import('pages/CalendarPage/CalendarPage'));
 const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 const ChoosedDay = lazy(() => import('./ChoosedDay/ChoosedDay'));
+const StatisticsPage = lazy(() =>
+  import('pages/StatisticsPage/StatisticsPage')
+);
 const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
@@ -42,6 +45,7 @@ export const App = () => {
                 <Route path="month/:currentDate" element={<ChoosedMonth />} />
                 <Route path="day/:currentDay" element={<ChoosedDay />} />
               </Route>
+              <Route path="statistics" element={<StatisticsPage />} />
             </Route>
           </Route>
           <Route path="*" element={<NotFoundPage />} />
