@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-// Публічний та Приватний роутер в залежності від наявності userAccessToken приходить від BACKEND
+// Публічний та Приватний роутер в залежності від наявності userAccessToken, котрий приходить від BACKEND
 import { PublicRoute } from './AuthRoutes/PublicRoute';
 import { PrivateRoute } from './AuthRoutes/PrivateRoute';
 
