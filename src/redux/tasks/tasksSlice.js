@@ -55,6 +55,18 @@ const tasksSlice = createSlice({
         state.taskById = payload;
         state.isLoading = false;
         state.error = null;
+      })
+      .addCase(updateTask.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.tasks.findIndex(item => item._id === payload._id);
+        state.tasks[index] = payload;
+      })
+      .addCase(deleteTask.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.tasks.findIndex(item => item._id === payload);
+        state.tasks.splice(index, 1);
       });
   },
 });

@@ -2,7 +2,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const getAllReviews = createAsyncThunk(
   'reviews/getAllReviews',
-  async (_, thunkAPI) => {}
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get('');
+      console.log(response.data);
+      return response.data;
+    } catch (error) {}
+  }
 );
 
 export const getUserReview = createAsyncThunk(
