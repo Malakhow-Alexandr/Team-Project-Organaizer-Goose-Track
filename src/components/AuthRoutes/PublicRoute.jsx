@@ -4,7 +4,7 @@ export const PublicRoute = () => {
   const location = useLocation();
 
   // Це для перемикання між приватним та публічним
-  const userAccessToken = false;
+  const userAccessToken = true;
   //  const userAccessToken = useSelector(selectAccessToken);;
 
   return !userAccessToken ? (
