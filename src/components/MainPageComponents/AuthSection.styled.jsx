@@ -59,7 +59,7 @@ export const ContentWrapper = styled.div`
       0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
     @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
-      font-size: ${p => p.theme.fontSizes.xl};
+      font-size: ${p => p.theme.fontSizes.xxl};
       line-height: ${p => p.theme.lineHeights.body};
     }
 
