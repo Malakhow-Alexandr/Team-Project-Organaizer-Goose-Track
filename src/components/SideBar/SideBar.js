@@ -1,14 +1,15 @@
 import { UserNav } from 'components/UserNav/UserNav';
-import { SideBarContainer, LogoutBtn } from './SideBar.styled';
+import { SideBarContainer, LogoutBtn, LogoutBtnIcon } from './SideBar.styled';
 
 const SideBar = ({ toggleShowSideBar }) => {
   return (
-    <SideBarContainer style={{ outline: '1px solid blue' }}>
-      {/* User Panel */}
+    <SideBarContainer>
       <UserNav toggleShowSideBar={toggleShowSideBar} />
 
-      {/* Button LogoutBtn */}
-      <LogoutBtn>Logout</LogoutBtn>
+      <LogoutBtn>
+        Logout
+        <LogoutBtnIcon />
+      </LogoutBtn>
     </SideBarContainer>
   );
 };

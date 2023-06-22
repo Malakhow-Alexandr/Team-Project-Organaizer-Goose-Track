@@ -36,7 +36,7 @@ const UserNav = ({ toggleShowSideBar }) => {
   const typePage = getTypePage(pathname);
 
   return (
-    <div style={{ outline: '1px solid tomato' }}>
+    <div>
       <LogoWrapper>
         <LinkLogo to="calendar" onClick={() => toggleShowSideBar(false)}>
           <GooseImg

@@ -11,7 +11,7 @@ import {
 const MainLayout = () => {
   return (
     <Container>
-      <Main style={{ outline: '1px solid green' }}>
+      <Main>
         <LeftColumnWrapper>
           <SideBar toggleShowSideBar={false} />
         </LeftColumnWrapper>
