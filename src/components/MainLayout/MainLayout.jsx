@@ -1,29 +1,30 @@
 import { SideBar } from 'components/SideBar/SideBar';
 import { Outlet } from 'react-router-dom';
 
+import {
+  Container,
+  LeftColumnWrapper,
+  Main,
+  RightColumnWrapper,
+} from './MainLayout.styled';
+
 const MainLayout = () => {
   return (
-    <div>
-      <h2>Main Layout</h2>
-      {/* WrapLeftColumn Ліва колонка використовується для компонента SideBar */}
-      <div
-        style={{ height: '100%', width: '225px', outline: '1px solid tomato' }}
-      >
-        <SideBar />
-      </div>
+    <Container>
+      <Main>
+        <LeftColumnWrapper>
+          <SideBar toggleShowSideBar={false} />
+        </LeftColumnWrapper>
 
-      {/* WrapRightColumn Права колонка використовується для рендера Main */}
-      <div
-        style={{
-          'flex-grow': 1,
-          padding: '0 20px',
-          outline: '1px solid tomato',
-        }}
-      >
-        <h3>Main</h3>
-        <Outlet />
-      </div>
-    </div>
+        <RightColumnWrapper>
+          {/* Потрібно написати header */}
+          {/* <Header toggleShowSideBar={null} /> */}
+          <h1>Header, User</h1>
+
+          <Outlet />
+        </RightColumnWrapper>
+      </Main>
+    </Container>
   );
 };
 
