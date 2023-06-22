@@ -1,7 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { register, logIn, logOut, refresh, updateUser } from './operations';
+import {
+  registerUser,
+  loginUser,
+  logoutUser,
+  refreshUser,
+  updateUser,
+} from './operations';
 
 const newUser = {
   name: '',
@@ -14,7 +20,7 @@ const newUser = {
 
 const initialState = {
   user: newUser,
-  token: null,
+  accessToken: null,
   isLoggedIn: false,
   isRefreshing: false,
 };
@@ -24,10 +30,35 @@ const authSlice = createSlice({
   initialState,
   extraReducers: builder => {
     builder
-      .addCase(refresh.pending, state => {
+      .addCase(registerUser.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.accessToken = payload.accessToken;
+        state.isLoggedIn = true;
+      })
+      .addCase(loginUser.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.accessToken = payload.token;
+        state.isLoggedIn = true;
+      })
+      .addCase(updateUser.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+      })
+      .addCase(logoutUser.fulfilled, state => {
+        state.user = newUser;
+        state.accessToken = null;
+        state.isLoggedIn = false;
+        state.isRefreshing = false;
+      })
+      .addCase(refreshUser.pending, state => {
         state.isRefreshing = true;
       })
-      .addCase(refresh.rejected, state => {
+
+      .addCase(refreshUser.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(refreshUser.rejected, state => {
         state.isRefreshing = false;
       });
   },
