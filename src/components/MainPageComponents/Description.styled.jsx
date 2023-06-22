@@ -161,7 +161,7 @@ export const SubTitle = styled.h2`
   @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
     margin-bottom: 24px;
 
-    font-size: ${p => p.theme.fontSizes.l};
+    font-size: ${p => p.theme.fontSizes.xl};
     line-height: ${p => p.theme.lineHeights.heading};
   }
 `;

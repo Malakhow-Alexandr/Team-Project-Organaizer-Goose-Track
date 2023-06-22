@@ -30,8 +30,9 @@ export const theme = {
     xs: '12px',
     s: '14px',
     m: '16px',
-    l: '40px',
-    xl: '120px',
+    l: '18px',
+    xl: '40px',
+    хxl: '120px',
   },
   fontWeights: {
     normal: 500,
