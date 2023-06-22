@@ -1,24 +1,24 @@
-import { Suspense } from 'react';
+import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 // Публічний та Приватний роутер в залежності від наявності userAccessToken, котрий приходить від BACKEND
 import { PublicRoute } from './AuthRoutes/PublicRoute';
 import { PrivateRoute } from './AuthRoutes/PrivateRoute';
 
-// pages необхідно огорнути та зробити lazy
-import MainPage from 'pages/MainPage/MainPage';
-import RegisterPage from 'pages/RegisterPage/RegisterPage';
-import LoginPage from 'pages/LoginPage/LoginPage';
-import PasswordPage from 'pages/PasswordPage/PasswordPage';
-import PasswordRecoveryPage from 'pages/PasswordRecoveryPage/PasswordRecoveryPage';
-import MainLayout from './MainLayout/MainLayout';
-import UserForm from './UserForm/UserForm';
-import CalendarPage from 'pages/CalendarPage/CalendarPage';
-import ChoosedMonth from './ChoosedMonth/ChoosedMonth';
-import ChoosedDay from './ChoosedDay/ChoosedDay';
-import NotFoundPage from 'pages/NotFoundPage/NotFoundPage';
+const MainPage = lazy(() => import('pages/MainPage/MainPage'));
+const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
+const PasswordPage = lazy(() => import('pages/PasswordPage/PasswordPage'));
+const PasswordRecoveryPage = lazy(() =>
+  import('pages/PasswordRecoveryPage/PasswordRecoveryPage')
+);
+const MainLayout = lazy(() => import('./MainLayout/MainLayout'));
+const UserForm = lazy(() => import('./UserForm/UserForm'));
+const CalendarPage = lazy(() => import('pages/CalendarPage/CalendarPage'));
+const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
+const ChoosedDay = lazy(() => import('./ChoosedDay/ChoosedDay'));
+const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
-// import MainPage from 'pages/MainPage/MainPage';
 export const App = () => {
   return (
     <>
