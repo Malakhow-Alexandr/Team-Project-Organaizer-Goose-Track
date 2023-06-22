@@ -42,7 +42,7 @@ export const LoginForm = () => {
             autoComplete="off"
             placeholder="Enter email"
           />
-          {/* <ErrorMessage name="email" component="div" /> */}
+          <ErrorMessage name="email" component="div" />
         </FormLabel>
         <FormLabel>
           Password
@@ -52,11 +52,11 @@ export const LoginForm = () => {
             autoComplete="off"
             placeholder="Enter password"
           />
-          {/* <ErrorMessage name="password" component="div" /> */}
+          <ErrorMessage name="password" component="div" />
         </FormLabel>
         <Button type="submit">
           Log In
-          <FiLogIn stroke-width="3" />
+          <FiLogIn strokeWidth="3" />
         </Button>
       </Form>
     </Formik>

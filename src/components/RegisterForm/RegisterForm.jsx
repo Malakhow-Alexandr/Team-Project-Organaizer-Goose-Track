@@ -42,7 +42,7 @@ export const RegisterForm = () => {
             autoComplete="off"
             placeholder="Enter your name"
           />
-          {/* <ErrorMessage name="name" component="div" /> */}
+          <ErrorMessage name="name" component="div" />
         </FormLabel>
         <FormLabel>
           Email
@@ -52,7 +52,7 @@ export const RegisterForm = () => {
             autoComplete="off"
             placeholder="Enter email"
           />
-          {/* <ErrorMessage name="email" component="div" /> */}
+          <ErrorMessage name="email" component="div" />
         </FormLabel>
         <FormLabel>
           Password
@@ -62,11 +62,11 @@ export const RegisterForm = () => {
             autoComplete="off"
             placeholder="Enter password"
           />
-          {/* <ErrorMessage name="password" component="div" /> */}
+          <ErrorMessage name="password" component="div" />
         </FormLabel>
         <Button type="submit">
           Sign Up
-          <FiLogIn stroke-width="3" />
+          <FiLogIn strokeWidth="3" />
         </Button>
       </Form>
     </Formik>

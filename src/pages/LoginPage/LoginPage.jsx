@@ -1,8 +1,18 @@
+import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
+import { LoginForm } from 'components/LoginForm/LoginForm';
+import {
+  FormContainer,
+  FormWrapper,
+} from 'pages/RegisterPage/RegisterPage.styled';
+
 const LoginPage = () => {
   return (
-    <div>
-      <h2>Login page</h2>
-    </div>
+    <FormContainer>
+      <FormWrapper>
+        <LoginForm />
+      </FormWrapper>
+      <AuthNavigate link="/register" text="Sign Up" />
+    </FormContainer>
   );
 };
 

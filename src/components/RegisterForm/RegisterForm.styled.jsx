@@ -17,10 +17,6 @@ export const Form = styled(FormikForm)`
     max-width: 400px;
     padding: 40px;
   }
-
-  @media screen and (min-width: 1440px) {
-    width: 500px;
-  }
 `;
 
 export const FormTitle = styled.h2`
@@ -89,7 +85,9 @@ export const Field = styled(FormField)`
   }
 `;
 
-export const ErrorMessage = styled(FormikError)``;
+export const ErrorMessage = styled(FormikError)`
+  color: ${props => props.theme.colors.redError};
+`;
 
 export const Button = styled.button`
   display: flex;

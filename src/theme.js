@@ -35,7 +35,7 @@ export const theme = {
   },
   fontWeights: {
     normal: 500,
-    medium: 600,
+    heading: 600,
     bold: 700,
   },
   lineHeights: {
