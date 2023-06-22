@@ -57,6 +57,7 @@ export const logoutUser = createAsyncThunk(
   }
 );
 
+// Не готово
 export const currentUser = createAsyncThunk(
   'auth/currentUser',
   async (_, thunkAPI) => {
@@ -77,6 +78,7 @@ export const currentUser = createAsyncThunk(
   }
 );
 
+// Не готово
 export const updateUser = createAsyncThunk(
   'auth/updateUser ',
   async ({ username, birthday, phone, skype, email }, thunkAPI) => {
