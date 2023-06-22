@@ -60,9 +60,6 @@ const authSlice = createSlice({
       })
       .addCase(currentUser.rejected, state => {
         state.isRefreshing = false;
-      })
-      .addCase(updateUser.fulfilled, (state, { payload }) => {
-        state.user = payload;
       });
   },
 });
