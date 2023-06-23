@@ -10,18 +10,20 @@ import {
 } from '../RegisterForm/RegisterForm.styled';
 import * as Yup from 'yup';
 import { FiLogIn } from 'react-icons/fi';
+import { useDispatch } from 'react-redux';
+import { registerUser } from 'redux/auth/operations';
 
-const FornSchema = Yup.object().shape({
-  name: Yup.string().max(20).required('Required'),
+const FormSchema = Yup.object().shape({
+  name: Yup.string().min(2).max(35).required('Required'),
   email: Yup.string().email('Invalid email address').required('Required'),
   password: Yup.string()
-    .min(6, 'Password must be 8 characters long')
-    .matches(/[0-9]/, 'Password requires a number')
-    .matches(/[a-z]/, 'Password requires a lowercase letter')
+    .min(6, 'Password must be 6 characters long')
     .required('Required'),
 });
 
 export const RegisterForm = () => {
+  const dispatch = useDispatch();
+
   return (
     <Formik
       initialValues={{
@@ -29,8 +31,11 @@ export const RegisterForm = () => {
         email: '',
         password: '',
       }}
-      onSubmit={() => {}}
-      validationSchema={FornSchema}
+      onSubmit={(values, actions) => {
+        dispatch(registerUser(values));
+        actions.resetForm();
+      }}
+      validationSchema={FormSchema}
     >
       <Form>
         <FormTitle>Sign Up</FormTitle>
