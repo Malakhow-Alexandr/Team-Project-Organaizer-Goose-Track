@@ -84,5 +84,9 @@ export const deleteTask = createAsyncThunk(
 // Not ready
 export const changeTaskPriority = createAsyncThunk(
   'tasks/changeTaskPriority',
-  async ({ id, priority }, thunkAPI) => {}
+  async ({ id, priority }, thunkAPI) => {
+    const response = await axios.patch('', { priority });
+    console.log(response.data);
+    return response.data;
+  }
 );
