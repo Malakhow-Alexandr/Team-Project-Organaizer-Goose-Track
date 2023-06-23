@@ -1,14 +1,16 @@
-const SideBar = () => {
-  return (
-    <div>
-      {/* User Panel */}
-      <p>User Panel</p>
-      <button>To ACCOUNT</button>
-      <button>TO Calendar</button>
+import { UserNav } from 'components/UserNav/UserNav';
+import { SideBarContainer, LogoutBtn, LogoutBtnIcon } from './SideBar.styled';
 
-      {/* Button LogoutBtn */}
-      <button>Logout</button>
-    </div>
+const SideBar = ({ toggleShowSideBar }) => {
+  return (
+    <SideBarContainer>
+      <UserNav toggleShowSideBar={toggleShowSideBar} />
+
+      <LogoutBtn>
+        Logout
+        <LogoutBtnIcon />
+      </LogoutBtn>
+    </SideBarContainer>
   );
 };
 
