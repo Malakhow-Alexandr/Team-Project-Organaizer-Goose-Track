@@ -9,8 +9,6 @@ import { theme } from 'theme';
 import { App } from 'components/App';
 import './index.css';
 
-console.log(theme);
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
