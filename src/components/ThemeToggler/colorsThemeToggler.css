@@ -1,0 +1,39 @@
+html[data-theme='light'] {
+  --background: #f7f6f9;
+  --second-background: #ffffff;
+  --third-background: #ffffff;
+  --primary-text: #111111;
+  --second-text: rgba(52, 52, 52, 0.5);
+  --third-text: #343434;
+  --user-text: #343434;
+  --side-bar-hover-and-task-buttons-background: #e3f3ff;
+  --side-bar-buttons-content-hover: #3e85f3;
+  --user-label-color: #111;
+  --user-input-border-color: rgba(17, 17, 17, 0.15);
+  --period-arrows-change-disabled: #dce3e5;
+  --period-arrows-change-active: #343434;
+  --period-buttons-active-background: #cae8ff;
+  --period-buttons-background: #e3f3ff;
+  --period-buttons-active-text-color: #3e85f3;
+  --calendar-border-color: rgba(220, 227, 229, 0.8);
+}
+
+html[data-theme='dark'] {
+  --background: #171820;
+  --second-background: #13151a;
+  --third-background: #21222c;
+  --primary-text: #fff;
+  --second-text: #fff;
+  --third-text: #fff;
+  --user-text: rgba(250, 250, 250, 0.3);
+  --side-bar-hover-and-task-buttons-background: #3e85f3;
+  --side-bar-buttons-content-hover: #ffffff;
+  --user-label-color: rgba(250, 250, 250, 0.3);
+  --user-input-border-color: rgba(255, 255, 255, 0.15);
+  --period-arrows-change-disabled: rgba(255, 255, 255, 0.15);
+  --period-arrows-change-active: #ffffff;
+  --period-buttons-active-background: #3e85f3;
+  --period-buttons-background: #21222c;
+  --period-buttons-active-text-color: #ffffff;
+  --calendar-border-color: rgba(255, 255, 255, 0.15);
+}
