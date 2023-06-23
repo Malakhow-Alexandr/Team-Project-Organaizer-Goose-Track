@@ -66,7 +66,7 @@ const settings = {
 
 export const ReviewsSlider = () => {
   const reviews = useSelector(selectAllReviews);
-  console.log(reviews);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
