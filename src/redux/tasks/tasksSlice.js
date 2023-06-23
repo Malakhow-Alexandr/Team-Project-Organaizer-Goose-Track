@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { logoutUser } from '../auth/operations';
 import {
   getAllTasks,
   getTaskById,
@@ -62,11 +63,23 @@ const tasksSlice = createSlice({
         const index = state.tasks.findIndex(item => item._id === payload._id);
         state.tasks[index] = payload;
       })
+      .addCase(changeTaskPriority.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.tasks.findIndex(item => item._id === payload._id);
+        state.tasks[index] = { ...state.tasks[index], payload };
+      })
       .addCase(deleteTask.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
         const index = state.tasks.findIndex(item => item._id === payload);
         state.tasks.splice(index, 1);
+      })
+      .addCase(logoutUser.fulfilled, state => {
+        state.tasks = [];
+        state.taskById = {};
+        state.isLoading = false;
+        state.error = null;
       });
   },
 });
