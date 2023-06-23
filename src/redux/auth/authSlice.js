@@ -12,7 +12,7 @@ import {
 const newUser = {
   name: '',
   email: '',
-  avatar: '',
+  avatarURL: '',
   phone: '',
   birthDate: '',
   skype: '',
