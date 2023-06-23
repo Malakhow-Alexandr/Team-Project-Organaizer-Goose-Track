@@ -57,7 +57,6 @@ export const logoutUser = createAsyncThunk(
   }
 );
 
-// Не готово
 export const currentUser = createAsyncThunk(
   'auth/currentUser',
   async (_, thunkAPI) => {

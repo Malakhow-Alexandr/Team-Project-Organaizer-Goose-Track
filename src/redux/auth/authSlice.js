@@ -54,7 +54,7 @@ const authSlice = createSlice({
       })
 
       .addCase(currentUser.fulfilled, (state, { payload }) => {
-        state.user = { ...state.user, ...payload.user };
+        state.user = { ...state.user, ...payload };
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
@@ -67,7 +67,7 @@ const authSlice = createSlice({
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whiteList: ['accessToken'],
+  whitelist: ['accessToken'],
 };
 
 export const persistedAuthReducer = persistReducer(
