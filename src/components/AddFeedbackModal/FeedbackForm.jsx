@@ -1,31 +1,41 @@
-import { Formik, Form } from 'formik';
+import { Formik} from 'formik';
 import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
 
-const FeedbackForm = () => {
-  const [feedbackRating, setFeedbackRating] = useState(0);
-    const [ratingHover, setRatingHover] = useState(null);
-    
 
-    
+
+import { Form, FormField, Field } from './FeedbackForm.styled'
+
+const FeedbackForm = () => {
+  const [feedbackRating, setFeedbackRating] = useState(1);
+  const [ratingHover, setRatingHover] = useState(null);
+
+  const handleSubmit = (values, {resetForm}) => {
+    console.log(values);
+    // console.log(actions);
+    resetForm()
+  };
 
   return (
-    <Formik>
+    <Formik
+      initialValues={{ rating: feedbackRating, text: '' }}
+      onSubmit={handleSubmit}
+    >
       <Form>
-        <label>
+        <FormField>
           Rating
-          {/* <FeedbackRating /> */}
-          <>
-            {[...Array(5)].map((star, ind) => {
+        
+            {[...Array(5)].map((item, ind) => {
               const ratingValue = ind + 1;
 
               return (
                 <>
-                  <input
+                  <Field
                     type="radio"
                     name="rating"
                     value={ratingValue}
                     onClick={() => setFeedbackRating(ratingValue)}
+                    autoComplete="off"
                     //   style={{
                     //     display: 'none',
                     //   }}
@@ -46,17 +56,17 @@ const FeedbackForm = () => {
                   />
                 </>
               );
-            })}
-          </>
-        </label>
+            })}       
+        </FormField>
 
-        <label>
+        <FormField>
           Review
-          <textarea placeholder="Enter text" />
-        </label>
+          <Field component="textarea" type="text" placeholder="Enter text" name="text" autoComplete="off" />
+        </FormField>
 
         <div>
-          <button type="submit">Submit</button>
+          <button type="submit">Save</button>
+          <button>Cancel</button>
         </div>
       </Form>
     </Formik>
