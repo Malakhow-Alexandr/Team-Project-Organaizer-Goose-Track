@@ -44,7 +44,7 @@ const user = {
     'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=',
   phone: '38 (123) 456 78 90',
   birthday: '23/06/2023',
-  skype: 'initialSkype',
+  skype: '+123456789',
 };
 
 const avatarDefault =
