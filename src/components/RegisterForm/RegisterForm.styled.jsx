@@ -6,7 +6,7 @@ import {
 } from 'formik';
 
 export const Form = styled(FormikForm)`
-  max-width: 307px;
+  /* width: 100%; */
   margin: 0 auto;
   padding: 40px 24px;
   border-radius: ${props => props.theme.radii.small};
@@ -14,7 +14,6 @@ export const Form = styled(FormikForm)`
   background-color: ${props => props.theme.colors.background};
 
   @media screen and (min-width: 768px) {
-    max-width: 400px;
     padding: 40px;
   }
 `;
