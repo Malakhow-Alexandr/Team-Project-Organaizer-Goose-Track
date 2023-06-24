@@ -8,7 +8,7 @@ import { AiFillPlusCircle } from 'react-icons/ai';
 import { Form, FormField } from './UserForm.styled';
 import moment from 'moment/moment';
 
-const phoneRegexp = /^38\s\(\d{3}\)\s\d{3}\s\d{2}\s\d{2}$/;
+const phoneRegexp = /^(\d{2})\s\((\d{3})\)\s(\d{3})\s(\d{2})\s(\d{2})$/;
 const skypeNumberRegexp = /^[\w-]{1,16}$/;
 const birthdayRegexp = /^\d{2}\/\d{2}\/\d{4}$/;
 
