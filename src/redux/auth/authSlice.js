@@ -10,11 +10,13 @@ import {
 } from './operations';
 
 const newUser = {
+  _id: '',
   name: '',
   email: '',
   avatarURL: '',
+  avatarID: '',
   phone: '',
-  birthDate: '',
+  birthday: '',
   skype: '',
 };
 
@@ -41,7 +43,7 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
       })
       .addCase(updateUser.fulfilled, (state, { payload }) => {
-        state.user = payload.user;
+        state.user = { ...state.user, ...payload };
       })
       .addCase(logoutUser.fulfilled, state => {
         state.user = newUser;

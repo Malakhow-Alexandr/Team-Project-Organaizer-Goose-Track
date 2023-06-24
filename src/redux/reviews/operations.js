@@ -16,7 +16,7 @@ export const getAllReviews = createAsyncThunk(
   }
 );
 
-export const getAllReviewsByOwn = createAsyncThunk(
+export const getReviewByOwn = createAsyncThunk(
   'reviews/getAllReviewsByOwn ',
   async (_, thunkAPI) => {
     try {
@@ -29,11 +29,11 @@ export const getAllReviewsByOwn = createAsyncThunk(
   }
 );
 
-export const createReviewsByOwn = createAsyncThunk(
-  'reviews/createReviewsByOwn',
-  async ({ raiting, comment }, thunkAPI) => {
+export const createReviewByOwn = createAsyncThunk(
+  'reviews/createReviewByOwn',
+  async ({ text, rating }, thunkAPI) => {
     try {
-      const response = await axios.post('/reviews/own', { raiting, comment });
+      const response = await axios.post('/reviews/own', { text, rating });
       console.log(response.data);
       return response.data;
     } catch (error) {
@@ -42,11 +42,11 @@ export const createReviewsByOwn = createAsyncThunk(
   }
 );
 
-export const updateReviewsByOwn = createAsyncThunk(
-  'reviews/updateReviewsByOwn ',
-  async ({ raiting, comment }, thunkAPI) => {
+export const updateReviewByOwn = createAsyncThunk(
+  'reviews/updateReviewByOwn ',
+  async ({ text, rating }, thunkAPI) => {
     try {
-      const response = await axios.patch('/reviews/own', { raiting, comment });
+      const response = await axios.patch('/reviews/own', { text, rating });
       console.log(response.data);
       return response.data;
     } catch (error) {
@@ -55,8 +55,8 @@ export const updateReviewsByOwn = createAsyncThunk(
   }
 );
 
-export const deleteReviewsByOwn = createAsyncThunk(
-  'reviews/deleteReviewsByOwn ',
+export const deleteReviewByOwn = createAsyncThunk(
+  'reviews/deleteReviewByOwn ',
   async (_, thunkAPI) => {
     try {
       const response = await axios.delete('/reviews/own');
