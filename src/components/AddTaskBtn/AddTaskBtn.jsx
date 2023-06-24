@@ -14,9 +14,6 @@ export const AddTaskBtn = () => {
 
   return (
     <>
-      <button type="button" onClick={handleShowModal} aria-label="Add task">
-        Add task
-      </button>
 
       {showModal && (
         <Modal onClose={handleCloseModal} aria-label="Modal window is open" />
