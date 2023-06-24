@@ -85,7 +85,7 @@ const UserForm = () => {
 
     setUserAvatar(null || user.avatar);
     setBirthdayDate(user.birthday);
-  }, [user, setFieldValue]);
+  }, [setFieldValue]);
 
   const handleInputChange = event => {
     const { name, value } = event.target;
