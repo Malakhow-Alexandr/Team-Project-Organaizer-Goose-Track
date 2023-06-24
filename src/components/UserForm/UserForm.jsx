@@ -9,7 +9,7 @@ import { Form, FormField } from './UserForm.styled';
 import moment from 'moment/moment';
 
 const phoneRegexp = /^(\d{2})\s\((\d{3})\)\s(\d{3})\s(\d{2})\s(\d{2})$/;
-const skypeNumberRegexp = /^[\w-]{1,16}$/;
+const skypeNumberRegexp = /^\+[1-9]\d{0,2}[.-]?\d{1,14}$/;
 const birthdayRegexp = /^\d{2}\/\d{2}\/\d{4}$/;
 
 export const validationSchema = Yup.object().shape({
@@ -207,7 +207,7 @@ const UserForm = () => {
           Phone
           <input
             name="phone"
-            placeholder="ex. 38 (111) 111 11 11"
+            placeholder="ex. 01 (234) 567 89 01"
             value={values.phone || ''}
             onChange={autoFormatPhoneNumber}
             onBlur={handleBlur}
@@ -221,6 +221,7 @@ const UserForm = () => {
           <input
             name="skype"
             value={values.skype || ''}
+            placeholder="ex. +1234567890"
             onChange={handleInputChange}
             onBlur={handleBlur}
             className={errors.skype && touched.skype ? 'InvalidInput' : ''}
