@@ -1,12 +1,17 @@
 import React from 'react';
 
-import { AuthSection, Description } from 'components/MainPageComponents/';
+import {
+  AuthSection,
+  Description,
+  ReviewsSlider,
+} from 'components/MainPageComponents/';
 
 const MainPage = () => {
   return (
     <>
       <AuthSection />
       <Description />
+      <ReviewsSlider />
     </>
   );
 };
