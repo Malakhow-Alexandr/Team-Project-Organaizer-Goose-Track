@@ -16,6 +16,21 @@ export const getAllTasks = createAsyncThunk(
   }
 );
 
+export const getMonthTasks = createAsyncThunk(
+  'tasks/getMonthTasks',
+  // date format YYYY-MM-DD
+  async (date, thunkAPI) => {
+    try {
+      const dateParams = `?month=${date}`;
+      const response = await axios.get(`/tasks${dateParams}`);
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
 export const getTaskById = createAsyncThunk(
   'tasks/getTaskById',
   async (id, thunkAPI) => {

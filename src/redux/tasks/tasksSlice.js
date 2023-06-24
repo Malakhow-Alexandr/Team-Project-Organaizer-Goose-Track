@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { logoutUser } from '../auth/operations';
 import {
   getAllTasks,
+  getMonthTasks,
   getTaskById,
   createTask,
   updateTask,
@@ -31,12 +32,14 @@ const tasksSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getAllTasks.pending, handlePending)
+      .addCase(getMonthTasks.pending, handlePending)
       .addCase(getTaskById.pending, handlePending)
       .addCase(createTask.pending, handlePending)
       .addCase(updateTask.pending, handlePending)
       // .addCase(changeTaskPriority.pending, handlePending)
       .addCase(deleteTask.pending, handlePending)
       .addCase(getAllTasks.rejected, handleRejected)
+      .addCase(getMonthTasks.rejected, handleRejected)
       .addCase(getTaskById.rejected, handleRejected)
       .addCase(createTask.rejected, handleRejected)
       .addCase(updateTask.rejected, handleRejected)
