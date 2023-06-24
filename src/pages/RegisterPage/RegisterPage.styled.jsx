@@ -29,3 +29,21 @@ export const FormWrapper = styled.div`
     margin-bottom: 24px;
   }
 `;
+
+export const ImageWrap = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 49px;
+  width: 400px;
+  height: 416px;
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  @media screen and (max-width: 1399px) {
+    display: none;
+  }
+`;
