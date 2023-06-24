@@ -80,12 +80,12 @@ export const currentUser = createAsyncThunk(
 // Не готово
 export const updateUser = createAsyncThunk(
   'auth/updateUser ',
-  async ({ avatar, username, birthday, phone, skype, email }, thunkAPI) => {
+  async ({ avatar, name, birthday, phone, skype, email }, thunkAPI) => {
     try {
       const formData = new FormData();
-      formData.append('avatar', avatar);
-      formData.append('name', username);
+      formData.append('name', name);
       formData.append('email', email);
+      formData.append('avatar', avatar);
       formData.append('phone', phone || '');
       formData.append('skype', skype || '');
       formData.append('birthday', birthday || '');
@@ -97,7 +97,7 @@ export const updateUser = createAsyncThunk(
       });
 
       // const response = await axios.patch('/update', {
-      //   username,
+      //   name,
       //   birthday,
       //   phone,
       //   skype,

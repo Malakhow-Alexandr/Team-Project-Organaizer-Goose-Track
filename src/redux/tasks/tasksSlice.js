@@ -5,7 +5,7 @@ import {
   getTaskById,
   createTask,
   updateTask,
-  changeTaskPriority,
+  // changeTaskPriority,
   deleteTask,
 } from './operations';
 
@@ -34,13 +34,13 @@ const tasksSlice = createSlice({
       .addCase(getTaskById.pending, handlePending)
       .addCase(createTask.pending, handlePending)
       .addCase(updateTask.pending, handlePending)
-      .addCase(changeTaskPriority.pending, handlePending)
+      // .addCase(changeTaskPriority.pending, handlePending)
       .addCase(deleteTask.pending, handlePending)
       .addCase(getAllTasks.rejected, handleRejected)
       .addCase(getTaskById.rejected, handleRejected)
       .addCase(createTask.rejected, handleRejected)
       .addCase(updateTask.rejected, handleRejected)
-      .addCase(changeTaskPriority.rejected, handleRejected)
+      // .addCase(changeTaskPriority.rejected, handleRejected)
       .addCase(deleteTask.rejected, handleRejected)
       .addCase(getAllTasks.fulfilled, (state, { payload }) => {
         state.tasks = payload;
@@ -60,15 +60,15 @@ const tasksSlice = createSlice({
       .addCase(updateTask.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        const index = state.tasks.findIndex(item => item._id === payload._id);
+        const index = state.tasks.findIndex(task => task._id === payload._id);
         state.tasks[index] = payload;
       })
-      .addCase(changeTaskPriority.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = null;
-        const index = state.tasks.findIndex(item => item._id === payload._id);
-        state.tasks[index] = { ...state.tasks[index], payload };
-      })
+      // .addCase(changeTaskPriority.fulfilled, (state, { payload }) => {
+      //   state.isLoading = false;
+      //   state.error = null;
+      //   const index = state.tasks.findIndex(task => task._id === payload._id);
+      //   state.tasks[index] = { ...state.tasks[index], payload };
+      // })
       .addCase(deleteTask.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
