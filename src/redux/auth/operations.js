@@ -80,29 +80,30 @@ export const currentUser = createAsyncThunk(
 // Не готово
 export const updateUser = createAsyncThunk(
   'auth/updateUser ',
-  async ({ username, birthday, phone, skype, email }, thunkAPI) => {
+  async ({ avatar, username, birthday, phone, skype, email }, thunkAPI) => {
     try {
-      // const formData = new FormData();
-      // formData.append('avatar', avatar);
-      // formData.append('name', username);
-      // formData.append('email', email);
-      // formData.append('phone', phone || '');
-      // formData.append('skype', skype || '');
-      // formData.append('birthday', dateRegex.test(birthday) ? birthday : '');
+      const formData = new FormData();
+      formData.append('avatar', avatar);
+      formData.append('name', username);
+      formData.append('email', email);
+      formData.append('phone', phone || '');
+      formData.append('skype', skype || '');
+      formData.append('birthday', birthday || '');
 
-      // const response = await axios.patch('/users/update', formData, {
-      //   headers: {
-      //     'Content-Type': 'multipart/form-data',
-      //   },
+      const response = await axios.patch('/update', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      // const response = await axios.patch('/update', {
+      //   username,
+      //   birthday,
+      //   phone,
+      //   skype,
+      //   email,
       // });
 
-      const response = await axios.patch('/update', {
-        username,
-        birthday,
-        phone,
-        skype,
-        email,
-      });
       console.log(response.data);
 
       return response.data;
