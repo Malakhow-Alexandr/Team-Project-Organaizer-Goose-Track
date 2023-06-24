@@ -2,10 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 import { logoutUser } from '../auth/operations';
 import {
   getAllReviews,
-  getAllReviewsByOwn,
-  createReviewsByOwn,
-  updateReviewsByOwn,
-  deleteReviewsByOwn,
+  getReviewByOwn,
+  createReviewByOwn,
+  updateReviewByOwn,
+  deleteReviewByOwn,
 } from './operations';
 
 const handlePending = state => {
@@ -19,7 +19,7 @@ const handleRejected = (state, { payload }) => {
 
 const initialState = {
   allReviews: [],
-  reviewByOwn: {},
+  reviewByOwn: [],
   isLoading: false,
   error: null,
 };
@@ -30,43 +30,43 @@ const reviewsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getAllReviews.pending, handlePending)
-      .addCase(getAllReviewsByOwn.pending, handlePending)
-      .addCase(createReviewsByOwn.pending, handlePending)
-      .addCase(updateReviewsByOwn.pending, handlePending)
-      .addCase(deleteReviewsByOwn.pending, handlePending)
+      .addCase(getReviewByOwn.pending, handlePending)
+      .addCase(createReviewByOwn.pending, handlePending)
+      .addCase(updateReviewByOwn.pending, handlePending)
+      .addCase(deleteReviewByOwn.pending, handlePending)
       .addCase(getAllReviews.rejected, handleRejected)
-      .addCase(getAllReviewsByOwn.rejected, handleRejected)
-      .addCase(createReviewsByOwn.rejected, handleRejected)
-      .addCase(updateReviewsByOwn.rejected, handleRejected)
-      .addCase(deleteReviewsByOwn.rejected, handleRejected)
+      .addCase(getReviewByOwn.rejected, handleRejected)
+      .addCase(createReviewByOwn.rejected, handleRejected)
+      .addCase(updateReviewByOwn.rejected, handleRejected)
+      .addCase(deleteReviewByOwn.rejected, handleRejected)
       .addCase(getAllReviews.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
         state.allReviews = payload;
       })
-      .addCase(getAllReviewsByOwn.fulfilled, (state, { payload }) => {
+      .addCase(getReviewByOwn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
         state.reviewByOwn = payload;
       })
-      .addCase(createReviewsByOwn.fulfilled, (state, { payload }) => {
+      .addCase(createReviewByOwn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.reviewByOwn = payload;
+        state.reviewByOwn[0] = payload;
       })
-      .addCase(updateReviewsByOwn.fulfilled, (state, { payload }) => {
+      .addCase(updateReviewByOwn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.reviewByOwn = payload;
+        state.reviewByOwn[0] = payload;
       })
-      .addCase(deleteReviewsByOwn.fulfilled, state => {
+      .addCase(deleteReviewByOwn.fulfilled, state => {
         state.isLoading = false;
         state.error = null;
-        state.reviewByOwn = {};
+        state.reviewByOwn = [];
       })
       .addCase(logoutUser.fulfilled, state => {
         state.allReviews = [];
-        state.reviewByOwn = {};
+        state.reviewByOwn = [];
         state.isLoading = false;
         state.error = null;
       });
