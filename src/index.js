@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { theme } from 'theme';
 import { App } from 'components/App';
+import 'modern-normalize';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
