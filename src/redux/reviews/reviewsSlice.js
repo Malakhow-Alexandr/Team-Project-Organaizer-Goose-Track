@@ -52,7 +52,7 @@ const reviewsSlice = createSlice({
       .addCase(createReviewByOwn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.reviewByOwn[0] = payload;
+        state.reviewByOwn.push(payload);
       })
       .addCase(updateReviewByOwn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
