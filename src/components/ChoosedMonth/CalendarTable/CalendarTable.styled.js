@@ -3,14 +3,14 @@ import styled from 'styled-components';
 export const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   border: 1px solid ${p => p.theme.colors.calendar_border_color_switch};
   border-radius: ${p => p.theme.radii.small};
   overflow: hidden;
   background-color: ${p => p.theme.colors.white};
 `;
 
-export const CurrentDay = styled('div')`
+export const CurrentDay = styled.div`
   padding: 4px 6px;
   display: flex;
   align-items: center;
