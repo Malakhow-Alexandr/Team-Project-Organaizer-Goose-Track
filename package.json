@@ -23,6 +23,7 @@
     "i18next": "^23.2.3",
     "i18next-browser-languagedetector": "^7.0.2",
     "i18next-http-backend": "^2.2.1",
+    "js-cookie": "^3.0.5",
     "modern-normalize": "^2.0.0",
     "moment": "^2.29.4",
     "prop-types": "^15.8.1",

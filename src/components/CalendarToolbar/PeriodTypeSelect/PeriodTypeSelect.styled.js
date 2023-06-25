@@ -5,14 +5,14 @@ export const List = styled.ul`
   display: flex;
   margin-top: 18px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
     margin-top: 0;
   }
 `;
 export const Item = styled.li`
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 18px;
+  font-weight: ${p => p.theme.fontWeights.normal};
+  font-size: ${p => p.theme.fontSizes.s};
+  line-height: ${p => p.theme.lineHeights.body};
   display: flex;
 `;
 export const Link = styled(NavLink)`
@@ -33,13 +33,13 @@ export const Link = styled(NavLink)`
     border-radius: 0 8px 8px 0;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
     &.day {
       padding: 8px 26px;
     }
   }
 
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
+  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
+    font-size: ${p => p.theme.fontSizes.m};
   }
 `;
