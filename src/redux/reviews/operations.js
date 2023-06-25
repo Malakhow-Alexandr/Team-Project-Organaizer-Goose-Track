@@ -11,7 +11,7 @@ export const getAllReviews = createAsyncThunk(
       console.log(response.data);
       return response.data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -24,7 +24,7 @@ export const getReviewByOwn = createAsyncThunk(
       console.log(response.data);
       return response.data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -37,7 +37,7 @@ export const createReviewByOwn = createAsyncThunk(
       console.log(response.data);
       return response.data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -50,7 +50,7 @@ export const updateReviewByOwn = createAsyncThunk(
       console.log(response.data);
       return response.data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -63,7 +63,7 @@ export const deleteReviewByOwn = createAsyncThunk(
       console.log(response.data);
       return response.data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );

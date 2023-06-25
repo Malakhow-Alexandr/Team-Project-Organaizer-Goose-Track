@@ -1,7 +1,7 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import {useDispatch } from 'react-redux';
 import {createReviewByOwn} from '../../redux/reviews/operations'
 import { FaStar } from 'react-icons/fa';
 import {
@@ -52,8 +52,9 @@ export const FeedbackForm = () => {
             const ratingValue = ind + 1;
 
             return (
-              <>
+              <div key={ratingValue}>
                 <RatingField
+                 
                   type="radio"
                   name="rating"
                   value={ratingValue}
@@ -65,6 +66,8 @@ export const FeedbackForm = () => {
                 />
 
                 <FaStar
+                 
+                 
                   size={24}
                   color={
                     ratingValue <= (ratingHover || feedbackRating)
@@ -78,7 +81,7 @@ export const FeedbackForm = () => {
                     cursor: 'pointer',
                   }}
                 />
-              </>
+              </div>
             );
           })}
             <ErrorMessage name="rating" component="p" />

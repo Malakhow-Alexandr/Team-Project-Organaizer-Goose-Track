@@ -77,7 +77,6 @@ export const currentUser = createAsyncThunk(
   }
 );
 
-// Не готово
 export const updateUser = createAsyncThunk(
   'auth/updateUser ',
   async ({ avatar, name, birthday, phone, skype, email }, thunkAPI) => {
@@ -106,6 +105,26 @@ export const updateUser = createAsyncThunk(
 
       console.log(response.data);
 
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const changePassword = createAsyncThunk(
+  'auth/changePassword',
+  async ({ password, newPassword }, thunkAPI) => {
+    const state = thunkAPI.getState();
+    const persistedToken = state.auth.accessToken;
+    if (persistedToken === null) {
+      return thunkAPI.rejectWithValue('Token is invalid');
+    }
+    try {
+      const response = await axios.patch('/changePassword', {
+        password,
+        newPassword,
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

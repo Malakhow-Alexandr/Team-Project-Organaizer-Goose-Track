@@ -2,10 +2,12 @@ import { createSlice } from '@reduxjs/toolkit';
 import { logoutUser } from '../auth/operations';
 import {
   getAllTasks,
+  getMonthTasks,
   getTaskById,
   createTask,
   updateTask,
-  // changeTaskPriority,
+  changeTaskCategory,
+  getTasksStatistics,
   deleteTask,
 } from './operations';
 
@@ -20,6 +22,7 @@ const handleRejected = (state, { payload }) => {
 
 const initialState = {
   tasks: [],
+  tasksStatistics: {},
   taskById: {},
   isLoading: false,
   error: null,
@@ -31,16 +34,20 @@ const tasksSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getAllTasks.pending, handlePending)
+      .addCase(getMonthTasks.pending, handlePending)
       .addCase(getTaskById.pending, handlePending)
       .addCase(createTask.pending, handlePending)
       .addCase(updateTask.pending, handlePending)
-      // .addCase(changeTaskPriority.pending, handlePending)
+      .addCase(changeTaskCategory.pending, handlePending)
+      .addCase(getTasksStatistics.pending, handlePending)
       .addCase(deleteTask.pending, handlePending)
       .addCase(getAllTasks.rejected, handleRejected)
+      .addCase(getMonthTasks.rejected, handleRejected)
       .addCase(getTaskById.rejected, handleRejected)
       .addCase(createTask.rejected, handleRejected)
       .addCase(updateTask.rejected, handleRejected)
-      // .addCase(changeTaskPriority.rejected, handleRejected)
+      .addCase(changeTaskCategory.rejected, handleRejected)
+      .addCase(getTasksStatistics.rejected, handleRejected)
       .addCase(deleteTask.rejected, handleRejected)
       .addCase(getAllTasks.fulfilled, (state, { payload }) => {
         state.tasks = payload;
@@ -63,12 +70,17 @@ const tasksSlice = createSlice({
         const index = state.tasks.findIndex(task => task._id === payload._id);
         state.tasks[index] = payload;
       })
-      // .addCase(changeTaskPriority.fulfilled, (state, { payload }) => {
-      //   state.isLoading = false;
-      //   state.error = null;
-      //   const index = state.tasks.findIndex(task => task._id === payload._id);
-      //   state.tasks[index] = { ...state.tasks[index], payload };
-      // })
+      .addCase(changeTaskCategory.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.tasks.findIndex(task => task._id === payload._id);
+        state.tasks[index] = { ...state.tasks[index], payload };
+      })
+      .addCase(getTasksStatistics.fulfilled, (state, { payload }) => {
+        state.isLoading = false;
+        state.error = null;
+        state.tasksStatistics = payload;
+      })
       .addCase(deleteTask.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;

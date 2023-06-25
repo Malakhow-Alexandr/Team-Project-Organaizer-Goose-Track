@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import moment from 'moment';
+
 import { selectAccessToken } from 'redux/auth/selectors';
 
 export const PublicRoute = () => {
@@ -12,6 +14,12 @@ export const PublicRoute = () => {
   return !userAccessToken ? (
     <Outlet />
   ) : (
-    <Navigate to={location?.state?.from ?? '/calendar'} replace />
+    <Navigate
+      to={
+        location?.state?.from ??
+        `/calendar/month/${moment().format('YYYY-MM-DD')}`
+      }
+      replace
+    />
   );
 };
