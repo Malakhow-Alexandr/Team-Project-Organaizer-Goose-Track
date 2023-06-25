@@ -33,6 +33,8 @@ export const FeedbackForm = () => {
   const handleFeedbackSubmit = (values, { resetForm }) => {
     console.log(values);
     // console.log(actions);
+
+    dispatch(createReviewByOwn({text: values.text, rating: values.rating}))
     resetForm();
   };
 
