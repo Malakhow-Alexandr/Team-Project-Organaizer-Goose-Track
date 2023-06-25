@@ -1,3 +1,4 @@
+import Header from './Header/Header';
 import { SideBar } from 'components/SideBar/SideBar';
 import { Outlet } from 'react-router-dom';
 
@@ -19,7 +20,11 @@ const MainLayout = () => {
         <RightColumnWrapper>
           {/* Потрібно написати header */}
           {/* <Header toggleShowSideBar={null} /> */}
+
+          <Header/>
+
           <h1>Calendar</h1>
+
 
           <Outlet />
         </RightColumnWrapper>
