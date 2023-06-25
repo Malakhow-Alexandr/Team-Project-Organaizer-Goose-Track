@@ -109,6 +109,7 @@ export const UserPanelText = styled.p`
   font-size: ${props => props.theme.fontSizes.s};
   line-height: calc(17 / 14);
   color: ${props => props.theme.colors.text};
+  opacity: 0.5;
 `;
 
 export const StyledList = styled.ul`
@@ -140,6 +141,7 @@ export const StyledLink = styled(NavLink)`
   line-height: calc(19 / 16);
 
   color: ${props => props.theme.colors.text};
+  opacity: 0.5;
 
   &:hover {
     border: 1px solid ${props => props.theme.colors.primary};
@@ -147,6 +149,11 @@ export const StyledLink = styled(NavLink)`
     color: ${props => props.theme.colors.primary};
     background-color: ${props => props.theme.colors.lightBlue};
     padding-left: 14px;
+  }
+
+  &.active {
+    color: ${props => props.theme.colors.primary};
+    opacity: 1;
   }
 
   font-size: 14px;
@@ -162,6 +169,11 @@ export const StyledLink = styled(NavLink)`
 export const StyledItem = styled.li`
   width: 100%;
   height: 40px;
+
+  &.active {
+    border-radius: 8px;
+    background: ${props => props.theme.colors.lightBlue};
+  }
 
   @media screen and (min-width: 768px) {
     width: 225px;
