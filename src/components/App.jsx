@@ -1,14 +1,5 @@
 // import MainPage from 'pages/MainPage/MainPage';
-
-import LanguageFlags from "./localization/LanguageFlags";
-
-
-//Translation
-
-  
-
 export const App = () => {
-  
   return (
     <div
       style={{
@@ -20,7 +11,6 @@ export const App = () => {
         color: '#010101',
       }}
     >
-      <LanguageFlags/>
       <p>Hello</p>
     </div>
   );

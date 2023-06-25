@@ -1,5 +1,3 @@
-@import-normalize; /* bring in normalize.css styles */
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -16,6 +14,37 @@ html {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/*  сброс стиля у ссылки */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/*  сброс стиля у списка */
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* сброс отступа у картинок и базовая отзывчивость */
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 /* --------- Fonts ------------------------------------- */
@@ -37,6 +66,7 @@ code {
   font-weight: 500;
   src: url('fonts/inter-v12-latin-500.woff2') format('woff2');
 }
+
 /* inter-600 - latin */
 @font-face {
   font-display: swap;
@@ -70,7 +100,8 @@ code {
   font-family: 'Coolvetica';
   font-style: italic;
   font-weight: 400;
-  src: url('fonts/CoolveticaRg-Italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('fonts/CoolveticaRg-Italic.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* --------- Fonts ------------------------------------- */
