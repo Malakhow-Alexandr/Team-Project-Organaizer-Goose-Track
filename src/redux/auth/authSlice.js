@@ -61,6 +61,9 @@ const authSlice = createSlice({
       })
 
       .addCase(currentUser.fulfilled, (state, { payload }) => {
+        // if (typeof payload === 'string') {
+        //   state.accessToken = payload
+        // } else {}
         state.user = { ...state.user, ...payload };
         state.isLoggedIn = true;
         state.isRefreshing = false;
