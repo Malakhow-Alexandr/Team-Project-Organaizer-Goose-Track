@@ -5,6 +5,9 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from 'theme';
 import { App } from 'components/App';
 import './index.css';
+import './components/localization/i18n';
+
+
 
 console.log(theme);
 
