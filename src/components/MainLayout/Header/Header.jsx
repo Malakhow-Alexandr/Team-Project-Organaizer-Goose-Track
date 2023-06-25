@@ -1,5 +1,7 @@
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
 import { AddFeedbackModal } from 'components/AddFeedbackModal/AddFeedbackModal';
+import { ThemeToggler } from '../../ThemeToggler/ThemeToggler';
+
 import { useState } from 'react';
 
 const Header = () => {
@@ -18,6 +20,8 @@ const Header = () => {
     <div>
       <p>Header</p>
       <AddFeedbackBtn handleShowModal={handleShowModal} />
+
+      <ThemeToggler />
       {showModal && <AddFeedbackModal onClose={handleCloseModal} />}
     </div>
   );
