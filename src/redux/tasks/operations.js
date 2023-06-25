@@ -11,7 +11,21 @@ export const getAllTasks = createAsyncThunk(
       console.log(response.data);
       return response.data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getMonthTasks = createAsyncThunk(
+  'tasks/getMonthTasks',
+  // date format YYYY-MM-DD
+  async (date, thunkAPI) => {
+    try {
+      const response = await axios.get(`/tasks?month=${date}`);
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -24,7 +38,7 @@ export const getTaskById = createAsyncThunk(
       console.log(response.data);
       return response.data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -44,7 +58,7 @@ export const createTask = createAsyncThunk(
       console.log(response.data);
       return response.data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -64,7 +78,7 @@ export const updateTask = createAsyncThunk(
       console.log(response.data);
       return response.data;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -76,17 +90,34 @@ export const deleteTask = createAsyncThunk(
       await axios.delete(`/tasks/${id}`);
       return id;
     } catch (error) {
-      thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
 
-// Not ready
-// export const changeTaskPriority = createAsyncThunk(
-//   'tasks/changeTaskPriority',
-//   async ({ id, priority }, thunkAPI) => {
-//     const response = await axios.patch('', { priority });
-//     console.log(response.data);
-//     return response.data;
-//   }
-// );
+export const changeTaskCategory = createAsyncThunk(
+  'tasks/changeTaskCategory',
+  async ({ id, category }, thunkAPI) => {
+    try {
+      const response = await axios.put(`/tasks/${id}`, { category });
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const getTasksStatistics = createAsyncThunk(
+  'tasks/getTasksStatistics',
+  async ({ date }, thunkAPI) => {
+    try {
+      // date format YYYY-MM-DD
+      const response = await axios.get(`/tasks/statistics/?day=${date}`);
+      console.log(response.data);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
