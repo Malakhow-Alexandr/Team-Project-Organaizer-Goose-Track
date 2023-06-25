@@ -40,12 +40,7 @@ const MainLayout = () => {
         </LeftColumnWrapper>
 
         <RightColumnWrapper>
-          {/* Потрібно написати header */}
-          {/* <Header toggleShowSideBar={null} /> */}
-
           <Header toggleShowSideBar={toggleShowSideBar} />
-
-          <h1>Calendar</h1>
 
           <Outlet />
         </RightColumnWrapper>

@@ -4,11 +4,33 @@ import { ThemeToggler } from '../../ThemeToggler/ThemeToggler';
 
 import { RxHamburgerMenu } from 'react-icons/rx';
 
-import { MobileMenuButton } from './Header.styled';
+import {
+  MobileMenuButton,
+  HeaderSection,
+  HeaderTitle,
+  RightSectionHeader,
+} from './Header.styled';
 
 import { useState } from 'react';
+import { useLocation } from 'react-router';
+import { DayPageTitle } from './DayPageTitle/DayPageTitle';
+
+const getTypePage = pathname => {
+  if (pathname.includes('/account')) {
+    return 'account';
+  } else if (pathname.includes('/month')) {
+    return 'month';
+  } else if (pathname.includes('/day')) {
+    return 'day';
+  } else if (pathname.includes('/statistics')) {
+    return 'statistics';
+  }
+};
 
 const Header = ({ toggleShowSideBar }) => {
+  const { pathname } = useLocation();
+  const typePage = getTypePage(pathname);
+
   // open FeedbackModal logic:
   const [showModal, setShowModal] = useState(false);
 
@@ -21,17 +43,27 @@ const Header = ({ toggleShowSideBar }) => {
   };
 
   return (
-    <div>
-      <p>Header</p>
+    <HeaderSection>
       <MobileMenuButton onClick={toggleShowSideBar}>
         <RxHamburgerMenu size={34} />
       </MobileMenuButton>
 
-      <AddFeedbackBtn handleShowModal={handleShowModal} />
+      <HeaderTitle>
+        {typePage === 'account' && 'User Profile'}
+        {typePage === 'month' && 'Calendar'}
+        {typePage === 'statistics' && 'Statistics'}
+      </HeaderTitle>
+
+      {typePage === 'day' && <DayPageTitle />}
+
+      <RightSectionHeader>
+        <AddFeedbackBtn handleShowModal={handleShowModal} />
+      </RightSectionHeader>
 
       <ThemeToggler />
+
       {showModal && <AddFeedbackModal onClose={handleCloseModal} />}
-    </div>
+    </HeaderSection>
   );
 };
 
