@@ -30,6 +30,11 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  reducers: {
+    updateAccessToken: (state, { payload }) => {
+      state.accessToken = payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(registerUser.fulfilled, (state, { payload }) => {
@@ -65,6 +70,8 @@ const authSlice = createSlice({
       });
   },
 });
+
+export const { updateAccessToken } = authSlice.actions;
 
 const authPersistConfig = {
   key: 'auth',
