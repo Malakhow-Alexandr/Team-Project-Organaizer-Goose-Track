@@ -1,5 +1,6 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import moment from 'moment';
 
 // Публічний та Приватний роутер в залежності від наявності userAccessToken, котрий приходить від BACKEND
 import { PublicRoute } from './AuthRoutes/PublicRoute';
@@ -27,6 +28,7 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
   const dispatch = useDispatch();
+  moment.updateLocale('en', { week: { dow: 1 } });
 
   const isRefreshing = useSelector(selectIsRefreshing);
 
