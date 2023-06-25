@@ -4,9 +4,10 @@ import { useFormik } from 'formik';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { AiFillPlusCircle } from 'react-icons/ai';
-import { Form, FormField } from './UserForm.styled';
+import { AiFillPlusCircle, AiOutlineUser } from 'react-icons/ai';
+import { Container, Form, FormField, Avatar  } from './UserForm.styled';
 import moment from 'moment/moment';
+import defaultAvatar from '../../images/userForm/default-avatar.png'
 
 const phoneRegexp = /^(\d{2})\s\((\d{3})\)\s(\d{3})\s(\d{2})\s(\d{2})$/;
 const skypeNumberRegexp = /^\+[1-9]\d{0,2}[.-]?\d{1,14}$/;
@@ -40,8 +41,8 @@ export const validationSchema = Yup.object().shape({
 const user = {
   name: 'initialName',
   email: 'initialEmail@mail.com',
-  avatar:
-    'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=',
+  // avatar:
+  //   'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=',
   phone: '38 (123) 456 78 90',
   birthday: '23/06/2023',
   skype: '+123456789',
@@ -137,16 +138,17 @@ const UserForm = () => {
   };
 
   return (
-    <div>
+    <Container>
       <Form onSubmit={handleSubmit}>
         {/* avatar */}
-        <div>
+        <Avatar>
           {userAvatar ? (
             <img src={userAvatar} alt="Avatar" />
           ) : (
-            <img src={avatarDefault} alt="Avatar" />
+            <img src={defaultAvatar} alt="Avatar" />
+            // <AiOutlineUser/>
           )}
-        </div>
+        </Avatar>
         <FormField>
           <input
             name="avatar"
@@ -232,7 +234,7 @@ const UserForm = () => {
           Save changes
         </button>
       </Form>
-    </div>
+    </Container>
   );
 };
 
