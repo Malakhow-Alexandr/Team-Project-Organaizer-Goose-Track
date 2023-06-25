@@ -3,7 +3,7 @@ import { FiMoon } from 'react-icons/fi';
 import { BiSun } from 'react-icons/bi';
 import { ThemeModeBtn } from './ThemeToggler.styled';
 
-const ThemeToggler = () => {
+export const ThemeToggler = () => {
   const { theme, setTheme } = useTheme();
 
   const handleDarkClick = () => {
@@ -39,5 +39,3 @@ const ThemeToggler = () => {
 
   return <CurrentButton />;
 };
-
-export default ThemeToggler;
