@@ -48,7 +48,7 @@ export const CellWrapper = styled.div`
   &:nth-child(7n) {
     border-right: none;
   }
-  color: ${props => (props.isSelectedMonth ? 'pointer' : 'transparent')};
+  color: ${props => (props.isSelectedMonth ? '#343434' : 'transparent')};
 
   @media screen and (min-width: 768px) {
     width: 100px;

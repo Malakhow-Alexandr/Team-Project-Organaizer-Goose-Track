@@ -26,11 +26,9 @@ export const Main = styled.main`
   position: relative;
 
   display: flex;
-  height: 100vh;
 `;
 
 export const LeftColumnWrapper = styled.div`
-  height: 100%;
   width: 225px;
 
   /* transition: all 250ms ease-in-out 0s;
@@ -62,6 +60,7 @@ export const LeftField = styled.div`
 export const RightColumnWrapper = styled.div`
   flex-grow: 1;
   padding: 0 20px;
+  background-color: ${props => props.theme.colors.muted};
 
   overflow: hidden;
   overflow-y: auto;
@@ -92,7 +91,7 @@ export const RightColumnWrapper = styled.div`
   }
 
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
-    padding: 0 32px;
+    padding: 32px;
     overflow: hidden;
   }
 `;

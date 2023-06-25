@@ -19,7 +19,7 @@ const MainLayout = () => {
         <RightColumnWrapper>
           {/* Потрібно написати header */}
           {/* <Header toggleShowSideBar={null} /> */}
-          <h1>Header, User</h1>
+          <h1>Calendar</h1>
 
           <Outlet />
         </RightColumnWrapper>
