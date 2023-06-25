@@ -30,13 +30,12 @@ export const Main = styled.main`
 
 export const LeftColumnWrapper = styled.div`
   width: 225px;
+  height: 100vh;
 
   transition: all 250ms ease-in-out 0s;
   z-index: 100;
   position: absolute;
-  left: ${p => {
-    return p.showSideBar ? '0' : '-200%';
-  }};
+  left: ${p => (p.showSideBar ? '0' : '-200%')};
 
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 289px;
