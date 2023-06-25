@@ -95,14 +95,6 @@ export const updateUser = createAsyncThunk(
         },
       });
 
-      // const response = await axios.patch('/update', {
-      //   name,
-      //   birthday,
-      //   phone,
-      //   skype,
-      //   email,
-      // });
-
       console.log(response.data);
 
       return response.data;
