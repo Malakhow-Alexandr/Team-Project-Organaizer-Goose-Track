@@ -32,3 +32,9 @@ export const Field = styled(FormikField)`
   display: flex;
   flex-direction: row;
 `;
+
+export const ErrorMessage = styled(FormikError)`
+  color: #a36303;
+  font-weight: 500;
+  font-size: 10px;
+`;

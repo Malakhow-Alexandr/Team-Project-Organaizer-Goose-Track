@@ -1,67 +1,82 @@
-import { Formik} from 'formik';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
+import { Form, FormField, Field, ErrorMessage } from './FeedbackForm.styled';
 
+const FeedbackFormSchema = Yup.object().shape({
+  rating: Yup.string().required('Required'),
+  text: Yup.string()
+    .min(5, 'Too short')
+    .max(300, 'Your feedback is too long, please shorten it')
+    .required('Required'),
+});
 
-
-import { Form, FormField, Field } from './FeedbackForm.styled'
-
-const FeedbackForm = () => {
-  const [feedbackRating, setFeedbackRating] = useState(1);
+export const FeedbackForm = () => {
+  const [feedbackRating, setFeedbackRating] = useState(null);
   const [ratingHover, setRatingHover] = useState(null);
 
-  const handleSubmit = (values, {resetForm}) => {
+  const handleFeedbackSubmit = (values, { resetForm }) => {
     console.log(values);
     // console.log(actions);
-    resetForm()
+    resetForm();
   };
 
   return (
     <Formik
       initialValues={{ rating: feedbackRating, text: '' }}
-      onSubmit={handleSubmit}
+      validationSchema={FeedbackFormSchema}
+      onSubmit={handleFeedbackSubmit}
     >
       <Form>
         <FormField>
           Rating
-        
-            {[...Array(5)].map((item, ind) => {
-              const ratingValue = ind + 1;
+          {[...Array(5)].map((item, ind) => {
+            const ratingValue = ind + 1;
 
-              return (
-                <>
-                  <Field
-                    type="radio"
-                    name="rating"
-                    value={ratingValue}
-                    onClick={() => setFeedbackRating(ratingValue)}
-                    autoComplete="off"
-                    //   style={{
-                    //     display: 'none',
-                    //   }}
-                  />
-                  <FaStar
-                    size={24}
-                    color={
-                      ratingValue <= (ratingHover || feedbackRating)
-                        ? '#FFAC33'
-                        : '#CEC9C1'
-                    }
-                    onMouseEnter={() => setRatingHover(ratingValue)}
-                    onMouseLeave={() => setRatingHover(null)}
-                    style={{
-                      marginRight: 0,
-                      cursor: 'pointer',
-                    }}
-                  />
-                </>
-              );
-            })}       
+            return (
+              <>
+                <Field
+                  type="radio"
+                  name="rating"
+                  value={ratingValue}
+                  onClick={() => setFeedbackRating(ratingValue)}
+                  autoComplete="off"
+                  //   style={{
+                  //     display: 'none',
+                  //   }}
+                />
+                <FaStar
+                  size={24}
+                  color={
+                    ratingValue <= (ratingHover || feedbackRating)
+                      ? '#FFAC33'
+                      : '#CEC9C1'
+                  }
+                  onMouseEnter={() => setRatingHover(ratingValue)}
+                  onMouseLeave={() => setRatingHover(null)}
+                  style={{
+                    marginRight: 0,
+                    cursor: 'pointer',
+                  }}
+                />
+              </>
+            );
+          })}
+          <ErrorMessage name="rating" component="p" />
         </FormField>
 
+        
         <FormField>
           Review
-          <Field component="textarea" type="text" placeholder="Enter text" name="text" autoComplete="off" />
+          <Field
+            component="textarea"
+            type="text"
+            placeholder="Enter text"
+            name="text"
+            autoComplete="off"
+          />
+          <ErrorMessage name="text" component="p" />
         </FormField>
 
         <div>
@@ -73,4 +88,4 @@ const FeedbackForm = () => {
   );
 };
 
-export default FeedbackForm;
+// export default FeedbackForm;

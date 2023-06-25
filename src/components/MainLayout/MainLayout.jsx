@@ -1,3 +1,4 @@
+import Header from './Header/Header';
 import { SideBar } from 'components/SideBar/SideBar';
 import { Outlet } from 'react-router-dom';
 
@@ -20,6 +21,7 @@ const MainLayout = () => {
           {/* Потрібно написати header */}
           {/* <Header toggleShowSideBar={null} /> */}
           <h1>Header, User</h1>
+          <Header/>
 
           <Outlet />
         </RightColumnWrapper>
