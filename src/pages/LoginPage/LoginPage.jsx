@@ -23,10 +23,6 @@ const LoginPage = () => {
 
   return (
     <FormContainer>
-      <GoBackBtn type="button" onClick={handelGoBack}>
-        <IoMdArrowRoundBack />
-        Go Back
-      </GoBackBtn>
       <ImageWrap>
         {isDesktop && (
           <img
@@ -39,6 +35,10 @@ const LoginPage = () => {
         )}
       </ImageWrap>
       <FormWrapper>
+        <GoBackBtn type="button" onClick={handelGoBack}>
+          <IoMdArrowRoundBack />
+          Go Back
+        </GoBackBtn>
         <LoginForm />
       </FormWrapper>
       <AuthNavigate link="/register" text="Sign Up" />

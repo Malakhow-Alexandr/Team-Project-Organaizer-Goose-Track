@@ -19,7 +19,6 @@ export const FormWrapper = styled.div`
 
   @media screen and (max-width: 374px) {
     width: 100%;
-    max-width: 335px;
   }
   @media screen and (min-width: 375px) {
     width: 335px;
@@ -32,10 +31,12 @@ export const FormWrapper = styled.div`
 
 export const ImageWrap = styled.div`
   position: absolute;
-  bottom: 0;
-  left: 49px;
+  bottom: 50%;
+  left: 50%;
   width: 400px;
   height: 416px;
+
+  transform: translate(-170%, 93%);
 
   img {
     display: block;

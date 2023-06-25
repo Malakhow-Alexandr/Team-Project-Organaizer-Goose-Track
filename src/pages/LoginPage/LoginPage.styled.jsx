@@ -2,8 +2,9 @@ import styled from 'styled-components';
 
 export const ImageWrap = styled.div`
   position: absolute;
-  bottom: 16px;
-  right: 60px;
+  top: 50%;
+  left: 50%;
+  transform: translate(80%, -30%);
   width: 368px;
   height: 521px;
 
@@ -19,15 +20,13 @@ export const ImageWrap = styled.div`
 `;
 
 export const GoBackBtn = styled.button`
-  position: absolute;
-  top: 10px;
-  left: 10px;
   display: flex;
   gap: 4px;
   align-items: center;
   justify-content: center;
   width: 100px;
   height: 30px;
+  margin-bottom: 8px;
 
   font-family: ${props => props.theme.fonts.heading};
   font-style: ${props => props.theme.fonts.heading};
@@ -35,8 +34,6 @@ export const GoBackBtn = styled.button`
   font-size: ${props => props.theme.fontSizes.s};
   line-height: 1.33;
   color: ${props => props.theme.colors.white};
-
-  letter-spacing: -0.02em;
 
   background: ${props => props.theme.colors.primary};
   box-shadow: ${props => props.theme.shadows.boxShadow};

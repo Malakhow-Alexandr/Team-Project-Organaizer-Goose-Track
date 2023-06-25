@@ -1,4 +1,5 @@
 import { useLocation } from 'react-router-dom';
+import moment from 'moment';
 
 import {
   LinkLogo,
@@ -38,7 +39,10 @@ const UserNav = ({ toggleShowSideBar }) => {
   return (
     <div>
       <LogoWrapper>
-        <LinkLogo to="calendar" onClick={() => toggleShowSideBar(false)}>
+        <LinkLogo
+          to={`/calendar/month/${moment().format('YYYY-MM-DD')}`}
+          onClick={() => toggleShowSideBar(false)}
+        >
           <GooseImg
             alt="goose-track-img"
             srcSet={`
@@ -73,7 +77,10 @@ const UserNav = ({ toggleShowSideBar }) => {
             </StyledLink>
           </StyledItem>
           <StyledItem className={typePage === 'calendar' ? 'active' : ''}>
-            <StyledLink to="calendar" onClick={() => toggleShowSideBar(false)}>
+            <StyledLink
+              to={`/calendar/month/${moment().format('YYYY-MM-DD')}`}
+              onClick={() => toggleShowSideBar(false)}
+            >
               <CalendarIconStyled stroke="currentColor"></CalendarIconStyled>
               Calendar
             </StyledLink>

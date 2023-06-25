@@ -46,9 +46,6 @@ img {
   max-width: 100%;
   height: auto;
 }
-html {
-  scroll-behavior: smooth;
-}
 
 /* --------- Fonts ------------------------------------- */
 
@@ -69,6 +66,7 @@ html {
   font-weight: 500;
   src: url('fonts/inter-v12-latin-500.woff2') format('woff2');
 }
+
 /* inter-600 - latin */
 @font-face {
   font-display: swap;
@@ -102,7 +100,8 @@ html {
   font-family: 'Coolvetica';
   font-style: italic;
   font-weight: 400;
-  src: url('fonts/CoolveticaRg-Italic.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url('fonts/CoolveticaRg-Italic.woff2') format('woff2');
+  /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* --------- Fonts ------------------------------------- */

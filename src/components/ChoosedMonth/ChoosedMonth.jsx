@@ -1,8 +1,16 @@
+import { useOutletContext } from 'react-router-dom';
+
+import CalendarTable from './CalendarTable/CalendarTable';
+import { MonthCalendarHeader } from './CalendarTable/MonthCalendarHeader/MonthCalendarHeader';
+
 const ChoosedMonth = () => {
+  const { startDay, today } = useOutletContext();
+
   return (
-    <div>
-      <h2>Choosed Month</h2>
-    </div>
+    <>
+      <MonthCalendarHeader />
+      <CalendarTable startDay={startDay} today={today} />
+    </>
   );
 };
 
