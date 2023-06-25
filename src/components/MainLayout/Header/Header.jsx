@@ -3,9 +3,6 @@ import { AddFeedbackModal } from 'components/AddFeedbackModal/AddFeedbackModal';
 import { useState } from 'react';
 
 const Header = () => {
-
-
-
   // open FeedbackModal logic:
   const [showModal, setShowModal] = useState(false);
 

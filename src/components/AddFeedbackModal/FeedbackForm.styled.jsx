@@ -7,7 +7,7 @@ import {
 
 
 export const Form = styled(FormikForm)`
- margin-top: 40px;
+
  display: flex;
   flex-direction: column;
   gap: 5px;
@@ -16,22 +16,53 @@ export const Form = styled(FormikForm)`
   margin-bottom: 20px;
 `;
 
-export const FormField = styled.label`
-  display: flex;
+export const RatingLabel = styled.p`
  
-  width: 300px;
-  color: #7b7979;
-  font-weight: 700;
-  font-family: 'Poppins', sans-serif;
-  font-size: 15px;
-  text-shadow: 8px 8px 12px rgba(174, 172, 172, 0.3),
-    -8px -8px 12px rgba(164, 162, 162, 0.06);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+ 
+
+  margin: 0 0 8px;
 `;
 
-export const Field = styled(FormikField)`
+export const FormField = styled.label`
+  display: flex;
+  flex-direction: column;
+ 
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+ 
+
+  margin: 0 0 8px;
+`;
+
+export const RatingField = styled(FormikField)`
   display: flex;
   flex-direction: row;
 `;
+
+
+
+export const  TextareaField = styled(FormikField)`
+ width: 100%;
+  height: 127px;
+ 
+  border-radius: 8px;
+  padding: 14px 18px;
+  
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.29;
+`;
+
+
+export const StarsInputOverlay = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 
 export const ErrorMessage = styled(FormikError)`
   color: #a36303;

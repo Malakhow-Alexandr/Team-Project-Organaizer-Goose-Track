@@ -2,7 +2,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
 import { FaStar } from 'react-icons/fa';
-import { Form, FormField, Field, ErrorMessage } from './FeedbackForm.styled';
+import { Form, FormField, ErrorMessage, RatingLabel, StarsInputOverlay, RatingField, TextareaField } from './FeedbackForm.styled';
 
 const FeedbackFormSchema = Yup.object().shape({
   rating: Yup.string().required('Required'),
@@ -29,14 +29,15 @@ export const FeedbackForm = () => {
       onSubmit={handleFeedbackSubmit}
     >
       <Form>
+        <RatingLabel>Rating</RatingLabel>
         <FormField>
-          Rating
+          {/* Rating */}
           {[...Array(5)].map((item, ind) => {
             const ratingValue = ind + 1;
 
             return (
-              <>
-                <Field
+              <StarsInputOverlay>
+                <RatingField
                   type="radio"
                   name="rating"
                   value={ratingValue}
@@ -46,6 +47,7 @@ export const FeedbackForm = () => {
                   //     display: 'none',
                   //   }}
                 />
+                <div>
                 <FaStar
                   size={24}
                   color={
@@ -55,12 +57,13 @@ export const FeedbackForm = () => {
                   }
                   onMouseEnter={() => setRatingHover(ratingValue)}
                   onMouseLeave={() => setRatingHover(null)}
-                  style={{
+                    style={{
                     marginRight: 0,
                     cursor: 'pointer',
                   }}
-                />
-              </>
+                  />
+                  </div>
+              </StarsInputOverlay>
             );
           })}
           <ErrorMessage name="rating" component="p" />
@@ -69,7 +72,7 @@ export const FeedbackForm = () => {
         
         <FormField>
           Review
-          <Field
+          <TextareaField
             component="textarea"
             type="text"
             placeholder="Enter text"
