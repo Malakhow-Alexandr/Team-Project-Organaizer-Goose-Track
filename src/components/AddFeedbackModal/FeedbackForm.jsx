@@ -1,8 +1,20 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {createReviewByOwn} from '../../redux/reviews/operations'
 import { FaStar } from 'react-icons/fa';
-import { Form, FormField, ErrorMessage, RatingLabel, StarsInputOverlay, RatingField, TextareaField } from './FeedbackForm.styled';
+import {
+  Form,
+  FormField,
+  ErrorMessage,
+  RatingLabel,
+  RatingInputOverlay,
+  RatingField,
+  TextareaField,
+  RatingBtnOverlay,
+  SaveFeedbackBtn,
+} from './FeedbackForm.styled';
 
 const FeedbackFormSchema = Yup.object().shape({
   rating: Yup.string().required('Required'),
@@ -15,6 +27,8 @@ const FeedbackFormSchema = Yup.object().shape({
 export const FeedbackForm = () => {
   const [feedbackRating, setFeedbackRating] = useState(null);
   const [ratingHover, setRatingHover] = useState(null);
+
+  const dispatch = useDispatch();
 
   const handleFeedbackSubmit = (values, { resetForm }) => {
     console.log(values);
@@ -31,23 +45,23 @@ export const FeedbackForm = () => {
       <Form>
         <RatingLabel>Rating</RatingLabel>
         <FormField>
-          {/* Rating */}
+          <RatingInputOverlay>
           {[...Array(5)].map((item, ind) => {
             const ratingValue = ind + 1;
 
             return (
-              <StarsInputOverlay>
+              <>
                 <RatingField
                   type="radio"
                   name="rating"
                   value={ratingValue}
                   onClick={() => setFeedbackRating(ratingValue)}
                   autoComplete="off"
-                  //   style={{
-                  //     display: 'none',
-                  //   }}
+                    // style={{
+                    //   display: 'none',
+                    // }}
                 />
-                <div>
+
                 <FaStar
                   size={24}
                   color={
@@ -57,21 +71,20 @@ export const FeedbackForm = () => {
                   }
                   onMouseEnter={() => setRatingHover(ratingValue)}
                   onMouseLeave={() => setRatingHover(null)}
-                    style={{
+                  style={{
                     marginRight: 0,
                     cursor: 'pointer',
                   }}
-                  />
-                  </div>
-              </StarsInputOverlay>
+                />
+              </>
             );
           })}
-          <ErrorMessage name="rating" component="p" />
+            <ErrorMessage name="rating" component="p" />
+            </RatingInputOverlay>
         </FormField>
 
-        
+        <RatingLabel>Review</RatingLabel>
         <FormField>
-          Review
           <TextareaField
             component="textarea"
             type="text"
@@ -82,10 +95,11 @@ export const FeedbackForm = () => {
           <ErrorMessage name="text" component="p" />
         </FormField>
 
-        <div>
-          <button type="submit">Save</button>
-          <button>Cancel</button>
-        </div>
+        <RatingBtnOverlay>
+          {/* <button type="submit">Edit</button> */}
+          <SaveFeedbackBtn type="submit">Save</SaveFeedbackBtn>
+          <SaveFeedbackBtn type="submit">Cancel</SaveFeedbackBtn>
+        </RatingBtnOverlay>
       </Form>
     </Formik>
   );

@@ -21,6 +21,7 @@ export const theme = {
     greenValid: '#3CBC81',
     muted: '#F7F6F9',
     closeButton: '#111111',
+    textarea: '#F6F6F6',
 
     // Theme toggler
 
