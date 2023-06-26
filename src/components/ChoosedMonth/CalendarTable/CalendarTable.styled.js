@@ -49,7 +49,7 @@ export const CellWrapper = styled.div`
     border-right: none;
   }
   cursor: ${props => (props.isSelectedMonth ? 'pointer' : 'auto')};
-  color: ${props => (props.isSelectedMonth ? '#343434' : 'transparent')};
+  color: ${props => (props.isSelectedMonth ? '#343434' : 'lightgrey')};
   transition: box-shadow 300ms linear;
   &:hover,
   &:focus {
