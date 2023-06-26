@@ -5,6 +5,9 @@ export const HeaderSection = styled.div`
   align-items: center;
   padding-top: 24px;
   padding-bottom: 64px;
+
+  background-color: ${p => p.theme.colors.background_switch};
+
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     padding-top: 40px;
     padding-bottom: ${p => (p.showMotivationTitle ? '16px' : '32px')};
@@ -22,7 +25,7 @@ export const HeaderTitle = styled.h3`
   line-height: 32px;
   margin: 0;
 
-  color: ${props => props.theme.colors.primary_text_mode};
+  color: ${props => props.theme.colors.primary_text_switch};
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 

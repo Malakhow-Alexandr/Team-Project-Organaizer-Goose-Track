@@ -8,7 +8,7 @@ export const PrivateRoute = () => {
   const userAccessToken = useSelector(selectAccessToken);
 
   return userAccessToken ? (
-    <div style={{ display: 'flex' }}>
+    <div style={{ backgroundColor: 'var(--background)' }}>
       <Outlet />
     </div>
   ) : (

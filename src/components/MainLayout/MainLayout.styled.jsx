@@ -55,13 +55,12 @@ export const LeftField = styled.div`
   top: 0;
   height: 100%;
   width: 100vw;
-  background-color: ${props => props.theme.colors.third_background_mode};
 `;
 
 export const RightColumnWrapper = styled.div`
   flex-grow: 1;
   padding: 0 20px;
-  background-color: ${props => props.theme.colors.muted};
+  background-color: ${props => props.theme.colors.background_switch};
 
   overflow: hidden;
   overflow-y: auto;
