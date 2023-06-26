@@ -10,6 +10,7 @@ import {
 
 const handlePending = state => {
   state.isLoading = true;
+  state.successful = false;
 };
 
 const handleRejected = (state, { payload }) => {
@@ -21,6 +22,7 @@ const initialState = {
   allReviews: [],
   reviewByOwn: {},
   isLoading: false,
+  successful: false,
   error: null,
 };
 
@@ -42,32 +44,38 @@ const reviewsSlice = createSlice({
       .addCase(getAllReviews.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
         state.allReviews = payload;
       })
       .addCase(getReviewByOwn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
         state.reviewByOwn = payload;
       })
       .addCase(createReviewByOwn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
         state.reviewByOwn.push(payload);
       })
       .addCase(updateReviewByOwn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
         state.reviewByOwn = payload;
       })
       .addCase(deleteReviewByOwn.fulfilled, state => {
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
         state.reviewByOwn = {};
       })
       .addCase(logoutUser.fulfilled, state => {
         state.allReviews = [];
         state.reviewByOwn = {};
         state.isLoading = false;
+        state.successful = false;
         state.error = null;
       });
   },

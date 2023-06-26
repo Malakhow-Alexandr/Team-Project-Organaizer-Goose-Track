@@ -11,8 +11,6 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-// const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
-
 export const registerUser = createAsyncThunk(
   'auth/registerUser ',
   async ({ name, email, password }, thunkAPI) => {
