@@ -7,9 +7,11 @@ import {
   Field,
   FormLabel,
   FormTitle,
+  IconWrap,
 } from '../RegisterForm/RegisterForm.styled';
 import * as Yup from 'yup';
 import { FiLogIn } from 'react-icons/fi';
+import { BiCheckCircle, BiErrorCircle } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/auth/operations';
 
@@ -63,6 +65,10 @@ export const RegisterForm = () => {
                 placeholder="Enter your name"
               />
               {isValid('name') === 'is-valid' && <p>This is a CORRECT name</p>}
+              <IconWrap>
+                {isValid('name') === 'is-valid' && <BiCheckCircle />}
+                {isValid('name') === 'is-invalid' && <BiErrorCircle />}
+              </IconWrap>
               <ErrorMessage name="name" component="div" />
             </FormLabel>
             <FormLabel className={isValid('email')}>
@@ -77,6 +83,10 @@ export const RegisterForm = () => {
               {isValid('email') === 'is-valid' && (
                 <p>This is a CORRECT email</p>
               )}
+              <IconWrap>
+                {isValid('email') === 'is-valid' && <BiCheckCircle />}
+                {isValid('email') === 'is-invalid' && <BiErrorCircle />}
+              </IconWrap>
               <ErrorMessage name="email" component="div" />
             </FormLabel>
             <FormLabel className={isValid('password')}>
@@ -91,6 +101,10 @@ export const RegisterForm = () => {
               {isValid('password') === 'is-valid' && (
                 <p>This is a CORRECT password</p>
               )}
+              <IconWrap>
+                {isValid('password') === 'is-valid' && <BiCheckCircle />}
+                {isValid('password') === 'is-invalid' && <BiErrorCircle />}
+              </IconWrap>
               <ErrorMessage name="password" component="div" />
             </FormLabel>
             <Button type="submit">
