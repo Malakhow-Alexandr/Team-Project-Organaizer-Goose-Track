@@ -2,12 +2,10 @@ import styled from 'styled-components';
 import { ReactComponent as LogoutIcon } from '../../images/sideBar/logout-icon.svg';
 
 export const SideBarContainer = styled.div`
-  box-sizing: border-box;
-
   width: 100%;
-  height: 100%;
+  height: inherit;
 
-  background-color: ${props => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.second_background_switch};
 
   display: flex;
   flex-direction: column;
@@ -53,7 +51,7 @@ export const LogoutBtn = styled.button`
     background: ${props => props.theme.colors.secondary};
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 141px;
     height: 56px;
     font-size: 18px;
@@ -64,7 +62,7 @@ export const LogoutBtnIcon = styled(LogoutIcon)`
   width: 18px;
   height: 18px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 20px;
     height: 20px;
   }
