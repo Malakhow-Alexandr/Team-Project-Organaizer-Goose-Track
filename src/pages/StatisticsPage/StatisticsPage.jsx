@@ -1,9 +1,11 @@
+import { StatisticsPageContainer } from './StatisticsPage.styled';
+import { StatisticsChart } from 'components/StatisticsChart/StatisticsChart';
+
 const StatisticsPage = () => {
   return (
-    <div>
-      <h2>Statistics Page</h2>
-      <p>statistics page</p>
-    </div>
+    <StatisticsPageContainer>
+      <StatisticsChart />
+    </StatisticsPageContainer>
   );
 };
 
