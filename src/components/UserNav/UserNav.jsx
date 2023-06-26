@@ -29,6 +29,10 @@ const getTypePage = pathname => {
     return 'account';
   } else if (pathname.includes('/calendar')) {
     return 'calendar';
+  } else if (pathname.includes('/statistics')) {
+    return 'statistics';
+  } else if (pathname.includes('/day')) {
+    return 'day';
   }
 };
 

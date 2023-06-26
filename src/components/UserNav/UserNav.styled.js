@@ -180,6 +180,6 @@ export const StyledItem = styled.li`
 
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 225px;
-    /* height: 56px; */
+    height: 56px;
   }
 `;
