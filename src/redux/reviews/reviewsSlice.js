@@ -19,7 +19,7 @@ const handleRejected = (state, { payload }) => {
 
 const initialState = {
   allReviews: [],
-  reviewByOwn: [],
+  reviewByOwn: {},
   isLoading: false,
   error: null,
 };
@@ -57,16 +57,16 @@ const reviewsSlice = createSlice({
       .addCase(updateReviewByOwn.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
-        state.reviewByOwn[0] = payload;
+        state.reviewByOwn = payload;
       })
       .addCase(deleteReviewByOwn.fulfilled, state => {
         state.isLoading = false;
         state.error = null;
-        state.reviewByOwn = [];
+        state.reviewByOwn = {};
       })
       .addCase(logoutUser.fulfilled, state => {
         state.allReviews = [];
-        state.reviewByOwn = [];
+        state.reviewByOwn = {};
         state.isLoading = false;
         state.error = null;
       });

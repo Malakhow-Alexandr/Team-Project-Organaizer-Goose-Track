@@ -69,7 +69,6 @@ export const currentUser = createAsyncThunk(
 
     try {
       const response = await axios.get('/current');
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -94,14 +93,6 @@ export const updateUser = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
-
-      // const response = await axios.patch('/update', {
-      //   name,
-      //   birthday,
-      //   phone,
-      //   skype,
-      //   email,
-      // });
 
       console.log(response.data);
 

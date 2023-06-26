@@ -7,7 +7,7 @@ import { PublicRoute } from './AuthRoutes/PublicRoute';
 import { PrivateRoute } from './AuthRoutes/PrivateRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentUser } from 'redux/auth/operations';
-import { selectIsRefreshing } from 'redux/auth/selectors';
+import { selectIsRefreshing, selectAccessToken } from 'redux/auth/selectors';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -31,10 +31,11 @@ export const App = () => {
   moment.updateLocale('en', { week: { dow: 1 } });
 
   const isRefreshing = useSelector(selectIsRefreshing);
+  const accessToken = useSelector(selectAccessToken);
 
   useEffect(() => {
     dispatch(currentUser());
-  }, [dispatch]);
+  }, [dispatch, accessToken]);
   return (
     <Suspense fallback={null}>
       {/* До fallback потрібно додати LOADER AБО Spinner */}
