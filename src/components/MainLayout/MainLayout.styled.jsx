@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { theme } from 'theme';
 
 export const Container = styled.div`
   width: 100%;
@@ -26,16 +27,17 @@ export const Main = styled.main`
   position: relative;
 
   display: flex;
+  height: 100vh;
 `;
 
 export const LeftColumnWrapper = styled.div`
   width: 225px;
-  height: 100vh;
+  height: 100%;
 
   transition: all 250ms ease-in-out 0s;
   z-index: 100;
   position: absolute;
-  left: ${p => (p.showSideBar ? '0' : '-200%')};
+  left: ${props => (props.showSideBar ? '0' : '-200%')};
 
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 289px;
@@ -69,11 +71,11 @@ export const RightColumnWrapper = styled.div`
   }
 
   ::-webkit-scrollbar-track {
-    background: black;
+    background: ${theme.colors.bg_scroll_color};
   }
 
   ::-webkit-scrollbar-thumb {
-    background: black;
+    background: ${theme.colors.scroll_color};
   }
 
   ::-webkit-scrollbar-track-piece {
@@ -90,7 +92,7 @@ export const RightColumnWrapper = styled.div`
   }
 
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
-    padding: 32px;
-    overflow: hidden;
+    padding: 0 32px;
+    overflow: auto;
   }
 `;
