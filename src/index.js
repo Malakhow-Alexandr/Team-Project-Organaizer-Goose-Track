@@ -8,6 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from 'theme';
 import { App } from 'components/App';
 import 'modern-normalize';
+import './components/localization/i18n';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

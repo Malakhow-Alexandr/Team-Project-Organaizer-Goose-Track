@@ -23,7 +23,7 @@ export const FormTitle = styled.h2`
   margin-bottom: 32px;
   font-family: ${p => p.theme.fonts.heading};
   font-style: ${p => p.theme.fonts.heading};
-  font-weight: ${p => p.theme.fontWeights.medium};
+  font-weight: ${p => p.theme.fontWeights.heading};
   font-size: 18px;
   line-height: 1.33;
   color: ${p => p.theme.colors.primary};
@@ -45,7 +45,7 @@ export const FormLabel = styled.label`
   margin-bottom: 24px;
   font-family: ${p => p.theme.fonts.heading};
   font-style: ${p => p.theme.fonts.heading};
-  font-weight: ${p => p.theme.fontWeights.medium};
+  font-weight: ${p => p.theme.fontWeights.heading};
   font-size: ${p => p.theme.fontSizes.xs};
   color: ${p => p.theme.colors.black};
 
@@ -76,7 +76,7 @@ export const Field = styled(FormField)`
   padding: 14px;
   font-family: ${p => p.theme.fonts.heading};
   font-style: ${p => p.theme.fonts.heading};
-  font-weight: ${p => p.theme.fontWeights.medium};
+  font-weight: ${p => p.theme.fontWeights.heading};
   font-size: ${p => p.theme.fontSizes.s};
   color: ${p => p.theme.colors.black};
   border: ${p => p.theme.borders.normal} rgba(220, 227, 229, 0.6);
@@ -110,6 +110,18 @@ export const ErrorMessage = styled(FormikError)`
   color: ${p => p.theme.colors.redError};
 `;
 
+export const IconWrap = styled.div`
+  position: absolute;
+  top: 35px;
+  right: 10px;
+  font-size: 20px;
+
+  @media screen and (min-width: 768px) {
+    top: 41px;
+    font-size: 24px;
+  }
+`;
+
 export const Button = styled.button`
   display: flex;
   gap: 11px;
@@ -120,7 +132,7 @@ export const Button = styled.button`
 
   font-family: ${p => p.theme.fonts.heading};
   font-style: ${p => p.theme.fonts.heading};
-  font-weight: ${p => p.theme.fontWeights.medium};
+  font-weight: ${p => p.theme.fontWeights.heading};
   font-size: ${p => p.theme.fontSizes.s};
   line-height: 1.33;
   color: ${p => p.theme.colors.white};
