@@ -1,8 +1,45 @@
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import {
+  Wrapper,
+  GoHome,
+  Text,
+  Image,
+  TextAccent,
+  TextWrapper,
+} from './NotFoundPage.styled';
+
+import img404x1 from '../../images/notFoundPage/img404@1x.webp';
+import img404x2 from '../../images/notFoundPage/img404@2x.webp';
+
 const NotFoundPage = () => {
+  const navigate = useNavigate();
+  const [countdown, setCountdown] = useState(10);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountdown(prevCountdown => prevCountdown - 1);
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    if (countdown === 0) {
+      navigate('/');
+    }
+  }, [countdown, navigate]);
+
   return (
-    <div>
-      <h2>NotFoundPage</h2>
-    </div>
+    <Wrapper>
+      <GoHome>You will be relocated to Home Page in {countdown} seconds</GoHome>
+      <TextWrapper>
+        <TextAccent>4</TextAccent>
+        <Image srcSet={`${img404x1} 1x, ${img404x2} 2x`} />
+        <TextAccent>4</TextAccent>
+      </TextWrapper>
+      <Text>We’re sorry, the page you requested could not be found.</Text>
+      <Text>Please go back to the homepage.</Text>
+    </Wrapper>
   );
 };
 
