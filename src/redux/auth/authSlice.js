@@ -55,7 +55,7 @@ const authSlice = createSlice({
       .addCase(registerUser.rejected, handleRejected)
       .addCase(loginUser.rejected, handleRejected)
       .addCase(updateUser.rejected, handleRejected)
-      .addCase(logoutUser.pending, handleRejected)
+      .addCase(logoutUser.rejected, handleRejected)
       .addCase(registerUser.fulfilled, (state, { payload }) => {
         state.user = { ...state.user, ...payload.user };
         state.accessToken = payload.accessToken;
