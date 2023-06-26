@@ -11,7 +11,7 @@ export const LogoWrapper = styled.div`
   align-items: center;
   margin-bottom: 64px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     margin-bottom: 50px;
   }
 `;
@@ -24,7 +24,7 @@ export const LinkLogo = styled(NavLink)`
 
   outline: 0;
   &:visited {
-    color: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.side_bar_content_hover_switch};
   }
 `;
 
@@ -32,11 +32,11 @@ export const GooseImg = styled.img`
   width: 36px;
   height: 100%;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 60px;
   }
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
     width: 60px;
   }
 `;
@@ -74,7 +74,7 @@ export const UserIconStyled = styled(UserIcon)`
   width: 20px;
   height: 20px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 24px;
     height: 24px;
   }
@@ -84,7 +84,7 @@ export const CalendarIconStyled = styled(CalendarIcon)`
   width: 20px;
   height: 20px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 24px;
     height: 24px;
   }
@@ -94,7 +94,7 @@ export const StatisticsIconStyled = styled(StatisticsIcon)`
   width: 20px;
   height: 20px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 24px;
     height: 24px;
   }
@@ -108,7 +108,7 @@ export const UserPanelText = styled.p`
   font-weight: ${props => props.theme.fontWeights.medium};
   font-size: ${props => props.theme.fontSizes.s};
   line-height: calc(17 / 14);
-  color: ${props => props.theme.colors.text};
+  color: ${props => props.theme.colors.user_text_switch};
   opacity: 0.5;
 `;
 
@@ -140,27 +140,28 @@ export const StyledLink = styled(NavLink)`
   font-size: 16px;
   line-height: calc(19 / 16);
 
-  color: ${props => props.theme.colors.text};
+  color: ${props => props.theme.colors.third_text_switch};
   opacity: 0.5;
 
   &:hover {
     border: 1px solid ${props => props.theme.colors.primary};
     border-radius: 8px;
-    color: ${props => props.theme.colors.primary};
-    background-color: ${props => props.theme.colors.lightBlue};
+    color: ${props => props.theme.colors.side_bar_content_hover_switch};
+    background-color: ${props =>
+      props.theme.colors.side_bar_hover_task_buttons_background_switch};
     padding-left: 14px;
     opacity: 1;
   }
 
   &.active {
-    color: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.side_bar_content_hover_switch};
     opacity: 1;
   }
 
   font-size: 14px;
   line-height: 17px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     padding: 18.5px 0px 18.5px 25px;
     font-size: 16px;
     line-height: calc(19 / 16);
@@ -173,10 +174,11 @@ export const StyledItem = styled.li`
 
   &.active {
     border-radius: 8px;
-    background: ${props => props.theme.colors.lightBlue};
+    background: ${props =>
+      props.theme.colors.side_bar_hover_task_buttons_background_switch};
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     width: 225px;
     /* height: 56px; */
   }
