@@ -67,7 +67,7 @@ const UserNav = ({ toggleShowSideBar }) => {
 
         <CloseBtnIcon
           onClick={() => toggleShowSideBar(false)}
-          stroke="currentColor"
+          stroke="var(--primary-text)"
         />
       </LogoWrapper>
 
