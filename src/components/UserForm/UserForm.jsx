@@ -1,4 +1,7 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { useAuth } from 'hooks/useAuth';
+import { updateUser } from 'redux/auth/operations';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -50,20 +53,24 @@ export const validationSchema = Yup.object().shape({
     .notRequired(),
 });
 
-const user = {
-  name: 'initialName',
-  email: 'initialEmail@mail.com',
-  avatar:
-    'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=',
-  phone: '38 (123) 456 78 90',
-  birthday: '23/06/2023',
-  skype: '+123456789',
-};
+// const user = {
+//   name: 'initialName',
+//   email: 'initialEmail@mail.com',
+//   avatar:
+//     'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=',
+//   phone: '38 (123) 456 78 90',
+//   birthday: '23/06/2023',
+//   skype: '+123456789',
+// };
 
 // const avatarDefault =
 //   'https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg';
 
 const UserForm = () => {
+
+  const dispatch = useDispatch();
+  const { user } = useAuth();
+
   const [userAvatar, setUserAvatar] = useState(null || user.avatar);
   const [birthdayDate, setBirthdayDate] = useState(null);
   const [isFormChanged, setIsFormChanged] = useState(false);
@@ -81,7 +88,8 @@ const UserForm = () => {
       validationSchema: validationSchema,
       onSubmit: async values => {
         try {
-          console.log(values);
+          await dispatch(updateUser(values));
+          // console.log(values)
           setIsFormChanged(false);
         } catch (error) {
           console.log(error.message);
@@ -98,7 +106,7 @@ const UserForm = () => {
 
     setUserAvatar(null || user.avatar);
     setBirthdayDate(user.birthday);
-  }, [setFieldValue]);
+  }, [user, setFieldValue]);
 
   const handleInputChange = event => {
     const { name, value } = event.target;
