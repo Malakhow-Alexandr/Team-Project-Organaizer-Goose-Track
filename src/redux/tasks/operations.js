@@ -113,7 +113,7 @@ export const changeTaskCategory = createAsyncThunk(
   'tasks/changeTaskCategory',
   async ({ id, category }, thunkAPI) => {
     try {
-      const response = await axios.patch(`/tasks/category/${id}`, { category });
+      const response = await axios.patch(`/tasks/${id}/category`, { category });
       console.log(response.data);
       return response.data;
     } catch (error) {
