@@ -177,7 +177,7 @@ export const Input = styled.input`
     font-family: 'Inter';
     font-size: 14px;
     font-weight:600;
-    color: black;
+    color: ${props => props.theme.colors.primary_text_switch};
   
   `};
 
