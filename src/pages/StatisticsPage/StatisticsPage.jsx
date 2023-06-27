@@ -1,10 +1,15 @@
-import { StatisticsPageContainer } from './StatisticsPage.styled';
+import {
+  StatisticsPageContainer,
+  ChartContainer,
+} from './StatisticsPage.styled';
 import { StatisticsChart } from 'components/StatisticsChart/StatisticsChart';
 
 const StatisticsPage = () => {
   return (
     <StatisticsPageContainer>
-      <StatisticsChart />
+      <ChartContainer>
+        <StatisticsChart />
+      </ChartContainer>
     </StatisticsPageContainer>
   );
 };

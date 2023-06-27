@@ -1,5 +1,7 @@
+import { AddFeedbackButton } from './AddFeedbackBtn.styled';
+
 const AddFeedbackBtn = ({ handleShowModal }) => (
-  <button onClick={handleShowModal}>Feedback</button>
+  <AddFeedbackButton onClick={handleShowModal}>Feedback</AddFeedbackButton>
 );
 
 export default AddFeedbackBtn;

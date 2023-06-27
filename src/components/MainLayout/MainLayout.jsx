@@ -6,6 +6,7 @@ import { SideBar } from 'components/SideBar/SideBar';
 import {
   Container,
   LeftColumnWrapper,
+  LeftField,
   Main,
   RightColumnWrapper,
 } from './MainLayout.styled';
@@ -36,6 +37,7 @@ const MainLayout = () => {
     <Container>
       <Main>
         <LeftColumnWrapper showSideBar={showSideBar}>
+          <LeftField />
           <SideBar toggleShowSideBar={toggleShowSideBar} />
         </LeftColumnWrapper>
 

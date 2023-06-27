@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import moment from 'moment';
+import { Toaster } from 'react-hot-toast';
 
 // Публічний та Приватний роутер в залежності від наявності userAccessToken, котрий приходить від BACKEND
 import { PublicRoute } from './AuthRoutes/PublicRoute';
@@ -66,6 +67,7 @@ export const App = () => {
           </Routes>
         </>
       )}
+      <Toaster position="top-right" reverseOrder={false} />
     </Suspense>
   );
 };

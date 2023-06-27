@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-hot-toast';
 
 axios.defaults.baseURL = 'https://goose-track-verq.onrender.com';
 
@@ -11,7 +12,11 @@ const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-// const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+const tostStyle = {
+  borderRadius: '8px',
+  background: '#13151A',
+  color: '#3E85F3',
+};
 
 export const registerUser = createAsyncThunk(
   'auth/registerUser ',
@@ -26,6 +31,12 @@ export const registerUser = createAsyncThunk(
       setAuthHeader(response.data.accessToken);
       return response.data;
     } catch (error) {
+      toast.error(
+        `Registration failed!😕 Please check your information and try again!`,
+        {
+          style: tostStyle,
+        }
+      );
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -40,6 +51,9 @@ export const loginUser = createAsyncThunk(
       setAuthHeader(response.data.accessToken);
       return response.data;
     } catch (error) {
+      toast.error(`Invalid login credentials!😕 Try again!`, {
+        style: tostStyle,
+      });
       return thunkAPI.rejectWithValue(error.message);
     }
   }

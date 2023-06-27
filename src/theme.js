@@ -61,6 +61,9 @@ export const theme = {
 
     calendar_border_color_switch: 'var(--calendar-border-color)',
     //light rgba(220, 227, 229, 0.8) => dark rgba(255, 255, 255, 0.15);
+
+    statistics_border_color_switch: 'var(--statistics-border-color)',
+    //light rgba(227, 243, 255, 1) => dark rgba(227, 243, 255, 0.15);
   },
 
   fonts: {

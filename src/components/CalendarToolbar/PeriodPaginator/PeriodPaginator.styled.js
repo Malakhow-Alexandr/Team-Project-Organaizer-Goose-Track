@@ -1,49 +1,55 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled('div')`
+export const Wrapper = styled.div`
   display: flex;
-  position: relative;
-  align-items: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
   justify-content: space-between;
-
-  @media screen and (max-width: ${p => p.theme.breakpoints.mobileMax}) {
-    width: 100%;
-  }
+  border-radius: 8px;
+  margin-bottom: 14px;
+  border: none;
 
   @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
-    justify-content: space-around;
     align-items: center;
-    margin-top: 33px;
-    margin-bottom: 33px;
   }
 `;
-export const TitleWrapper = styled('span')`
-  padding: 6px 12px;
+export const TitleWrapper = styled.span`
+  display: flex;
+  width: 140px;
+  height: 30px;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 1px;
+  margin-right: 8px;
+  border: none;
   color: ${p => p.theme.colors.white};
-  background: ${p => p.theme.colors.primary};
+  background-color: ${p => p.theme.colors.primary};
   border-radius: 8px;
   font-weight: ${p => p.theme.fontWeights.bold};
   font-size: ${p => p.theme.fontSizes.s};
   line-height: ${p => p.theme.lineHeights.body};
-  text-align: center;
-  text-transform: uppercase;
 
   @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
-    padding: 8px 12px;
+    display: flex;
+    gap: 8px;
+    width: 170px;
+    height: 34px;
+    padding: 8px 1px;
+    margin-right: 8px;
+    margin-bottom: 0;
     font-size: ${p => p.theme.fontSizes.m};
-    justify-content: space-around;
-    align-items: center;
   }
 `;
 
-export const ButtonsWrapper = styled('div')`
+export const ButtonsWrapper = styled.div`
   display: flex;
   align-items: center;
   border: none;
-  margin-left: 8px;
 `;
-export const Button1 = styled('button')`
-  height: 34px;
+
+export const Button1 = styled.button`
+  height: 30px;
   width: 38px;
   background-color: ${p => p.theme.colors.white};
   font-size: ${p => p.theme.fontSizes.l};
@@ -56,9 +62,14 @@ export const Button1 = styled('button')`
   &:hover {
     color: ${p => p.theme.colors.text};
   }
+
+  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
+    height: 34px;
+  }
 `;
-export const Button2 = styled('button')`
-  height: 34px;
+
+export const Button2 = styled.button`
+  height: 30px;
   width: 38px;
   background-color: ${p => p.theme.colors.white};
   font-size: ${p => p.theme.fontSizes.l};
@@ -70,5 +81,9 @@ export const Button2 = styled('button')`
   cursor: pointer;
   &:hover {
     color: ${p => p.theme.colors.text};
+  }
+
+  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
+    height: 34px;
   }
 `;

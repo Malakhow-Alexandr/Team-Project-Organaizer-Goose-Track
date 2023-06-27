@@ -14,6 +14,7 @@ import {
 import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { DayPageTitle } from './DayPageTitle/DayPageTitle';
+import { UserInfo } from './UserInfo/UserInfo';
 
 const getTypePage = pathname => {
   if (pathname.includes('/account')) {
@@ -45,7 +46,7 @@ const Header = ({ toggleShowSideBar }) => {
   return (
     <HeaderSection>
       <MobileMenuButton onClick={toggleShowSideBar}>
-        <RxHamburgerMenu size={34} />
+        <RxHamburgerMenu size={34} color="var(--primary-text)" />
       </MobileMenuButton>
 
       <HeaderTitle>
@@ -61,6 +62,8 @@ const Header = ({ toggleShowSideBar }) => {
       </RightSectionHeader>
 
       <ThemeToggler />
+
+      <UserInfo toggleShowSideBar={toggleShowSideBar} />
 
       {showModal && <AddFeedbackModal onClose={handleCloseModal} />}
     </HeaderSection>

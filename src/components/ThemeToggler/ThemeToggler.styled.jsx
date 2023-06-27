@@ -12,7 +12,11 @@ export const ThemeModeBtn = styled.button`
   align-items: center;
   justify-content: center;
   padding-bottom: 1px;
-  margin-left: 8px;
+  margin-left: 12px;
 
   cursor: pointer;
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
+    margin-left: 18px;
+  }
 `;
