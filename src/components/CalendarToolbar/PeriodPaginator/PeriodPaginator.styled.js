@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
@@ -13,7 +14,7 @@ export const Wrapper = styled.div`
     align-items: center;
   }
 `;
-export const TitleWrapper = styled.span`
+export const PeriodPaginatorButton = styled.button`
   display: flex;
   width: 140px;
   height: 30px;
@@ -29,6 +30,12 @@ export const TitleWrapper = styled.span`
   font-weight: ${p => p.theme.fontWeights.bold};
   font-size: ${p => p.theme.fontSizes.s};
   line-height: ${p => p.theme.lineHeights.body};
+  &:hover {
+    border: 1px solid #42b8cc;
+  }
+  &:active {
+    filter: blur(0.1rem);
+  }
 
   @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
     display: flex;
