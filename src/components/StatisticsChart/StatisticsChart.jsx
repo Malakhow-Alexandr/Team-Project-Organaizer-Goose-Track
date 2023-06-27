@@ -11,40 +11,41 @@ import {
   ResponsiveContainer,
 } from 'recharts';
 
-// const renderCustomizedLabel = props => {
-//   const { x, y, width, value } = props;
-//   const radius = 15;
-//   <g>
-//     <text
-//       x={x + 2 + width / 2}
-//       y={y - radius}
-//       fill="#FFFFFF"
-//       textAnchor="middle"
-//       dominantBaseline="middle"
-//     >
-//       {`${value}%`}
-//     </text>
-//   </g>;
-// };
+const customLabel = props => {
+  const { x, y, width, value } = props;
+  const radius = 15;
+  const labelY = y - (y === 0 ? radius : 0);
+
+  return (
+    <g>
+      <text
+        x={x + 2 + width / 2}
+        y={labelY}
+        fill="#111111"
+        textAnchor="middle"
+        dominantBaseline="middle"
+      >
+        {`${value}%`}
+      </text>
+    </g>
+  );
+};
 
 const data = [
   {
     name: 'To Do',
-    by_Month: 4000,
-    by_Day: 2400,
-    amt: 2400,
+    by_Month: 3000,
+    by_Day: 2000,
   },
   {
     name: 'In Progress',
     by_Month: 3000,
     by_Day: 1398,
-    amt: 2210,
   },
   {
     name: 'Done',
     by_Month: 2000,
-    by_Day: 9800,
-    amt: 2290,
+    by_Day: 3400,
   },
 ];
 
@@ -81,11 +82,22 @@ export const StatisticsChart = () => {
             <stop offset="100%" stopColor="rgb(62, 133, 243)" stopOpacity={1} />
           </linearGradient>
         </defs>
-        <CartesianGrid />
-
-        <XAxis dataKey="name" tick={false} />
-        <YAxis />
-        <Tooltip />
+        <CartesianGrid vertical={false} />
+        <XAxis dataKey="name" tickLine={false} tickMargin={16} />
+        <YAxis
+          type="number"
+          position="left"
+          axisLine={false}
+          tickLine={false}
+          tickCount={6}
+          tickMargin={28}
+        />
+        <Tooltip
+          itemStyle={{
+            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+            color: '#ffffff',
+          }}
+        />
         <Bar
           dataKey="by_Day"
           maxBarSize={27}
@@ -94,14 +106,21 @@ export const StatisticsChart = () => {
           radius={[0, 0, 10, 10]}
           fill="url(#colorUv)"
         >
-          <LabelList dataKey="by_Day" position="top" />
+          <LabelList
+            offset={10}
+            dataKey="by_Day"
+            position="top"
+            content={customLabel}
+          />
         </Bar>
         <Bar
           dataKey="by_Month"
           barSize={27}
           fill="url(#colorUv1)"
           radius={[0, 0, 10, 10]}
-        />
+        >
+          <LabelList dataKey="by_Month" position="top" content={customLabel} />
+        </Bar>
       </BarChart>
     </ResponsiveContainer>
   );
