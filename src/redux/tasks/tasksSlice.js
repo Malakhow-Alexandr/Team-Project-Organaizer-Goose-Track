@@ -13,6 +13,7 @@ import {
 
 const handlePending = state => {
   state.isLoading = true;
+  state.successful = false;
 };
 
 const handleRejected = (state, { payload }) => {
@@ -26,6 +27,7 @@ const initialState = {
   taskById: {},
   isLoading: false,
   error: null,
+  successful: false,
 };
 
 const tasksSlice = createSlice({
@@ -53,31 +55,37 @@ const tasksSlice = createSlice({
         state.tasks = payload;
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
       })
       .addCase(getMonthTasks.fulfilled, (state, { payload }) => {
         state.tasks = payload;
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
       })
       .addCase(createTask.fulfilled, (state, { payload }) => {
         state.tasks.push(payload);
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
       })
       .addCase(getTaskById.fulfilled, (state, { payload }) => {
         state.taskById = payload;
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
       })
       .addCase(updateTask.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
         const index = state.tasks.findIndex(task => task._id === payload._id);
         state.tasks[index] = payload;
       })
       .addCase(changeTaskCategory.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
         const index = state.tasks.findIndex(task => task._id === payload._id);
         state.tasks[index] = { ...state.tasks[index], payload };
       })
@@ -89,6 +97,7 @@ const tasksSlice = createSlice({
       .addCase(deleteTask.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.error = null;
+        state.successful = true;
 
         const index = state.tasks.findIndex(item => item._id === payload);
         state.tasks.splice(index, 1);
@@ -96,6 +105,7 @@ const tasksSlice = createSlice({
       .addCase(logoutUser.fulfilled, state => {
         state.tasks = [];
         state.taskById = {};
+        state.successful = false;
         state.isLoading = false;
         state.error = null;
       });
