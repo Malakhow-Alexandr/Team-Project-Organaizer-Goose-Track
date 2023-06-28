@@ -64,6 +64,12 @@ export const theme = {
 
     statistics_border_color_switch: 'var(--statistics-border-color)',
     //light rgba(227, 243, 255, 1) => dark rgba(227, 243, 255, 0.15);
+
+    statistics_tooltip_background: 'var(--statistics-tooltip-background)',
+    //light rgba(33, 34, 44, 0.6) => dark rgba(255, 255, 255, 0.7);
+
+    statistics_tooltip_text: 'var(--statistics-tooltip-text)',
+    //light rgba(33, 34, 44, 0.6) => dark rgba(255, 255, 255, 0.7);
   },
 
   fonts: {
