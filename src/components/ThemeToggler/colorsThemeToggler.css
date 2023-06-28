@@ -17,6 +17,8 @@ html[data-theme='light'] {
   --period-buttons-active-text-color: #3e85f3;
   --calendar-border-color: rgba(220, 227, 229, 0.8);
   --statistics-border-color: rgba(227, 243, 255, 1);
+  --statistics-tooltip-background: rgba(33, 34, 44, 0.6);
+  --statistics-tooltip-text: rgba(255, 255, 255, 1);
 }
 
 html[data-theme='dark'] {
@@ -38,4 +40,6 @@ html[data-theme='dark'] {
   --period-buttons-active-text-color: #ffffff;
   --calendar-border-color: rgba(255, 255, 255, 0.15);
   --statistics-border-color: rgba(227, 243, 255, 0.15);
+  --statistics-tooltip-background: rgba(255, 255, 255, 0.8);
+  --statistics-tooltip-text: #111111;
 }

@@ -9,43 +9,31 @@ import {
   Tooltip,
   LabelList,
   ResponsiveContainer,
+  Label,
 } from 'recharts';
 
-const customLabel = props => {
-  const { x, y, width, value } = props;
-  const radius = 15;
-  const labelY = y - (y === 0 ? radius : 0);
-
-  return (
-    <g>
-      <text
-        x={x + 2 + width / 2}
-        y={labelY}
-        fill="#111111"
-        textAnchor="middle"
-        dominantBaseline="middle"
-      >
-        {`${value}%`}
-      </text>
-    </g>
-  );
-};
-
+import {
+  CustomTooltip,
+  CustomXAxisTick,
+  CustomYAxisTick,
+  BarCustomLabel,
+  TitleCustomLabel,
+} from './StatisticsChartCustomComponents';
 const data = [
   {
     name: 'To Do',
-    by_Month: 3000,
-    by_Day: 2000,
+    by_Month: 30,
+    by_Day: 25,
   },
   {
     name: 'In Progress',
-    by_Month: 3000,
-    by_Day: 1398,
+    by_Month: 35,
+    by_Day: 25,
   },
   {
     name: 'Done',
-    by_Month: 2000,
-    by_Day: 3400,
+    by_Month: 60,
+    by_Day: 30,
   },
 ];
 
@@ -53,13 +41,11 @@ export const StatisticsChart = () => {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
-        width={500}
-        height={300}
         data={data}
         margin={{
-          top: 5,
-          right: 30,
-          left: 20,
+          top: 45,
+          right: 10,
+          left: 10,
           bottom: 10,
         }}
         barCategoryGap={75}
@@ -82,22 +68,32 @@ export const StatisticsChart = () => {
             <stop offset="100%" stopColor="rgb(62, 133, 243)" stopOpacity={1} />
           </linearGradient>
         </defs>
-        <CartesianGrid vertical={false} />
-        <XAxis dataKey="name" tickLine={false} tickMargin={16} />
+        <CartesianGrid vertical={false} stroke="#E3F3FF" strokeWidth={1} />
+        <XAxis
+          dataKey="name"
+          tickLine={false}
+          tick={<CustomXAxisTick />}
+          tickMargin={16}
+        />
         <YAxis
           type="number"
           position="left"
           axisLine={false}
+          ticks={[0, 20, 40, 60, 80, 100]}
           tickLine={false}
           tickCount={6}
           tickMargin={28}
-        />
-        <Tooltip
-          itemStyle={{
-            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-            color: '#ffffff',
-          }}
-        />
+          tick={<CustomYAxisTick />}
+        >
+          <Label
+            value="Tasks"
+            position="insideTop"
+            angle={0}
+            offset={-43}
+            content={<TitleCustomLabel />}
+          />
+        </YAxis>
+        <Tooltip cursor={false} content={<CustomTooltip />} />
         <Bar
           dataKey="by_Day"
           maxBarSize={27}
@@ -110,7 +106,7 @@ export const StatisticsChart = () => {
             offset={10}
             dataKey="by_Day"
             position="top"
-            content={customLabel}
+            content={<BarCustomLabel />}
           />
         </Bar>
         <Bar
@@ -119,7 +115,11 @@ export const StatisticsChart = () => {
           fill="url(#colorUv1)"
           radius={[0, 0, 10, 10]}
         >
-          <LabelList dataKey="by_Month" position="top" content={customLabel} />
+          <LabelList
+            dataKey="by_Month"
+            position="top"
+            content={<BarCustomLabel />}
+          />
         </Bar>
       </BarChart>
     </ResponsiveContainer>
