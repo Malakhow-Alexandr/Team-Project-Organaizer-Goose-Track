@@ -14,9 +14,11 @@ import goose1 from 'images/mainPage/desktop_goose_mainPage.png';
 import goose2 from 'images/mainPage/desktop_goose_mainPage@2x.png';
 
 import sprite from 'icons/sprite.svg';
+import { useTranslation } from 'react-i18next';
 
 export const AuthSection = () => {
   const viewportHeight = useViewportHeight();
+  const { t } = useTranslation();
 
   return (
     <Header height={viewportHeight}>
@@ -35,12 +37,13 @@ export const AuthSection = () => {
         </h1>
         <nav>
           <LoginLink to="login">
-            Log in
+            {t('Log in')}
             <svg height="13.5" width="13.5">
               <use href={sprite + '#icon-enter'}></use>
             </svg>
           </LoginLink>
-          <RegisterLink to="register">Sign up</RegisterLink>
+
+          <RegisterLink to="register">{t('Sign up')}</RegisterLink>
         </nav>
       </ContentWrapper>
     </Header>

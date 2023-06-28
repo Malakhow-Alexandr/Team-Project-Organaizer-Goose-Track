@@ -14,6 +14,8 @@ import {
 } from './ReviewsSlider.styled';
 
 import sprite from 'icons/sprite.svg';
+import { useTranslation } from 'react-i18next';
+
 
 const SlickRight = ({ currentSlide, slideCount, ...props }) => (
   <div
@@ -66,6 +68,7 @@ const settings = {
 
 export const ReviewsSlider = () => {
   const reviews = useSelector(selectAllReviews);
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -76,7 +79,7 @@ export const ReviewsSlider = () => {
   return (
     <Wrapper>
       <ReviewsContainer>
-        <h2>REVIEWS</h2>
+        <h2>{t('REVIEWS')}</h2>
         <Slider className="slider" {...settings}>
           {reviews?.map(review => (
             <ReviewCard
