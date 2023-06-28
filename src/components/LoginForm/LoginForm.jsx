@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import {
   Button,
@@ -12,6 +12,7 @@ import {
 import * as Yup from 'yup';
 import { FiLogIn } from 'react-icons/fi';
 import { BiCheckCircle, BiErrorCircle } from 'react-icons/bi';
+import { IoEyeOutline, IoEyeOff } from 'react-icons/io5';
 import { useDispatch } from 'react-redux';
 import { loginUser } from 'redux/auth/operations';
 
@@ -29,6 +30,16 @@ const FormSchema = Yup.object().shape({
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+
+  const [passwordType, setPasswordType] = useState('password');
+
+  const togglePassword = () => {
+    if (passwordType === 'password') {
+      setPasswordType('text');
+      return;
+    }
+    setPasswordType('password');
+  };
 
   return (
     <Formik
@@ -76,16 +87,15 @@ export const LoginForm = () => {
               <Field
                 className={isValid('password')}
                 name="password"
-                type="password"
+                type={passwordType}
                 autoComplete="off"
                 placeholder="Enter password"
               />
               {isValid('password') === 'is-valid' && (
                 <p>This is a CORRECT password</p>
               )}
-              <IconWrap>
-                {isValid('password') === 'is-valid' && <BiCheckCircle />}
-                {isValid('password') === 'is-invalid' && <BiErrorCircle />}
+              <IconWrap onClick={togglePassword}>
+                {passwordType === 'text' ? <IoEyeOff /> : <IoEyeOutline />}
               </IconWrap>
               <ErrorMessage name="password" component="div" />
             </FormLabel>
