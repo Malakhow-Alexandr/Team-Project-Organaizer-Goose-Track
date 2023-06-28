@@ -71,7 +71,7 @@ const UserForm = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
 
-  const [userAvatar, setUserAvatar] = useState(null || user.avatar);
+  const [userAvatar, setUserAvatar] = useState(null || user.avatarURL);
   const [birthdayDate, setBirthdayDate] = useState(null);
   const [isFormChanged, setIsFormChanged] = useState(false);
 
@@ -89,7 +89,7 @@ const UserForm = () => {
       onSubmit: async values => {
         try {
           await dispatch(updateUser(values));
-          // console.log(values)
+          console.log(values)
           setIsFormChanged(false);
         } catch (error) {
           console.log(error.message);
@@ -104,7 +104,7 @@ const UserForm = () => {
     setFieldValue('skype', user.skype);
     setFieldValue('birthday', user.birthday);
 
-    setUserAvatar(null || user.avatar);
+    setUserAvatar(null || user.avatarURL);
     setBirthdayDate(user.birthday);
   }, [user, setFieldValue]);
 
