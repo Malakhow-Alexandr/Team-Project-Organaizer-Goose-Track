@@ -1,13 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
-
-axios.defaults.baseURL = 'https://goose-track-verq.onrender.com';
+import { instance } from '../auth/operations';
 
 export const getAllTasks = createAsyncThunk(
   'tasks/getAllTasks',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get('/tasks');
+      const response = await instance.get('/tasks');
       console.log(response.data);
       return response.data;
     } catch (error) {
@@ -21,7 +19,7 @@ export const getMonthTasks = createAsyncThunk(
   // date format YYYY-MM-DD
   async (date, thunkAPI) => {
     try {
-      const response = await axios.get(`/tasks?month=${date}`);
+      const response = await instance.get(`/tasks?month=${date}`);
       console.log(response.data);
       return response.data;
     } catch (error) {
@@ -35,7 +33,7 @@ export const getDayTasks = createAsyncThunk(
   // date format YYYY-MM-DD
   async (date, thunkAPI) => {
     try {
-      const response = await axios.get(`/tasks?day=${date}`);
+      const response = await instance.get(`/tasks?day=${date}`);
       console.log(response.data);
       return response.data;
     } catch (error) {
@@ -48,7 +46,7 @@ export const getTaskById = createAsyncThunk(
   'tasks/getTaskById',
   async (id, thunkAPI) => {
     try {
-      const response = await axios.get(`/tasks/${id}`);
+      const response = await instance.get(`/tasks/${id}`);
       console.log(response.data);
       return response.data;
     } catch (error) {
@@ -61,7 +59,7 @@ export const createTask = createAsyncThunk(
   'tasks/createTask',
   async ({ title, start, end, priority, category, date }, thunkAPI) => {
     try {
-      const response = await axios.post('/tasks', {
+      const response = await instance.post('/tasks', {
         title,
         start,
         end,
@@ -81,7 +79,7 @@ export const updateTask = createAsyncThunk(
   'tasks/updateTask',
   async ({ id, title, start, end, priority, category, date }, thunkAPI) => {
     try {
-      const response = await axios.patch(`/tasks/${id}`, {
+      const response = await instance.patch(`/tasks/${id}`, {
         title,
         start,
         end,
@@ -101,7 +99,7 @@ export const deleteTask = createAsyncThunk(
   'tasks/deleteTask',
   async (id, thunkAPI) => {
     try {
-      await axios.delete(`/tasks/${id}`);
+      await instance.delete(`/tasks/${id}`);
       return id;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -113,7 +111,9 @@ export const changeTaskCategory = createAsyncThunk(
   'tasks/changeTaskCategory',
   async ({ id, category }, thunkAPI) => {
     try {
-      const response = await axios.patch(`/tasks/${id}/category`, { category });
+      const response = await instance.patch(`/tasks/${id}/category`, {
+        category,
+      });
       console.log(response.data);
       return response.data;
     } catch (error) {
@@ -127,7 +127,7 @@ export const getTasksStatistics = createAsyncThunk(
   async ({ date }, thunkAPI) => {
     try {
       // date format YYYY-MM-DD
-      const response = await axios.get(`/tasks/statistics/?day=${date}`);
+      const response = await instance.get(`/tasks/statistics/?day=${date}`);
       console.log(response.data);
       return response.data;
     } catch (error) {
