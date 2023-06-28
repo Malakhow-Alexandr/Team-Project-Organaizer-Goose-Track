@@ -9,6 +9,7 @@ import { PrivateRoute } from './AuthRoutes/PrivateRoute';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentUser } from 'redux/auth/operations';
 import { selectIsRefreshing, selectAccessToken } from 'redux/auth/selectors';
+import { Loader } from './Loader/Loader';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -38,7 +39,7 @@ export const App = () => {
     dispatch(currentUser());
   }, [dispatch, accessToken]);
   return (
-    <Suspense fallback={null}>
+    <Suspense fallback={<Loader />}>
       {/* До fallback потрібно додати LOADER AБО Spinner */}
       {!isRefreshing && (
         <>
