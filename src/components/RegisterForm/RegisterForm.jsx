@@ -14,6 +14,7 @@ import { FiLogIn } from 'react-icons/fi';
 import { BiCheckCircle, BiErrorCircle } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
 import { registerUser } from 'redux/auth/operations';
+import { useTranslation } from 'react-i18next';
 
 const regExp =
   /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
@@ -30,6 +31,7 @@ const FormSchema = Yup.object().shape({
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   return (
     <Formik
@@ -54,9 +56,9 @@ export const RegisterForm = () => {
 
         return (
           <Form>
-            <FormTitle>Sign Up</FormTitle>
+            <FormTitle>{t('Sign Up')}</FormTitle>
             <FormLabel className={isValid('name')}>
-              Name
+              {t('Name')}
               <Field
                 className={isValid('name')}
                 name="name"
@@ -64,7 +66,7 @@ export const RegisterForm = () => {
                 autoComplete="off"
                 placeholder="Enter your name"
               />
-              {isValid('name') === 'is-valid' && <p>This is a CORRECT name</p>}
+              {isValid('name') === 'is-valid' && <p>{t('This is a CORRECT name')}</p>}
               <IconWrap>
                 {isValid('name') === 'is-valid' && <BiCheckCircle />}
                 {isValid('name') === 'is-invalid' && <BiErrorCircle />}
@@ -72,7 +74,7 @@ export const RegisterForm = () => {
               <ErrorMessage name="name" component="div" />
             </FormLabel>
             <FormLabel className={isValid('email')}>
-              Email
+              {t('Email')}
               <Field
                 className={isValid('email')}
                 name="email"
@@ -81,7 +83,7 @@ export const RegisterForm = () => {
                 placeholder="Enter email"
               />
               {isValid('email') === 'is-valid' && (
-                <p>This is a CORRECT email</p>
+                <p>{t('This is a CORRECT email')}</p>
               )}
               <IconWrap>
                 {isValid('email') === 'is-valid' && <BiCheckCircle />}
@@ -90,7 +92,7 @@ export const RegisterForm = () => {
               <ErrorMessage name="email" component="div" />
             </FormLabel>
             <FormLabel className={isValid('password')}>
-              Password
+              {t('Password')}
               <Field
                 className={isValid('password')}
                 name="password"
@@ -99,7 +101,7 @@ export const RegisterForm = () => {
                 placeholder="Enter password"
               />
               {isValid('password') === 'is-valid' && (
-                <p>This is a CORRECT password</p>
+                <p>{t('This is a CORRECT password')}</p>
               )}
               <IconWrap>
                 {isValid('password') === 'is-valid' && <BiCheckCircle />}
@@ -108,7 +110,7 @@ export const RegisterForm = () => {
               <ErrorMessage name="password" component="div" />
             </FormLabel>
             <Button type="submit">
-              Sign Up
+              {t('Sign Up')}
               <FiLogIn strokeWidth="3" />
             </Button>
           </Form>

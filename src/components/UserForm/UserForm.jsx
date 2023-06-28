@@ -23,6 +23,7 @@ import {
   Wrapper,
   WrapperInput,
 } from './UserForm.styled';
+import { useTranslation } from 'react-i18next';
 
 const phoneRegexp = /^(\d{2})\s\((\d{3})\)\s(\d{3})\s(\d{2})\s(\d{2})$/;
 const skypeNumberRegexp = /^\+[1-9]\d{0,2}[.-]?\d{1,14}$/;
@@ -67,6 +68,7 @@ export const validationSchema = Yup.object().shape({
 //   'https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg';
 
 const UserForm = () => {
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
   const { user } = useAuth();
@@ -179,11 +181,11 @@ const UserForm = () => {
           <AddIcon />
         </InputName>
         <UserName>{user.name}</UserName>
-        <Text>User</Text>
+        <Text>{t('User')}</Text>
         {/* username */}
         <Wrapper>
           <WrapperInput>
-            <InputName>User Name</InputName>
+            <InputName>{t('User Name')}</InputName>
             <Input
               name="name"
               placeholder="User Name"
@@ -198,7 +200,7 @@ const UserForm = () => {
           </WrapperInput>
           {/* birthday */}
           <WrapperInput>
-            <InputName>Birthday</InputName>
+            <InputName>{t('Birthday')}</InputName>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <StyledDataPicker
                 closeOnSelect={true}
@@ -216,7 +218,7 @@ const UserForm = () => {
           </WrapperInput>
           {/* email */}
           <WrapperInput>
-            <InputName>Email </InputName>
+            <InputName>{t('Email')} </InputName>
             <Input
               name="email"
               value={values.email || ''}
@@ -231,7 +233,7 @@ const UserForm = () => {
           </WrapperInput>
           {/* phone */}
           <WrapperInput>
-            <InputName>Phone</InputName>
+            <InputName>{t('Phone')}</InputName>
             <Input
               name="phone"
               placeholder="ex. 01 (234) 567 89 01"
@@ -246,7 +248,7 @@ const UserForm = () => {
           </WrapperInput>
           {/* skype */}
           <WrapperInput>
-            <InputName>Skype</InputName>
+            <InputName>{t('Skype')}</InputName>
             <Input
               name="skype"
               value={values.skype || ''}
@@ -261,7 +263,7 @@ const UserForm = () => {
           </WrapperInput>
         </Wrapper>
         <SubmitBtn disabled={!isFormChanged} type="submit">
-          Save changes
+          {t('Save changes')}
         </SubmitBtn>
       </Form>
     </Container>

@@ -14,6 +14,7 @@ import { FiLogIn } from 'react-icons/fi';
 import { BiCheckCircle, BiErrorCircle } from 'react-icons/bi';
 import { useDispatch } from 'react-redux';
 import { loginUser } from 'redux/auth/operations';
+import { useTranslation } from 'react-i18next';
 
 const regExp =
   /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
@@ -29,6 +30,7 @@ const FormSchema = Yup.object().shape({
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   return (
     <Formik
@@ -52,9 +54,9 @@ export const LoginForm = () => {
 
         return (
           <Form>
-            <FormTitle>Log In</FormTitle>
+            <FormTitle>{t('Log In')}</FormTitle>
             <FormLabel className={isValid('email')}>
-              Email
+              {t('Email')}
               <Field
                 className={isValid('email')}
                 name="email"
@@ -63,7 +65,7 @@ export const LoginForm = () => {
                 placeholder="Enter email"
               />
               {isValid('email') === 'is-valid' && (
-                <p>This is a CORRECT email</p>
+                <p>{t('This is a CORRECT email')}</p>
               )}
               <IconWrap>
                 {isValid('email') === 'is-valid' && <BiCheckCircle />}
@@ -72,7 +74,7 @@ export const LoginForm = () => {
               <ErrorMessage name="email" component="div" />
             </FormLabel>
             <FormLabel className={isValid('password')}>
-              Password
+              {t('Password')}
               <Field
                 className={isValid('password')}
                 name="password"
@@ -81,7 +83,7 @@ export const LoginForm = () => {
                 placeholder="Enter password"
               />
               {isValid('password') === 'is-valid' && (
-                <p>This is a CORRECT password</p>
+                <p>{t('This is a CORRECT password')}</p>
               )}
               <IconWrap>
                 {isValid('password') === 'is-valid' && <BiCheckCircle />}
@@ -90,7 +92,7 @@ export const LoginForm = () => {
               <ErrorMessage name="password" component="div" />
             </FormLabel>
             <Button type="submit">
-              Log In
+              {t('Log In')}
               <FiLogIn strokeWidth="3" />
             </Button>
           </Form>

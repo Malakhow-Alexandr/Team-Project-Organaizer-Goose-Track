@@ -37,9 +37,11 @@ import m_sidebar from 'images/mainPage/mobile_sidebar.png';
 import m_sidebar2 from 'images/mainPage/mobile_sidebar@2x.png';
 import m_all from 'images/mainPage/mobile_all.png';
 import m_all2 from 'images/mainPage/mobile_all@2x.png';
+import { useTranslation } from 'react-i18next';
 
 export const Description = () => {
   const { isDesktop, isTablet, isMobile } = useResponse();
+  const { t } = useTranslation();
 
   return (
     <Main id="mainPagesection">
@@ -47,12 +49,10 @@ export const Description = () => {
         <Section>
           <InfoBox>
             <Number>1.</Number>
-            <ColorTitle>CALENDAR</ColorTitle>
-            <SubTitle>VIEW</SubTitle>
+            <ColorTitle>{t('CALENDAR')}</ColorTitle>
+            <SubTitle>{t('VIEW')}</SubTitle>
             <Text>
-              GooseTrack's Calendar view provides a comprehensive overview of
-              your schedule, displaying all your tasks, events, and appointments
-              in a visually appealing and intuitive layout.
+              {t('GooseTrack_Calendar')}
             </Text>
           </InfoBox>
           <ImageWrapper>
@@ -89,12 +89,9 @@ export const Description = () => {
         <Section>
           <InfoBoxReverse>
             <Number>2.</Number>
-            <SubTitle>SIDEBAR</SubTitle>
+            <SubTitle>{t('SIDEBAR')}</SubTitle>
             <Text>
-              GooseTrack offers easy access to your account settings, calendar,
-              and filters. The "My Account" section allows you to manage your
-              profile information and preferences, while the calendar provides a
-              quick and convenient way to view your upcoming events and tasks.
+              {t('GooseTrack_offers_easy')}
             </Text>
           </InfoBoxReverse>
           <ImageWrapper>
@@ -131,13 +128,10 @@ export const Description = () => {
         <Section>
           <InfoBox>
             <Number>3.</Number>
-            <ColorTitle>ALL IN</ColorTitle>
-            <SubTitle>ONE</SubTitle>
+            <ColorTitle>{t('ALL IN')}</ColorTitle>
+            <SubTitle>{t('ONE')}</SubTitle>
             <Text>
-              GooseTrack is an all-in-one productivity tool that helps you stay
-              on top of your tasks, events, and deadlines. Say goodbye to
-              scattered to-do lists and hello to streamlined productivity with
-              GooseTrack.
+              {t('GooseTrack_is_an')}
             </Text>
           </InfoBox>
           <ImageWrapper>

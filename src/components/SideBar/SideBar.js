@@ -3,9 +3,11 @@ import { SideBarContainer, LogoutBtn, LogoutBtnIcon } from './SideBar.styled';
 import { useDispatch } from 'react-redux';
 import { logoutUser } from 'redux/auth/operations';
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const SideBar = ({ toggleShowSideBar }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const handelLogOut = () => {
     dispatch(logoutUser());
@@ -34,7 +36,7 @@ Hook для приховування компонента SideBar
       <UserNav toggleShowSideBar={toggleShowSideBar} />
 
       <LogoutBtn type="button" onClick={handelLogOut}>
-        Logout
+        {t('Logout')}
         <LogoutBtnIcon />
       </LogoutBtn>
     </SideBarContainer>
