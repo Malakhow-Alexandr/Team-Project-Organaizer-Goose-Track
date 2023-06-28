@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { selectTasks } from 'redux/tasks/selectors';
 
+import { getDayTasks } from 'redux/tasks/operations';
 import { TasksColumnsListWrapper } from './ChoosedDay.styled';
 import { DayCalendarHead } from './DayCalendarHead/DayCalendarHead';
 import { TasksColumnsList } from './TasksCopmonents/TasksColumnsList/TasksColumnsList';
@@ -14,11 +15,17 @@ const emptySortedTask = {
 };
 
 const ChoosedDay = () => {
+  const dispatch = useDispatch();
   const { currentDay } = useParams();
 
   const tasks = useSelector(selectTasks);
-  const [sortedTasks, setSortedTasks] = useState(emptySortedTask);
 
+  useEffect(() => {
+    dispatch(getDayTasks(currentDay));
+  }, [currentDay, dispatch]);
+
+  const [sortedTasks, setSortedTasks] = useState(emptySortedTask);
+  console.log(tasks, '=)');
   // Функція для сортування масиву за полем "start time"
   function sortByStartTime(array) {
     return array.sort((a, b) => b.start.localeCompare(a.start));
