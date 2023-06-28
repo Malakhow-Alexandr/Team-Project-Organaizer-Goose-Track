@@ -7,20 +7,20 @@ export const instance = axios.create({
   baseURL: 'https://goose-track-verq.onrender.com',
 });
 
-// const setToken = accessToken => {
-//   if (accessToken) {
-//     return (instance.defaults.headers.common.Authorization = `Bearer ${accessToken}`);
-//   }
-//   return (instance.defaults.headers.common.Authorization = '');
-// };
-
-const setToken = accessToken => (dispatch, state) => {
+const setToken = accessToken => {
   if (accessToken) {
-    dispatch(updateAccessToken(accessToken));
     return (instance.defaults.headers.common.Authorization = `Bearer ${accessToken}`);
   }
   return (instance.defaults.headers.common.Authorization = '');
 };
+
+// const setToken = accessToken => (dispatch, state) => {
+//   if (accessToken) {
+//     dispatch(updateAccessToken(accessToken));
+//     return (instance.defaults.headers.common.Authorization = `Bearer ${accessToken}`);
+//   }
+//   return (instance.defaults.headers.common.Authorization = '');
+// };
 
 const tostStyle = {
   borderRadius: '8px',
