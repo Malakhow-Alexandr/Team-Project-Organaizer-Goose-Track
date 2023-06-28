@@ -23,6 +23,7 @@ const UserForm = lazy(() => import('./UserForm/UserForm'));
 const CalendarPage = lazy(() => import('pages/CalendarPage/CalendarPage'));
 const ChoosedMonth = lazy(() => import('./ChoosedMonth/ChoosedMonth'));
 const ChoosedDay = lazy(() => import('./ChoosedDay/ChoosedDay'));
+console.log(ChoosedDay);
 const StatisticsPage = lazy(() =>
   import('pages/StatisticsPage/StatisticsPage')
 );
