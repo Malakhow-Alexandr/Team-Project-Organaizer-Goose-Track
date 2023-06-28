@@ -5,17 +5,21 @@ export const FormContainer = styled.div`
   min-height: 100vh;
 
   display: flex;
+  gap: 18px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
   background-color: ${p => p.theme.colors.bgBlue};
+
+  @media screen and (min-width: 768px) {
+    gap: 24px;
+  }
 `;
 
 export const FormWrapper = styled.div`
   margin-right: auto;
   margin-left: auto;
-  margin-bottom: 18px;
 
   @media screen and (max-width: 374px) {
     width: 100%;
@@ -25,7 +29,6 @@ export const FormWrapper = styled.div`
   }
   @media screen and (min-width: 768px) {
     width: 480px;
-    margin-bottom: 24px;
   }
 `;
 
