@@ -8,6 +8,7 @@ import { IoMdArrowRoundBack } from 'react-icons/io';
 
 import goose_img from '../../images/register_loginPage/goose_register.png';
 import goose_img2x from '../../images/register_loginPage/goose_register@2x.png';
+import { LoginWithGoogleBtn } from 'components/LoginWithGoogleBtn/LoginWithGoogleBtn';
 
 const RegisterPage = () => {
   const { isDesktop } = useResponse();
@@ -39,6 +40,7 @@ const RegisterPage = () => {
         <RegisterForm />
       </FormWrapper>
       <AuthNavigate link="/login" text="Log In" />
+      <LoginWithGoogleBtn />
     </FormContainer>
   );
 };
