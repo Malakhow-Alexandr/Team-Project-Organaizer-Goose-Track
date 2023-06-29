@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const AuthWithGoogle = styled.button`
+export const AuthWithGoogle = styled.a`
   display: flex;
   align-items: center;
   font-size: ${props => props.theme.fontSizes.xs};
