@@ -8,6 +8,7 @@ import {
   DayOfWeek,
   DateWrapper,
   DateContainer,
+  DayNumber,
 } from './DayCalendarHead.styled';
 
 const chooseIndexOfCurrentDay = date => {
@@ -96,12 +97,9 @@ export function DayCalendarHead({ clickChooseDay }) {
                   `/calendar/day/${yearValue}-${monthValue}-${dayValue}`
                 );
               }}
-              style={{
-                backgroundColor: isCurrentDay ? '#3E85F3' : 'inherit',
-                color: isCurrentDay ? 'white' : 'inherit',
-              }}
+              isCurrentDay={isCurrentDay}
             >
-              <p>{dayValue}</p>
+              <DayNumber isCurrentDay={isCurrentDay}>{dayValue}</DayNumber>
             </DateContainer>
           </WeekInfoWrapper>
         );
