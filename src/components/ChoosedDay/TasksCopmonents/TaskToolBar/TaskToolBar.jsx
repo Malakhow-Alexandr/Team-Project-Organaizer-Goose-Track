@@ -26,6 +26,8 @@ export const TasklToolBar = ({
   idData,
   item,
   handleShowModal,
+  disableDrag,
+  enableDrag,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const error = useSelector(selectError);
@@ -45,19 +47,21 @@ export const TasklToolBar = ({
 
   const handleOpenToolBar = () => {
     setIsVisible(true);
+    disableDrag();
   };
 
-  const handleMoveCard = (id, value) => {
+  const handleMoveCard = (id, value, date) => {
     if (successful) {
       dispatch(
         changeTaskCategory({
-          id: id,
+          id,
           category: value,
         })
       );
 
       dispatch(getDayTasks(currentDay));
       setIsVisible(false);
+      enableDrag();
     }
     if (error) {
       alert(`wrong category`);
@@ -66,6 +70,7 @@ export const TasklToolBar = ({
 
   const handleMouseLeave = () => {
     setIsVisible(false);
+    enableDrag();
   };
 
   const handleDeleted = id => {

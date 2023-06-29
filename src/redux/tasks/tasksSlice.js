@@ -97,7 +97,7 @@ const tasksSlice = createSlice({
         state.error = null;
         state.successful = true;
         const index = state.tasks.findIndex(task => task._id === payload._id);
-        state.tasks[index] = { ...state.tasks[index], payload };
+        state.tasks[index] = { ...state.tasks[index], ...payload };
       })
       .addCase(getTasksStatistics.fulfilled, (state, { payload }) => {
         state.isLoading = false;
