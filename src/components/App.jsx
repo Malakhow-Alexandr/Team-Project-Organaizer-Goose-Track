@@ -1,11 +1,12 @@
 import { Suspense, lazy, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useSearchParams } from 'react-router-dom';
 import moment from 'moment';
 import { Toaster } from 'react-hot-toast';
 
 // Публічний та Приватний роутер в залежності від наявності userAccessToken, котрий приходить від BACKEND
 import { PublicRoute } from './AuthRoutes/PublicRoute';
 import { PrivateRoute } from './AuthRoutes/PrivateRoute';
+import { updateAccessToken } from '../redux/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentUser } from 'redux/auth/operations';
 import { selectIsRefreshing } from 'redux/auth/selectors';
@@ -31,12 +32,24 @@ const NotFoundPage = lazy(() => import('pages/NotFoundPage/NotFoundPage'));
 export const App = () => {
   const dispatch = useDispatch();
   moment.updateLocale('en', { week: { dow: 1 } });
+  const [searchParams] = useSearchParams();
 
   const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
+    const accessToken = searchParams.get('accessToken');
+    const refreshToken = searchParams.get('refreshToken');
+
+    if (accessToken) {
+      dispatch(updateAccessToken(accessToken));
+    }
+
+    if (refreshToken) {
+      localStorage.setItem('refreshToken', refreshToken);
+    }
+
     dispatch(currentUser());
-  }, [dispatch]);
+  }, [dispatch, searchParams]);
   return (
     <Suspense fallback={<Loader />}>
       {/* До fallback потрібно додати LOADER AБО Spinner */}
