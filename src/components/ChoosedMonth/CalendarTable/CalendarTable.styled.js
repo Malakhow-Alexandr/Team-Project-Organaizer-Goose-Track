@@ -4,10 +4,10 @@ export const GridWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  border: 1px solid ${p => p.theme.colors.calendar_border_color_switch};
+  border: 1px solid rgba(220, 227, 229, 0.8);
   border-radius: ${p => p.theme.radii.small};
   overflow: hidden;
-  background-color: ${p => p.theme.colors.white};
+  background-color: ${props => props.theme.colors.third_background_switch};
 `;
 
 export const CurrentDay = styled.div`
