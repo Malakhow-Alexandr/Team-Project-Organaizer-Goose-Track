@@ -3,11 +3,11 @@ import styled from 'styled-components';
 export const StatisticsPageContainer = styled.section`
   background-color: ${p => p.theme.colors.third_background_switch};
   border-radius: 16px;
-  @media screen and (max-width: 375px) {
+  @media screen and (max-width: ${p => p.theme.breakpoints.mobile}) {
     max-width: 335px;
   }
 
-  @media screen and (min-width: 376px) and (max-width: 767px) {
+  @media screen and (min-width: 376px) and (max-width: 768px) {
     width: 335px;
     border-radius: 16px;
     padding-top: 28px;
@@ -33,7 +33,28 @@ export const StatisticsPageContainer = styled.section`
   }
 `;
 
-export const ChartContainer = styled.div`
+export const HeadContainer = styled.section`
+  border-radius: 20px;
+  border: 0.8px solid;
+  border-color: ${p => p.theme.colors.statistics_border_color_switch};
+  @media screen and (max-width: 375px) {
+    max-width: 307px;
+  }
+
+  @media screen and (min-width: 376px) and (max-width: 767px) {
+    width: 307px;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    width: 640px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 860px;
+  }
+`;
+
+export const ChartContainer = styled.section`
   margin-top: auto;
   background-color: ${p => p.theme.colors.third_background_switch};
   border-radius: 20px;
