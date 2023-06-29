@@ -3,7 +3,6 @@ import {
   ChartContainer,
 } from './StatisticsPage.styled';
 import { StatisticsChart } from 'components/StatisticsChart/StatisticsChart';
-
 const StatisticsPage = () => {
   return (
     <StatisticsPageContainer>
