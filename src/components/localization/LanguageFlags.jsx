@@ -13,7 +13,7 @@ import LanguageIcon from '@mui/icons-material/Language';
 import { useTranslation } from "react-i18next";
 import i18next from 'i18next'
 import classNames from 'classnames'
-import { FlagButton } from './LanguageFlags.styled';
+
 
 
 export default function LanguageFlags() {
@@ -49,7 +49,7 @@ export default function LanguageFlags() {
 
 
 return (
-<FlagButton >
+<div>
 <Tooltip title={t('language')} arrow>
   <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
     <LanguageIcon style={{width:'32px', height:'32px'}} color="primary"/>
@@ -94,6 +94,6 @@ return (
   
 </Menu>
 
-</FlagButton>
+</div>
 )
 }
