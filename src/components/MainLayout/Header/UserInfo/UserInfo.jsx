@@ -30,11 +30,11 @@ export const UserInfo = ({ toggleShowSideBar }) => {
       <HeaderUserInfoSection>
         <HeaderUserName>{user.name}</HeaderUserName>
 
-        {!user?.avatarUrl ? (
+        {!user?.avatarURL ? (
           <TextAvatar>{avatar}</TextAvatar>
         ) : (
           <HeaderUserPhoto
-            src={user?.avatarUrl}
+            src={user?.avatarURL}
             alt="avatar"
             width="28"
             height="28"
