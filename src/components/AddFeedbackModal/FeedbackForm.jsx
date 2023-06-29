@@ -47,11 +47,11 @@ export const FeedbackForm = ({
   console.log(userFeedback);
   console.log(userRating);
 
-  const [feedbackRating, setFeedbackRating] = useState(0);
-  const [feedbackText, setFeedbackText] = useState('');
+  const [feedbackRating, setFeedbackRating] = useState(4);
+  const [feedbackText, setFeedbackText] = useState('mama');
   const [ratingHover, setRatingHover] = useState(null);
   const [editFeedbackFieldOpen, setEditFeedbackFieldOpen] = useState(false);
-  const [isEdit, setIsEdit] = useState(false);
+  // const [isEdit, setIsEdit] = useState(false);
 
   console.log(feedbackRating);
   console.log(feedbackText);
@@ -61,29 +61,33 @@ export const FeedbackForm = ({
   useEffect(() => {
     if (userFeedback || userRating) {
       setFeedbackRating(userFeedback);
-      setFeedbackText(userRating);
-      setEditFeedbackFieldOpen(!editFeedbackFieldOpen);
+      setFeedbackText(userRating);   
+        setEditFeedbackFieldOpen(!editFeedbackFieldOpen);
     }
   }, [userRating, userFeedback]);
+
+
+
+
 
   const handleFeedbackSubmit = (values, { resetForm }) => {
     console.log(values);
     // console.log(actions);
     // if (editFeedbackField) {
-    //   dispatch(updateReviewByOwn());
-    //   toggleEditFeedback();
+    //   dispatch(updateReviewByOwn({ text: values.text, rating: values.rating }));
     //   return;
     // }
     if (!userFeedback || !userRating) {
       dispatch(createReviewByOwn({ text: values.text, rating: values.rating }));
       resetForm();
       setFeedbackText(values.text);
+     
       onClose();
     }
   };
 
   const handleEditBtnClick = () => {
-    setIsEdit(!isEdit);
+    // setIsEdit(!isEdit);
   };
 
   const handleFeedbackDelete = () => {
@@ -93,7 +97,7 @@ export const FeedbackForm = ({
 
   return (
     <Formik
-      initialValues={{ rating: feedbackRating, text: feedbackText }}
+      initialValues={{ rating: feedbackRating, text: feedbackText}}
       validationSchema={FeedbackFormSchema}
       onSubmit={handleFeedbackSubmit}
     >
