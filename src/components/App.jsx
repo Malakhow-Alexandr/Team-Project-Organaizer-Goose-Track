@@ -2,6 +2,7 @@ import { Suspense, lazy, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import moment from 'moment';
 import { Toaster } from 'react-hot-toast';
+import React from 'react';
 
 // Публічний та Приватний роутер в залежності від наявності userAccessToken, котрий приходить від BACKEND
 import { PublicRoute } from './AuthRoutes/PublicRoute';
@@ -10,6 +11,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { currentUser } from 'redux/auth/operations';
 import { selectIsRefreshing } from 'redux/auth/selectors';
 import { Loader } from './Loader/Loader';
+
+
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -68,6 +71,13 @@ export const App = () => {
         </>
       )}
       <Toaster position="top-right" reverseOrder={false} />
+      
+      
+
+
     </Suspense>
   );
 };
+
+
+
