@@ -2,15 +2,41 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
 
-axios.defaults.baseURL = 'https://goose-track-verq.onrender.com';
+export const instance = axios.create({
+  baseURL: 'https://goose-track-verq.onrender.com',
+});
 
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+const setToken = accessToken => {
+  if (accessToken) {
+    return (instance.defaults.headers.common.Authorization = `Bearer ${accessToken}`);
+  }
+  return (instance.defaults.headers.common.Authorization = '');
 };
 
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
-};
+instance.interceptors.response.use(
+  response => response,
+  async error => {
+    const originalRequest = error.config;
+    if (error.response.status === 401 && !originalRequest._retry) {
+      if (originalRequest.url === '/logout') return Promise.reject(error);
+      originalRequest._retry = true;
+      const refreshToken = localStorage.getItem('refreshToken');
+      try {
+        const response = await instance.post('/refresh', { refreshToken });
+        setToken(response.data.accessToken);
+        localStorage.setItem('refreshToken', response.data.refreshToken);
+
+        originalRequest.headers[
+          'Authorization'
+        ] = `Bearer ${response.data.accessToken}`;
+        return instance(originalRequest);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    }
+    return Promise.reject(error);
+  }
+);
 
 const tostStyle = {
   borderRadius: '8px',
@@ -22,13 +48,14 @@ export const registerUser = createAsyncThunk(
   'auth/registerUser ',
   async ({ name, email, password }, thunkAPI) => {
     try {
-      const response = await axios.post('/register', {
+      const response = await instance.post('/register', {
         name,
         email,
         password,
       });
       console.log(response.data);
-      setAuthHeader(response.data.accessToken);
+      localStorage.setItem('refreshToken', response.data.refreshToken);
+      setToken(response.data.accessToken);
       return response.data;
     } catch (error) {
       toast.error(
@@ -46,12 +73,13 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser ',
   async ({ email, password }, thunkAPI) => {
     try {
-      const response = await axios.post('/login', { email, password });
+      const response = await instance.post('/login', { email, password });
       console.log(response.data);
-      setAuthHeader(response.data.accessToken);
+      localStorage.setItem('refreshToken', response.data.refreshToken);
+      setToken(response.data.accessToken);
       return response.data;
     } catch (error) {
-      toast.error(`Invalid login credentials!😕 Try again!`, {
+      toast.error(`Invalid email or password!😕 Try again!`, {
         style: tostStyle,
       });
       return thunkAPI.rejectWithValue(error.message);
@@ -63,9 +91,12 @@ export const logoutUser = createAsyncThunk(
   'auth/logoutUser',
   async (_, thunkAPI) => {
     try {
-      await axios.post('/logout');
-      clearAuthHeader();
+      await instance.post('/logout');
+      setToken();
     } catch (error) {
+      if (error.response.status === 401) {
+        setToken();
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -79,10 +110,10 @@ export const currentUser = createAsyncThunk(
     if (persistedToken === null) {
       return thunkAPI.rejectWithValue('Unable to fetch user');
     }
-    setAuthHeader(persistedToken);
+    setToken(persistedToken);
 
     try {
-      const response = await axios.get('/current');
+      const response = await instance.get('/current');
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -98,11 +129,11 @@ export const updateUser = createAsyncThunk(
       formData.append('name', name);
       formData.append('email', email);
       formData.append('avatar', avatar);
-      formData.append('phone', phone || '');
-      formData.append('skype', skype || '');
-      formData.append('birthday', birthday || '');
+      formData.append('phone', phone);
+      formData.append('skype', skype);
+      formData.append('birthday', birthday);
 
-      const response = await axios.patch('/update', formData, {
+      const response = await instance.patch('/update', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
@@ -126,7 +157,7 @@ export const changePassword = createAsyncThunk(
       return thunkAPI.rejectWithValue('Token is invalid');
     }
     try {
-      const response = await axios.patch('/changePassword', {
+      const response = await instance.patch('/changePassword', {
         password,
         newPassword,
       });

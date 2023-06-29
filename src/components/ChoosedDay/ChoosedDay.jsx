@@ -25,7 +25,6 @@ const ChoosedDay = () => {
   }, [currentDay, dispatch]);
 
   const [sortedTasks, setSortedTasks] = useState(emptySortedTask);
-  console.log(tasks, '=)');
   // Функція для сортування масиву за полем "start time"
   function sortByStartTime(array) {
     return array.sort((a, b) => b.start.localeCompare(a.start));

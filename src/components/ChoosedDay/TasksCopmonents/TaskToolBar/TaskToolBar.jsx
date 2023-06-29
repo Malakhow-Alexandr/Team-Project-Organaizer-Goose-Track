@@ -9,8 +9,12 @@ import {
   TooltipButtonItem,
 } from './TaskToolBarStyled';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteTask } from 'redux/tasks/operations';
-import { changeTaskCategory } from 'redux/tasks/operations';
+import { useParams } from 'react-router-dom';
+import {
+  deleteTask,
+  getDayTasks,
+  changeTaskCategory,
+} from 'redux/tasks/operations';
 import { selectTasksSuccessful } from 'redux/tasks/selectors';
 import { selectError } from 'redux/tasks/selectors';
 import { Portal } from '../Portal/Portal';
@@ -27,6 +31,7 @@ export const TasklToolBar = ({
   const error = useSelector(selectError);
   const successful = useSelector(selectTasksSuccessful);
   const dispatch = useDispatch();
+  const { currentDay } = useParams();
 
   const [referenceElement, setReferenceElement] = useState();
   const [popperElement, setPopperElement] = useState();
@@ -50,6 +55,8 @@ export const TasklToolBar = ({
           category: value,
         })
       );
+
+      dispatch(getDayTasks(currentDay));
       setIsVisible(false);
     }
     if (error) {

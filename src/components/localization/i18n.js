@@ -14,7 +14,7 @@ i18next
   .use(LanguageDetector)
   .use(HttpApi)
   .init({
-    debug: true,
+    debug: false,
         fallbackLng: "en",
     detection: {
       order: [ 'cookie', 'htmlTag', 'localStorage', 'path', 'subdomain'],
