@@ -10,9 +10,9 @@ export const StatisticsPeriodPaginator = ({ onChange }) => {
 
   useEffect(() => {
     const formattedDate = formatDataForBack(currentDate);
-    console.log(formattedDate);
+
     onChange(formattedDate);
-  }, [currentDate]);
+  }, [currentDate, onChange]);
 
   const handlePreviousDay = () => {
     const previousDay = subDays(currentDate, 1);

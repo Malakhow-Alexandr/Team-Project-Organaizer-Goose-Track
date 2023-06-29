@@ -42,8 +42,6 @@ export const StatisticsChart = ({ selectedDay }) => {
     }
   }, [dispatch, selectedDay]);
 
-  console.log(statisticsByDay);
-
   const data = [
     {
       name: 'To Do',
@@ -52,13 +50,13 @@ export const StatisticsChart = ({ selectedDay }) => {
     },
     {
       name: 'In Progress',
-      by_Month: 35,
-      by_Day: 25,
+      by_Month: statisticsByMonth?.inProgress ?? 0,
+      by_Day: statisticsByDay?.inProgress ?? 0,
     },
     {
       name: 'Done',
-      by_Month: 60,
-      by_Day: 30,
+      by_Month: statisticsByMonth?.done ?? 0,
+      by_Day: statisticsByDay?.done ?? 0,
     },
   ];
   return (

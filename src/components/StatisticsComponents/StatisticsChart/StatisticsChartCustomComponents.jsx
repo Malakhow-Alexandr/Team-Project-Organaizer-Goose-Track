@@ -64,7 +64,6 @@ export const CustomYAxisTick = props => {
 
 export const BarCustomLabel = props => {
   const { x, y, width, value } = props;
-  console.log(value);
   const labelY = y - 5;
 
   return (
