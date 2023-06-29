@@ -128,7 +128,9 @@ export const updateUser = createAsyncThunk(
       const formData = new FormData();
       formData.append('name', name);
       formData.append('email', email);
-      formData.append('avatar', avatar);
+      if(avatar !== undefined) {
+        formData.append('avatar', avatar);
+      }
       formData.append('phone', phone);
       formData.append('skype', skype);
       formData.append('birthday', birthday);

@@ -32,7 +32,7 @@ const birthdayRegexp = /^\d{2}\/\d{2}\/\d{4}$/;
 export const validationSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
-    .max(16, 'Too Long!')
+    .max(35, 'Too Long!')
     .required('Name is required'),
   birthday: Yup.string()
     .notRequired()
@@ -88,10 +88,15 @@ const UserForm = () => {
         skype: user.skype,
       },
       validationSchema: validationSchema,
-      onSubmit: async values => {
+      onSubmit: values => {
         try {
-          await dispatch(updateUser(values));
-          console.log(values)
+          if (values.avatar === user.avatarURL) {
+            const { avatar, ...updatedValues } = values;
+            // console.log('updatedValues', updatedValues);
+            dispatch(updateUser(updatedValues));
+          } else {
+            dispatch(updateUser(values));
+          }
           setIsFormChanged(false);
         } catch (error) {
           console.log(error.message);
