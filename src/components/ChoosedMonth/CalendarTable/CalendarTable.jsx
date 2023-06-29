@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 
+import { CalendarTaskDay } from './CalendarTaskDay/CalendarTaskDay';
 import {
   GridWrapper,
   CellWrapper,
@@ -8,9 +9,11 @@ import {
   ShowDayWrapper,
   DayWrapper,
   CurrentDay,
+  TaskListWrapper,
+  CalendarTableMoreBtn,
 } from './CalendarTable.styled';
 
-const CalendarTable = ({ startDay, today }) => {
+const CalendarTable = ({ startDay, today, tasks }) => {
   const navigate = useNavigate();
   const totalDays = 42;
 
@@ -45,6 +48,35 @@ const CalendarTable = ({ startDay, today }) => {
                   )}
                 </DayWrapper>
               </ShowDayWrapper>
+              <TaskListWrapper>
+                {tasks
+                  .filter(task => task.date === dayItem.format('YYYY-MM-DD'))
+                  .map(tasks => tasks.tasks)
+                  .reduce((t1, t2) => t1.concat(t2), [])
+                  .slice(0, 2)
+                  .map(task => (
+                    <li key={task._id}>
+                      <CalendarTaskDay task={task} />
+                    </li>
+                  ))}
+                {tasks
+                  .filter(task => task.date === dayItem.format('YYYY-MM-DD'))
+                  .map(tasks => tasks.tasks)
+                  .reduce((t1, t2) => t1.concat(t2), []).length > 2 && (
+                  <li key="more">
+                    <CalendarTableMoreBtn type="button">
+                      +{' '}
+                      {tasks
+                        .filter(
+                          task => task.date === dayItem.format('YYYY-MM-DD')
+                        )
+                        .map(tasks => tasks.tasks)
+                        .reduce((t1, t2) => t1.concat(t2), []).length - 2}{' '}
+                      tasks...
+                    </CalendarTableMoreBtn>
+                  </li>
+                )}
+              </TaskListWrapper>
             </RowInCell>
           </CellWrapper>
         ))}

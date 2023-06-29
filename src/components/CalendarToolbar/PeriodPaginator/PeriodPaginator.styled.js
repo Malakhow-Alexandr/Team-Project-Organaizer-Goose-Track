@@ -58,16 +58,16 @@ export const ButtonsWrapper = styled.div`
 export const Button1 = styled.button`
   height: 30px;
   width: 38px;
-  background-color: ${p => p.theme.colors.white};
+  background-color: ${p => p.theme.colors.third_background_switch};
   font-size: ${p => p.theme.fontSizes.l};
-  color: rgba(220, 227, 229, 0.8);
+  color: ${p => p.theme.colors.third_text_switch};
   border: 1px solid rgba(220, 227, 229, 0.8);
   border-radius: 8px;
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   cursor: pointer;
   &:hover {
-    color: ${p => p.theme.colors.text};
+    color: ${p => p.theme.colors.third_text_switch};
   }
 
   @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
@@ -78,16 +78,16 @@ export const Button1 = styled.button`
 export const Button2 = styled.button`
   height: 30px;
   width: 38px;
-  background-color: ${p => p.theme.colors.white};
+  background-color: ${p => p.theme.colors.third_background_switch};
   font-size: ${p => p.theme.fontSizes.l};
-  color: rgba(220, 227, 229, 0.8);
+  color: ${p => p.theme.colors.primary_text_switch};
   border: 1px solid rgba(220, 227, 229, 0.8);
   border-radius: 8px;
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   cursor: pointer;
   &:hover {
-    color: ${p => p.theme.colors.text};
+    color: ${p => p.theme.colors.third_text_switch};
   }
 
   @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
