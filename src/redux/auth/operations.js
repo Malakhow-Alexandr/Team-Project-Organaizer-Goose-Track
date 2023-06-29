@@ -16,22 +16,24 @@ const setToken = accessToken => {
 instance.interceptors.response.use(
   response => response,
   async error => {
-    console.log('============accessToken expired!==========');
     const originalRequest = error.config;
-    if (error.response.status === 401) {
+    if (error.response.status === 401 && !originalRequest._retry) {
+      if (originalRequest.url === '/logout') return Promise.reject(error);
+      originalRequest._retry = true;
       const refreshToken = localStorage.getItem('refreshToken');
       try {
         const response = await instance.post('/refresh', { refreshToken });
-        console.log('============Here are new tokens!==========');
         setToken(response.data.accessToken);
         localStorage.setItem('refreshToken', response.data.refreshToken);
+
+        originalRequest.headers[
+          'Authorization'
+        ] = `Bearer ${response.data.accessToken}`;
         return instance(originalRequest);
       } catch (error) {
-        console.log('========ERROR WITH REFRESH TOKEN==========');
         return Promise.reject(error);
       }
     }
-    console.log('========ERROR NOT 401==========');
     return Promise.reject(error);
   }
 );
