@@ -124,7 +124,7 @@ export const changeTaskCategory = createAsyncThunk(
 
 export const getTasksStatistics = createAsyncThunk(
   'tasks/getTasksStatistics',
-  async ({ date }, thunkAPI) => {
+  async (date, thunkAPI) => {
     try {
       // date format YYYY-MM-DD
       const response = await instance.get(`/tasks/statistics/?day=${date}`);

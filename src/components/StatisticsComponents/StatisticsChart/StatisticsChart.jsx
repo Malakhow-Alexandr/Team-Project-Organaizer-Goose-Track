@@ -1,4 +1,9 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+
+import { selectTasksStatistics } from 'redux/tasks/selectors';
+import { getTasksStatistics } from 'redux/tasks/operations';
 
 import {
   BarChart,
@@ -19,25 +24,41 @@ import {
   BarCustomLabel,
   TitleCustomLabel,
 } from './StatisticsChartCustomComponents';
-const data = [
-  {
-    name: 'To Do',
-    by_Month: 30,
-    by_Day: 25,
-  },
-  {
-    name: 'In Progress',
-    by_Month: 35,
-    by_Day: 25,
-  },
-  {
-    name: 'Done',
-    by_Month: 60,
-    by_Day: 30,
-  },
-];
 
-export const StatisticsChart = () => {
+// const byMonth = {
+//   todo: 14,
+//   inProgress: 33,
+//   done: 33,
+// };
+
+export const StatisticsChart = ({ selectedDay }) => {
+  const dispatch = useDispatch();
+  const statistics = useSelector(selectTasksStatistics);
+
+  const { statisticsByDay, statisticsByMonth } = statistics;
+  useEffect(() => {
+    if (selectedDay !== '') {
+      dispatch(getTasksStatistics(selectedDay));
+    }
+  }, [dispatch, selectedDay]);
+
+  const data = [
+    {
+      name: 'To Do',
+      by_Month: statisticsByMonth?.todo ?? 0,
+      by_Day: statisticsByDay?.todo ?? 0,
+    },
+    {
+      name: 'In Progress',
+      by_Month: statisticsByMonth?.inProgress ?? 0,
+      by_Day: statisticsByDay?.inProgress ?? 0,
+    },
+    {
+      name: 'Done',
+      by_Month: statisticsByMonth?.done ?? 0,
+      by_Day: statisticsByDay?.done ?? 0,
+    },
+  ];
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart
