@@ -14,7 +14,6 @@ export const TasksColumnsList = ({ sortedTasksData }) => {
 
   const { done, inProgress, toDo } = sortedTasksData;
 
-  //Ключі заголовків колонок
   const dataTitle = Object.keys(sortedTasksData);
 
   const option = {
