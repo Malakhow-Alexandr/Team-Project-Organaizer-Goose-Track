@@ -1,5 +1,5 @@
 import React from 'react';
-import {Footer} from '../../components/Footer/Footer';
+
 import {
   AuthSection,
   Description,
@@ -12,7 +12,6 @@ const MainPage = () => {
       <AuthSection />
       <Description />
       <ReviewsSlider />
-      <Footer/>
     </>
   );
 };
