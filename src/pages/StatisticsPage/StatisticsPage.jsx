@@ -8,9 +8,9 @@ import { StatisticsPeriodPaginator } from 'components/StatisticsComponents/Stati
 import { useState } from 'react';
 
 const StatisticsPage = () => {
-  const [choosedDay, setChoosedDay] = useState('');
+  const [selectedDay, setSelectedDay] = useState('');
 
-  const takeCurrentDate = date => setChoosedDay(date);
+  const takeCurrentDate = date => setSelectedDay(date);
 
   return (
     <StatisticsPageContainer>
@@ -18,7 +18,7 @@ const StatisticsPage = () => {
         <StatisticsPeriodPaginator onChange={takeCurrentDate} />
       </HeadContainer>
       <ChartContainer>
-        <StatisticsChart choosedDay={choosedDay} />
+        <StatisticsChart selectedDay={selectedDay} />
       </ChartContainer>
     </StatisticsPageContainer>
   );
