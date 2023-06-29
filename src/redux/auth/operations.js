@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { toast } from 'react-hot-toast';
-import { updateAccessToken } from './authSlice';
 
 export const instance = axios.create({
   baseURL: 'https://goose-track-verq.onrender.com',
@@ -14,13 +13,28 @@ const setToken = accessToken => {
   return (instance.defaults.headers.common.Authorization = '');
 };
 
-// const setToken = accessToken => (dispatch, state) => {
-//   if (accessToken) {
-//     dispatch(updateAccessToken(accessToken));
-//     return (instance.defaults.headers.common.Authorization = `Bearer ${accessToken}`);
-//   }
-//   return (instance.defaults.headers.common.Authorization = '');
-// };
+instance.interceptors.response.use(
+  response => response,
+  async error => {
+    console.log('============accessToken expired!==========');
+    const originalRequest = error.config;
+    if (error.response.status === 401) {
+      const refreshToken = localStorage.getItem('refreshToken');
+      try {
+        const response = await instance.post('/refresh', { refreshToken });
+        console.log('============Here are new tokens!==========');
+        setToken(response.data.accessToken);
+        localStorage.setItem('refreshToken', response.data.refreshToken);
+        return instance(originalRequest);
+      } catch (error) {
+        console.log('========ERROR WITH REFRESH TOKEN==========');
+        return Promise.reject(error);
+      }
+    }
+    console.log('========ERROR NOT 401==========');
+    return Promise.reject(error);
+  }
+);
 
 const tostStyle = {
   borderRadius: '8px',
@@ -38,6 +52,7 @@ export const registerUser = createAsyncThunk(
         password,
       });
       console.log(response.data);
+      localStorage.setItem('refreshToken', response.data.refreshToken);
       setToken(response.data.accessToken);
       return response.data;
     } catch (error) {
@@ -58,10 +73,11 @@ export const loginUser = createAsyncThunk(
     try {
       const response = await instance.post('/login', { email, password });
       console.log(response.data);
+      localStorage.setItem('refreshToken', response.data.refreshToken);
       setToken(response.data.accessToken);
       return response.data;
     } catch (error) {
-      toast.error(`Invalid login credentials!😕 Try again!`, {
+      toast.error(`Invalid email or password!😕 Try again!`, {
         style: tostStyle,
       });
       return thunkAPI.rejectWithValue(error.message);
@@ -76,6 +92,9 @@ export const logoutUser = createAsyncThunk(
       await instance.post('/logout');
       setToken();
     } catch (error) {
+      if (error.response.status === 401) {
+        setToken();
+      }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
