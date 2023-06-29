@@ -26,6 +26,20 @@
   pointer-events: none;
 }
 
+.sdp:focus,
+.sdp--month-name:focus,
+.sdp--square-btn:focus {
+  outline: none;
+  box-shadow: var(--ring-shadow);
+}
+
+.sdp--month-name {
+  padding: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: #3e85f3;
+}
+
 .sdp--text {
   text-align: center;
   text-transform: uppercase;
@@ -105,4 +119,94 @@
   font-size: 22px;
   line-height: 20px;
   color: #ffffff;
+}
+
+.sdp--select__month button {
+  text-align: left;
+  color: #ffffff;
+}
+
+.sassy--select {
+  border: none;
+  border-radius: 0.25rem;
+  display: inline;
+  padding: 0.2rem 0.4rem;
+  color: #ffffff;
+}
+
+.sassy--select__container {
+  border-radius: 0.25rem;
+  position: relative;
+}
+
+.sassy--select:focus {
+  outline: none;
+}
+
+.sassy--select.sassy--select__disabled {
+  opacity: var(--disabled-opacity);
+  pointer-events: none;
+}
+
+.sassy--select__dropdown {
+  position: absolute;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  top: 1.5rem;
+  max-height: 40vh;
+  overflow: auto;
+  padding: 0.5rem;
+  background: #3e85f3;
+  border: none;
+  border-radius: 0.5rem;
+  scrollbar-width: none;
+}
+
+.sassy--select__dropdown::-webkit-scrollbar {
+  display: none;
+}
+
+.sassy--select,
+.sassy--option {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 28px;
+  color: white;
+}
+
+.sassy--option:focus {
+  outline: none;
+}
+
+.sassy--option__disabled {
+  color: whitesmoke;
+  pointer-events: none;
+}
+
+.sassy--select:hover {
+  cursor: context-menu;
+}
+
+.sassy--option {
+  transition: all 0.1s ease;
+  cursor: pointer;
+  padding: 0.25rem 0.4rem;
+  border: none;
+  border-radius: 0.25rem;
+  background: #8a8989;
+  margin-top: 0.25rem;
+}
+
+.sassy--option:first-of-type {
+  margin-top: 0;
+}
+
+.sassy--option__active,
+.sassy--option:hover {
+  color: #3e85f3;
+  background-color: rgb(206, 200, 200);
+
 }
