@@ -30,40 +30,25 @@ import {
 //   inProgress: 33,
 //   done: 33,
 // };
-const data = [
-  {
-    name: 'To Do',
-    by_Month: 14,
-    by_Day: 25,
-  },
-  {
-    name: 'In Progress',
-    by_Month: 35,
-    by_Day: 25,
-  },
-  {
-    name: 'Done',
-    by_Month: 60,
-    by_Day: 30,
-  },
-];
 
 export const StatisticsChart = ({ selectedDay }) => {
   const dispatch = useDispatch();
   const statistics = useSelector(selectTasksStatistics);
 
+  const { statisticsByDay, statisticsByMonth } = statistics;
   useEffect(() => {
     if (selectedDay !== '') {
       dispatch(getTasksStatistics(selectedDay));
     }
   }, [dispatch, selectedDay]);
 
-  console.log(statistics);
+  console.log(statisticsByDay);
+
   const data = [
     {
       name: 'To Do',
-      by_Month: 30,
-      by_Day: 25,
+      by_Month: statisticsByMonth?.todo ?? 0,
+      by_Day: statisticsByDay?.todo ?? 0,
     },
     {
       name: 'In Progress',
@@ -76,7 +61,6 @@ export const StatisticsChart = ({ selectedDay }) => {
       by_Day: 30,
     },
   ];
-
   return (
     <ResponsiveContainer width="100%" height="100%">
       <BarChart

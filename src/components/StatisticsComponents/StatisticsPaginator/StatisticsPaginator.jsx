@@ -8,15 +8,16 @@ export const StatisticsPeriodPaginator = ({ onChange }) => {
 
   const formatDataForBack = date => format(date, 'yyyy-MM-dd');
 
+  useEffect(() => {
+    const formattedDate = formatDataForBack(currentDate);
+    console.log(formattedDate);
+    onChange(formattedDate);
+  }, [currentDate]);
+
   const handlePreviousDay = () => {
     const previousDay = subDays(currentDate, 1);
     setCurrentDate(previousDay);
   };
-
-  useEffect(() => {
-    const formattedDate = formatDataForBack(currentDate);
-    onChange(formattedDate);
-  }, [currentDate, onChange]);
 
   const handleNextDay = () => {
     const nextDay = addDays(currentDate, 1);

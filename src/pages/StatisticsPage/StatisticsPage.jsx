@@ -10,7 +10,11 @@ import { useState } from 'react';
 const StatisticsPage = () => {
   const [selectedDay, setSelectedDay] = useState('');
 
-  const takeCurrentDate = date => setSelectedDay(date);
+  const takeCurrentDate = date => {
+    if (date) {
+      setSelectedDay(date);
+    }
+  };
 
   return (
     <StatisticsPageContainer>
