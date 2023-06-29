@@ -11,8 +11,8 @@ export const WeekHeaderList = styled.ul`
   font-size: 16px;
   line-height: 1.12;
   text-transform: uppercase;
-  color: ${p => p.theme.colors.text};
-  background-color: ${p => p.theme.colors.white};
+  color: ${p => p.theme.colors.primary_text_switch};
+  background-color: ${p => p.theme.colors.third_background_switch};
   @media screen and (min-width: 768px) {
     margin-bottom: 18px;
     padding: 14px 40px;

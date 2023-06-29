@@ -11,7 +11,6 @@ import 'modern-normalize';
 import './components/localization/i18n';
 import './index.css';
 
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
@@ -25,6 +24,3 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </Provider>
   </React.StrictMode>
 );
-
-
-

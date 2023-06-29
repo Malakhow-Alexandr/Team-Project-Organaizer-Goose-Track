@@ -32,7 +32,7 @@ const birthdayRegexp = /^\d{2}\/\d{2}\/\d{4}$/;
 export const validationSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
-    .max(16, 'Too Long!')
+    .max(35, 'Too Long!')
     .required('Name is required'),
   birthday: Yup.string()
     .notRequired()
@@ -73,7 +73,7 @@ const UserForm = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
 
-  const [userAvatar, setUserAvatar] = useState(null || user.avatar);
+  const [userAvatar, setUserAvatar] = useState(user.avatarURL);
   const [birthdayDate, setBirthdayDate] = useState(null);
   const [isFormChanged, setIsFormChanged] = useState(false);
 
@@ -82,16 +82,21 @@ const UserForm = () => {
       initialValues: {
         name: user.name,
         email: user.email,
-        avatar: null,
+        avatar: user.avatarURL,
         phone: user.phone,
         birthday: user.birthday,
         skype: user.skype,
       },
       validationSchema: validationSchema,
-      onSubmit: async values => {
+      onSubmit: values => {
         try {
-          await dispatch(updateUser(values));
-          // console.log(values)
+          if (values.avatar === user.avatarURL) {
+            const { avatar, ...updatedValues } = values;
+            // console.log('updatedValues', updatedValues);
+            dispatch(updateUser(updatedValues));
+          } else {
+            dispatch(updateUser(values));
+          }
           setIsFormChanged(false);
         } catch (error) {
           console.log(error.message);
@@ -106,7 +111,7 @@ const UserForm = () => {
     setFieldValue('skype', user.skype);
     setFieldValue('birthday', user.birthday);
 
-    setUserAvatar(null || user.avatar);
+    setUserAvatar(user.avatarURL);
     setBirthdayDate(user.birthday);
   }, [user, setFieldValue]);
 

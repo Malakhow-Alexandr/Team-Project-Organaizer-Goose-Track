@@ -19,7 +19,7 @@ export const Link = styled(NavLink)`
 
   &.active {
     background-color: ${p => p.theme.colors.darkBlue};
-    color: ${p => p.theme.colors.primary};
+    color: ${p => p.theme.colors.side_bar_content_hover_switch};
   }
   &.month {
     padding: 8px 16px;
