@@ -75,6 +75,57 @@ export const RowInCell = styled.div`
   justify-content: flex-start;
 `;
 
+export const TaskListWrapper = styled.ul`
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  list-style-position: inside;
+  gap: 2px;
+`;
+export const CalendarTableMoreBtn = styled.button`
+  border: none;
+  border-radius: 8px;
+  color: transparent;
+  text-align: start;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  margin-top: 0;
+  padding: 0;
+  display: none;
+  @media screen and (min-width: 768px) {
+    display: inline-block;
+    color: ${p => p.theme.colors.text};
+    background-color: ${p => p.theme.colors.white};
+  }
+  @media screen and (min-width: 1440px) {
+    color: ${p => p.theme.colors.text};
+    background-color: ${p => p.theme.colors.white};
+  }
+`;
+export const TaskItem = styled.button`
+  border-radius: 8px;
+  padding: 4px 4px 4px 8px;
+  border: none;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: start;
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1.4;
+  cursor: pointer;
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    line-height: 18px;
+    padding: 4px 10px 4px 12px;
+  }
+  @media screen and (min-width: 1440px) {
+    padding: 4px 15px 4px 12px;
+  }
+`;
+
 export const ShowDayWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
