@@ -23,6 +23,7 @@ export const Container = styled.div`
     width: 1087px;
     padding: 14px 46px;
   }
+  transition: all ease-in-out 250ms;
 `;
 
 export const WeekInfoWrapper = styled.div`
@@ -50,6 +51,7 @@ export const DayNumber = styled.p`
       return theme.colors.third_text_switch;
     }
   }};
+  transition: all ease-in-out 300ms;
 `;
 
 export const DateWrapper = styled.div`
@@ -80,6 +82,9 @@ export const DateContainer = styled.button`
   transition: all ease-in-out 400ms;
   &:hover {
     background-color: ${theme.colors.primary};
-    color: ${theme.colors.lightBlue};
+    color: ${theme.colors.white};
+  }
+  &:hover > p {
+    color: ${theme.colors.white};
   }
 `;

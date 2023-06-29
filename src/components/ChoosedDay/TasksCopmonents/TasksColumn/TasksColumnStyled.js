@@ -8,7 +8,6 @@ export const TaskItem = styled.li`
   border: ${theme.borders.normal};
   border-color: ${theme.colors.calendar_border_color_switch};
   background-color: ${theme.colors.third_background_switch};
-  //add
   display: flex;
   flex-direction: column;
   &:not(:last-child) {
@@ -21,9 +20,6 @@ export const TaskItem = styled.li`
     &:not(:last-child) {
       margin-right: 16px;
     }
-    //add
-    /* display: flex;
-    flex-direction: column; */
   }
 
   @media screen and (min-width: 1440px) {
@@ -32,5 +28,5 @@ export const TaskItem = styled.li`
       margin-right: 27px;
     }
   }
-  /* overflow: hidden; */
+  transition: all ease-in-out 250ms;
 `;
