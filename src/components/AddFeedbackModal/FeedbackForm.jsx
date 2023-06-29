@@ -37,21 +37,14 @@ const FeedbackFormSchema = Yup.object().shape({
     .required('Required'),
 });
 
-export const FeedbackForm = ({
-  userFeedback,
-  userRating,
-  // toggleEditFeedback,
-  // editFeedbackFieldOpen,
-  onClose,
-}) => {
-  console.log(userFeedback);
-  console.log(userRating);
+export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
+  // console.log(userFeedback);
+  // console.log(userRating);
 
-  const [feedbackRating, setFeedbackRating] = useState(4);
-  const [feedbackText, setFeedbackText] = useState('mama');
+  const [feedbackRating, setFeedbackRating] = useState(0);
+  const [feedbackText, setFeedbackText] = useState(userFeedback || '');
   const [ratingHover, setRatingHover] = useState(null);
-  const [editFeedbackFieldOpen, setEditFeedbackFieldOpen] = useState(false);
-  // const [isEdit, setIsEdit] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
 
   console.log(feedbackRating);
   console.log(feedbackText);
@@ -60,28 +53,25 @@ export const FeedbackForm = ({
 
   useEffect(() => {
     if (userFeedback || userRating) {
-      setFeedbackRating(userFeedback);
-      setFeedbackText(userRating);   
-        setEditFeedbackFieldOpen(!editFeedbackFieldOpen);
+      setFeedbackRating(userRating);
+      setFeedbackText(userFeedback);   
     }
   }, [userRating, userFeedback]);
-
-
-
-
 
   const handleFeedbackSubmit = (values, { resetForm }) => {
     console.log(values);
     // console.log(actions);
-    // if (editFeedbackField) {
-    //   dispatch(updateReviewByOwn({ text: values.text, rating: values.rating }));
-    //   return;
-    // }
+    if (userFeedback || userRating) {
+      dispatch(updateReviewByOwn({ text: values.text, rating: values.rating }));
+      return;
+    }
     if (!userFeedback || !userRating) {
       dispatch(createReviewByOwn({ text: values.text, rating: values.rating }));
       resetForm();
-      setFeedbackText(values.text);
+      // setFeedbackText(values.text);
      
+      setIsEdit(!isEdit)
+      console.log(isEdit)
       onClose();
     }
   };
@@ -94,10 +84,18 @@ export const FeedbackForm = ({
     dispatch(deleteReviewByOwn());
     onClose();
   };
+  
+
+const handleReviewChange = event => {
+  const inputValue = event.target.value;
+    setFeedbackText(inputValue);
+  };
+
+
 
   return (
     <Formik
-      initialValues={{ rating: feedbackRating, text: feedbackText}}
+      initialValues={{ rating: feedbackRating, text: feedbackText }}
       validationSchema={FeedbackFormSchema}
       onSubmit={handleFeedbackSubmit}
     >
@@ -118,9 +116,9 @@ export const FeedbackForm = ({
                     onClick={() => {
                       setFeedbackRating(ratingValue);
                     }}
-                    // style={{
-                    //   display: 'none',
-                    // }}
+                    style={{
+                      display: 'none',
+                    }}
                   />
                   <FaStar
                     size={24}
@@ -138,8 +136,11 @@ export const FeedbackForm = ({
           </div>
         </FormField>
 
+       
+       
+      
         <EditButtonContainer>
-          {!editFeedbackFieldOpen ? (
+          {isEdit ? (
             <RatingLabel>Review</RatingLabel>
           ) : (
             <>
@@ -163,13 +164,17 @@ export const FeedbackForm = ({
             type="text"
             placeholder="Enter text"
             name="text"
+            value={feedbackText}
+            onChange={handleReviewChange}
             autoComplete="off"
           />
           <ErrorMessage name="text" component="p" />
         </FormField>
 
+        
+        
         <RatingBtnOverlay>
-          {editFeedbackFieldOpen ? (
+          {userFeedback || userRating ? (
             <EditFeedbackBtn type="submit">Edit</EditFeedbackBtn>
           ) : (
             <SaveFeedbackBtn type="submit">Save</SaveFeedbackBtn>
