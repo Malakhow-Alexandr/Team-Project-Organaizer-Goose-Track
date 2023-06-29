@@ -1,0 +1,17 @@
+
+  
+  .goose-image {
+    width: 20px;
+  }
+  
+  .social-icons-container {
+    display: flex;
+  }
+  
+  .social-icon-link {
+    margin-right: 10px;
+  }
+  
+  .social-icon {
+    font-size: 24px;
+  }
