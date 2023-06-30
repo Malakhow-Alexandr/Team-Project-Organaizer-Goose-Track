@@ -4,7 +4,7 @@ export const AddFeedbackButton = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 97px;
+  width: 70px;
   height: 32px;
 
   background: ${props => props.theme.colors.primary};
