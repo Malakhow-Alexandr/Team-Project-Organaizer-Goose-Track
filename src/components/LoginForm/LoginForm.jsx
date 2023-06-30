@@ -8,6 +8,7 @@ import {
   FormLabel,
   FormTitle,
   IconWrap,
+  SuccessMessage,
 } from '../RegisterForm/RegisterForm.styled';
 import * as Yup from 'yup';
 import { FiLogIn } from 'react-icons/fi';
@@ -76,7 +77,7 @@ export const LoginForm = () => {
                 placeholder="Enter email"
               />
               {isValid('email') === 'is-valid' && (
-                <p>{t('This is a CORRECT email')}</p>
+                <SuccessMessage>{t('This is a CORRECT email')}</SuccessMessage>
               )}
               <IconWrap>
                 {isValid('email') === 'is-valid' && <BiCheckCircle />}
@@ -94,7 +95,9 @@ export const LoginForm = () => {
                 placeholder="Enter password"
               />
               {isValid('password') === 'is-valid' && (
-                <p>{t('This is a CORRECT password')}</p>
+                <SuccessMessage>
+                  {t('This is a CORRECT password')}
+                </SuccessMessage>
               )}
               <IconWrap onClick={togglePassword}>
                 {passwordType === 'text' ? <IoEyeOff /> : <IoEyeOutline />}
