@@ -1,6 +1,5 @@
 import {
   PeriodPaginatorButton,
-  ButtonsWrapper,
   Button1,
   Button2,
 } from 'components/CalendarToolbar/PeriodPaginator/PeriodPaginator.styled';
