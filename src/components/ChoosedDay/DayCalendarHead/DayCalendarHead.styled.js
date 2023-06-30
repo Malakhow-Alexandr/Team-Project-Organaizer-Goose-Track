@@ -1,14 +1,16 @@
 import styled from 'styled-components';
+import { theme } from 'theme';
 
 export const Container = styled.div`
   width: 335px;
   height: 74px;
   padding: 18px 20px;
   background: var(--mainWhite);
-  border: 1px solid rgba(220, 227, 229, 0.8);
-  border-radius: 8px;
+  border: ${theme.borders.normal};
+  border-color: ${theme.colors.calendar_border_color_switch};
+  border-radius: ${theme.radii.small};
   margin-bottom: 14px;
-  background-color: ${p => p.theme.colors.white};
+  background-color: ${theme.colors.third_background_switch};
 
   @media screen and (min-width: 768px) {
     width: 704px;
@@ -21,6 +23,7 @@ export const Container = styled.div`
     width: 1087px;
     padding: 14px 46px;
   }
+  transition: all ease-in-out 250ms;
 `;
 
 export const WeekInfoWrapper = styled.div`
@@ -33,11 +36,22 @@ export const WeekInfoWrapper = styled.div`
 
 export const DayOfWeek = styled.div`
   text-align: center;
-  font-weight: 600;
-  font-size: 14px;
+  font-weight: ${theme.fontWeights.heading};
+  font-size: ${theme.fontSizes.s};
   line-height: 18px;
-  color: ${p => p.theme.colors.text};
+  color: ${theme.colors.user_text_switch};
   margin: 0px 0px 4px 0px;
+`;
+
+export const DayNumber = styled.p`
+  color: ${p => {
+    if (p.isCurrentDay) {
+      return 'white';
+    } else {
+      return theme.colors.third_text_switch;
+    }
+  }};
+  transition: all ease-in-out 300ms;
 `;
 
 export const DateWrapper = styled.div`
@@ -45,23 +59,32 @@ export const DateWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 26px;
-  color: ${p => p.theme.colors.text};
+  color: ${theme.colors.text};
 `;
 
 export const DateContainer = styled.button`
   text-align: center;
-  font-weight: 700;
-  font-size: ${p => p.theme.fontSizes.m};
+  font-weight: ${theme.fontWeights.bold};
+  font-size: ${theme.fontSizes.m};
   width: 27px;
   height: 26px;
-  border-radius: 8px;
-  background-color: transparent;
+  border-radius: ${theme.radii.small};
+  background-color: ${p => {
+    if (p.isCurrentDay) {
+      return theme.colors.primary;
+    } else {
+      return 'transparent';
+    }
+  }};
   padding: 0;
   border: none;
   cursor: pointer;
   transition: all ease-in-out 400ms;
   &:hover {
-    background-color: ${p => p.theme.colors.primary};
-    color: ${p => p.theme.colors.lightBlue};
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.white};
+  }
+  &:hover > p {
+    color: ${theme.colors.white};
   }
 `;

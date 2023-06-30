@@ -15,10 +15,10 @@ export const Item = styled.li`
 
 export const Link = styled(NavLink)`
   color: ${p => p.theme.colors.primary};
-  background-color: ${p => p.theme.colors.lightBlue};
+  background-color: ${p => p.theme.colors.calendar_month_day_color_switch};
 
   &.active {
-    background-color: ${p => p.theme.colors.darkBlue};
+    background-color: ${p => p.theme.colors.calendar_active_color_link_switch};
     color: ${p => p.theme.colors.side_bar_content_hover_switch};
   }
   &.month {
