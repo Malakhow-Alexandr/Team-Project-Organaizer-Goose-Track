@@ -1,5 +1,5 @@
 import React from 'react';
-import { Backdrop, Spin, SpinWrap } from './Loader.styled';
+import { Backdrop, Spin, SpinWrap, Image } from './Loader.styled';
 
 import ImgRacketGoose from '../../images/loader/racket-goose.webp';
 
@@ -8,7 +8,7 @@ export const Loader = () => {
     <Backdrop>
       <SpinWrap>
         <Spin>
-          <img srcSet={`${ImgRacketGoose}`} alt="Racket Goose" />
+          <Image srcSet={`${ImgRacketGoose}`} alt="Racket Goose" />
         </Spin>
       </SpinWrap>
     </Backdrop>
