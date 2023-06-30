@@ -16,11 +16,14 @@ html[data-theme='light'] {
   --period-buttons-background: #e3f3ff;
   --period-buttons-active-text-color: #3e85f3;
   --calendar-border-color: rgba(220, 227, 229, 0.8);
-  --calendar_month_color_switch: #E3F3FF;
-  --calendar_active_color_link:#CAE8FF;
+  --calendar_month_color_switch: #e3f3ff;
+  --calendar_active_color_link: #cae8ff;
   --statistics-border-color: rgba(227, 243, 255, 1);
   --statistics-tooltip-background: rgba(33, 34, 44, 0.6);
   --statistics-tooltip-text: rgba(255, 255, 255, 1);
+  --scroll-color: rgba(231, 229, 229, 1);
+  --bg-scroll-color: rgba(242, 242, 242, 1);
+  --scrollbar-bg: rgba(242, 242, 242, 1);
 }
 
 html[data-theme='dark'] {
@@ -41,9 +44,42 @@ html[data-theme='dark'] {
   --period-buttons-background: #21222c;
   --period-buttons-active-text-color: #ffffff;
   --calendar-border-color: rgba(255, 255, 255, 0.15);
-  --calendar_month_color_switch:#21222C;
-  --calendar_active_color_link: #3E85F3;
+  --calendar_month_color_switch: #21222c;
+  --calendar_active_color_link: #3e85f3;
   --statistics-border-color: rgba(227, 243, 255, 0.15);
   --statistics-tooltip-background: rgba(255, 255, 255, 0.8);
   --statistics-tooltip-text: #111111;
+  --scroll-color: #13151a;
+  --bg-scroll-color: rgba(23, 24, 32);
+  --scrollbar-bg: #2d3037;
+}
+
+body {
+  background: var(--background);
+  /* transition: background-color 400ms;     */
+}
+html {
+  /* width */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-bg);
+    border-radius: 12px;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    /* height: 112px; */
+    background: var(--scroll-color);
+    border-radius: 12px;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-bg);
+  }
 }
