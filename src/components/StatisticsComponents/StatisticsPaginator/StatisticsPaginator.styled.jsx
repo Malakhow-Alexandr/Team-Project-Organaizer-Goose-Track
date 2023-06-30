@@ -9,6 +9,7 @@ import { theme } from 'theme';
 export const StatisticsDateWrapper = styled.div`
   display: flex;
   align-items: center;
+  /* position: relative; */
   @media screen and (max-width: ${theme.breakpoints.mobileMax}) {
     justify-content: space-between;
   }
