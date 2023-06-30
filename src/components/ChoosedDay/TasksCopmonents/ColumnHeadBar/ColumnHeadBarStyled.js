@@ -23,7 +23,7 @@ export const TaskHeaderTitle = styled.h2`
   margin: 0;
   font-size: 20px;
   font-family: ${theme.fonts.text};
-  color: ${theme.colors.primary_text_mode};
+  color: ${theme.colors.primary_text_switch};
   font-weight: ${theme.fontWeights.bold};
   line-height: ${theme.lineHeights.heading};
 `;

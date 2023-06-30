@@ -20,6 +20,8 @@ export const TaskListItem = styled.li`
   @media screen and (min-width: 768px) {
     width: 301px;
   }
+
+  transition: all ease-in-out 250ms;
 `;
 
 export const AvatorTaskList = styled.img`
