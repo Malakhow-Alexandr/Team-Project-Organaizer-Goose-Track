@@ -24,6 +24,16 @@ const CalendarTable = ({ startDay, today, tasks }) => {
   const isCurrentDay = day => moment().isSame(day, 'day');
   const isSelectedMonth = day => today.isSame(day, 'month');
 
+  const filterTask = calendarDay => {
+    if (!tasks || tasks.length === 0) {
+      return [];
+    }
+    let dayTasksFiltered = [
+      ...tasks.filter(task => task.date === calendarDay.format('YYYY-MM-DD')),
+    ];
+    return dayTasksFiltered;
+  };
+
   return (
     <>
       <GridWrapper>
@@ -49,10 +59,7 @@ const CalendarTable = ({ startDay, today, tasks }) => {
                 </DayWrapper>
               </ShowDayWrapper>
               <TaskListWrapper>
-                {tasks
-                  .filter(task => task.date === dayItem.format('YYYY-MM-DD'))
-                  .map(tasks => tasks.tasks)
-                  .reduce((t1, t2) => t1.concat(t2), [])
+                {filterTask(dayItem)
                   .slice(0, 2)
                   .map(task => (
                     <li key={task._id}>
