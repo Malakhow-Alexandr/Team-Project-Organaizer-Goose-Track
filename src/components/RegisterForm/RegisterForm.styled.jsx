@@ -41,16 +41,12 @@ export const FormLabel = styled.label`
   display: flex;
   gap: 8px;
   flex-direction: column;
-  margin-bottom: 24px;
+  margin-bottom: 34px;
   font-family: ${p => p.theme.fonts.heading};
   font-style: ${p => p.theme.fonts.heading};
   font-weight: ${p => p.theme.fontWeights.heading};
   font-size: ${p => p.theme.fontSizes.xs};
   color: ${p => p.theme.colors.black};
-
-  :last-of-type {
-    margin-bottom: 28px;
-  }
 
   &.is-valid {
     color: ${p => p.theme.colors.greenValid};
@@ -60,13 +56,17 @@ export const FormLabel = styled.label`
     color: ${p => p.theme.colors.redErrorLight};
   }
 
+  :last-of-type {
+    margin-bottom: 48px;
+  }
+
   @media screen and (min-width: 768px) {
     font-size: ${p => p.theme.fontSizes.s};
     text-shadow: 0px 9.399999618530273px 57.6875px 0px rgba(0, 0, 0, 0.04),
       0px 47px 355px 0px rgba(0, 0, 0, 0.07);
 
     :last-of-type {
-      margin-bottom: 48px;
+      margin-bottom: 58px;
     }
   }
 `;
@@ -106,7 +106,24 @@ export const Field = styled(FormField)`
 `;
 
 export const ErrorMessage = styled(FormikError)`
-  color: ${p => p.theme.colors.redError};
+  position: absolute;
+  top: 78px;
+  left: 16px;
+  color: ${p => p.theme.colors.redErrorLight};
+
+  @media screen and (min-width: 768px) {
+    top: 88px;
+  }
+`;
+
+export const SuccessMessage = styled.p`
+  position: absolute;
+  top: 78px;
+  left: 16px;
+
+  @media screen and (min-width: 768px) {
+    top: 88px;
+  }
 `;
 
 export const IconWrap = styled.div`
