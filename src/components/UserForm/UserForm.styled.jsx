@@ -4,19 +4,16 @@ import { DatePicker } from '@mui/x-date-pickers';
 
 
 export const Container = styled.div`
-  max-width: 375px;
-  padding-bottom: 40px;
-
+  max-width: 335px;
   background-color: ${props => props.theme.colors.background_switch};
 
   @media (min-width: 768px) {
     max-width: 100%;
-    min-width: 768px;
-    padding-bottom: 38px;
+    min-width: 704px;
   }
   @media (min-width: 1440px) {
+    min-width: 1087px;
     max-width: 100%;
-    padding-bottom: 32px;
   }
 `;
 export const Form = styled.form`
