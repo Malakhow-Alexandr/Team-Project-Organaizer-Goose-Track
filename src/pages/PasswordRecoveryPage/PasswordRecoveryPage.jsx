@@ -1,7 +1,10 @@
+import { useTranslation } from "react-i18next";
+
 const PasswordRecoveryPage = () => {
+  const { t } = useTranslation();
   return (
     <div>
-      <h2>Password Recovery Page</h2>
+      <h2>{t('Password Recovery Page')}</h2>
     </div>
   );
 };

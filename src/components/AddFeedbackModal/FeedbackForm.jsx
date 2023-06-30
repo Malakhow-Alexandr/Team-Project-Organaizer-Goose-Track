@@ -28,6 +28,7 @@ import {
   Pencil,
   Trash,
 } from './FeedbackForm.styled';
+import { useTranslation } from 'react-i18next';
 
 const FeedbackFormSchema = Yup.object().shape({
   rating: Yup.string().required('Required'),
@@ -38,6 +39,7 @@ const FeedbackFormSchema = Yup.object().shape({
 });
 
 export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
+  const { t } = useTranslation();
   // console.log(userFeedback);
   // console.log(userRating);
 
@@ -141,10 +143,10 @@ const handleReviewChange = event => {
       
         <EditButtonContainer>
           {isEdit ? (
-            <RatingLabel>Review</RatingLabel>
+            <RatingLabel>{t('Review')}</RatingLabel>
           ) : (
             <>
-              <RatingLabel>Review</RatingLabel>
+              <RatingLabel>{t('Review')}</RatingLabel>
 
               <ButtonDiv>
                 <PencilBtn onClick={handleEditBtnClick}>
@@ -175,12 +177,12 @@ const handleReviewChange = event => {
         
         <RatingBtnOverlay>
           {userFeedback || userRating ? (
-            <EditFeedbackBtn type="submit">Edit</EditFeedbackBtn>
+            <EditFeedbackBtn type="submit">{t('Edit')}</EditFeedbackBtn>
           ) : (
-            <SaveFeedbackBtn type="submit">Save</SaveFeedbackBtn>
+            <SaveFeedbackBtn type="submit">{t('Save')}</SaveFeedbackBtn>
           )}
 
-          <CancelFeedbackBtn type="submit">Cancel</CancelFeedbackBtn>
+          <CancelFeedbackBtn type="submit">{t('Cancel')}</CancelFeedbackBtn>
         </RatingBtnOverlay>
       </Form>
     </Formik>

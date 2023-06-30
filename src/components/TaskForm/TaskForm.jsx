@@ -20,6 +20,7 @@ import {
 import { updateTask, createTask } from 'redux/tasks/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectTasksSuccessful, selectError } from 'redux/tasks/selectors';
+import { useTranslation } from 'react-i18next';
 
 const emptyTask = {
   title: '',
@@ -30,6 +31,7 @@ const emptyTask = {
 };
 
 export const TaskForm = ({ initialData, onClose }) => {
+  const { t } = useTranslation();
   const [informationTask, setInformationTask] = useState(emptyTask);
   const [operation, setOperation] = useState('create');
   const [dateSave, setDataSave] = useState(null);
@@ -83,7 +85,7 @@ export const TaskForm = ({ initialData, onClose }) => {
     <WrapForm>
       <Form onSubmit={handleSubmit}>
         <Label>
-          Title
+          {t('Title')}
           <Input
             type="text"
             placeholder="Enter text"
@@ -95,7 +97,7 @@ export const TaskForm = ({ initialData, onClose }) => {
         </Label>
         <FormGroup>
           <Label>
-            Start
+            {t('Start')}
             <Input
               id="time"
               type="time"
@@ -106,7 +108,7 @@ export const TaskForm = ({ initialData, onClose }) => {
             />
           </Label>
           <Label>
-            End
+            {t('End')}
             <Input
               type="time"
               name="end"
@@ -128,7 +130,7 @@ export const TaskForm = ({ initialData, onClose }) => {
                 onChange={handleChange}
               />
               <RadioButtonCustom />
-              Low
+              {t('Low')}
             </RadioButtonsLabel>
           </RadioContainer>
           <RadioContainer>
@@ -141,7 +143,7 @@ export const TaskForm = ({ initialData, onClose }) => {
                 onChange={handleChange}
               />
               <RadioButtonCustom />
-              Medium
+              {t('Medium')}
             </RadioButtonsLabel>
           </RadioContainer>
           <RadioContainer>
@@ -154,7 +156,7 @@ export const TaskForm = ({ initialData, onClose }) => {
                 onChange={handleChange}
               />
               <RadioButtonCustom />
-              High
+              {t('High')}
             </RadioButtonsLabel>
           </RadioContainer>
         </WrapRadio>
@@ -163,17 +165,17 @@ export const TaskForm = ({ initialData, onClose }) => {
         {operation === 'edit' ? (
           <EditButton type="submit">
             <IconEditPen />
-            Edit
+            {t('Edit')}
           </EditButton>
         ) : (
           <WrapButton>
             <EditButton type="submit">
               <IconPlus />
-              Add
+              {t('Add')}
             </EditButton>
 
             <CancelButton type="button" onClick={onClose}>
-              Cancel
+              {t('Cancel')}
             </CancelButton>
           </WrapButton>
         )}

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   CustomText,
   TooltipStyled,
@@ -6,15 +7,16 @@ import {
 } from './StatisticsChart.styles';
 
 export const CustomTooltip = ({ active, payload, label }) => {
+  const { t } = useTranslation();
   if (active && payload && payload.length) {
     return (
       <TooltipStyled>
         <TooltipTitle>{label}</TooltipTitle>
         <TooltipText>
-          <span>By Day: </span> {payload[0].value + '%'}
+          <span>{t('By Day')}: </span> {payload[0].value + '%'}
         </TooltipText>
         <TooltipText>
-          <span>By Month: </span>
+          <span>{t('By Month')}: </span>
           {payload[1].value + '%'}
         </TooltipText>
       </TooltipStyled>
