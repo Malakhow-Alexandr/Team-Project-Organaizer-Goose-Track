@@ -15,7 +15,6 @@ import { useState } from 'react';
 import { useLocation } from 'react-router';
 import { DayPageTitle } from './DayPageTitle/DayPageTitle';
 import { UserInfo } from './UserInfo/UserInfo';
-import LanguageFlags from 'components/localization/LanguageFlags';
 
 const getTypePage = pathname => {
   if (pathname.includes('/account')) {
@@ -61,8 +60,7 @@ const Header = ({ toggleShowSideBar }) => {
       <RightSectionHeader>
         <AddFeedbackBtn handleShowModal={handleShowModal} />
       </RightSectionHeader>
-      <ThemeToggler />
-      <LanguageFlags />
+      <ThemeToggler />     
       <UserInfo toggleShowSideBar={toggleShowSideBar} />
 
       {showModal && <AddFeedbackModal onClose={handleCloseModal} />}

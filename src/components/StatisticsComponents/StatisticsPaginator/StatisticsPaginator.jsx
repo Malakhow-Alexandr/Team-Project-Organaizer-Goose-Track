@@ -10,6 +10,7 @@ import {
 } from './StatisticsPaginator.styled';
 
 export const StatisticsPeriodPaginator = ({ onChange }) => {
+  
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
 
@@ -29,7 +30,7 @@ export const StatisticsPeriodPaginator = ({ onChange }) => {
   }, [currentDate, onChange]);
 
   const handlePreviousDay = () => {
-    const previousDay = subDays(currentDate, 1);
+        const previousDay = subDays(currentDate, 1);
     setCurrentDate(previousDay);
   };
 

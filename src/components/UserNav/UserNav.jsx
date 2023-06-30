@@ -23,8 +23,11 @@ import goose_tablet from '../../images/sideBar/goose_tablet.webp';
 import goose_tablet2 from '../../images/sideBar/goose_tablet@2x.webp';
 import goose_desktop from '../../images/sideBar/goose_desktop.webp';
 import goose_desktop2 from '../../images/sideBar/goose_desktop@2x.webp';
+import { useTranslation } from 'react-i18next';
+
 
 const getTypePage = pathname => {
+  
   if (pathname.includes('/account')) {
     return 'account';
   } else if (pathname.includes('/calendar')) {
@@ -37,6 +40,7 @@ const getTypePage = pathname => {
 };
 
 const UserNav = ({ toggleShowSideBar }) => {
+  const { t } = useTranslation();
   const { pathname } = useLocation();
   const typePage = getTypePage(pathname);
 
@@ -72,12 +76,12 @@ const UserNav = ({ toggleShowSideBar }) => {
       </LogoWrapper>
 
       <nav>
-        <UserPanelText>User Panel</UserPanelText>
+        <UserPanelText>{t('User Panel')}</UserPanelText>
         <StyledList>
           <StyledItem className={typePage === 'account' ? 'active' : ''}>
             <StyledLink to="account" onClick={() => toggleShowSideBar(false)}>
               <UserIconStyled stroke="currentColor"></UserIconStyled>
-              My account
+             {t('My account')}
             </StyledLink>
           </StyledItem>
           <StyledItem className={typePage === 'calendar' ? 'active' : ''}>
@@ -86,7 +90,7 @@ const UserNav = ({ toggleShowSideBar }) => {
               onClick={() => toggleShowSideBar(false)}
             >
               <CalendarIconStyled stroke="currentColor"></CalendarIconStyled>
-              Calendar
+              {t('Calendar')}
             </StyledLink>
           </StyledItem>
           <StyledItem className={typePage === 'statistics' ? 'active' : ''}>
@@ -95,7 +99,7 @@ const UserNav = ({ toggleShowSideBar }) => {
               onClick={() => toggleShowSideBar(false)}
             >
               <StatisticsIconStyled fill="currentColor"></StatisticsIconStyled>
-              Statistics
+              {t('Statistics')}
             </StyledLink>
           </StyledItem>
         </StyledList>

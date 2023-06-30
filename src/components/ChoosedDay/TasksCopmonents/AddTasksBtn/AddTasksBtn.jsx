@@ -1,10 +1,12 @@
+import { useTranslation } from 'react-i18next';
 import { ButtonBox, ButtonTask } from './AddTasksBtnStyled';
 
 export const AddTasksBtn = ({ handleShowModal }) => {
+  const { t } = useTranslation();
   return (
     <ButtonBox>
       <ButtonTask onClick={() => handleShowModal({})}>
-        <span>+</span>Add task
+        <span>+</span>{t('Add task')}
       </ButtonTask>
     </ButtonBox>
   );

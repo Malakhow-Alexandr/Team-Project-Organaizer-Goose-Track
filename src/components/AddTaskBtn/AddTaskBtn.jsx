@@ -1,8 +1,10 @@
 import { Modal } from '../Modal/Modal';
 import { useState } from 'react';
 import { ButtonBox, ButtonTask } from './AddTaskBtn.styled';
+import { useTranslation } from 'react-i18next';
 
 export const AddTaskBtn = () => {
+  const { t } = useTranslation();
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
@@ -17,7 +19,7 @@ export const AddTaskBtn = () => {
     <>
       <ButtonBox>
         <ButtonTask onClick={handleShowModal} aria-label="Add task">
-          <span>+</span>Add task
+          <span>+</span>{t('Add task')}
         </ButtonTask>
       </ButtonBox>
 
