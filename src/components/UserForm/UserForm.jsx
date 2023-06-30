@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { updateUser } from 'redux/auth/operations';
 import * as Yup from 'yup';
@@ -24,6 +24,8 @@ import {
   WrapperInput,
 } from './UserForm.styled';
 import { useTranslation } from 'react-i18next';
+import { selectAuthIsLoading } from 'redux/auth/selectors';
+import { LoaderForBtn } from 'components/LoaderForBtn/LoaderForBtn';
 
 const phoneRegexp = /^(\d{2})\s\((\d{3})\)\s(\d{3})\s(\d{2})\s(\d{2})$/;
 const skypeNumberRegexp = /^\+[1-9]\d{0,2}[.-]?\d{1,14}$/;
@@ -72,6 +74,7 @@ const UserForm = () => {
 
   const dispatch = useDispatch();
   const { user } = useAuth();
+  const isLoading = useSelector(selectAuthIsLoading);
 
   const [userAvatar, setUserAvatar] = useState(user.avatarURL);
   const [birthdayDate, setBirthdayDate] = useState(null);
@@ -268,7 +271,7 @@ const UserForm = () => {
           </WrapperInput>
         </Wrapper>
         <SubmitBtn disabled={!isFormChanged} type="submit">
-          {t('Save changes')}
+          {isLoading ? <LoaderForBtn /> : <>{t('Save changes')}</>}
         </SubmitBtn>
       </Form>
     </Container>
