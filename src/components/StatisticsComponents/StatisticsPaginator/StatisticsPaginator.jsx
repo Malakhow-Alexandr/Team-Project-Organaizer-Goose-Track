@@ -10,7 +10,7 @@ import {
 } from './StatisticsPaginator.styled';
 
 export const StatisticsPeriodPaginator = ({ onChange }) => {
-  const { t } = useTranslation();
+  
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
 
