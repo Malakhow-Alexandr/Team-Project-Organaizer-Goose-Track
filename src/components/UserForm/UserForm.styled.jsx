@@ -210,7 +210,7 @@ export const SubmitBtn = styled.button`
   padding-bottom: 14px;
   padding-left: 50px;
   padding-right: 50px;
-  width: 195px;
+  width: 200px;
   height: 46px;
   font-family: ${props => props.theme.fonts.text};
   font-weight: ${props => props.theme.fontWeights.heading};
