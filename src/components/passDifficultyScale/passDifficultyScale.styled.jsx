@@ -6,8 +6,8 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
-  width: 100px;
-  height: 15px;
+  width: 70px;
+  height: 8px;
   background-color: ${({ state }) =>
     state === 'red' ? 'red' : state === 'strong' ? 'green' : 'lightgray'};
 
