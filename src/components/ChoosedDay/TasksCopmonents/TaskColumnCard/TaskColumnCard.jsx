@@ -1,14 +1,16 @@
 import {
-  AvatorTaskList,
   TaskListItem,
   TaskStatue,
   TaskText,
   TextAvatar,
+  UserPhoto,
 } from './TaskColumnCardStyled';
 import { TasklToolBar } from '../TaskToolBar/TaskToolBar';
 import { useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
 import { useDrag } from 'react-dnd';
+import { useAuth } from '../../../../hooks/useAuth';
+import { useState, useEffect } from 'react';
 
 export const TaskColumnCard = ({
   toolbarData,
@@ -18,6 +20,15 @@ export const TaskColumnCard = ({
   enableDrag,
 }) => {
   const userData = useSelector(selectUser);
+  const { user } = useAuth();
+  const [avatar, setAvatar] = useState(null);
+  useEffect(() => {
+    if (!user?.name) {
+      setAvatar(null);
+    } else {
+      setAvatar(user?.name.slice(0, 1).toUpperCase());
+    }
+  }, [user?.name]);
 
   const [{ isDragging }, drag] = useDrag({
     item: {
@@ -33,14 +44,6 @@ export const TaskColumnCard = ({
       isDragging: !!monitor.isDragging(),
     }),
   });
-
-  const avaFunc = value => {
-    if (!value) {
-      return;
-    } else {
-      return value.slice(0, 1).toUpperCase();
-    }
-  };
 
   return (
     <TaskListItem
@@ -58,12 +61,12 @@ export const TaskColumnCard = ({
           justifyContent: 'space-between',
         }}
       >
-        {!userData?.avatarUrl ? (
-          <TextAvatar>{avaFunc(userData?.name)}</TextAvatar>
+        {!user?.avatarURL ? (
+          <TextAvatar>{avatar}</TextAvatar>
         ) : (
-          <AvatorTaskList
-            src={userData?.avatarUrl}
-            alt="avator"
+          <UserPhoto
+            src={user?.avatarURL}
+            alt="avatar"
             width="28"
             height="28"
           />
