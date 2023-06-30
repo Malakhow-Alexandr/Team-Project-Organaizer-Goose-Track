@@ -14,9 +14,11 @@ import * as Yup from 'yup';
 import { FiLogIn } from 'react-icons/fi';
 import { BiCheckCircle, BiErrorCircle } from 'react-icons/bi';
 import { IoEyeOutline, IoEyeOff } from 'react-icons/io5';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from 'redux/auth/operations';
 import { useTranslation } from 'react-i18next';
+import { LoaderForBtn } from 'components/LoaderForBtn/LoaderForBtn';
+import { selectAuthIsLoading } from 'redux/auth/selectors';
 
 const regExp =
   /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
@@ -33,6 +35,7 @@ const FormSchema = Yup.object().shape({
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const isLoading = useSelector(selectAuthIsLoading);
 
   const [passwordType, setPasswordType] = useState('password');
 
@@ -105,8 +108,14 @@ export const LoginForm = () => {
               <ErrorMessage name="password" component="div" />
             </FormLabel>
             <Button type="submit">
-              {t('Log In')}
-              <FiLogIn strokeWidth="3" />
+              {isLoading ? (
+                <LoaderForBtn />
+              ) : (
+                <>
+                  {t('Log In')}
+                  <FiLogIn strokeWidth="3" />
+                </>
+              )}
             </Button>
           </Form>
         );
