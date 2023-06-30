@@ -9,9 +9,9 @@ export const ButtonTask = styled.button`
   width: 100%;
   padding: 12px;
   font-family: ${theme.fonts.text};
-  font-weight: ${theme.fontWeights.medium};
-  background: ${theme.colors.background_button};
-  color: ${theme.colors.primary_text_mode};
+  font-weight: ${theme.fontWeights.heading};
+  background: ${theme.colors.statistics_border_color_switch};
+  color: ${theme.colors.primary_text_switch};
   font-size: ${theme.fontSizes.s};
   height: 47px;
   line-height: ${theme.lineHeights.body};
