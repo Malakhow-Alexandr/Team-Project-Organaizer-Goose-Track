@@ -154,7 +154,9 @@ export const updateUser = createAsyncThunk(
       });
 
       console.log(response.data);
-
+      toast.success(`Welcome back, ${response.data.user.name}!`, {
+        style: tostStyleSuccess,
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
