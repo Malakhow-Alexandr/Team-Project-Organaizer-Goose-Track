@@ -1,8 +1,22 @@
 import { useState, useEffect } from 'react';
 import { format, addDays, subDays } from 'date-fns';
+import { StatisticsDatePicker } from '../StatisticsDatePicker/StatisticsDatePicker';
+import {
+  StatisticsPaginatorDateButton,
+  StatisticsDateWrapper,
+  StatisticsButton1,
+  StatisticsButton2,
+  StatisticsChangeButtonsWrapper,
+} from './StatisticsPaginator.styled';
 
 export const StatisticsPeriodPaginator = ({ onChange }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
+  const [isOpen, setIsOpen] = useState(false);
+
+  const onDatePickerChange = newDate => {
+    setIsOpen(!isOpen);
+    setCurrentDate(newDate);
+  };
 
   const formatDateForFront = date => format(date, 'dd MMMM yyyy');
 
@@ -26,10 +40,31 @@ export const StatisticsPeriodPaginator = ({ onChange }) => {
 
   return (
     <div>
-      <div>{formatDateForFront(currentDate)}</div>
+      <StatisticsDateWrapper>
+        <StatisticsPaginatorDateButton
+          type="button"
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+        >
+          {formatDateForFront(currentDate)}
+        </StatisticsPaginatorDateButton>
 
-      <button onClick={handlePreviousDay}>Previous Day</button>
-      <button onClick={handleNextDay}>Next Day</button>
+        {isOpen && (
+          <StatisticsDatePicker
+            open={isOpen}
+            onChange={onDatePickerChange}
+            value={currentDate}
+          />
+        )}
+
+        <StatisticsChangeButtonsWrapper>
+          <StatisticsButton1 onClick={handlePreviousDay}>
+            &lt;
+          </StatisticsButton1>
+          <StatisticsButton2 onClick={handleNextDay}>&gt;</StatisticsButton2>
+        </StatisticsChangeButtonsWrapper>
+      </StatisticsDateWrapper>
     </div>
   );
 };
