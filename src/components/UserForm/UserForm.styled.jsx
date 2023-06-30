@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { AiFillPlusCircle, AiOutlineUser } from 'react-icons/ai';
 import { DatePicker } from '@mui/x-date-pickers';
 
-
 export const Container = styled.div`
   max-width: 335px;
   background-color: ${props => props.theme.colors.background_switch};
@@ -42,7 +41,6 @@ export const Form = styled.form`
     color: green;
   }
 `;
-
 
 export const Avatar = styled.div`
   width: 72px;
@@ -125,7 +123,6 @@ export const Text = styled.p`
   text-align: center;
 `;
 
-
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -166,7 +163,6 @@ export const Input = styled.input`
   border-color: #dbdbdb;
   border-radius: ${props => props.theme.radii.small};
   color: ${props => props.theme.colors.primary_text_switch};
-  
 
   ${props =>
     props.value &&
@@ -187,12 +183,11 @@ export const Input = styled.input`
   &:hover,
   &:focus {
     border: 1px solid #111111;
-  } 
+  }
   @media (min-width: 768px) {
     height: 46px;
   }
 `;
-
 
 export const ErrorMessage = styled.div`
   color: ${props => props.theme.colors.redError};
@@ -205,6 +200,9 @@ export const ErrorMessage = styled.div`
   }
 `;
 export const SubmitBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-left: auto;
   margin-right: auto;
   margin-top: 40px;
@@ -226,9 +224,9 @@ export const SubmitBtn = styled.button`
 
   border: ${props => props.theme.borders.none};
   cursor: ${props => (props.disabled ? 'default' : 'pointer')};
- 
-background-color: ${props =>
-    props.disabled ? '#a7c7f6': props.theme.colors.primary};
+
+  background-color: ${props =>
+    props.disabled ? '#a7c7f6' : props.theme.colors.primary};
   @media (min-width: 768px) {
     width: 262px;
     height: 48px;
@@ -237,7 +235,6 @@ background-color: ${props =>
     margin-top: 88px;
   }
 `;
-
 
 export const StyledDataPicker = styled(DatePicker)`
   input {
