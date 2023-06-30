@@ -154,7 +154,7 @@ export const updateUser = createAsyncThunk(
       });
 
       console.log(response.data);
-      toast.success(`Welcome back, ${response.data.user.name}!`, {
+      toast.success(`Your account has been updated!`, {
         style: tostStyleSuccess,
       });
       return response.data;
@@ -176,6 +176,9 @@ export const changePassword = createAsyncThunk(
       const response = await instance.patch('/changePassword', {
         password,
         newPassword,
+      });
+      toast.success(`Your password has been changed!`, {
+        style: tostStyleSuccess,
       });
       return response.data;
     } catch (error) {
