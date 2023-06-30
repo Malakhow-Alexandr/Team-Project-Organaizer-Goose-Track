@@ -26,6 +26,7 @@ export const CalendarToolbar = ({ today, prevHandler, nextHandler }) => {
         nextHandler={nextHandler}
         type={type}
       />
+
       <PeriodTypeSelect today={today} onChangeType={setType} />
     </Wrapper>
   );

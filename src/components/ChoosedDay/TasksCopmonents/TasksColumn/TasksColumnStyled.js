@@ -5,10 +5,9 @@ export const TaskItem = styled.li`
   flex: 0 0 100%;
   padding-right: 7px;
   border-radius: ${theme.radii.small};
-  border: ${p => p.theme.colors.calendar_out_border};
-
+  border: ${theme.borders.normal};
+  border-color: ${theme.colors.calendar_border_color_switch};
   background-color: ${theme.colors.third_background_switch};
-  //add
   display: flex;
   flex-direction: column;
   &:not(:last-child) {
@@ -21,9 +20,6 @@ export const TaskItem = styled.li`
     &:not(:last-child) {
       margin-right: 16px;
     }
-    //add
-    /* display: flex;
-    flex-direction: column; */
   }
 
   @media screen and (min-width: 1440px) {
@@ -32,5 +28,5 @@ export const TaskItem = styled.li`
       margin-right: 27px;
     }
   }
-  /* overflow: hidden; */
+  transition: all ease-in-out 250ms;
 `;

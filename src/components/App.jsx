@@ -13,8 +13,6 @@ import { currentUser } from 'redux/auth/operations';
 import { selectIsRefreshing } from 'redux/auth/selectors';
 import { Loader } from './Loader/Loader';
 
-
-
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage'));
@@ -55,7 +53,6 @@ export const App = () => {
   }, [dispatch, searchParams]);
   return (
     <Suspense fallback={<Loader />}>
-      {/* До fallback потрібно додати LOADER AБО Spinner */}
       {!isRefreshing && (
         <>
           <Routes>
@@ -84,13 +81,6 @@ export const App = () => {
         </>
       )}
       <Toaster position="top-right" reverseOrder={false} />
-      
-      
-
-
     </Suspense>
   );
 };
-
-
-

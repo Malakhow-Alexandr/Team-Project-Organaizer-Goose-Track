@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { theme } from 'theme';
 export const Wrapper = styled.div`
   position: relative;
   display: flex;
@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   margin-bottom: 14px;
   border: none;
 
-  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
+  @media screen and (min-width: ${theme.breakpoints.table}) {
     align-items: center;
   }
 `;
@@ -24,20 +24,21 @@ export const PeriodPaginatorButton = styled.button`
   padding: 6px 1px;
   margin-right: 8px;
   border: none;
-  color: ${p => p.theme.colors.white};
-  background-color: ${p => p.theme.colors.primary};
+  color: ${theme.colors.white};
+  background-color: ${theme.colors.primary};
   border-radius: 8px;
-  font-weight: ${p => p.theme.fontWeights.bold};
-  font-size: ${p => p.theme.fontSizes.s};
-  line-height: ${p => p.theme.lineHeights.body};
+  font-weight: ${theme.fontWeights.bold};
+  font-size: ${theme.fontSizes.s};
+  line-height: ${theme.lineHeights.body};
   &:hover {
-    border: 1px solid #42b8cc;
+    background-color: rgb(43, 120, 239);
   }
   &:active {
     filter: blur(0.1rem);
   }
+  transition: all ease-in-out 250ms;
 
-  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
+  @media screen and (min-width: ${theme.breakpoints.table}) {
     display: flex;
     gap: 8px;
     width: 170px;
@@ -45,7 +46,7 @@ export const PeriodPaginatorButton = styled.button`
     padding: 8px 1px;
     margin-right: 8px;
     margin-bottom: 0;
-    font-size: ${p => p.theme.fontSizes.m};
+    font-size: ${theme.fontSizes.m};
   }
 `;
 
@@ -58,39 +59,43 @@ export const ButtonsWrapper = styled.div`
 export const Button1 = styled.button`
   height: 30px;
   width: 38px;
-  background-color: ${p => p.theme.colors.third_background_switch};
-  font-size: ${p => p.theme.fontSizes.l};
-  color: ${p => p.theme.colors.third_text_switch};
-  border: 1px solid rgba(220, 227, 229, 0.8);
-  border-radius: 8px;
+  background-color: ${theme.colors.third_background_switch};
+  font-size: ${theme.fontSizes.l};
+  color: ${theme.colors.third_text_switch};
+  border: ${theme.borders.normal};
+  border-color: ${theme.colors.calendar_border_color_switch};
+  border-radius: ${theme.radii.small};
   border-bottom-right-radius: 0;
   border-top-right-radius: 0;
   cursor: pointer;
   &:hover {
-    color: ${p => p.theme.colors.third_text_switch};
+    background-color: ${theme.colors.background_switch};
   }
 
-  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
+  @media screen and (min-width: ${theme.breakpoints.table}) {
     height: 34px;
   }
+  transition: all ease-in-out 250ms;
 `;
 
 export const Button2 = styled.button`
   height: 30px;
   width: 38px;
-  background-color: ${p => p.theme.colors.third_background_switch};
-  font-size: ${p => p.theme.fontSizes.l};
-  color: ${p => p.theme.colors.primary_text_switch};
-  border: 1px solid rgba(220, 227, 229, 0.8);
-  border-radius: 8px;
+  background-color: ${theme.colors.third_background_switch};
+  font-size: ${theme.fontSizes.l};
+  color: ${theme.colors.primary_text_switch};
+  border: ${theme.borders.normal};
+  border-color: ${theme.colors.calendar_border_color_switch};
+  border-radius: ${theme.radii.small};
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   cursor: pointer;
   &:hover {
-    color: ${p => p.theme.colors.third_text_switch};
+    background-color: ${theme.colors.background_switch};
   }
 
-  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
+  @media screen and (min-width: ${theme.breakpoints.table}) {
     height: 34px;
   }
+  transition: all ease-in-out 250ms;
 `;
