@@ -35,7 +35,7 @@ import { useTranslation } from 'react-i18next';
 export const StatisticsChart = ({ selectedDay }) => {
   const dispatch = useDispatch();
   const statistics = useSelector(selectTasksStatistics);
-const { t } = useTranslation();
+  const { t } = useTranslation();
   const { statisticsByDay, statisticsByMonth } = statistics;
   useEffect(() => {
     if (selectedDay !== '') {
@@ -50,7 +50,7 @@ const { t } = useTranslation();
       by_Day: statisticsByDay?.todo ?? 0,
     },
     {
-      name: t('In Progress'),
+      name: t('In Action'),
       by_Month: statisticsByMonth?.inProgress ?? 0,
       by_Day: statisticsByDay?.inProgress ?? 0,
     },
@@ -61,7 +61,7 @@ const { t } = useTranslation();
     },
   ];
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer minWidth={250} minHeight={300}>
       <BarChart
         data={data}
         margin={{

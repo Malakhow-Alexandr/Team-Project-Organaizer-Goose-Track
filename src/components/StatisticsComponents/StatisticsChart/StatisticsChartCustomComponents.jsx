@@ -51,7 +51,7 @@ export const CustomYAxisTick = props => {
   return (
     <g transform={`translate(${x},${y})`}>
       <CustomText
-        x={-10}
+        x={0}
         y={0}
         dy={4}
         textAnchor="middle"
