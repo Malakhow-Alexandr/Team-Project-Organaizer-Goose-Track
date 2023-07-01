@@ -34,7 +34,8 @@ and _instal npm packet_. After of this in terminal write _npm start_.
 
 ### Faeturs:
 
-Sign up /Log in – regestri form and authorization with a validation inputs [^2].
+Sign up /Log in – regestri form and authorization with a validation inputs [^2]
+[![picture](https://img.shields.io/static/v1?label=&message=picture&color=brown)](https://res.cloudinary.com/dlw8ttfw9/image/upload/v1688218733/Auotorization_form_tdekis.jpg).
 JWT Authentication: Use JWT (JSON Web Token) authentication to provide secure
 access control. Added the function of authentication for the help of Google's
 public record. And also to send notifications to e-mail when changing the
