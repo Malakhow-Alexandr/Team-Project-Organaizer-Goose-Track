@@ -7,7 +7,7 @@ export const StatisticsPageContainer = styled.section`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+
     max-width: 335px;
     border-radius: 16px;
     padding-top: 28px;
@@ -46,6 +46,7 @@ export const HeadContainer = styled.section`
   padding-left: 15px;
   padding-right: 15px;
   margin-bottom: 40px;
+
   @media screen and (max-width: 375px) {
     max-width: 307px;
   }
@@ -65,12 +66,15 @@ export const HeadContainer = styled.section`
 
 export const ChartContainer = styled.section`
   margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
   background-color: ${p => p.theme.colors.third_background_switch};
   border-radius: 20px;
   border: 0.8px solid;
   border-color: ${p => p.theme.colors.statistics_border_color_switch};
   @media screen and (max-width: 375px) {
-    max-width: 280px;
+    display: block;
+    max-width: 260px;
   }
 
   @media screen and (min-width: 376px) and (max-width: 767px) {

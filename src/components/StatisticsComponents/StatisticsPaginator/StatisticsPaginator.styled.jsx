@@ -7,11 +7,15 @@ import styled from 'styled-components';
 import { theme } from 'theme';
 
 export const StatisticsDateWrapper = styled.div`
+  position: relative;
   display: flex;
-  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  /* align-items: center; */
   /* position: relative; */
   @media screen and (max-width: ${theme.breakpoints.mobileMax}) {
     justify-content: space-between;
+    /* align-items */
   }
 `;
 
