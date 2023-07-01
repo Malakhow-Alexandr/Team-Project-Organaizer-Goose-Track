@@ -2,7 +2,7 @@
 
 ---
 
-###Stack's used:
+### Stack's used:
 
 <div style="display: flex; justify-content: center; ">
 <span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-align: center"  >React</span>
@@ -17,7 +17,7 @@
 <span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >Visual Studio Code</span>
 </div>
 
-###Frameworks:
+### Frameworks:
 
 <div style="display: flex; flax-wrap: wrap;">
 <span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >Jest</span>
@@ -30,12 +30,13 @@
 <span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >and other's</span>
 </div>
 
-###Gett sarting:  
-Clone repository from
-[link on frontend](https://github.com/Malakhow-Alexandr/Team-Project-Organaizer-Goose-Track)
-and _instal npm packet_. After of this in terminal write _npm start_.
+### Gett sarting:
 
-###Faeturs:  
+Clone repository from link [^2] and _instal npm packet_. After of this in
+terminal write _npm start_.
+
+### Faeturs:
+
 Sign up /Log in – regestri form and authorization with a validation inputs [^1].
 JWT Authentication: Use JWT (JSON Web Token) authentication to provide secure
 access control. Added the function of authentication for the help of Google's
@@ -56,4 +57,10 @@ tasks and dates:
   koristuvachiv. ThemeToggler - light/dark theme jumper. Onboarding - tips for
   learning about the add-on functions for the new koristuvach.
 
-[^1]: ![autorization form]("./src/images/readme/Auotorization form.jpg")
+[^1]:
+
+<div>
+    ![autorization form](https://res.cloudinary.com/dlw8ttfw9/image/upload/v1688218733/Auotorization_form_tdekis.jpg)
+
+[^2]:
+    [link on frontend](https://github.com/Malakhow-Alexandr/Team-Project-Organaizer-Goose-Track)
