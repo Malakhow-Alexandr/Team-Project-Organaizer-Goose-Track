@@ -10,14 +10,10 @@ import { selectReviewByOwn } from '../../redux/reviews/selectors';
 export const AddFeedbackModal = ({ onClose }) => {
   const [userFeedback, setUserFeedback] = useState('');
   const [userRating, setUserRating] = useState(null);
- 
+
   const dispatch = useDispatch();
 
   const userReview = useSelector(selectReviewByOwn);
-  // console.log(userReview)
-  // console.log(userReview.text);
-  // console.log(userReview.rating);
-  // console.log(userReview._id);
 
   useEffect(() => {
     dispatch(getReviewByOwn());

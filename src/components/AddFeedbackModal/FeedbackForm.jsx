@@ -13,7 +13,7 @@ import {
   Form,
   FormField,
   ErrorMessage,
-  RatingLabel,
+  Title,
   // RatingInputOverlay,
   // RatingField,
   TextareaField,
@@ -33,36 +33,30 @@ import { useTranslation } from 'react-i18next';
 const FeedbackFormSchema = Yup.object().shape({
   rating: Yup.string().required('Required'),
   text: Yup.string()
-    .min(5, 'Too short')
+    .min(5, 'Your feedback is too short')
     .max(300, 'Your feedback is too long, please shorten it')
     .required('Required'),
 });
 
 export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
   const { t } = useTranslation();
-  // console.log(userFeedback);
-  // console.log(userRating);
 
-  const [feedbackRating, setFeedbackRating] = useState(0);
+  const [feedbackRating, setFeedbackRating] = useState(3);
   const [feedbackText, setFeedbackText] = useState(userFeedback || '');
   const [ratingHover, setRatingHover] = useState(null);
-  const [isEdit, setIsEdit] = useState(false);
-
-  console.log(feedbackRating);
-  console.log(feedbackText);
+  const [isEditOpen, setIsEditOpen] = useState(false);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (userFeedback || userRating) {
       setFeedbackRating(userRating);
-      setFeedbackText(userFeedback);   
+      setFeedbackText(userFeedback);
     }
   }, [userRating, userFeedback]);
 
   const handleFeedbackSubmit = (values, { resetForm }) => {
     console.log(values);
-    // console.log(actions);
     if (userFeedback || userRating) {
       dispatch(updateReviewByOwn({ text: values.text, rating: values.rating }));
       return;
@@ -70,121 +64,115 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
     if (!userFeedback || !userRating) {
       dispatch(createReviewByOwn({ text: values.text, rating: values.rating }));
       resetForm();
-      // setFeedbackText(values.text);
-     
-      setIsEdit(!isEdit)
-      console.log(isEdit)
       onClose();
     }
   };
 
   const handleEditBtnClick = () => {
-    // setIsEdit(!isEdit);
+    setIsEditOpen(!isEditOpen);
+  };
+
+  const handleCancelBtnClick = () => {
+    setFeedbackRating(userRating);
+    setFeedbackText(userFeedback);
+    onClose();
   };
 
   const handleFeedbackDelete = () => {
     dispatch(deleteReviewByOwn());
     onClose();
   };
-  
-
-const handleReviewChange = event => {
-  const inputValue = event.target.value;
-    setFeedbackText(inputValue);
-  };
-
-
 
   return (
     <Formik
-      initialValues={{ rating: feedbackRating, text: feedbackText }}
+      initialValues={{ rating: '', text: '' }}
       validationSchema={FeedbackFormSchema}
       onSubmit={handleFeedbackSubmit}
     >
-      <Form>
-        <RatingLabel>Rating</RatingLabel>
+      {props => (
+        <Form>
+          <Title>Rating</Title>
 
-        <FormField>
-          <div>
-            {[...Array(5)].map((star, ind) => {
-              const ratingValue = ind + 1;
+          <FormField>
+            <div>
+              {[...Array(5)].map((star, ind) => {
+                const ratingValue = ind + 1;
 
-              return (
-                <label key={ratingValue}>
-                  <Field
-                    type="radio"
-                    name="rating"
-                    value={ratingValue}
-                    onClick={() => {
-                      setFeedbackRating(ratingValue);
-                    }}
-                    style={{
-                      display: 'none',
-                    }}
-                  />
-                  <FaStar
-                    size={24}
-                    color={
-                      ratingValue <= (ratingHover || feedbackRating)
-                        ? '#FFAC33'
-                        : '#CEC9C1'
-                    }
-                    onMouseEnter={() => setRatingHover(ratingValue)}
-                    onMouseLeave={() => setRatingHover(null)}
-                  />
-                </label>
-              );
-            })}
-          </div>
-        </FormField>
+                return (
+                  <label key={ratingValue}>
+                    <Field
+                      type="radio"
+                      name="rating"
+                      value={ratingValue}
+                      onClick={() => {
+                        setFeedbackRating(ratingValue);
+                      }}
+                      style={{
+                        display: 'none',
+                      }}
+                    />
+                    <FaStar
+                      size={24}
+                      color={
+                        ratingValue <= (ratingHover || feedbackRating)
+                          ? '#FFAC33'
+                          : '#CEC9C1'
+                      }
+                      onMouseEnter={() => setRatingHover(ratingValue)}
+                      onMouseLeave={() => setRatingHover(null)}
+                    />
+                  </label>
+                );
+              })}
+              <ErrorMessage name="rating" component="p" />
+            </div>
+          </FormField>
 
-       
-       
-      
-        <EditButtonContainer>
-          {isEdit ? (
-            <RatingLabel>{t('Review')}</RatingLabel>
-          ) : (
-            <>
-              <RatingLabel>{t('Review')}</RatingLabel>
+          <EditButtonContainer>
+            {!userFeedback || !userRating ? (
+              <Title>{t('Review')}</Title>
+            ) : (
+              <>
+                <Title>{t('Review')}</Title>
 
-              <ButtonDiv>
-                <PencilBtn onClick={handleEditBtnClick}>
-                  <Pencil />
-                </PencilBtn>
-                <TrashBtn onClick={handleFeedbackDelete}>
-                  <Trash />
-                </TrashBtn>
-              </ButtonDiv>
-            </>
-          )}
-        </EditButtonContainer>
+                <ButtonDiv>
+                  <PencilBtn onClick={handleEditBtnClick}>
+                    <Pencil />
+                  </PencilBtn>
+                  <TrashBtn onClick={handleFeedbackDelete}>
+                    <Trash />
+                  </TrashBtn>
+                </ButtonDiv>
+              </>
+            )}
+          </EditButtonContainer>
 
-        <FormField>
-          <TextareaField
-            component="textarea"
-            type="text"
-            placeholder="Enter text"
-            name="text"
-            value={feedbackText}
-            onChange={handleReviewChange}
-            autoComplete="off"
-          />
-          <ErrorMessage name="text" component="p" />
-        </FormField>
+          <FormField>
+            <TextareaField
+              component="textarea"
+              type="text"
+              placeholder="Enter text"
+              name="text"
+              value={props.values.text || feedbackText}
+              onChange={props.handleChange}
+              autoComplete="off"
+            />
+            <ErrorMessage name="text" component="p" />
+          </FormField>
 
-        
-        
-        <RatingBtnOverlay>
-          {userFeedback || userRating ? (
-            <EditFeedbackBtn type="submit">{t('Edit')}</EditFeedbackBtn>
-          ) : (
-            <SaveFeedbackBtn type="submit">{t('Save')}</SaveFeedbackBtn>
-          )}
+          <RatingBtnOverlay>
+            {userFeedback || userRating ? (
+              <EditFeedbackBtn type="submit">{t('Edit')} </EditFeedbackBtn>
+            ) : (
+              <SaveFeedbackBtn type="submit">{t('Save')}</SaveFeedbackBtn>
+            )}
 
-          <CancelFeedbackBtn type="submit">{t('Cancel')}</CancelFeedbackBtn>
-        </RatingBtnOverlay>
-      </Form>
+            <CancelFeedbackBtn type="button" onClick={handleCancelBtnClick}>
+              {t('Cancel')}
+            </CancelFeedbackBtn>
+          </RatingBtnOverlay>
+        </Form>
+      )}
     </Formik>
   );
 };
