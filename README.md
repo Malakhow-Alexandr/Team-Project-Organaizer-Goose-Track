@@ -26,7 +26,6 @@
 [![redux-persist](https://img.shields.io/static/v1?label=&message=redux-persist&color=orange)](https://)
 [![and other's](https://img.shields.io/static/v1?label=&message=and+other's&color=orange)](https://)
 
-</div>
 ### Gett sarting:
 
 Clone repository from
