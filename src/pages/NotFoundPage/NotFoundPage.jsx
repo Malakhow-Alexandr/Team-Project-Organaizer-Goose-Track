@@ -15,7 +15,7 @@ import { t } from 'i18next';
 
 const NotFoundPage = () => {
   const navigate = useNavigate();
-  const [countdown, setCountdown] = useState(1000);
+  const [countdown, setCountdown] = useState(10);
 
   useEffect(() => {
     const timer = setInterval(() => {
