@@ -18,6 +18,16 @@ export const StatisticsPeriodPaginator = ({ onChange }) => {
   const [isOpen, setIsOpen] = useState(false);
   const isLoading = useSelector(selectIsLoading);
 
+  // useEffect(() => {
+  //   const handleClickOutside = event => {
+  //     console.log(event.currentTarget);
+  //   };
+
+  //   document.addEventListener('mousedown', handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleClickOutside);
+  //   };
+  // }, []);
   const onDatePickerChange = newDate => {
     setIsOpen(!isOpen);
     setCurrentDate(newDate);

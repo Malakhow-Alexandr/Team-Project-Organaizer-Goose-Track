@@ -76,7 +76,11 @@ export const theme = {
     statistics_tooltip_text: 'var(--statistics-tooltip-text)',
     //light rgba(33, 34, 44, 0.6) => dark rgba(255, 255, 255, 0.7);
 
+    calendar_shadow_switch: 'var(--chalendar-shadow)',
+    //light rgba(0, 0, 0, 0.36) => dark rgba(255, 255, 255, 0.3);
+
     scroll_сolor: 'var(--scroll-color)',
+
     bg_scroll_color: 'var(--bg-scroll-color)',
   },
 
