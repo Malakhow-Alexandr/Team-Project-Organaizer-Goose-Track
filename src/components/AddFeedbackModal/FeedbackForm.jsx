@@ -186,9 +186,10 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
             type="text"
             placeholder="Enter text"
             name="text"
-            value={props.values.text}
+            value={props.values.text || feedbackText}
               // onChange={props.handleChange}
-            autoComplete="off"
+              autoComplete="off"
+             setFieldValue
           />
           <ErrorMessage name="text" component="p" />
         </FormField>
