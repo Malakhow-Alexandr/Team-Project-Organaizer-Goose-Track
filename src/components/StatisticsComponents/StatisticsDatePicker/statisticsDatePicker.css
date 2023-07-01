@@ -1,46 +1,53 @@
-/* .sdp {
+.statistics {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+}
+
+.statistics .sdp {
   padding: 10px 10px;
   width: 235px;
-  height: 260px;
+
   align-items: center;
   background-color: #3e85f3;
   border-radius: 16px;
   position: absolute;
 
-  top: 0;
+  top: 40px;
   left: 5;
   z-index: 1000;
 
+  @media screen and (max-width: 375px) {
+  }
+  @media screen and (min-width: 376px) and (max-width: 767px) {
+  }
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-    top: 280px;
-    left: 79px;
   }
 
   @media screen and (min-width: 1440px) {
-    top: 305px;
-    left: 448px;
   }
 }
 
-.sdp--disabled {
+.statistics .sdp1--disabled {
   pointer-events: none;
 }
 
-.sdp:focus,
-.sdp--month-name:focus,
-.sdp--square-btn:focus {
+.statistics .sdp1:focus,
+.statistics .sdp1--month-name:focus,
+.statistics .sdp1--square-btn:focus {
   outline: none;
   box-shadow: var(--ring-shadow);
 }
 
-.sdp--month-name {
+.statistics .sdp--month-name {
   padding: 0.5rem;
   border: none;
   border-radius: 0.5rem;
   color: #3e85f3;
 }
 
-.sdp--text {
+.statistics .sdp--text {
   text-align: center;
   text-transform: uppercase;
   font-family: 'Inter';
@@ -51,12 +58,12 @@
   color: #ffffff;
 }
 
-.sdp--text__inactive {
+.statistics .sdp--text__inactive {
   color: transparent;
   pointer-events: none;
 }
 
-.sdp--square-btn {
+.statistics .sdp--square-btn {
   height: 20px;
   width: 20px;
   display: flex;
@@ -69,18 +76,20 @@
   transition: all 0.2s ease-in-out;
 }
 
-.sdp--square-btn:hover {
+.statistics .sdp--square-btn:hover {
   transform: scale(1.3);
+  height: 20px;
+  width: 20px;
   background-color: #ffffff;
   border-radius: 50%;
   color: #3e85f3;
 }
 
-.sdp--square-btn__outlined {
+.statistics .sdp--square-btn__outlined {
   color: #ffffff;
 }
 
-.sdp--date-btn__selected {
+.statistics .sdp--date-btn__selected {
   transform: scale(1.3);
   font-size: 12px;
   background-color: #ffffff;
@@ -88,13 +97,13 @@
   color: #3e85f3;
 }
 
-.sdp--header {
+.statistics .sdp--header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.sdp--grid {
+.statistics .sdp--grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 10px;
@@ -103,11 +112,11 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.sdp--grid > p.sdp--text {
+.statistics .sdp--grid > p.sdp--text {
   padding: 0.5rem 0;
 }
 
-.sdp--header__main {
+.statistics .sdp--header__main {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -119,34 +128,42 @@
   color: #ffffff;
 }
 
-.sdp--select__month button {
+.statistics .sdp--select__month button {
   text-align: left;
   color: #ffffff;
 }
 
-.sassy--select {
+.statistics .sassy--select {
   border: none;
   border-radius: 0.25rem;
   display: inline;
   padding: 0.2rem 0.4rem;
+  font-weight: 800;
+  font-size: 19px;
+  line-height: 19px;
   color: #ffffff;
 }
 
-.sassy--select__container {
+.statistics .sassy--select__container {
   border-radius: 0.25rem;
   position: relative;
 }
 
-.sassy--select:focus {
+.statistics .sassy--select:focus {
+  display: none;
   outline: none;
 }
 
-.sassy--select.sassy--select__disabled {
+.statistics .sassy--select.sassy--select__disabled {
+  display: none;
   opacity: var(--disabled-opacity);
   pointer-events: none;
 }
 
-.sassy--select__dropdown {
+.statistics .sassy--select__dropdown {
+  opacity: 1;
+  visibility: hidden;
+  pointer-events: none;
   position: absolute;
   z-index: 2;
   display: flex;
@@ -161,34 +178,45 @@
   scrollbar-width: none;
 }
 
-.sassy--select__dropdown::-webkit-scrollbar {
+.statistics .sassy--select__dropdown::-webkit-scrollbar {
   display: none;
-}
-
-.sassy--select,
-.sassy--option {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 28px;
-  color: white;
-}
-
-.sassy--option:focus {
-  outline: none;
-}
-
-.sassy--option__disabled {
-  color: whitesmoke;
+  opacity: 1;
+  visibility: hidden;
   pointer-events: none;
 }
 
-.sassy--select:hover {
+.statistics .sassy--select .sassy--option {
+  display: none;
+  font-family: 'Inter';
+  font-style: normal;
+  opacity: 1;
+  visibility: hidden;
+  pointer-events: none;
+  color: white;
+}
+
+.statistics .sassy--option:focus {
+  outline: none;
+  opacity: 1;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.statistics .sassy--option__disabled {
+  color: whitesmoke;
+  pointer-events: none;
+  opacity: 1;
+  visibility: hidden;
+}
+
+.statistics .sassy--select:hover {
   cursor: context-menu;
 }
 
-.sassy--option {
+.statistics .sassy--option {
+  opacity: 1;
+  visibility: hidden;
+  pointer-events: none;
   transition: all 0.1s ease;
   cursor: pointer;
   padding: 0.25rem 0.4rem;
@@ -198,12 +226,12 @@
   margin-top: 0.25rem;
 }
 
-.sassy--option:first-of-type {
+.statistics .sassy--option:first-of-type {
   margin-top: 0;
 }
 
-.sassy--option__active,
-.sassy--option:hover {
+.statistics .sassy--option__active,
+.statistics .sassy--option:hover {
   color: #3e85f3;
   background-color: rgb(206, 200, 200);
-} */
+}

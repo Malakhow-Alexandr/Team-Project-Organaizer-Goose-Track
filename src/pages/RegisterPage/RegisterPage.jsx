@@ -9,8 +9,10 @@ import { IoMdArrowRoundBack } from 'react-icons/io';
 import goose_img from '../../images/register_loginPage/goose_register.png';
 import goose_img2x from '../../images/register_loginPage/goose_register@2x.png';
 import { LoginWithGoogleBtn } from 'components/LoginWithGoogleBtn/LoginWithGoogleBtn';
+import { useTranslation } from 'react-i18next';
 
 const RegisterPage = () => {
+  const { t } = useTranslation();
   const { isDesktop } = useResponse();
   const location = useLocation();
   const navigate = useNavigate();
@@ -35,7 +37,7 @@ const RegisterPage = () => {
       <FormWrapper>
         <GoBackBtn type="button" onClick={handelGoBack}>
           <IoMdArrowRoundBack />
-          Go Back
+          {t('Go Back')}
         </GoBackBtn>
         <RegisterForm />
       </FormWrapper>

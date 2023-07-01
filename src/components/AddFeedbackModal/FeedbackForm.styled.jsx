@@ -17,7 +17,7 @@ export const Form = styled(FormikForm)`
   margin-bottom: 20px;
 `;
 
-export const RatingLabel = styled.p`
+export const Title = styled.p`
   font-family: ${props => props.theme.fonts.heading};
   font-weight: ${props => props.theme.fontWeights.normal};
   font-size: ${props => props.theme.fontSizes.xs};

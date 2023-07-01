@@ -1,10 +1,12 @@
 import DatePicker from 'sassy-datepicker';
 import './statisticsDatePicker.css';
 
-export const StatisticsDatePicker = ({ onChange, date }) => {
+export const StatisticsDatePicker = ({ onChange, date, open }) => {
   return (
     <>
-      <DatePicker weekStartsFrom="Monday" onChange={onChange} value={date} />
+      <div className="statistics">
+        <DatePicker weekStartsFrom="Monday" onChange={onChange} value={date} />
+      </div>
     </>
   );
 };

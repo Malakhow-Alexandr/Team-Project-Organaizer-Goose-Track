@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 export const CustomText = styled.text`
   fill: ${p => p.theme.colors.third_text_switch};
+  @media screen and (max-width: 375px) {
+    font-size: 12px;
+    font-weight: 500;
+  }
 `;
 export const TooltipStyled = styled.div`
   width: 120px;
@@ -27,4 +31,8 @@ export const TooltipText = styled.p`
   font-family: ${p => p.theme.fonts.text};
   font-size: 15px;
   font-weight: 500;
+  @media screen and (max-width: 375px) {
+    font-size: 12px;
+    font-weight: 500;
+  }
 `;

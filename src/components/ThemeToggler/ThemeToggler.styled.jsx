@@ -12,7 +12,7 @@ export const ThemeModeBtn = styled.button`
   align-items: center;
   justify-content: center;
   padding-bottom: 1px;
-  margin-left: 12px;
+  /* margin-left: 12px; */
 
   cursor: pointer;
 

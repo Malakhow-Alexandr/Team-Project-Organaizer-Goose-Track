@@ -24,6 +24,7 @@ html[data-theme='light'] {
   --scroll-color: rgba(231, 229, 229, 1);
   --bg-scroll-color: rgba(242, 242, 242, 1);
   --scrollbar-bg: rgba(242, 242, 242, 1);
+  --chalendar-shadow: rgba(0, 0, 0, 0.36);
 }
 
 html[data-theme='dark'] {
@@ -52,6 +53,7 @@ html[data-theme='dark'] {
   --scroll-color: #13151a;
   --bg-scroll-color: rgba(23, 24, 32);
   --scrollbar-bg: #2d3037;
+  --chalendar-shadow: rgba(255, 255, 255, 0.3);
 }
 
 body {

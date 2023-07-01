@@ -7,7 +7,7 @@ export const SpinBtn = styled.span`
   font-weight: bold;
   color: #fff;
   position: relative;
-
+  
   ::before {
     content: '';
     position: absolute;

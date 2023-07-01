@@ -21,7 +21,7 @@ import { LoaderForBtn } from 'components/LoaderForBtn/LoaderForBtn';
 import { selectAuthIsLoading } from 'redux/auth/selectors';
 
 const regExp =
-  /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
+  /^([A-z0-9_-]+\.)*[A-z0-9_-]+@[A-z0-9_-]+(\.[A-z0-9_-]+)*\.[A-z]{2,6}$/;
 
 const FormSchema = Yup.object().shape({
   email: Yup.string()

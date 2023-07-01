@@ -12,8 +12,10 @@ import goose_img from '../../images/register_loginPage/goose_login.png';
 import goose_img2x from '../../images/register_loginPage/goose_login@2x.png';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { LoginWithGoogleBtn } from 'components/LoginWithGoogleBtn/LoginWithGoogleBtn';
+import { useTranslation } from 'react-i18next';
 
 const LoginPage = () => {
+  const { t } = useTranslation();
   const { isDesktop } = useResponse();
   const location = useLocation();
   const navigate = useNavigate();
@@ -38,7 +40,7 @@ const LoginPage = () => {
       <FormWrapper>
         <GoBackBtn type="button" onClick={handelGoBack}>
           <IoMdArrowRoundBack />
-          Go Back
+          {t('Go Back')}
         </GoBackBtn>
         <LoginForm />
       </FormWrapper>

@@ -22,8 +22,10 @@ export const AuthSection = () => {
   const { t } = useTranslation();
 
   return (
+    <div>
+      <LanguageFlags/>
     <Header height={viewportHeight}>
-      <LanguageFlags />
+      
       <ContentWrapper height={viewportHeight}>
         <ImageWrapper>
           <img
@@ -47,6 +49,7 @@ export const AuthSection = () => {
           <RegisterLink to="register">{t('Sign up')}</RegisterLink>
         </nav>
       </ContentWrapper>
-    </Header>
+      </Header>
+      </div>
   );
 };
