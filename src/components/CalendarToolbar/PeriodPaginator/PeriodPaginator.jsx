@@ -28,12 +28,6 @@ const PeriodPaginator = ({ prevHandler, nextHandler, type }) => {
     setIsOpen(!isOpen);
   };
 
-  //  const onClose = e => {
-  //    if (e.code === 'Escape' || e.currentTarget === e.target) {
-  //      setIsOpen(false);
-  //    }
-  //  };
-
   const navigateToDate = newDate => {
     return `/calendar/day/${format(newDate, 'yyyy-MM-dd')}`;
   };
@@ -46,11 +40,7 @@ const PeriodPaginator = ({ prevHandler, nextHandler, type }) => {
 
   return (
     <Wrapper>
-      <PeriodPaginatorButton
-        variant="outlined"
-        type="button"
-        onClick={handleClick}
-      >
+      <PeriodPaginatorButton onClick={handleClick}>
         {type === 'month'
           ? currentDate.slice(3, currentDate.length)
           : currentDate}

@@ -35,9 +35,10 @@ const CalendarTable = ({ startDay, today, tasks }) => {
   };
 
   return (
-    <>
-      <GridWrapper>
-        {daysMap.map(dayItem => (
+    <GridWrapper>
+      {daysMap.map(dayItem => {
+        const dayTasks = filterTask(dayItem);
+        return (
           <CellWrapper
             isWeekday={dayItem.day() === 6 || dayItem.day() === 0}
             key={dayItem.unix()}
@@ -59,24 +60,18 @@ const CalendarTable = ({ startDay, today, tasks }) => {
                 </DayWrapper>
               </ShowDayWrapper>
               <TaskListWrapper>
-                {filterTask(dayItem)
-                  .slice(0, 2)
-                  .map(task => (
-                    <li key={task._id}>
-                      <CalendarTaskDay task={task} />
-                    </li>
-                  ))}
-                {tasks
-                  .filter(task => task.date === dayItem.format('YYYY-MM-DD'))
+                {dayTasks.slice(0, 2).map(task => (
+                  <li key={task._id}>
+                    <CalendarTaskDay task={task} />
+                  </li>
+                ))}
+                {dayTasks
                   .map(tasks => tasks.tasks)
                   .reduce((t1, t2) => t1.concat(t2), []).length > 2 && (
                   <li key="more">
                     <CalendarTableMoreBtn type="button">
                       +{' '}
-                      {tasks
-                        .filter(
-                          task => task.date === dayItem.format('YYYY-MM-DD')
-                        )
+                      {filterTask(dayItem)
                         .map(tasks => tasks.tasks)
                         .reduce((t1, t2) => t1.concat(t2), []).length - 2}{' '}
                       tasks...
@@ -86,9 +81,9 @@ const CalendarTable = ({ startDay, today, tasks }) => {
               </TaskListWrapper>
             </RowInCell>
           </CellWrapper>
-        ))}
-      </GridWrapper>
-    </>
+        );
+      })}
+    </GridWrapper>
   );
 };
 
