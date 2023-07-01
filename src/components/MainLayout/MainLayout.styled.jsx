@@ -31,6 +31,7 @@ export const Main = styled.main`
 `;
 
 export const LeftColumnWrapper = styled.div`
+  position: fixed;
   width: 225px;
   height: 100%;
 
