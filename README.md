@@ -29,8 +29,9 @@
 </div>
 ### Gett sarting:
 
-Clone repository from link [^1] and _instal npm packet_. After of this in
-terminal write _npm start_.
+Clone repository from
+[![link](https://img.shields.io/static/v1?label=&message=link&color=brown)](https://github.com/Malakhow-Alexandr/Team-Project-Organaizer-Goose-Track/tree/readme)
+and _instal npm packet_. After of this in terminal write _npm start_.
 
 ### Faeturs:
 
@@ -53,9 +54,6 @@ tasks and dates:
   the addendum. On the head side - automatic display of the vodgukiv of the
   koristuvachiv. ThemeToggler - light/dark theme jumper. Onboarding - tips for
   learning about the add-on functions for the new koristuvach.
-
-[^1]:
-    [link on frontend](https://github.com/Malakhow-Alexandr/Team-Project-Organaizer-Goose-Track)
 
 [^2]:
     ![autorization form](https://res.cloudinary.com/dlw8ttfw9/image/upload/v1688218733/Auotorization_form_tdekis.jpg)
