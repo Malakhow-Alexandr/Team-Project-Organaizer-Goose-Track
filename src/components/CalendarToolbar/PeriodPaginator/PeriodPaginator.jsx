@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { format } from 'date-fns';
 import { useParams } from 'react-router';
@@ -23,6 +23,24 @@ const PeriodPaginator = ({ prevHandler, nextHandler, type }) => {
   const [date, setDate] = useState(new Date());
   const navigate = useNavigate();
 
+  // Hook для закриття DatePicker
+  const outsideReference = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        outsideReference.current &&
+        !outsideReference.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [setIsOpen]);
+
   const handleClick = e => {
     e.preventDefault();
     setIsOpen(!isOpen);
@@ -39,7 +57,7 @@ const PeriodPaginator = ({ prevHandler, nextHandler, type }) => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper ref={outsideReference}>
       <PeriodPaginatorButton onClick={handleClick}>
         {type === 'month'
           ? currentDate.slice(3, currentDate.length)
