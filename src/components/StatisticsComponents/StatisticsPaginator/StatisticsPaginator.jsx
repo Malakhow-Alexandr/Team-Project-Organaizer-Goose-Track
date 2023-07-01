@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { format, addDays, subDays } from 'date-fns';
 import { Puff } from 'react-loader-spinner';
@@ -37,6 +37,24 @@ export const StatisticsPeriodPaginator = ({ onChange }) => {
 
   const formatDataForBack = date => format(date, 'yyyy-MM-dd');
 
+  // Hook для закриття DatePicker
+  const outsideReference = useRef(null);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (
+        outsideReference.current &&
+        !outsideReference.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [setIsOpen]);
+
   useEffect(() => {
     const formattedDate = formatDataForBack(currentDate);
 
@@ -55,7 +73,7 @@ export const StatisticsPeriodPaginator = ({ onChange }) => {
 
   return (
     <div>
-      <StatisticsDateWrapper>
+      <StatisticsDateWrapper ref={outsideReference}>
         <StatisticsPaginatorDateButton
           type="button"
           aria-label="DatePicker"
