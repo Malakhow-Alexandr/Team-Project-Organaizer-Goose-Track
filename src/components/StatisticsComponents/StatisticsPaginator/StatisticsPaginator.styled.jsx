@@ -11,11 +11,9 @@ export const StatisticsDateWrapper = styled.div`
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  /* align-items: center; */
-  /* position: relative; */
   @media screen and (max-width: ${theme.breakpoints.mobileMax}) {
+    margin-bottom: 20px;
     justify-content: space-between;
-    /* align-items */
   }
 `;
 
@@ -34,5 +32,17 @@ export const StatisticsButton2 = styled(Button2)`
   @media screen and (max-width: ${theme.breakpoints.mobile}) {
     width: 25px;
     height: 25px;
+  }
+`;
+
+export const SpinnerWrapperComponent = styled.span`
+  position: absolute;
+  top: 2;
+
+  @media screen and (max-width: 767px) {
+    left: 110px;
+  }
+  @media screen and (min-width: 768px) {
+    left: 135px;
   }
 `;

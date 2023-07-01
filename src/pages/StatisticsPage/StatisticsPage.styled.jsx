@@ -11,7 +11,7 @@ export const StatisticsPageContainer = styled.section`
     max-width: 335px;
     border-radius: 16px;
     padding-top: 28px;
-    padding-bottom: 28px;
+    padding-bottom: 70px;
     padding-left: 1px;
     padding-right: 1px;
   }
@@ -20,7 +20,7 @@ export const StatisticsPageContainer = styled.section`
     width: 335px;
     border-radius: 16px;
     padding-top: 28px;
-    padding-bottom: 28px;
+    padding-bottom: 70px;
     padding-left: 14px;
     padding-right: 14px;
   }
@@ -56,11 +56,15 @@ export const HeadContainer = styled.section`
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
+    display: flex;
     width: 640px;
+    align-items: center;
   }
 
   @media screen and (min-width: 1440px) {
+    display: flex;
     width: 860px;
+    align-items: center;
   }
 `;
 
