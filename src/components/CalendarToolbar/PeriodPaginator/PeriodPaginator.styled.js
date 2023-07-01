@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
     align-items: center;
   }
 `;
-export const PeriodPaginatorButton = styled.button`
+export const PeriodPaginatorButton = styled.p`
   display: flex;
   width: 140px;
   height: 30px;
