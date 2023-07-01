@@ -26,14 +26,9 @@ import {
 } from './StatisticsChartCustomComponents';
 import { useTranslation } from 'react-i18next';
 
-// const byMonth = {
-//   todo: 14,
-//   inProgress: 33,
-//   done: 33,
-// };
-
 export const StatisticsChart = ({ selectedDay }) => {
   const dispatch = useDispatch();
+
   const statistics = useSelector(selectTasksStatistics);
   const { t } = useTranslation();
   const { statisticsByDay, statisticsByMonth } = statistics;
@@ -46,18 +41,18 @@ export const StatisticsChart = ({ selectedDay }) => {
   const data = [
     {
       name: t('To Do'),
-      by_Month: statisticsByMonth?.todo ?? 0,
-      by_Day: statisticsByDay?.todo ?? 0,
+      by_Month: statisticsByMonth?.todo ?? 0 + '%',
+      by_Day: statisticsByDay?.todo ?? 0 + '%',
     },
     {
       name: t('In Action'),
-      by_Month: statisticsByMonth?.inProgress ?? 0,
-      by_Day: statisticsByDay?.inProgress ?? 0,
+      by_Month: statisticsByMonth?.inProgress ?? 0 + '%',
+      by_Day: statisticsByDay?.inProgress ?? 0 + '%',
     },
     {
       name: t('Done'),
-      by_Month: statisticsByMonth?.done ?? 0,
-      by_Day: statisticsByDay?.done ?? 0,
+      by_Month: statisticsByMonth?.done ?? 0 + '%',
+      by_Day: statisticsByDay?.done ?? 0 + '%',
     },
   ];
   return (
