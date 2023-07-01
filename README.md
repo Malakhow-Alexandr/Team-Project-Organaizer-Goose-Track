@@ -34,7 +34,7 @@ and _instal npm packet_. After of this in terminal write _npm start_.
 
 ### Faeturs:
 
-Sign up /Log in – regestri form and authorization with a validation inputs [^2]
+Sign up /Log in – regestri form and authorization with a validation inputs
 [![picture](https://img.shields.io/static/v1?label=&message=picture&color=brown)](https://res.cloudinary.com/dlw8ttfw9/image/upload/v1688218733/Auotorization_form_tdekis.jpg).
 JWT Authentication: Use JWT (JSON Web Token) authentication to provide secure
 access control. Added the function of authentication for the help of Google's
@@ -46,20 +46,14 @@ tasks and dates:
 - allows you to marvel at all tasks for a month, go to the side of one day;
 
 - allows you to create the task of detailing the interval between the hours and
-  the degree of folding;[^3]
+  the degree of
+  folding;[![2 - picture](https://img.shields.io/static/v1?label=2&message=picture&color=brown)](https://res.cloudinary.com/dlw8ttfw9/image/upload/v1688221938/make_a_task_tockqa.jpg)
 
 - allows you to create and divide tasks into groups (To do / In progress /
   Done). For a comfortable check-in, we have implemented card redrawing from one
-  group to another [^4]. Feedback - a form with a feedback and an assessment of
-  the addendum. On the head side - automatic display of the vodgukiv of the
-  koristuvachiv. ThemeToggler - light/dark theme jumper. Onboarding - tips for
-  learning about the add-on functions for the new koristuvach.
-
-[^2]:
-    ![autorization form](https://res.cloudinary.com/dlw8ttfw9/image/upload/v1688218733/Auotorization_form_tdekis.jpg)
-
-[^3]:
-    ![calendar page](https://res.cloudinary.com/dlw8ttfw9/image/upload/v1688221938/make_a_task_tockqa.jpg)
-
-[^4]:
-    ![task_group](https://res.cloudinary.com/dlw8ttfw9/image/upload/v1688221938/task_process_nyt2as.jpg)
+  group to another
+  [![3 - picture](https://img.shields.io/static/v1?label=3&message=picture&color=brown)](https://res.cloudinary.com/dlw8ttfw9/image/upload/v1688221938/task_process_nyt2as.jpg).
+  Feedback - a form with a feedback and an assessment of the addendum. On the
+  head side - automatic display of the vodgukiv of the koristuvachiv.
+  ThemeToggler - light/dark theme jumper. Onboarding - tips for learning about
+  the add-on functions for the new koristuvach.
