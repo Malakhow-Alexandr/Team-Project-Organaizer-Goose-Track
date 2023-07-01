@@ -5,6 +5,7 @@
 ### Stack's used:
 
 <div style="display: flex; justify-content: center;">
+<h3 style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-align: center">React</h3>
 <span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-align: center"  >React</span>
 <span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >Redux</span>
 <span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >Axios</span>
