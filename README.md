@@ -4,33 +4,29 @@
 
 ### Stack's used:
 
-<div style="display: flex; justify-content: center;">
-<h3 style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-align: center">React</h3>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-align: center"  >React</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >Redux</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >Axios</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >Node.js</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >HTML5</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >CSS</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >Figma</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >Git</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >Git Hub</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >Visual Studio Code</span>
-</div>
+[![React](https://img.shields.io/static/v1?label=&message=React&color=2ea44f)](https://)
+[![Redux](https://img.shields.io/static/v1?label=&message=Redux&color=2ea44f)](https://)
+[![Axios](https://img.shields.io/static/v1?label=&message=Axios&color=2ea44f)](https://)
+[![Node.js](https://img.shields.io/static/v1?label=&message=Node.js&color=2ea44f)](https://)
+[![HTML](https://img.shields.io/static/v1?label=&message=HTML&color=2ea44f)](https://)
+[![CSS - SASS](https://img.shields.io/static/v1?label=CSS&message=SASS&color=2ea44f)](https://)
+[![Figma](https://img.shields.io/static/v1?label=&message=Figma&color=2ea44f)](https://)
+[![Git](https://img.shields.io/static/v1?label=&message=Git&color=2ea44f)](https://)
+[![GitHub](https://img.shields.io/static/v1?label=&message=GitHub&color=2ea44f)](https://)
+[![VS Code](https://img.shields.io/static/v1?label=&message=VS+Code&color=2ea44f)](https://)
 
 ### Frameworks:
 
-<div style="display: flex; flax-wrap: wrap;">
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >Jest</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >mongoose</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >swagger</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >style-components</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >modern-normolize</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >moment</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >redux-persist</span>
-<span style = "background-color: darkgreen; color: orange; padding: 1px 2px; border-radius: 4px;margin-right: 6px; padding-left: 10px; padding-right: 10px; text-aline: center"  >and other's</span>
-</div>
+[![Jest](https://img.shields.io/static/v1?label=&message=Jest&color=orange)](https://)
+[![mongoose](https://img.shields.io/static/v1?label=&message=mongoose&color=orange)](https://)
+[![swagger](https://img.shields.io/static/v1?label=&message=swagger&color=orange)](https://)
+[![style-Components](https://img.shields.io/static/v1?label=&message=style-Components&color=orange)](https://)
+[![modern-normolize](https://img.shields.io/static/v1?label=&message=modern-normolize&color=orange)](https://)
+[![moment](https://img.shields.io/static/v1?label=&message=moment&color=orange)](https://)
+[![redux-persist](https://img.shields.io/static/v1?label=&message=redux-persist&color=orange)](https://)
+[![and other's](https://img.shields.io/static/v1?label=&message=and+other's&color=orange)](https://)
 
+</div>
 ### Gett sarting:
 
 Clone repository from link [^1] and _instal npm packet_. After of this in
