@@ -6,11 +6,11 @@ export const Backdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 3;
+  z-index: 1000;
   overflow-y: auto;
-  background-color: rgba(46, 43, 38, 0.521);
+  background-color: rgba(46, 43, 38, 0.295);
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 export const SpinWrap = styled.div`
@@ -18,13 +18,14 @@ export const SpinWrap = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 100;
+  z-index: 1000;
 `;
 
 export const Spin = styled.span`
   display: block;
-  margin: auto;
+  /* margin: auto;
   position: relative;
+  z-index: 10;
   animation: myAnim 2s ease infinite;
 
   @keyframes myAnim {
@@ -55,7 +56,7 @@ export const Spin = styled.span`
     100% {
       transform: scale3d(1, 1, 1);
     }
-  }
+  } */
 `;
 
 export const Image = styled.img`

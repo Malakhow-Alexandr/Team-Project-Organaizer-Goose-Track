@@ -12,7 +12,7 @@ export const Overlay = styled.div`
   margin-left: auto;
   margin-right: auto;
   background-color: transparent;
-  z-index: 1000;
+  z-index: 100;
 `;
 
 export const ModalContainer = styled.div`

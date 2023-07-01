@@ -10,8 +10,10 @@ import { PrivateRoute } from './AuthRoutes/PrivateRoute';
 import { updateAccessToken } from '../redux/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentUser } from 'redux/auth/operations';
-import { selectIsRefreshing } from 'redux/auth/selectors';
+import { selectAuthIsLoading, selectIsRefreshing } from 'redux/auth/selectors';
 import { Loader } from './Loader/Loader';
+import { selectIsLoading } from 'redux/tasks/selectors';
+import { selectReviewsIsLoading } from 'redux/reviews/selectors';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -36,6 +38,9 @@ export const App = () => {
   const [searchParams] = useSearchParams();
 
   const isRefreshing = useSelector(selectIsRefreshing);
+  const authIsLoading = useSelector(selectAuthIsLoading);
+  const taskIsLoading = useSelector(selectIsLoading);
+  const reviewsIsLoading = useSelector(selectReviewsIsLoading);
 
   useEffect(() => {
     const accessToken = searchParams.get('accessToken');
@@ -53,6 +58,9 @@ export const App = () => {
   }, [dispatch, searchParams]);
   return (
     <Suspense fallback={<Loader />}>
+      {authIsLoading && <Loader />}
+      {taskIsLoading && <Loader />}
+      {reviewsIsLoading && <Loader />}
       {!isRefreshing && (
         <>
           <Routes>
