@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   FooterStyled,
   Wrapper,
@@ -8,9 +9,23 @@ import {
   Links,
   TeamInfoWrapper,
   CopyIcon,
+  ButtonTeam,
 } from './Footer.styled';
+import { DevelopersModal } from './Developers/DevelopersModal/DevelopersModal';
 
 export const Footer = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    console.log('closed');
+  };
+
+  const handleShowModal = () => {
+    setShowModal(true);
+    console.log('opened');
+  };
+
   return (
     <FooterStyled>
       <Wrapper>
@@ -20,9 +35,8 @@ export const Footer = () => {
               <CopyIcon />
             </span>
             2023
-            <span>GoIT Students</span>
+            <ButtonTeam onClick={handleShowModal}>GoIT Students</ButtonTeam>
           </p>
-          <button type="button">Modal</button>
         </TeamInfoWrapper>
         <LinksList>
           <li>
@@ -43,6 +57,7 @@ export const Footer = () => {
           <li></li>
         </LinksList>
       </Wrapper>
+      {showModal && <DevelopersModal onClose={handleCloseModal} />}
     </FooterStyled>
   );
 };

@@ -69,7 +69,7 @@ html[data-theme='dark'] {
   --user-input-border: 1px solid rgba(255, 255, 255, 0.15);
 
   --textarea-bg: rgba(23, 24, 32, 1);
-  --rating-text:rgba(250, 250, 250, 0.3);
+  --rating-text: rgba(250, 250, 250, 0.3);
   --cancel-btn: rgba(23, 24, 32, 1);
   --pencil-btn-bg: rgba(53, 54, 71, 1);
   --trash-btn-bg: rgb(237, 152, 172);
@@ -80,7 +80,9 @@ body {
   background: var(--background);
   /* transition: background-color 400ms;     */
 }
+
 html {
+
   /* width */
   ::-webkit-scrollbar {
     width: 8px;

@@ -21,9 +21,10 @@ export const ModalContainer = styled.div`
   padding: 40px 18px;
   min-width: 303px;
   min-height: 336px;
+  max-height: 95vh;
   box-sizing: border-box;
   border: ${props => props.theme.borders.normal} rgba(220, 227, 229, 0.8);
-  background-color: ${props => props.theme.colors.second_background_switch};
+  background-color: ${props => props.theme.colors.background};
   border-radius: ${props => props.theme.radii.small};
   box-shadow: 0px 4px 16px 0px #1111111a;
   border-color: ${props => props.theme.colors.modal_border_color};
@@ -50,7 +51,7 @@ export const CloseBtn = styled.button`
 `;
 
 export const MyCloseIcon = styled(CloseIcon)`
-  stroke: ${p => p.theme.colors.primary_text_switch};
+  stroke: ${props => props.theme.colors.primary_text_switch};
   :hover {
     stroke: rgb(62, 133, 243);
     transition: stroke 250ms linear 0s;
