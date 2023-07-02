@@ -63,7 +63,7 @@ const UserForm = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
   const isLoading = useSelector(selectAuthIsLoading);
-  console.log(user);
+ 
   const [userAvatar, setUserAvatar] = useState(user.avatarURL);
   const [birthdayDate, setBirthdayDate] = useState(null);
   const [isFormChanged, setIsFormChanged] = useState(false);
