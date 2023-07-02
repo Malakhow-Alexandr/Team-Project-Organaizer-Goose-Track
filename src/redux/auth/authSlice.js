@@ -7,6 +7,7 @@ import {
   logoutUser,
   currentUser,
   updateUser,
+  changePassword,
 } from './operations';
 
 const handlePending = state => {
@@ -52,9 +53,11 @@ const authSlice = createSlice({
       .addCase(loginUser.pending, handlePending)
       .addCase(updateUser.pending, handlePending)
       .addCase(logoutUser.pending, handlePending)
+      .addCase(changePassword.pending, handlePending)
       .addCase(registerUser.rejected, handleRejected)
       .addCase(loginUser.rejected, handleRejected)
       .addCase(updateUser.rejected, handleRejected)
+      .addCase(changePassword.rejected, handleRejected)
       .addCase(registerUser.fulfilled, (state, { payload }) => {
         state.user = { ...state.user, ...payload.user };
         state.accessToken = payload.accessToken;
