@@ -14,7 +14,7 @@ import {
 } from '../PasswordPage/PasswordPage.styled';
 import * as Yup from 'yup';
 import { IoEyeOutline, IoEyeOff } from 'react-icons/io5';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { selectAuthIsLoading } from 'redux/auth/selectors';
 import { LoaderForBtn } from 'components/LoaderForBtn/LoaderForBtn';
@@ -47,7 +47,6 @@ const PasswordPage = () => {
   const passwordIsMatch =
     newPassword === repeatNewPassword && newPassword !== '';
 
-  const dispatch = useDispatch();
   const { t } = useTranslation();
   const isLoading = useSelector(selectAuthIsLoading);
 

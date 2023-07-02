@@ -22,6 +22,8 @@ export const theme = {
     muted: '#F7F6F9',
     closeButton: '#111111',
     textarea: '#F6F6F6',
+    
+    
 
     // Theme toggler
 
@@ -79,16 +81,15 @@ export const theme = {
     calendar_shadow_switch: 'var(--chalendar-shadow)',
     //light rgba(0, 0, 0, 0.36) => dark rgba(255, 255, 255, 0.3);
 
-    modal_border_color: 'var(--modal-border-color)',
-    modal_form_label: 'var(--modal-form-label)',
-    // rgba(52, 52, 52, 0.8) ---->>>>>   #rgba(250, 250, 250, 0.3);
-
-    user_input_border: 'var(--user-input-border)',
-    // 1px solid rgba(17, 17, 17, 0.1) ---->>>>>  1px solid rgba(255, 255, 255, 0.15);
-
     scroll_сolor: 'var(--scroll-color)',
 
     bg_scroll_color: 'var(--bg-scroll-color)',
+
+    texarea_bg: 'var(--textarea-bg)',
+    rating_text: 'var(--rating-text)',
+    cancel_btn: 'var(--cancel-btn)',
+    pencil_btn_bg: 'var(--pencil-btn-bg)',
+    trash_btn_bg: 'var(--trash-btn-bg)'
   },
 
   fonts: {

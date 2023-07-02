@@ -10,12 +10,11 @@ import {
 } from '../../redux/reviews/operations';
 import { FaStar } from 'react-icons/fa';
 import {
+  FeedbackFormContainer,
   Form,
   FormField,
   ErrorMessage,
   Title,
-  // RatingInputOverlay,
-  // RatingField,
   TextareaField,
   RatingBtnOverlay,
   SaveFeedbackBtn,
@@ -31,9 +30,9 @@ import {
 import { useTranslation } from 'react-i18next';
 
 const FeedbackFormSchema = Yup.object().shape({
-  rating: Yup.string().required('Required'),
+  rating: Yup.string(),
   text: Yup.string()
-    .min(5, 'Your feedback is too short')
+    .min(2, 'Your feedback is too short')
     .max(300, 'Your feedback is too long, please shorten it')
     .required('Required'),
 });
@@ -45,6 +44,8 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
   const [feedbackText, setFeedbackText] = useState(userFeedback || '');
   const [ratingHover, setRatingHover] = useState(null);
   const [isEditOpen, setIsEditOpen] = useState(false);
+
+
 
   const dispatch = useDispatch();
 
@@ -59,6 +60,8 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
     console.log(values);
     if (userFeedback || userRating) {
       dispatch(updateReviewByOwn({ text: values.text, rating: values.rating }));
+      setIsEditOpen(false);
+      onClose();
       return;
     }
     if (!userFeedback || !userRating) {
@@ -68,13 +71,16 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
     }
   };
 
+  
+
   const handleEditBtnClick = () => {
-    setIsEditOpen(!isEditOpen);
+    setIsEditOpen(true);
   };
 
   const handleCancelBtnClick = () => {
     setFeedbackRating(userRating);
     setFeedbackText(userFeedback);
+    setIsEditOpen(false);
     onClose();
   };
 
@@ -90,6 +96,7 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
       onSubmit={handleFeedbackSubmit}
     >
       {props => (
+        <FeedbackFormContainer>
         <Form>
           <Title>{t('Rating')}</Title>
 
@@ -160,7 +167,28 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
             <ErrorMessage name="text" component="p" />
           </FormField>
 
-          <RatingBtnOverlay>
+     <RatingBtnOverlay>
+            {(!userFeedback || !userRating) && (
+              <>
+                <SaveFeedbackBtn type="submit">{t('Save')}</SaveFeedbackBtn>
+                <CancelFeedbackBtn type="button" onClick={handleCancelBtnClick}>
+                  {t('Cancel')}
+                </CancelFeedbackBtn>
+              </>
+            )}
+
+            {isEditOpen === true && (
+              <>
+                <EditFeedbackBtn type="submit">{t('Edit')} </EditFeedbackBtn>
+                <CancelFeedbackBtn type="button" onClick={handleCancelBtnClick}>
+                  {t('Cancel')}
+                </CancelFeedbackBtn>
+              </>
+            )}
+          </RatingBtnOverlay>
+
+
+          {/* <RatingBtnOverlay>
             {userFeedback || userRating ? (
               <EditFeedbackBtn type="submit">{t('Edit')} </EditFeedbackBtn>
             ) : (
@@ -170,8 +198,9 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
             <CancelFeedbackBtn type="button" onClick={handleCancelBtnClick}>
               {t('Cancel')}
             </CancelFeedbackBtn>
-          </RatingBtnOverlay>
-        </Form>
+          </RatingBtnOverlay> */}
+          </Form>
+          </FeedbackFormContainer>
       )}
     </Formik>
   );
