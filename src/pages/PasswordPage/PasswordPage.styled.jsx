@@ -9,8 +9,8 @@ export const Form = styled(FormikForm)`
   margin: 0 auto;
   padding: 40px 24px;
   border-radius: ${p => p.theme.radii.small};
-  color: ${p => p.theme.colors.black};
-  background-color: ${p => p.theme.colors.background};
+  color: ${p => p.theme.primary_text_switch};
+  background-color: ${p => p.theme.third_background_switch};
 
   @media screen and (min-width: 768px) {
     padding: 40px;
@@ -25,7 +25,7 @@ export const FormTitle = styled.h2`
   font-weight: ${p => p.theme.fontWeights.heading};
   font-size: 18px;
   line-height: 1.33;
-  color: ${p => p.theme.colors.primary};
+  color: ${p => p.theme.primary_text_switch};
   text-shadow: 0px 47px 355px rgba(0, 0, 0, 0.07),
     0px 9.4px 57.6875px rgba(0, 0, 0, 0.035);
 
@@ -46,7 +46,7 @@ export const FormLabel = styled.label`
   font-style: ${p => p.theme.fonts.heading};
   font-weight: ${p => p.theme.fontWeights.heading};
   font-size: ${p => p.theme.fontSizes.xs};
-  color: ${p => p.theme.colors.black};
+  color: ${p => p.theme.primary_text_switch};
 
   &.is-valid {
     color: ${p => p.theme.colors.greenValid};
@@ -77,7 +77,7 @@ export const Field = styled(FormField)`
   font-style: ${p => p.theme.fonts.heading};
   font-weight: ${p => p.theme.fontWeights.heading};
   font-size: ${p => p.theme.fontSizes.s};
-  color: ${p => p.theme.colors.black};
+  color: ${p => p.theme.primary_text_switch};
   border: ${p => p.theme.borders.normal} rgba(220, 227, 229, 0.6);
   border-radius: 8px;
   outline: none;
