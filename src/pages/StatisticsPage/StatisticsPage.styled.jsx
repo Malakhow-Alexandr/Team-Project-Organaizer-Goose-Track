@@ -3,6 +3,8 @@ import styled from 'styled-components';
 export const StatisticsPageContainer = styled.section`
   background-color: ${p => p.theme.colors.third_background_switch};
   border-radius: 16px;
+  margin-left: auto;
+  margin-right: auto;
   @media screen and (max-width: ${p => p.theme.breakpoints.mobile}) {
     display: flex;
     flex-direction: column;
