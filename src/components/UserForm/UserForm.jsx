@@ -52,20 +52,8 @@ export const validationSchema = Yup.object().shape({
       message: 'Invalid skype',
     })
     .notRequired(),
+  telegram: Yup.string().max(35, 'Too Long!').notRequired(),
 });
-
-// const user = {
-//   name: 'initialName',
-//   email: 'initialEmail@mail.com',
-//   avatar:
-//     'https://media.istockphoto.com/id/1300845620/vector/user-icon-flat-isolated-on-white-background-user-symbol-vector-illustration.jpg?s=612x612&w=0&k=20&c=yBeyba0hUkh14_jgv1OKqIH0CCSWU_4ckRkAoy2p73o=',
-//   phone: '38 (123) 456 78 90',
-//   birthday: '23/06/2023',
-//   skype: '+123456789',
-// };
-
-// const avatarDefault =
-//   'https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg';
 
 const UserForm = () => {
   const { t } = useTranslation();
@@ -73,6 +61,8 @@ const UserForm = () => {
   const dispatch = useDispatch();
   const { user } = useAuth();
 
+  const isLoading = useSelector(selectAuthIsLoading);
+ 
   const [userAvatar, setUserAvatar] = useState(user.avatarURL);
   const [birthdayDate, setBirthdayDate] = useState(null);
   const [isFormChanged, setIsFormChanged] = useState(false);
@@ -85,7 +75,7 @@ const UserForm = () => {
         avatar: user.avatarURL,
         phone: user.phone,
         birthday: user.birthday,
-        skype: user.skype,
+        telegram: user.telegram,
       },
       validationSchema: validationSchema,
       onSubmit: values => {
@@ -108,7 +98,7 @@ const UserForm = () => {
     setFieldValue('name', user.name);
     setFieldValue('email', user.email);
     setFieldValue('phone', user.phone);
-    setFieldValue('skype', user.skype);
+    setFieldValue('telegram', user.telegram);
     setFieldValue('birthday', user.birthday);
 
     setUserAvatar(user.avatarURL);
@@ -251,19 +241,19 @@ const UserForm = () => {
               <ErrorMessage>{errors.phone}</ErrorMessage>
             )}
           </WrapperInput>
-          {/* skype */}
+          {/* telegram */}
           <WrapperInput>
-            <InputName>{t('Skype')}</InputName>
+            <InputName>{t('Telegram')}</InputName>
             <Input
-              name="skype"
-              value={values.skype || ''}
-              placeholder="ex. +1234567890"
+              name="telegram"
+              value={values.telegram || ''}
+              placeholder="Add your telegram"
               onChange={handleInputChange}
               onBlur={handleBlur}
-              className={errors.skype && touched.skype ? 'InvalidInput' : ''}
+              className={errors.telegram && touched.telegram ? 'InvalidInput' : ''}
             />
-            {errors.skype && touched.skype && (
-              <ErrorMessage>{errors.skype}</ErrorMessage>
+            {errors.telegram && touched.telegram && (
+              <ErrorMessage>{errors.telegram}</ErrorMessage>
             )}
           </WrapperInput>
         </Wrapper>
