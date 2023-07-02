@@ -74,7 +74,7 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
   
 
   const handleEditBtnClick = () => {
-    setIsEditOpen(true);
+    setIsEditOpen(!isEditOpen);
   };
 
   const handleCancelBtnClick = () => {
@@ -86,6 +86,7 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
 
   const handleFeedbackDelete = () => {
     dispatch(deleteReviewByOwn());
+    setIsEditOpen(false);
     onClose();
   };
 
