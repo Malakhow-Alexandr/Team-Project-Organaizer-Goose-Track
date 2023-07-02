@@ -19,7 +19,7 @@ export const TaskContainer = styled.ul`
 
 export const StretchContainer = styled.div`
   display: flex;
-  align-self: baseline;
+  /* align-self: baseline; */
   align-content: space-between;
 
   @media screen and (min-width: 1440px) {
