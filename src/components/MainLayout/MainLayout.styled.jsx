@@ -31,6 +31,7 @@ export const Main = styled.main`
 `;
 
 export const LeftColumnWrapper = styled.div`
+  position: fixed;
   width: 225px;
   height: 100%;
 
@@ -59,7 +60,7 @@ export const LeftField = styled.div`
 
 export const RightColumnWrapper = styled.div`
   flex-grow: 1;
-  padding: 0 20px;
+  padding: 0 5px;
   background-color: ${props => props.theme.colors.background_switch};
 
   overflow: hidden;

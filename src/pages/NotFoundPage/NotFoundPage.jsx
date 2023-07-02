@@ -32,13 +32,17 @@ const NotFoundPage = () => {
 
   return (
     <Wrapper>
-      <GoHome>{t('You will be relocated to Home Page in')} {countdown} {t('seconds')}</GoHome>
+      <GoHome>
+        {t('You will be relocated to Home Page in')} {countdown} {t('seconds')}
+      </GoHome>
       <TextWrapper>
         <TextAccent>4</TextAccent>
         <Image srcSet={`${img404x1} 1x, ${img404x2} 2x`} />
         <TextAccent>4</TextAccent>
       </TextWrapper>
-      <Text>{t('We’re sorry, the page you requested could not be found.')}</Text>
+      <Text>
+        {t('We’re sorry, the page you requested could not be found.')}
+      </Text>
       <Text>{t('Please go back to the homepage.')}</Text>
     </Wrapper>
   );

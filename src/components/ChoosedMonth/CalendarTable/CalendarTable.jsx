@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 
+import { theme } from 'theme';
 import { CalendarTaskDay } from './CalendarTaskDay/CalendarTaskDay';
 import {
   GridWrapper,
@@ -40,6 +41,13 @@ const CalendarTable = ({ startDay, today, tasks }) => {
         const dayTasks = filterTask(dayItem);
         return (
           <CellWrapper
+            style={{
+              color: `${
+                isSelectedMonth(dayItem)
+                  ? `${theme.colors.third_text_switch}`
+                  : 'rgba(169, 169, 169, 0.4)'
+              }`,
+            }}
             isWeekday={dayItem.day() === 6 || dayItem.day() === 0}
             key={dayItem.unix()}
             isSelectedMonth={isSelectedMonth(dayItem)}
