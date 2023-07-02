@@ -15,8 +15,6 @@ import {
   FormField,
   ErrorMessage,
   Title,
-  // RatingInputOverlay,
-  // RatingField,
   TextareaField,
   RatingBtnOverlay,
   SaveFeedbackBtn,
@@ -47,7 +45,7 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
   const [ratingHover, setRatingHover] = useState(null);
   const [isEditOpen, setIsEditOpen] = useState(false);
 
-  console.log(isEditOpen)
+
 
   const dispatch = useDispatch();
 
@@ -73,11 +71,10 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
     }
   };
 
-  console.log(isEditOpen)
+  
 
   const handleEditBtnClick = () => {
     setIsEditOpen(true);
-    console.log(isEditOpen)
   };
 
   const handleCancelBtnClick = () => {

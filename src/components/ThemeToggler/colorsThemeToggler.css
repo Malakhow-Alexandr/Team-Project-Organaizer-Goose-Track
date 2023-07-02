@@ -28,6 +28,12 @@ html[data-theme='light'] {
   --modal-border-color: #dce3e5;
   --modal-form-label: rgba(52, 52, 52, 0.8);
   --user-input-border: 1px solid rgba(17, 17, 17, 0.1);
+
+  --textarea-bg: rgba(246, 246, 246, 1);
+  --rating-text: rgba(52, 52, 52, 0.8);
+  --cancel-btn: rgba(229, 237, 250, 1);
+  --pencil-btn-bg: rgba(227, 243, 255, 1);
+  --trash-btn-bg: rgba(234, 61, 101, 0.2)
 }
 
 html[data-theme='dark'] {
@@ -60,6 +66,12 @@ html[data-theme='dark'] {
   --modal-border-color: black;
   --modal-form-label: rgba(250, 250, 250, 0.3);
   --user-input-border: 1px solid rgba(255, 255, 255, 0.15);
+
+  --textarea-bg: rgba(23, 24, 32, 1);
+  --rating-text: rgba(250, 250, 250, 0.3);
+  --cancel-btn: rgba(23, 24, 32, 1);
+  --pencil-btn-bg: rgba(53, 54, 71, 1);
+  --trash-btn-bg: rgba(234, 61, 101, 0.2)
 }
 
 body {
