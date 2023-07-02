@@ -14,7 +14,7 @@ import * as Yup from 'yup';
 // import { FiLogIn } from 'react-icons/fi';
 // import { BiCheckCircle, BiErrorCircle } from 'react-icons/bi';
 import { IoEyeOutline, IoEyeOff } from 'react-icons/io5';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { selectAuthIsLoading } from 'redux/auth/selectors';
 import { LoaderForBtn } from 'components/LoaderForBtn/LoaderForBtn';
@@ -30,7 +30,6 @@ const PasswordPage = () => {
   const [oldPasswordType, setOldPasswordType] = useState('password');
   const [newPasswordType, setNewPasswordType] = useState('password');
 
-  const dispatch = useDispatch();
   const { t } = useTranslation();
   const isLoading = useSelector(selectAuthIsLoading);
 

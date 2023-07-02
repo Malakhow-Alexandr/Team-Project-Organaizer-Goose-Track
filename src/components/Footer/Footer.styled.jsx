@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { SiSwagger } from 'react-icons/si';
 import { VscGithubInverted, VscGithub } from 'react-icons/vsc';
+import { BiCopyright } from 'react-icons/bi';
 
 import { theme } from 'theme';
 
@@ -25,6 +26,8 @@ export const Wrapper = styled.div`
     max-width: 1184px;
   }
 `;
+
+export const CopyIcon = styled(BiCopyright)``;
 
 export const TeamInfoWrapper = styled.div`
   display: flex;

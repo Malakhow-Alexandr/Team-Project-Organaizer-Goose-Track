@@ -7,6 +7,7 @@ import {
   LinksList,
   Links,
   TeamInfoWrapper,
+  CopyIcon,
 } from './Footer.styled';
 
 export const Footer = () => {
@@ -15,7 +16,11 @@ export const Footer = () => {
       <Wrapper>
         <TeamInfoWrapper>
           <p>
-            <span>&#169 </span>2023
+            <span>
+              <CopyIcon />
+            </span>
+            2023
+            <span>GoIT Students</span>
           </p>
           <button type="button">Modal</button>
         </TeamInfoWrapper>
