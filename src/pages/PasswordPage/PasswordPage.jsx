@@ -14,7 +14,7 @@ import {
 } from '../PasswordPage/PasswordPage.styled';
 import * as Yup from 'yup';
 import { IoEyeOutline, IoEyeOff } from 'react-icons/io5';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { selectAuthIsLoading } from 'redux/auth/selectors';
 import { LoaderForBtn } from 'components/LoaderForBtn/LoaderForBtn';
@@ -38,6 +38,10 @@ const PasswordPage = () => {
   const [newPassword, setNewPassword] = useState('');
   const [repeatNewPassword, setRepeatNewPassword] = useState('');
 
+  const dispatch = useDispatch();
+  const { t } = useTranslation();
+  const isLoading = useSelector(selectAuthIsLoading);
+
   const initialState = {
     oldPassword: '',
     newPassword: '',
@@ -46,9 +50,6 @@ const PasswordPage = () => {
 
   const passwordIsMatch =
     newPassword === repeatNewPassword && newPassword !== '';
-
-  const { t } = useTranslation();
-  const isLoading = useSelector(selectAuthIsLoading);
 
   const showOldPassword = () => {
     if (oldPasswordType === 'password') {
@@ -75,7 +76,6 @@ const PasswordPage = () => {
     <Formik
       initialValues={initialState}
       onSubmit={(values, actions) => {
-        console.log('My values 🥥', values);
         dispatch(
           changePassword({
             password: values.oldPassword,
