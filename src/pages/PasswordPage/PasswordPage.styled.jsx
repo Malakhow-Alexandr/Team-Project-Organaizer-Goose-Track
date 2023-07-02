@@ -165,6 +165,11 @@ export const Button = styled.button`
     background: ${p => p.theme.colors.secondary};
   }
 
+  &:disabled {
+    cursor: default;
+    background-color: #c9cdd3;
+  }
+
   @media screen and (min-width: 768px) {
     height: 56px;
     font-size: 18px;

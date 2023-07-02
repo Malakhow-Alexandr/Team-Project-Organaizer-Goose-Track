@@ -18,10 +18,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { selectAuthIsLoading } from 'redux/auth/selectors';
 import { LoaderForBtn } from 'components/LoaderForBtn/LoaderForBtn';
-// import { changePassword } from 'redux/auth/operations';
+import { changePassword } from 'redux/auth/operations';
 
 const FormValidSchema = Yup.object().shape({
-  password: Yup.string()
+  oldPassword: Yup.string()
+    .min(6, 'Password must be 6 characters long')
+    .required('Required'),
+  newPassword: Yup.string()
+    .min(6, 'Password must be 6 characters long')
+    .required('Required'),
+  repeatNewPassword: Yup.string()
     .min(6, 'Password must be 6 characters long')
     .required('Required'),
 });
@@ -29,6 +35,8 @@ const FormValidSchema = Yup.object().shape({
 const PasswordPage = () => {
   const [oldPasswordType, setOldPasswordType] = useState('password');
   const [newPasswordType, setNewPasswordType] = useState('password');
+
+  const [passwordIsMatch, setPasswordIsMatch] = useState(false);
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -131,7 +139,7 @@ const PasswordPage = () => {
               </IconWrap>
               <ErrorMessage name="repeatNewPassword" component="div" />
             </FormLabel>
-            <Button type="submit">
+            <Button type="submit" disabled={true}>
               {isLoading ? <LoaderForBtn /> : <>{t('Change')}</>}
             </Button>
           </Form>
