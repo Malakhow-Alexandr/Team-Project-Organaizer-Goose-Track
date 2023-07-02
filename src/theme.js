@@ -89,7 +89,8 @@ export const theme = {
     rating_text: 'var(--rating-text)',
     cancel_btn: 'var(--cancel-btn)',
     pencil_btn_bg: 'var(--pencil-btn-bg)',
-    trash_btn_bg: 'var(--trash-btn-bg)'
+    trash_btn_bg: 'var(--trash-btn-bg)',
+    empty_star: 'var( --empty-star-bg)'
   },
 
   fonts: {

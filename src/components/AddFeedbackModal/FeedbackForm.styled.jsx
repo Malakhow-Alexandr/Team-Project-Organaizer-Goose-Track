@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { CgTrash } from 'react-icons/cg';
 import { RxPencil1 } from 'react-icons/rx';
 
+
 import {
   Form as FormikForm,
   Field as FormikField,
@@ -37,7 +38,7 @@ export const Title = styled.p`
   font-weight: ${props => props.theme.fontWeights.normal};
   font-size: ${props => props.theme.fontSizes.xs};
   line-height: 1.17;
-  color: ${props => props.theme.rating_text};
+  color: ${props => props.theme.colors.rating_text};
   margin: 0 0 8px;
 `;
 
@@ -217,6 +218,8 @@ export const Pencil = styled(RxPencil1)`
     color: #ffffff;
   }
 `;
+
+
 export const Trash = styled(CgTrash)`
   color: #ea3d65;
   size: 16;
@@ -225,3 +228,5 @@ export const Trash = styled(CgTrash)`
     color: #ffffff;
   }
 `;
+
+
