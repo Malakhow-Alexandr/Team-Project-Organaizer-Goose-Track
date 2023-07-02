@@ -24,7 +24,7 @@ export const ModalContainer = styled.div`
   max-height: 95vh;
   box-sizing: border-box;
   border: ${props => props.theme.borders.normal} rgba(220, 227, 229, 0.8);
-  background-color: ${props => props.theme.colors.background};
+  background-color: ${props => props.theme.colors.second_background_switch};
   border-radius: ${props => props.theme.radii.small};
   box-shadow: 0px 4px 16px 0px #1111111a;
   border-color: ${props => props.theme.colors.modal_border_color};
