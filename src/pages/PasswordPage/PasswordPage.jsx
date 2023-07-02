@@ -40,14 +40,9 @@ const PasswordPage = () => {
 
   const initialState = {
     oldPassword: '',
-    newPassword: newPassword,
-    repeatNewPassword: repeatNewPassword || '',
+    newPassword: '',
+    repeatNewPassword: '',
   };
-
-  useEffect(() => {
-    initialState.newPassword = newPassword;
-    initialState.repeatNewPassword = repeatNewPassword;
-  }, [newPassword, repeatNewPassword]);
 
   const passwordIsMatch =
     newPassword === repeatNewPassword && newPassword !== '';
@@ -71,6 +66,8 @@ const PasswordPage = () => {
     setNewPasswordType('password');
   };
 
+  const resetForm = () => {};
+
   return (
     <Formik
       initialValues={initialState}
@@ -81,7 +78,7 @@ const PasswordPage = () => {
       }}
       validationSchema={FormValidSchema}
     >
-      {({ errors, touched }) => {
+      {({ errors, touched, values }) => {
         const isValid = field =>
           touched[field] && errors[field]
             ? 'is-invalid'
@@ -117,8 +114,11 @@ const PasswordPage = () => {
                 className={isValid('newPassword')}
                 name="newPassword"
                 type={newPasswordType}
-                value={newPassword}
-                onChange={e => setNewPassword(e.target.value)}
+                value={newPassword || values.newPassword}
+                onChange={e => {
+                  setNewPassword(e.target.value);
+                  values.newPassword = e.target.value;
+                }}
                 autoComplete="off"
                 placeholder="Enter new password"
               />
@@ -138,8 +138,11 @@ const PasswordPage = () => {
                 className={isValid('repeatNewPassword')}
                 name="repeatNewPassword"
                 type={newPasswordType}
-                value={repeatNewPassword || ''}
-                onChange={e => setRepeatNewPassword(e.target.value)}
+                value={repeatNewPassword || values.repeatNewPassword}
+                onChange={e => {
+                  setRepeatNewPassword(e.target.value);
+                  values.repeatNewPassword = e.target.value;
+                }}
                 autoComplete="off"
                 placeholder="Repeat new password"
               />
