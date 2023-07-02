@@ -91,7 +91,7 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
     >
       {props => (
         <Form>
-          <Title>Rating</Title>
+          <Title>{t('Rating')}</Title>
 
           <FormField>
             <div>
