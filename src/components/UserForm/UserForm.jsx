@@ -24,6 +24,7 @@ import {
   WrapperInput,
 } from './UserForm.styled';
 import { useTranslation } from 'react-i18next';
+import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
 
 const phoneRegexp = /^(\d{2})\s\((\d{3})\)\s(\d{3})\s(\d{2})\s(\d{2})$/;
 const skypeNumberRegexp = /^\+[1-9]\d{0,2}[.-]?\d{1,14}$/;
@@ -265,6 +266,10 @@ const UserForm = () => {
             {errors.skype && touched.skype && (
               <ErrorMessage>{errors.skype}</ErrorMessage>
             )}
+          </WrapperInput>
+          {/* change password */}
+          <WrapperInput>
+            <AuthNavigate link={'/password'} text={'Change password'} />
           </WrapperInput>
         </Wrapper>
         <SubmitBtn disabled={!isFormChanged} type="submit">
