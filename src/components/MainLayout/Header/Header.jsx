@@ -38,7 +38,7 @@ const Header = ({ toggleShowSideBar }) => {
   useEffect(() => {
     getAllTasks();
     console.log(isNotDoneTask);
-  }, [getAllTasks]);
+  }, [getAllTasks, isNotDoneTask]);
 
   const typePage = getTypePage(pathname);
 
