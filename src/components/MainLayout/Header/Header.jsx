@@ -1,6 +1,13 @@
+import { useLocation } from 'react-router';
+import { useEffect, useState } from 'react';
+
+import { useTasks } from '../../../hooks/useTasks';
+
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
 import { AddFeedbackModal } from 'components/AddFeedbackModal/AddFeedbackModal';
 import { ThemeToggler } from '../../ThemeToggler/ThemeToggler';
+import { DayPageTitle } from './DayPageTitle/DayPageTitle';
+import { UserInfo } from './UserInfo/UserInfo';
 
 import { RxHamburgerMenu } from 'react-icons/rx';
 
@@ -10,11 +17,6 @@ import {
   HeaderTitle,
   RightSectionHeader,
 } from './Header.styled';
-
-import { useState } from 'react';
-import { useLocation } from 'react-router';
-import { DayPageTitle } from './DayPageTitle/DayPageTitle';
-import { UserInfo } from './UserInfo/UserInfo';
 
 const getTypePage = pathname => {
   if (pathname.includes('/account')) {
@@ -30,6 +32,14 @@ const getTypePage = pathname => {
 
 const Header = ({ toggleShowSideBar }) => {
   const { pathname } = useLocation();
+
+  const { isNotDoneTask, getAllTasks } = useTasks();
+
+  useEffect(() => {
+    getAllTasks();
+    console.log(isNotDoneTask);
+  }, [getAllTasks]);
+
   const typePage = getTypePage(pathname);
 
   // open FeedbackModal logic:
@@ -55,12 +65,16 @@ const Header = ({ toggleShowSideBar }) => {
         {typePage === 'statistics' && 'Statistics'}
       </HeaderTitle>
 
-      {typePage === 'day' && <DayPageTitle />}
+      {typePage === 'day' && isNotDoneTask ? (
+        <DayPageTitle />
+      ) : (
+        <HeaderTitle>Calendar</HeaderTitle>
+      )}
 
       <RightSectionHeader>
         <AddFeedbackBtn handleShowModal={handleShowModal} />
       </RightSectionHeader>
-      <ThemeToggler />     
+      <ThemeToggler />
       <UserInfo toggleShowSideBar={toggleShowSideBar} />
 
       {showModal && <AddFeedbackModal onClose={handleCloseModal} />}
