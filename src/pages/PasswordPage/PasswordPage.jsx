@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik } from 'formik';
 import {
   Button,
@@ -35,8 +35,22 @@ const FormValidSchema = Yup.object().shape({
 const PasswordPage = () => {
   const [oldPasswordType, setOldPasswordType] = useState('password');
   const [newPasswordType, setNewPasswordType] = useState('password');
+  const [newPassword, setNewPassword] = useState('');
+  const [repeatNewPassword, setRepeatNewPassword] = useState('');
 
-  const [passwordIsMatch, setPasswordIsMatch] = useState(false);
+  const initialState = {
+    oldPassword: '',
+    newPassword: newPassword,
+    repeatNewPassword: repeatNewPassword || '',
+  };
+
+  useEffect(() => {
+    initialState.newPassword = newPassword;
+    initialState.repeatNewPassword = repeatNewPassword;
+  }, [newPassword, repeatNewPassword]);
+
+  const passwordIsMatch =
+    newPassword === repeatNewPassword && newPassword !== '';
 
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -59,11 +73,7 @@ const PasswordPage = () => {
 
   return (
     <Formik
-      initialValues={{
-        oldPassword: '',
-        newPassword: '',
-        repeatNewPassword: '',
-      }}
+      initialValues={initialState}
       onSubmit={(values, actions) => {
         console.log('My values 🥥', values);
         // dispatch(changePassword(values.oldPassword, values.newPasswodr));
@@ -107,6 +117,8 @@ const PasswordPage = () => {
                 className={isValid('newPassword')}
                 name="newPassword"
                 type={newPasswordType}
+                value={newPassword}
+                onChange={e => setNewPassword(e.target.value)}
                 autoComplete="off"
                 placeholder="Enter new password"
               />
@@ -126,6 +138,8 @@ const PasswordPage = () => {
                 className={isValid('repeatNewPassword')}
                 name="repeatNewPassword"
                 type={newPasswordType}
+                value={repeatNewPassword || ''}
+                onChange={e => setRepeatNewPassword(e.target.value)}
                 autoComplete="off"
                 placeholder="Repeat new password"
               />
@@ -139,7 +153,7 @@ const PasswordPage = () => {
               </IconWrap>
               <ErrorMessage name="repeatNewPassword" component="div" />
             </FormLabel>
-            <Button type="submit" disabled={true}>
+            <Button type="submit" disabled={!passwordIsMatch}>
               {isLoading ? <LoaderForBtn /> : <>{t('Change')}</>}
             </Button>
           </Form>
