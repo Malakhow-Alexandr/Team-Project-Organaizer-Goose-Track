@@ -12,7 +12,7 @@ export const WrapForm = styled.div`
   background-color: ${props => props.theme.colors.second_background_switch};
   color: ${p => p.theme.colors.user_text_switch};
 
-  @media screen and (min-width: ${p => p.theme.breakpoints.mobile}) {
+  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
     padding: 40px 28px;
     max-width: 396px;
     width: 396px;
