@@ -22,6 +22,8 @@ export const theme = {
     muted: '#F7F6F9',
     closeButton: '#111111',
     textarea: '#F6F6F6',
+    
+    
 
     // Theme toggler
 
@@ -82,6 +84,12 @@ export const theme = {
     scroll_сolor: 'var(--scroll-color)',
 
     bg_scroll_color: 'var(--bg-scroll-color)',
+
+    texarea_bg: 'var(--textarea-bg)',
+    rating_text: 'var(--rating-text)',
+    cancel_btn: 'var(--cancel-btn)',
+    pencil_btn_bg: 'var(--pencil-btn-bg)',
+    trash_btn_bg: 'var(--trash-btn-bg)'
   },
 
   fonts: {
