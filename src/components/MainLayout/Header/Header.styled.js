@@ -43,7 +43,7 @@ export const MobileMenuButton = styled.button`
   padding: 0;
   display: flex;
   margin-right: 8px;
-
+ 
   align-items: center;
   justify-content: center;
   cursor: pointer;
