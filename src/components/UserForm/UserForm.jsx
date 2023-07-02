@@ -60,8 +60,6 @@ const UserForm = () => {
 
   const dispatch = useDispatch();
   const { user } = useAuth();
-
-  const isLoading = useSelector(selectAuthIsLoading);
  
   const [userAvatar, setUserAvatar] = useState(user.avatarURL);
   const [birthdayDate, setBirthdayDate] = useState(null);
@@ -82,7 +80,6 @@ const UserForm = () => {
         try {
           if (values.avatar === user.avatarURL) {
             const { avatar, ...updatedValues } = values;
-            // console.log('updatedValues', updatedValues);
             dispatch(updateUser(updatedValues));
           } else {
             dispatch(updateUser(values));
