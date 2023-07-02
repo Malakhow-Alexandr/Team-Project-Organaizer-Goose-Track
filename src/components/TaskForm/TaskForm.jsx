@@ -79,6 +79,7 @@ export const TaskForm = ({ initialData, onClose }) => {
       dispatch(createTask(informationTask));
     }
     setDataSave(Date.now());
+    onClose();
   };
 
   return (
