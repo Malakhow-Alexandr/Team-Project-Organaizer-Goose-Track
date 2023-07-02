@@ -126,6 +126,30 @@ export const SuccessMessage = styled.p`
   }
 `;
 
+export const PasswordIsMatch = styled.p`
+  position: absolute;
+  top: 78px;
+  left: 16px;
+  color: ${p => p.theme.colors.greenValid};
+  font-size: ${p => p.theme.fontSizes.m};
+
+  @media screen and (min-width: 768px) {
+    top: 88px;
+  }
+`;
+
+export const WrongPassword = styled.p`
+  position: absolute;
+  top: 78px;
+  left: 16px;
+  color: ${p => p.theme.colors.redErrorLight};
+  font-size: ${p => p.theme.fontSizes.m};
+
+  @media screen and (min-width: 768px) {
+    top: 88px;
+  }
+`;
+
 export const IconWrap = styled.div`
   position: absolute;
   top: 35px;

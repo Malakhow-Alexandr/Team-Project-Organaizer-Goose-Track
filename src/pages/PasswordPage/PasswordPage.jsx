@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import {
   Button,
@@ -9,10 +9,10 @@ import {
   FormTitle,
   IconWrap,
   SuccessMessage,
+  PasswordIsMatch,
+  WrongPassword,
 } from '../PasswordPage/PasswordPage.styled';
 import * as Yup from 'yup';
-// import { FiLogIn } from 'react-icons/fi';
-// import { BiCheckCircle, BiErrorCircle } from 'react-icons/bi';
 import { IoEyeOutline, IoEyeOff } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -66,15 +66,24 @@ const PasswordPage = () => {
     setNewPasswordType('password');
   };
 
-  const resetForm = () => {};
+  const resetForm = resetFormik => {
+    resetFormik();
+    setNewPassword('');
+    setRepeatNewPassword('');
+  };
 
   return (
     <Formik
       initialValues={initialState}
       onSubmit={(values, actions) => {
         console.log('My values 🥥', values);
-        // dispatch(changePassword(values.oldPassword, values.newPasswodr));
-        actions.resetForm();
+        dispatch(
+          changePassword({
+            password: values.oldPassword,
+            newPassword: values.newPassword,
+          })
+        );
+        resetForm(actions.resetForm);
       }}
       validationSchema={FormValidSchema}
     >
@@ -146,10 +155,13 @@ const PasswordPage = () => {
                 autoComplete="off"
                 placeholder="Repeat new password"
               />
-              {isValid('repeatNewPassword') === 'is-valid' && (
-                <SuccessMessage>
-                  {t('This is a CORRECT password')}
-                </SuccessMessage>
+              {passwordIsMatch && (
+                <PasswordIsMatch>
+                  {t('New passwords are equivalent')}
+                </PasswordIsMatch>
+              )}
+              {!passwordIsMatch && repeatNewPassword && (
+                <WrongPassword>{t("Passwords don't match")}</WrongPassword>
               )}
               <IconWrap onClick={showNewPassword}>
                 {newPasswordType === 'text' ? <IoEyeOff /> : <IoEyeOutline />}
