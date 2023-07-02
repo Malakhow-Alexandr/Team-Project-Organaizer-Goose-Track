@@ -8,13 +8,28 @@ import {
   ErrorMessage as FormikError,
 } from 'formik';
 
+export const FeedbackFormContainer = styled.div`
+  background-color: ${props => props.theme.colors.modal_window};
+  padding: 20px 29px;
+
+  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
+    padding: 32px;
+  }
+`;
+
 export const Form = styled(FormikForm)`
+  width: 296px;
   display: flex;
   flex-direction: column;
   gap: 5px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
+
+  background-color: ${props => props.theme.colors.modal_window};
+
+  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
+    width: 404px;
+  }
 `;
 
 export const Title = styled.p`
@@ -36,17 +51,18 @@ export const FormField = styled.label`
 // `;
 
 export const TextareaField = styled(FormikField)`
-  width: 100%;
-  height: 127px;
-  padding: 14px 18px;
+  width: 296px;
+  height: 130px;
+  padding: 12px 14px;
   border: 1px solid ${props => props.theme.colors.textarea};
-  background-color: ${props => props.theme.colors.textarea};
+  background: ${props => props.theme.colors.background_switch};
   border-radius: ${props => props.theme.radii.small};
   font-family: ${props => props.theme.fonts.heading};
   font-weight: ${props => props.theme.fontWeights.heading};
   font-size: ${props => props.theme.fontSizes.s};
   line-height: 1.29;
   resize: none;
+  box-shadow: 0px 4px 57px 0px rgba(17, 17, 17, 0.05);
 
   ::placeholder {
     font-family: ${props => props.theme.fonts.heading};
@@ -59,8 +75,13 @@ export const TextareaField = styled(FormikField)`
   :focus {
     outline: none;
   }
-`;
 
+  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
+    width: 404px;
+    height: 127px;
+    padding: 14px 18px;
+  }
+`;
 
 export const ErrorMessage = styled(FormikError)`
   color: #a36303;
@@ -159,7 +180,7 @@ export const EditFeedbackBtn = styled.button`
 `;
 
 export const EditButtonContainer = styled.div`
-height: 30px;
+  height: 30px;
   display: flex;
   margin-bottom: 5px;
   justify-content: space-between;
@@ -219,4 +240,3 @@ export const Trash = styled(CgTrash)`
     color: #ffffff;
   }
 `;
-
