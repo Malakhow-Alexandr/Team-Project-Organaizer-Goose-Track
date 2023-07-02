@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { selectAuthIsLoading } from 'redux/auth/selectors';
 import { LoaderForBtn } from 'components/LoaderForBtn/LoaderForBtn';
+// import { changePassword } from 'redux/auth/operations';
 
 const FormValidSchema = Yup.object().shape({
   password: Yup.string()
@@ -133,7 +134,6 @@ const PasswordPage = () => {
             <Button type="submit">
               {isLoading ? <LoaderForBtn /> : <>{t('Change')}</>}
             </Button>
-            {/* <button type="submit">Go</button> */}
           </Form>
         );
       }}
