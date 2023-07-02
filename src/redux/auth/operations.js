@@ -135,7 +135,7 @@ export const currentUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   'auth/updateUser ',
-  async ({ avatar, name, birthday, phone, skype, email }, thunkAPI) => {
+  async ({ avatar, name, birthday, phone, telegram, email }, thunkAPI) => {
     try {
       const formData = new FormData();
       formData.append('name', name);
@@ -144,7 +144,7 @@ export const updateUser = createAsyncThunk(
         formData.append('avatar', avatar);
       }
       formData.append('phone', phone);
-      formData.append('skype', skype);
+      formData.append('telegram', telegram);
       formData.append('birthday', birthday);
 
       const response = await instance.patch('/update', formData, {
