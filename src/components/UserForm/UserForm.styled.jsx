@@ -138,6 +138,8 @@ export const Wrapper = styled.div`
 export const WrapperInput = styled.div`
   display: flex;
   flex-direction: column;
+  min-height: 50px;
+  justify-content: flex-end;
   @media (min-width: 768px) {
     width: 354px;
   }
@@ -159,7 +161,7 @@ export const Input = styled.input`
   padding-left: 14px;
   padding-right: 14px;
   outline: none;
-  border-color: ${p => p.theme.colors.user_input_border_color_switch} ;
+  border-color: ${p => p.theme.colors.user_input_border_color_switch};
   border-radius: ${props => props.theme.radii.small};
   color: ${props => props.theme.colors.primary_text_switch};
 
@@ -223,9 +225,8 @@ export const SubmitBtn = styled.button`
   border: ${props => props.theme.borders.none};
   cursor: ${props => (props.disabled ? 'default' : 'pointer')};
 
- 
-background-color: ${props =>
-    props.disabled ? '#c9cdd3': props.theme.colors.primary};
+  background-color: ${props =>
+    props.disabled ? '#c9cdd3' : props.theme.colors.primary};
 
   @media (min-width: 768px) {
     width: 262px;
@@ -255,7 +256,6 @@ export const StyledDataPicker = styled(DatePicker)`
     font-family: 'Inter';
     font-size: 14px;
     font-weight: 600;
-
   }
   .MuiButtonBase-root {
     color: ${props => props.theme.colors.calendar_border_color_switch};
@@ -274,8 +274,8 @@ export const StyledDataPicker = styled(DatePicker)`
     border-radius: ${props => props.theme.radii.small};
 
     .MuiOutlinedInput-notchedOutline {
-      border-color: ${props => props.theme.colors.user_input_border_color_switch};
-
+      border-color: ${props =>
+        props.theme.colors.user_input_border_color_switch};
     }
     &.Mui-focused .MuiOutlinedInput-notchedOutline {
       border: 1px solid #111111;

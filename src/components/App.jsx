@@ -14,6 +14,7 @@ import { selectAuthIsLoading, selectIsRefreshing } from 'redux/auth/selectors';
 import { Loader } from './Loader/Loader';
 import { selectIsLoading } from 'redux/tasks/selectors';
 import { selectReviewsIsLoading } from 'redux/reviews/selectors';
+import { LoaderToTop } from './LoaderToTop/LoaderToTop';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -59,8 +60,8 @@ export const App = () => {
   return (
     <Suspense fallback={<Loader />}>
       {authIsLoading && <Loader />}
-      {taskIsLoading && <Loader />}
       {reviewsIsLoading && <Loader />}
+      {taskIsLoading && <LoaderToTop />}
       {!isRefreshing && (
         <>
           <Routes>
@@ -68,7 +69,7 @@ export const App = () => {
               <Route index element={<MainPage />} />
               <Route path="register" element={<RegisterPage />} />
               <Route path="login" element={<LoginPage />} />
-              <Route path="password" element={<PasswordPage />} />
+
               <Route
                 path="reset-password/:token"
                 element={<PasswordRecoveryPage />}
@@ -82,6 +83,7 @@ export const App = () => {
                   <Route path="day/:currentDay" element={<ChoosedDay />} />
                 </Route>
                 <Route path="statistics" element={<StatisticsPage />} />
+                <Route path="password" element={<PasswordPage />} />
               </Route>
             </Route>
             <Route path="*" element={<NotFoundPage />} />
