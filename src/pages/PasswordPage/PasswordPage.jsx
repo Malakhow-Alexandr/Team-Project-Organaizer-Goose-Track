@@ -11,15 +11,15 @@ import {
   SuccessMessage,
 } from '../PasswordPage/PasswordPage.styled';
 import * as Yup from 'yup';
-import { FiLogIn } from 'react-icons/fi';
-import { BiCheckCircle, BiErrorCircle } from 'react-icons/bi';
+// import { FiLogIn } from 'react-icons/fi';
+// import { BiCheckCircle, BiErrorCircle } from 'react-icons/bi';
 import { IoEyeOutline, IoEyeOff } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { selectAuthIsLoading } from 'redux/auth/selectors';
 import { LoaderForBtn } from 'components/LoaderForBtn/LoaderForBtn';
 
-const FormSchema = Yup.object().shape({
+const FormValidSchema = Yup.object().shape({
   password: Yup.string()
     .min(6, 'Password must be 6 characters long')
     .required('Required'),
@@ -58,9 +58,9 @@ const PasswordPage = () => {
       onSubmit={(values, actions) => {
         console.log('My values 🥥', values);
         // dispatch(changePassword(values.oldPassword, values.newPasswodr));
-        // actions.resetForm();
+        actions.resetForm();
       }}
-      validationSchema={FormSchema}
+      validationSchema={FormValidSchema}
     >
       {({ errors, touched }) => {
         const isValid = field =>
@@ -133,6 +133,7 @@ const PasswordPage = () => {
             <Button type="submit">
               {isLoading ? <LoaderForBtn /> : <>{t('Change')}</>}
             </Button>
+            {/* <button type="submit">Go</button> */}
           </Form>
         );
       }}
