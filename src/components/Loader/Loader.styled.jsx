@@ -6,11 +6,8 @@ export const Backdrop = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 1000;
-  overflow-y: auto;
-  background-color: rgba(46, 43, 38, 0.295);
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  visibility: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 `;
 
 export const SpinWrap = styled.div`
@@ -22,43 +19,45 @@ export const SpinWrap = styled.div`
 `;
 
 export const Spin = styled.span`
-  display: block;
-  /* margin: auto;
   position: relative;
-  z-index: 10;
-  animation: myAnim 2s ease infinite;
+  display: flex;
 
-  @keyframes myAnim {
-    0% {
-      transform: scale3d(1, 1, 1);
-    }
+  :before,
+  :after {
+    content: '';
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    position: relative;
+    margin: 0 5px;
+    border-radius: 50%;
+    color: #fff;
+    background: currentColor;
+    box-shadow: 50px 0, -50px 0;
+    animation: left 1s infinite ease-in-out;
+  }
+  :after {
+    color: #2b78ef;
+    animation: right 1.1s infinite ease-in-out;
+  }
 
-    30% {
-      transform: scale3d(1.25, 0.75, 1);
-    }
-
-    40% {
-      transform: scale3d(0.75, 1.25, 1);
-    }
-
-    50% {
-      transform: scale3d(1.15, 0.85, 1);
-    }
-
-    65% {
-      transform: scale3d(0.95, 1.05, 1);
-    }
-
-    75% {
-      transform: scale3d(1.05, 0.95, 1);
-    }
-
+  @keyframes right {
+    0%,
     100% {
-      transform: scale3d(1, 1, 1);
+      transform: translateY(-10px);
     }
-  } */
-`;
+    50% {
+      transform: translateY(10px);
+    }
+  }
 
-export const Image = styled.img`
-  max-width: inherit;
+  @keyframes left {
+    0%,
+    100% {
+      transform: translateY(10px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 `;

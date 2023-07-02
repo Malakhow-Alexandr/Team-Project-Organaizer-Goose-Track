@@ -39,6 +39,7 @@ import m_all from 'images/mainPage/mobile_all.png';
 import m_all2 from 'images/mainPage/mobile_all@2x.png';
 import { useTranslation } from 'react-i18next';
 
+
 export const Description = () => {
   const { isDesktop, isTablet, isMobile } = useResponse();
   const { t } = useTranslation();
@@ -51,9 +52,7 @@ export const Description = () => {
             <Number>1.</Number>
             <ColorTitle>{t('CALENDAR')}</ColorTitle>
             <SubTitle>{t('VIEW')}</SubTitle>
-            <Text>
-              {t('GooseTrack_Calendar')}
-            </Text>
+            <Text>{t('GooseTrack_Calendar')}</Text>
           </InfoBox>
           <ImageWrapper>
             {isMobile && (
@@ -90,9 +89,7 @@ export const Description = () => {
           <InfoBoxReverse>
             <Number>2.</Number>
             <SubTitle>{t('SIDEBAR')}</SubTitle>
-            <Text>
-              {t('GooseTrack_offers_easy')}
-            </Text>
+            <Text>{t('GooseTrack_offers_easy')}</Text>
           </InfoBoxReverse>
           <ImageWrapper>
             {isMobile && (
@@ -130,9 +127,7 @@ export const Description = () => {
             <Number>3.</Number>
             <ColorTitle>{t('ALL IN')}</ColorTitle>
             <SubTitle>{t('ONE')}</SubTitle>
-            <Text>
-              {t('GooseTrack_is_an')}
-            </Text>
+            <Text>{t('GooseTrack_is_an')}</Text>
           </InfoBox>
           <ImageWrapper>
             {isMobile && (

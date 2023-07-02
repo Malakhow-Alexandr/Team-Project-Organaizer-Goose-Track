@@ -23,33 +23,32 @@ export const AuthSection = () => {
 
   return (
     <div>
-      <LanguageFlags/>
-    <Header height={viewportHeight}>
-      
-      <ContentWrapper height={viewportHeight}>
-        <ImageWrapper>
-          <img
-            srcSet={`${goose1} 1x, ${goose2} 2x`}
-            src={goose1}
-            alt="Goose welcome you"
-            title="Goose welcome you"
-          />
-        </ImageWrapper>
+      <LanguageFlags />
+      <Header height={viewportHeight}>
+        <ContentWrapper height={viewportHeight}>
+          <ImageWrapper>
+            <img
+              srcSet={`${goose1} 1x, ${goose2} 2x`}
+              src={goose1}
+              alt="Goose welcome you"
+              title="Goose welcome you"
+            />
+          </ImageWrapper>
 
-        <h1>
-          G<span>oo</span>seTrack
-        </h1>
-        <nav>
-          <LoginLink to="login">
-            {t('Log in')}
-            <svg height="13.5" width="13.5">
-              <use href={sprite + '#icon-enter'}></use>
-            </svg>
-          </LoginLink>
-          <RegisterLink to="register">{t('Sign up')}</RegisterLink>
-        </nav>
-      </ContentWrapper>
+          <h1>
+            G<span>oo</span>seTrack
+          </h1>
+          <nav>
+            <LoginLink to="login">
+              {t('Log in')}
+              <svg height="13.5" width="13.5">
+                <use href={sprite + '#icon-enter'}></use>
+              </svg>
+            </LoginLink>
+            <RegisterLink to="register">{t('Sign up')}</RegisterLink>
+          </nav>
+        </ContentWrapper>
       </Header>
-      </div>
+    </div>
   );
 };

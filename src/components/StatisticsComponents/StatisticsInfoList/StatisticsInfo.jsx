@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import {
   InfoListContainer,
   InfoListItem,
@@ -6,13 +7,15 @@ import {
 } from './StatisticsInfo.styled';
 
 export const StatisticsInfo = () => {
+const { t } = useTranslation();
+
   return (
     <InfoListContainer>
       <InfoListItem>
-        <InfoTextFirst>By Day</InfoTextFirst>
+        <InfoTextFirst>{t('By Day')}</InfoTextFirst>
       </InfoListItem>
       <InfoListItem>
-        <InfoTextSecond>By Month</InfoTextSecond>
+        <InfoTextSecond>{t('By Month')}</InfoTextSecond>
       </InfoListItem>
     </InfoListContainer>
   );

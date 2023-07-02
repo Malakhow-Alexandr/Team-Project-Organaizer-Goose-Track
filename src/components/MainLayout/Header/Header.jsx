@@ -17,6 +17,8 @@ import {
   HeaderTitle,
   RightSectionHeader,
 } from './Header.styled';
+import LanguageFlagsBtn from 'components/localization/LanguageFlagsBtn';
+import { useTranslation } from 'react-i18next';
 
 const getTypePage = pathname => {
   if (pathname.includes('/account')) {
@@ -34,6 +36,7 @@ const Header = ({ toggleShowSideBar }) => {
   const { pathname } = useLocation();
 
   const { isNotDoneTask, getAllTasks } = useTasks();
+  const { t } = useTranslation();
 
   useEffect(() => {
     getAllTasks();
@@ -60,21 +63,23 @@ const Header = ({ toggleShowSideBar }) => {
       </MobileMenuButton>
 
       <HeaderTitle>
-        {typePage === 'account' && 'User Profile'}
-        {typePage === 'month' && 'Calendar'}
-        {typePage === 'statistics' && 'Statistics'}
+        {typePage === 'account' && t('User Profile')}
+        {typePage === 'month' && t('Calendar')}
+        {typePage === 'statistics' && t('Statistics')}
       </HeaderTitle>
 
       {typePage === 'day' && isNotDoneTask ? (
         <DayPageTitle />
       ) : (
-        <HeaderTitle>Calendar</HeaderTitle>
+        <HeaderTitle>{t('Calendar')}</HeaderTitle>
       )}
 
       <RightSectionHeader>
         <AddFeedbackBtn handleShowModal={handleShowModal} />
       </RightSectionHeader>
+      <LanguageFlagsBtn/>
       <ThemeToggler />
+     
       <UserInfo toggleShowSideBar={toggleShowSideBar} />
 
       {showModal && <AddFeedbackModal onClose={handleCloseModal} />}
