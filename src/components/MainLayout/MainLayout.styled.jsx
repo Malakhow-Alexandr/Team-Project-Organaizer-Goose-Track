@@ -4,9 +4,6 @@ import { theme } from 'theme';
 export const Container = styled.div`
   width: 100%;
 
-  padding-left: 0;
-  padding-right: 0;
-
   margin-left: auto;
   margin-right: auto;
 
@@ -60,7 +57,7 @@ export const LeftField = styled.div`
 
 export const RightColumnWrapper = styled.div`
   flex-grow: 1;
-  padding: 0 5px;
+  padding: 0 20px;
   background-color: ${props => props.theme.colors.background_switch};
 
   overflow: hidden;
@@ -68,6 +65,7 @@ export const RightColumnWrapper = styled.div`
 
   ::-webkit-scrollbar {
     width: 6px;
+    display: none;
   }
 
   ::-webkit-scrollbar-track {
