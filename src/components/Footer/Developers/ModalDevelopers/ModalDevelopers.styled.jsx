@@ -19,7 +19,8 @@ export const Overlay = styled.div`
 
 export const ModalContainer = styled.div`
   position: relative;
-  padding: 40px 18px;
+  padding: 30px 18px 10px 18px;
+
   min-width: 303px;
   max-height: 95vh;
   box-sizing: border-box;
@@ -32,7 +33,7 @@ export const ModalContainer = styled.div`
   border-color: ${props => props.theme.colors.modal_border_color};
 
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
-    padding: 40px 28px;
+    padding: 30px 18px 10px 18px;
     min-width: 396px;
     min-height: 360px;
   }

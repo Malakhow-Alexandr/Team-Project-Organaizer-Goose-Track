@@ -6,10 +6,9 @@ export const Wrapper = styled.section`
 
 export const ReviewsContainer = styled.section`
   position: relative;
-  max-width: 400px;
+  max-width: 396px;
   min-height: 324px;
   font-family: ${p => p.theme.fonts.text};
-  background-color: ${p => p.theme.colors.background};
 
   @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
     width: 704px;
@@ -47,6 +46,8 @@ export const ReviewsContainer = styled.section`
 
   & .slick-track {
     display: flex;
+    align-items: center;
+    justify-content: center;
 
     @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
       gap: 20px;
@@ -54,20 +55,16 @@ export const ReviewsContainer = styled.section`
   }
 
   & .slick-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     overflow: hidden;
   }
 
   & .slick-arrow {
     position: absolute;
     bottom: 0px;
-
-    @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
-      bottom: 0px;
-    }
-
-    @media screen and (min-width: ${p => p.theme.breakpoints.desktop}) {
-      bottom: 0px;
-    }
   }
 
   & svg.svg-arrow {
