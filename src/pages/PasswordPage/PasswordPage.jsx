@@ -11,6 +11,7 @@ import {
   SuccessMessage,
   PasswordIsMatch,
   WrongPassword,
+  BtnForgotPass,
 } from '../PasswordPage/PasswordPage.styled';
 import * as Yup from 'yup';
 import { IoEyeOutline, IoEyeOff } from 'react-icons/io5';
@@ -168,14 +169,18 @@ const PasswordPage = () => {
               <IconWrap onClick={showNewPassword}>
                 {newPasswordType === 'text' ? <IoEyeOff /> : <IoEyeOutline />}
               </IconWrap>
-              {/* <ErrorMessage name="repeatNewPassword" component="div" /> */}
             </FormLabel>
 
             <Button type="submit" disabled={!passwordIsMatch}>
               {isLoading ? <LoaderForBtn /> : <>{t('Change')}</>}
             </Button>
 
-            <button>Forgot your password?</button>
+            <BtnForgotPass
+              type="button"
+              onClick={() => alert('Wait, soon all will be OK')}
+            >
+              Forgot your password?
+            </BtnForgotPass>
           </Form>
         );
       }}
