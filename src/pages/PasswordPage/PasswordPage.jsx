@@ -97,6 +97,7 @@ const PasswordPage = () => {
         return (
           <Form>
             <FormTitle>{t('Change your password')}</FormTitle>
+
             <FormLabel className={isValid('oldPassword')}>
               {t('Old password')}
               <Field
@@ -116,6 +117,7 @@ const PasswordPage = () => {
               </IconWrap>
               <ErrorMessage name="oldPassword" component="div" />
             </FormLabel>
+
             <FormLabel className={isValid('newPassword')}>
               {t('New password')}
               <Field
@@ -140,6 +142,7 @@ const PasswordPage = () => {
               </IconWrap>
               <ErrorMessage name="newPassword" component="div" />
             </FormLabel>
+
             <FormLabel className={isValid('repeatNewPassword')}>
               {t('Repeat new password')}
               <Field
@@ -165,11 +168,14 @@ const PasswordPage = () => {
               <IconWrap onClick={showNewPassword}>
                 {newPasswordType === 'text' ? <IoEyeOff /> : <IoEyeOutline />}
               </IconWrap>
-              <ErrorMessage name="repeatNewPassword" component="div" />
+              {/* <ErrorMessage name="repeatNewPassword" component="div" /> */}
             </FormLabel>
+
             <Button type="submit" disabled={!passwordIsMatch}>
               {isLoading ? <LoaderForBtn /> : <>{t('Change')}</>}
             </Button>
+
+            <button>Forgot your password?</button>
           </Form>
         );
       }}
