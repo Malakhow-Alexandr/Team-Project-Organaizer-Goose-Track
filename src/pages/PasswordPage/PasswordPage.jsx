@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Formik } from 'formik';
+import React, { useState, useEffect } from 'react';
+import { Formik, useFormikContext } from 'formik';
 import {
   Button,
   ErrorMessage,
@@ -19,6 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { selectAuthIsLoading } from 'redux/auth/selectors';
 import { LoaderForBtn } from 'components/LoaderForBtn/LoaderForBtn';
+import { PassDifficultyScale } from '../../components/passDifficultyScale/passDifficultyScale';
 import { changePassword } from 'redux/auth/operations';
 
 const FormValidSchema = Yup.object().shape({
@@ -34,6 +35,11 @@ const FormValidSchema = Yup.object().shape({
 });
 
 const PasswordPage = () => {
+  // Oleksandr Filippov
+  const [password, setPassword] = useState('');
+  // eslint-disable-next-line no-unused-vars
+  const [error, setError] = useState(false);
+  // Oleksandr Filippov
   const [oldPasswordType, setOldPasswordType] = useState('password');
   const [newPasswordType, setNewPasswordType] = useState('password');
   const [newPassword, setNewPassword] = useState('');
@@ -73,6 +79,19 @@ const PasswordPage = () => {
     setRepeatNewPassword('');
   };
 
+  const FormObserver = () => {
+    const { values, errors } = useFormikContext();
+
+    useEffect(() => {
+      if (errors.newPassword) {
+        setError(true);
+      }
+      setPassword(values.newPassword);
+    }, [errors.newPassword, values]);
+
+    return null;
+  };
+
   return (
     <Formik
       initialValues={initialState}
@@ -97,6 +116,7 @@ const PasswordPage = () => {
 
         return (
           <Form>
+            <FormObserver />
             <FormTitle>{t('Change your password')}</FormTitle>
 
             <FormLabel className={isValid('oldPassword')}>
@@ -142,6 +162,7 @@ const PasswordPage = () => {
                 {newPasswordType === 'text' ? <IoEyeOff /> : <IoEyeOutline />}
               </IconWrap>
               <ErrorMessage name="newPassword" component="div" />
+              <PassDifficultyScale password={password} />
             </FormLabel>
 
             <FormLabel className={isValid('repeatNewPassword')}>
