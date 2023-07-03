@@ -43,7 +43,11 @@ export const Title = styled.p`
 `;
 
 export const FormField = styled.label`
-  margin-bottom: 10px;
+  margin-bottom: 0;
+`;
+
+export const StarsField = styled.div`
+  margin-bottom: 20px;
 `;
 
 export const TextareaField = styled(FormikField)`
@@ -81,7 +85,7 @@ export const TextareaField = styled(FormikField)`
 `;
 
 export const ErrorMessage = styled(FormikError)`
-  color: ${props => props.theme.colors.third_text_switch};
+  color: ${props => props.theme.colors.rating_text};
   font-weight: 500;
   font-size: 10px;
 `;
@@ -90,6 +94,7 @@ export const RatingBtnOverlay = styled.div`
   display: flex;
   flex-direction: row;
   gap: 5px;
+  margin-top: 14px;
 `;
 
 export const SaveFeedbackBtn = styled.button`

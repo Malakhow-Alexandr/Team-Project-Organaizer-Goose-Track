@@ -13,6 +13,7 @@ import {
   FeedbackFormContainer,
   Form,
   FormField,
+  StarsField,
   ErrorMessage,
   Title,
   TextareaField,
@@ -98,7 +99,7 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
             <Title>{t('Rating')}</Title>
 
             <FormField>
-              <div>
+              <StarsField>
                 {[...Array(5)].map((star, ind) => {
                   const ratingValue = ind + 1;
 
@@ -129,7 +130,7 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
                   );
                 })}
                 <ErrorMessage name="rating" component="p" />
-              </div>
+              </StarsField>
             </FormField>
 
             <EditButtonContainer>
