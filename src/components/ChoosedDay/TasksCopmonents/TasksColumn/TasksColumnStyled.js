@@ -17,7 +17,8 @@ export const TaskItem = styled.li`
 
   max-height: 60vh;
   @media screen and (min-width: ${theme.breakpoints.table}) {
-    flex: 0 0 48.5%;
+    flex: 0 0 48.8%;
+
     &:not(:last-child) {
       margin-right: 16px;
     }
