@@ -5,7 +5,7 @@ import { DatePicker } from '@mui/x-date-pickers';
 export const Container = styled.div`
   max-width: 335px;
   background-color: ${props => props.theme.colors.background_switch};
-
+  margin: 0 auto;
   @media (min-width: 768px) {
     max-width: 100%;
     min-width: 704px;
