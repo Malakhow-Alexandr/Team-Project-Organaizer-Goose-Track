@@ -18,12 +18,10 @@ export const Footer = () => {
 
   const handleCloseModal = () => {
     setShowModal(false);
-    console.log('closed');
   };
 
   const handleShowModal = () => {
     setShowModal(true);
-    console.log('opened');
   };
 
   return (
