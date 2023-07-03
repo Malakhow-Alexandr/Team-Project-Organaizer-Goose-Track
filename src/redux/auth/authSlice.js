@@ -105,6 +105,10 @@ const authSlice = createSlice({
       })
       .addCase(currentUser.rejected, state => {
         state.isRefreshing = false;
+      })
+      .addCase(changePassword.fulfilled, state => {
+        state.isLoading = false;
+        state.error = null;
       });
   },
 });

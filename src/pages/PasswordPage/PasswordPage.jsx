@@ -9,19 +9,25 @@ import {
   FormTitle,
   IconWrap,
   SuccessMessage,
+  PasswordIsMatch,
+  WrongPassword,
 } from '../PasswordPage/PasswordPage.styled';
 import * as Yup from 'yup';
-// import { FiLogIn } from 'react-icons/fi';
-// import { BiCheckCircle, BiErrorCircle } from 'react-icons/bi';
 import { IoEyeOutline, IoEyeOff } from 'react-icons/io5';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { selectAuthIsLoading } from 'redux/auth/selectors';
 import { LoaderForBtn } from 'components/LoaderForBtn/LoaderForBtn';
-// import { changePassword } from 'redux/auth/operations';
+import { changePassword } from 'redux/auth/operations';
 
 const FormValidSchema = Yup.object().shape({
-  password: Yup.string()
+  oldPassword: Yup.string()
+    .min(6, 'Password must be 6 characters long')
+    .required('Required'),
+  newPassword: Yup.string()
+    .min(6, 'Password must be 6 characters long')
+    .required('Required'),
+  repeatNewPassword: Yup.string()
     .min(6, 'Password must be 6 characters long')
     .required('Required'),
 });
@@ -29,9 +35,21 @@ const FormValidSchema = Yup.object().shape({
 const PasswordPage = () => {
   const [oldPasswordType, setOldPasswordType] = useState('password');
   const [newPasswordType, setNewPasswordType] = useState('password');
+  const [newPassword, setNewPassword] = useState('');
+  const [repeatNewPassword, setRepeatNewPassword] = useState('');
 
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   const isLoading = useSelector(selectAuthIsLoading);
+
+  const initialState = {
+    oldPassword: '',
+    newPassword: '',
+    repeatNewPassword: '',
+  };
+
+  const passwordIsMatch =
+    newPassword === repeatNewPassword && newPassword !== '';
 
   const showOldPassword = () => {
     if (oldPasswordType === 'password') {
@@ -48,21 +66,27 @@ const PasswordPage = () => {
     setNewPasswordType('password');
   };
 
+  const resetForm = resetFormik => {
+    resetFormik();
+    setNewPassword('');
+    setRepeatNewPassword('');
+  };
+
   return (
     <Formik
-      initialValues={{
-        oldPassword: '',
-        newPassword: '',
-        repeatNewPassword: '',
-      }}
+      initialValues={initialState}
       onSubmit={(values, actions) => {
-        console.log('My values 🥥', values);
-        // dispatch(changePassword(values.oldPassword, values.newPasswodr));
-        actions.resetForm();
+        dispatch(
+          changePassword({
+            password: values.oldPassword,
+            newPassword: values.newPassword,
+          })
+        );
+        resetForm(actions.resetForm);
       }}
       validationSchema={FormValidSchema}
     >
-      {({ errors, touched }) => {
+      {({ errors, touched, values }) => {
         const isValid = field =>
           touched[field] && errors[field]
             ? 'is-invalid'
@@ -98,6 +122,11 @@ const PasswordPage = () => {
                 className={isValid('newPassword')}
                 name="newPassword"
                 type={newPasswordType}
+                value={newPassword || values.newPassword}
+                onChange={e => {
+                  setNewPassword(e.target.value);
+                  values.newPassword = e.target.value;
+                }}
                 autoComplete="off"
                 placeholder="Enter new password"
               />
@@ -117,20 +146,28 @@ const PasswordPage = () => {
                 className={isValid('repeatNewPassword')}
                 name="repeatNewPassword"
                 type={newPasswordType}
+                value={repeatNewPassword || values.repeatNewPassword}
+                onChange={e => {
+                  setRepeatNewPassword(e.target.value);
+                  values.repeatNewPassword = e.target.value;
+                }}
                 autoComplete="off"
                 placeholder="Repeat new password"
               />
-              {isValid('repeatNewPassword') === 'is-valid' && (
-                <SuccessMessage>
-                  {t('This is a CORRECT password')}
-                </SuccessMessage>
+              {passwordIsMatch && (
+                <PasswordIsMatch>
+                  {t('New passwords are equivalent')}
+                </PasswordIsMatch>
+              )}
+              {!passwordIsMatch && repeatNewPassword && (
+                <WrongPassword>{t("Passwords don't match")}</WrongPassword>
               )}
               <IconWrap onClick={showNewPassword}>
                 {newPasswordType === 'text' ? <IoEyeOff /> : <IoEyeOutline />}
               </IconWrap>
               <ErrorMessage name="repeatNewPassword" component="div" />
             </FormLabel>
-            <Button type="submit">
+            <Button type="submit" disabled={!passwordIsMatch}>
               {isLoading ? <LoaderForBtn /> : <>{t('Change')}</>}
             </Button>
           </Form>
