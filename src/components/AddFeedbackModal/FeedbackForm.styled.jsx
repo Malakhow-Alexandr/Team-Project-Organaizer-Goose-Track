@@ -47,7 +47,7 @@ export const FormField = styled.label`
 `;
 
 export const TextareaField = styled(FormikField)`
-  width: 296px;
+  width: 100%;
   height: 130px;
   padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -74,7 +74,7 @@ export const TextareaField = styled(FormikField)`
   }
 
   @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
-    width: 404px;
+    width: 100%;
     height: 127px;
     padding: 14px 18px;
   }
@@ -96,7 +96,7 @@ export const SaveFeedbackBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 198px;
+  width: 100%;
   height: 46px;
   margin: 0;
   font-family: ${props => props.theme.fonts.heading};
@@ -121,7 +121,7 @@ export const CancelFeedbackBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 198px;
+  width: 100%;
   height: 46px;
   margin: 0;
   font-family: ${props => props.theme.fonts.heading};
@@ -146,7 +146,7 @@ export const EditFeedbackBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 198px;
+  width: 100%;
   height: 46px;
   margin: 0;
   font-family: ${props => props.theme.fonts.heading};
