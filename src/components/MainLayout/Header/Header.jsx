@@ -62,24 +62,23 @@ const Header = ({ toggleShowSideBar }) => {
         <RxHamburgerMenu size={34} color="var(--primary-text)" />
       </MobileMenuButton>
 
-      <HeaderTitle>
-        {typePage === 'account' && t('User Profile')}
-        {typePage === 'month' && t('Calendar')}
-        {typePage === 'statistics' && t('Statistics')}
-      </HeaderTitle>
-
       {typePage === 'day' && isNotDoneTask ? (
         <DayPageTitle />
       ) : (
-        <HeaderTitle>{t('Calendar')}</HeaderTitle>
+        <HeaderTitle>
+          {typePage === 'account' && t('User Profile')}
+          {typePage === 'month' && t('Calendar')}
+          {typePage === 'day' && t('Calendar')}
+          {typePage === 'statistics' && t('Statistics')}
+        </HeaderTitle>
       )}
 
       <RightSectionHeader>
         <AddFeedbackBtn handleShowModal={handleShowModal} />
       </RightSectionHeader>
-      <LanguageFlagsBtn/>
+      <LanguageFlagsBtn />
       <ThemeToggler />
-     
+
       <UserInfo toggleShowSideBar={toggleShowSideBar} />
 
       {showModal && <AddFeedbackModal onClose={handleCloseModal} />}

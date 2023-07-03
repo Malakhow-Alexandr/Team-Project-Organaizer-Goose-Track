@@ -202,3 +202,23 @@ export const Button = styled.button`
     font-size: 18px;
   }
 `;
+
+export const BtnForgotPass = styled.button`
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  padding: 20px;
+  font-size: ${props => props.theme.fontSizes.m};
+  font-family: ${props => props.theme.fonts.heading};
+  font-weight: ${props => props.theme.fontWeights.heading};
+  color: ${props => props.theme.colors.primary};
+  text-shadow: 0px 9.399999618530273px 57.6875px 0px rgba(0, 0, 0, 0.04),
+    0px 47px 355px 0px rgba(0, 0, 0, 0.07);
+  text-decoration-line: underline;
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+  cursor: pointer;
+`;

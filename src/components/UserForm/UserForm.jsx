@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { updateUser } from 'redux/auth/operations';
 import * as Yup from 'yup';
@@ -25,6 +25,7 @@ import {
 } from './UserForm.styled';
 import { useTranslation } from 'react-i18next';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
+import { selectIsLoggedGoogle } from 'redux/auth/selectors';
 
 const phoneRegexp = /^(\d{2})\s\((\d{3})\)\s(\d{3})\s(\d{2})\s(\d{2})$/;
 const skypeNumberRegexp = /^\+[1-9]\d{0,2}[.-]?\d{1,14}$/;
@@ -58,10 +59,10 @@ export const validationSchema = Yup.object().shape({
 
 const UserForm = () => {
   const { t } = useTranslation();
-
+  const isLogedGoogle = useSelector(selectIsLoggedGoogle);
   const dispatch = useDispatch();
   const { user } = useAuth();
- 
+
   const [userAvatar, setUserAvatar] = useState(user.avatarURL);
   const [birthdayDate, setBirthdayDate] = useState(null);
   const [isFormChanged, setIsFormChanged] = useState(false);
@@ -248,16 +249,20 @@ const UserForm = () => {
               placeholder="Add your telegram"
               onChange={handleInputChange}
               onBlur={handleBlur}
-              className={errors.telegram && touched.telegram ? 'InvalidInput' : ''}
+              className={
+                errors.telegram && touched.telegram ? 'InvalidInput' : ''
+              }
             />
             {errors.telegram && touched.telegram && (
               <ErrorMessage>{errors.telegram}</ErrorMessage>
             )}
           </WrapperInput>
           {/* change password */}
-          <WrapperInput>
-            <AuthNavigate link={'/password'} text={'Change password'} />
-          </WrapperInput>
+          {!isLogedGoogle && (
+            <WrapperInput>
+              <AuthNavigate link={'/password'} text={'Change password'} />
+            </WrapperInput>
+          )}
         </Wrapper>
         <SubmitBtn disabled={!isFormChanged} type="submit">
           {t('Save changes')}
