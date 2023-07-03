@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
     align-items: center;
   }
   @media screen and (max-width: ${theme.breakpoints.mobileMax}) {
-    width: 335px;
+    width: 100%;
   }
 `;
 export const PeriodPaginatorButton = styled.p`
