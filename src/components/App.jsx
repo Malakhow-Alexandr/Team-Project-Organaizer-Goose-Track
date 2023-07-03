@@ -4,7 +4,6 @@ import moment from 'moment';
 import { Toaster } from 'react-hot-toast';
 import React from 'react';
 
-// Публічний та Приватний роутер в залежності від наявності userAccessToken, котрий приходить від BACKEND
 import { PublicRoute } from './AuthRoutes/PublicRoute';
 import { PrivateRoute } from './AuthRoutes/PrivateRoute';
 import { updateAccessToken, updateLoginGoogle } from '../redux/auth/authSlice';
@@ -15,6 +14,7 @@ import { Loader } from './Loader/Loader';
 import { selectIsLoading } from 'redux/tasks/selectors';
 import { selectReviewsIsLoading } from 'redux/reviews/selectors';
 import { LoaderToTop } from './LoaderToTop/LoaderToTop';
+import { ScrollToTop } from './ScrollToTop/ScrollToTop';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -67,7 +67,15 @@ export const App = () => {
         <>
           <Routes>
             <Route path="/" element={<PublicRoute />}>
-              <Route index element={<MainPage />} />
+              <Route
+                index
+                element={
+                  <>
+                    <ScrollToTop />
+                    <MainPage />
+                  </>
+                }
+              />
               <Route path="register" element={<RegisterPage />} />
               <Route path="login" element={<LoginPage />} />
 
