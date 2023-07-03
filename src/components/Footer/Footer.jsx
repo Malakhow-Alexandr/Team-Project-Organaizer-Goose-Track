@@ -35,7 +35,12 @@ export const Footer = () => {
               <CopyIcon />
             </span>
             2023
-            <ButtonTeam onClick={handleShowModal}>GoIT Students</ButtonTeam>
+            <ButtonTeam
+              onClick={handleShowModal}
+              aria-label="open-developers-modal"
+            >
+              GoIT Students
+            </ButtonTeam>
           </p>
         </TeamInfoWrapper>
         <LinksList>

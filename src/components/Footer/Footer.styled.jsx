@@ -81,4 +81,9 @@ export const ButtonTeam = styled.button`
   background-color: transparent;
   border: ${p => p.theme.borders.none};
   cursor: pointer;
+  transition: all 250ms ease;
+
+  &:hover {
+    color: #fff;
+  }
 `;
