@@ -1,10 +1,10 @@
-import { Modal } from 'components/Modal/Modal';
 import { DevelopersSlider } from '../DevelopersSlider/DevelopersSlider';
+import { ModalDevelopers } from '../ModalDevelopers/ModalDevelopers';
 
 export const DevelopersModal = ({ onClose }) => {
   return (
-    <Modal onClose={onClose}>
+    <ModalDevelopers onClose={onClose}>
       <DevelopersSlider />
-    </Modal>
+    </ModalDevelopers>
   );
 };

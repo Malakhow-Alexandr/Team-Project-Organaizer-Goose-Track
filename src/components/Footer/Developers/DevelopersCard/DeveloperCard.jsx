@@ -1,5 +1,5 @@
 import React from 'react';
-import sprite from '../../../icons/sprite.svg';
+import sprite from '../../../../icons/sprite.svg';
 import {
   Avatar,
   AvatarWrapper,
@@ -30,6 +30,7 @@ export const DeveloperCard = ({ developer }) => {
               href={developer.git}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub Profile"
             >
               <Icon>
                 <use href={sprite + '#icon-github'} />
@@ -44,6 +45,7 @@ export const DeveloperCard = ({ developer }) => {
               href={developer.linkedin}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn Profile"
             >
               <Icon>
                 <use href={sprite + '#icon-linkedin'} />
@@ -58,6 +60,7 @@ export const DeveloperCard = ({ developer }) => {
               href={developer.telegram}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Telegram Profile"
             >
               <Icon>
                 <use href={sprite + '#icon-send'} />
