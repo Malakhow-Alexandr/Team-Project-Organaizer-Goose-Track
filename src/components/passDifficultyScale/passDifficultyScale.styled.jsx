@@ -7,27 +7,18 @@ export const List = styled.ul`
   display: flex;
   gap: 7px;
   position: absolute;
-  top: 4px;
+  top: 5px;
   right: 3px;
-
-  @media screen and (min-width: 768px) {
-    top: 92px;
-  }
 `;
 
 export const Item = styled.li`
   position: relative;
-  width: 39px;
+  width: 40px;
   height: 7px;
   border-radius: 5px;
 
   font-size: 12px;
   text-align: center;
-
-  @media screen and (min-width: 768px) {
-    width: 37px;
-    height: 7px;
-  }
 
   background-color: ${({ state }) =>
     state === 'red' ? red : state === 'strong' ? green : 'lightgray'};
@@ -55,8 +46,4 @@ export const Span = styled.span`
   bottom: 9px;
   left: 50%;
   transform: translateX(-50%);
-
-  @media screen and (min-width: 768px) {
-    top: 8px;
-  }
 `;

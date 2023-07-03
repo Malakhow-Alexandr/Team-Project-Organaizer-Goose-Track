@@ -59,7 +59,7 @@ export const PassDifficultyScale = ({ password }) => {
           <Span>{passState === 'weak' && 'weak'}</Span>
         </Item>
         <Item state={passState}>
-          <Span>{passState === 'medium' && 'ok'}</Span>
+          <Span>{passState === 'medium' && 'okay'}</Span>
         </Item>
         <Item state={passState}>
           <Span>{passState === 'strong' && 'strong'}</Span>
