@@ -10,10 +10,11 @@ import { PrivateRoute } from './AuthRoutes/PrivateRoute';
 import { updateAccessToken } from '../redux/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentUser } from 'redux/auth/operations';
-import { selectIsRefreshing } from 'redux/auth/selectors';
+import { selectAuthIsLoading, selectIsRefreshing } from 'redux/auth/selectors';
 import { Loader } from './Loader/Loader';
-
-
+import { selectIsLoading } from 'redux/tasks/selectors';
+import { selectReviewsIsLoading } from 'redux/reviews/selectors';
+import { LoaderToTop } from './LoaderToTop/LoaderToTop';
 
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const RegisterPage = lazy(() => import('pages/RegisterPage/RegisterPage'));
@@ -38,6 +39,9 @@ export const App = () => {
   const [searchParams] = useSearchParams();
 
   const isRefreshing = useSelector(selectIsRefreshing);
+  const authIsLoading = useSelector(selectAuthIsLoading);
+  const taskIsLoading = useSelector(selectIsLoading);
+  const reviewsIsLoading = useSelector(selectReviewsIsLoading);
 
   useEffect(() => {
     const accessToken = searchParams.get('accessToken');
@@ -55,7 +59,9 @@ export const App = () => {
   }, [dispatch, searchParams]);
   return (
     <Suspense fallback={<Loader />}>
-      {/* До fallback потрібно додати LOADER AБО Spinner */}
+      {authIsLoading && <Loader />}
+      {reviewsIsLoading && <Loader />}
+      {taskIsLoading && <LoaderToTop />}
       {!isRefreshing && (
         <>
           <Routes>
@@ -63,7 +69,7 @@ export const App = () => {
               <Route index element={<MainPage />} />
               <Route path="register" element={<RegisterPage />} />
               <Route path="login" element={<LoginPage />} />
-              <Route path="password" element={<PasswordPage />} />
+
               <Route
                 path="reset-password/:token"
                 element={<PasswordRecoveryPage />}
@@ -77,6 +83,7 @@ export const App = () => {
                   <Route path="day/:currentDay" element={<ChoosedDay />} />
                 </Route>
                 <Route path="statistics" element={<StatisticsPage />} />
+                <Route path="password" element={<PasswordPage />} />
               </Route>
             </Route>
             <Route path="*" element={<NotFoundPage />} />
@@ -84,13 +91,6 @@ export const App = () => {
         </>
       )}
       <Toaster position="top-right" reverseOrder={false} />
-      
-      
-
-
     </Suspense>
   );
 };
-
-
-

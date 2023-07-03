@@ -1,6 +1,13 @@
+import { useLocation } from 'react-router';
+import { useEffect, useState } from 'react';
+
+import { useTasks } from '../../../hooks/useTasks';
+
 import AddFeedbackBtn from '../AddFeedbackBtn/AddFeedbackBtn';
 import { AddFeedbackModal } from 'components/AddFeedbackModal/AddFeedbackModal';
 import { ThemeToggler } from '../../ThemeToggler/ThemeToggler';
+import { DayPageTitle } from './DayPageTitle/DayPageTitle';
+import { UserInfo } from './UserInfo/UserInfo';
 
 import { RxHamburgerMenu } from 'react-icons/rx';
 
@@ -10,12 +17,8 @@ import {
   HeaderTitle,
   RightSectionHeader,
 } from './Header.styled';
-
-import { useState } from 'react';
-import { useLocation } from 'react-router';
-import { DayPageTitle } from './DayPageTitle/DayPageTitle';
-import { UserInfo } from './UserInfo/UserInfo';
-import LanguageFlags from 'components/localization/LanguageFlags';
+import LanguageFlagsBtn from 'components/localization/LanguageFlagsBtn';
+import { useTranslation } from 'react-i18next';
 
 const getTypePage = pathname => {
   if (pathname.includes('/account')) {
@@ -31,6 +34,15 @@ const getTypePage = pathname => {
 
 const Header = ({ toggleShowSideBar }) => {
   const { pathname } = useLocation();
+
+  const { isNotDoneTask, getAllTasks } = useTasks();
+  const { t } = useTranslation();
+
+  useEffect(() => {
+    getAllTasks();
+    console.log(isNotDoneTask);
+  }, [getAllTasks, isNotDoneTask]);
+
   const typePage = getTypePage(pathname);
 
   // open FeedbackModal logic:
@@ -51,18 +63,23 @@ const Header = ({ toggleShowSideBar }) => {
       </MobileMenuButton>
 
       <HeaderTitle>
-        {typePage === 'account' && 'User Profile'}
-        {typePage === 'month' && 'Calendar'}
-        {typePage === 'statistics' && 'Statistics'}
+        {typePage === 'account' && t('User Profile')}
+        {typePage === 'month' && t('Calendar')}
+        {typePage === 'statistics' && t('Statistics')}
       </HeaderTitle>
 
-      {typePage === 'day' && <DayPageTitle />}
+      {typePage === 'day' && isNotDoneTask ? (
+        <DayPageTitle />
+      ) : (
+        <HeaderTitle>{t('Calendar')}</HeaderTitle>
+      )}
 
       <RightSectionHeader>
         <AddFeedbackBtn handleShowModal={handleShowModal} />
       </RightSectionHeader>
+      <LanguageFlagsBtn/>
       <ThemeToggler />
-      <LanguageFlags />
+     
       <UserInfo toggleShowSideBar={toggleShowSideBar} />
 
       {showModal && <AddFeedbackModal onClose={handleCloseModal} />}

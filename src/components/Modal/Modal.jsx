@@ -1,7 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { createPortal } from 'react-dom';
-import { CloseBtn, IconClose, ModalContainer, Overlay } from './Modal.styled';
-import sprite from '../../icons/sprite.svg';
+import { CloseBtn, ModalContainer, Overlay, MyCloseIcon } from './Modal.styled';
 
 export const Modal = ({ children, onClose }) => {
   const handleKeyPress = useCallback(
@@ -33,12 +32,8 @@ export const Modal = ({ children, onClose }) => {
     <Overlay onClick={handleOverlayClick}>
       <ModalContainer>
         <CloseBtn onClick={onClose}>
-          {/* <IoMdClose />{' '} */}
-          <IconClose width="24" height="24">
-            <use href={sprite + '#icon-modal-close'} />
-          </IconClose>
+          <MyCloseIcon width="24" height="24"></MyCloseIcon>
         </CloseBtn>
-
         {children}
       </ModalContainer>
     </Overlay>,

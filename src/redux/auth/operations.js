@@ -38,10 +38,16 @@ instance.interceptors.response.use(
   }
 );
 
-const tostStyle = {
+const tostStyleError = {
   borderRadius: '8px',
   background: '#13151A',
   color: '#3E85F3',
+};
+
+const tostStyleSuccess = {
+  borderRadius: '8px',
+  background: '#3E85F3',
+  color: '#ffffff',
 };
 
 export const registerUser = createAsyncThunk(
@@ -56,12 +62,15 @@ export const registerUser = createAsyncThunk(
       console.log(response.data);
       localStorage.setItem('refreshToken', response.data.refreshToken);
       setToken(response.data.accessToken);
+      toast.success(`Welcome, ${response.data.user.name}!`, {
+        style: tostStyleSuccess,
+      });
       return response.data;
     } catch (error) {
       toast.error(
         `Registration failed!😕 Please check your information and try again!`,
         {
-          style: tostStyle,
+          style: tostStyleError,
         }
       );
       return thunkAPI.rejectWithValue(error.message);
@@ -77,10 +86,13 @@ export const loginUser = createAsyncThunk(
       console.log(response.data);
       localStorage.setItem('refreshToken', response.data.refreshToken);
       setToken(response.data.accessToken);
+      toast.success(`Welcome back, ${response.data.user.name}!`, {
+        style: tostStyleSuccess,
+      });
       return response.data;
     } catch (error) {
       toast.error(`Invalid email or password!😕 Try again!`, {
-        style: tostStyle,
+        style: tostStyleError,
       });
       return thunkAPI.rejectWithValue(error.message);
     }
@@ -123,16 +135,16 @@ export const currentUser = createAsyncThunk(
 
 export const updateUser = createAsyncThunk(
   'auth/updateUser ',
-  async ({ avatar, name, birthday, phone, skype, email }, thunkAPI) => {
+  async ({ avatar, name, birthday, phone, telegram, email }, thunkAPI) => {
     try {
       const formData = new FormData();
       formData.append('name', name);
       formData.append('email', email);
-      if(avatar !== undefined) {
+      if (avatar !== undefined) {
         formData.append('avatar', avatar);
       }
       formData.append('phone', phone);
-      formData.append('skype', skype);
+      formData.append('telegram', telegram);
       formData.append('birthday', birthday);
 
       const response = await instance.patch('/update', formData, {
@@ -142,7 +154,9 @@ export const updateUser = createAsyncThunk(
       });
 
       console.log(response.data);
-
+      toast.success(`Your account has been updated!`, {
+        style: tostStyleSuccess,
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -162,6 +176,9 @@ export const changePassword = createAsyncThunk(
       const response = await instance.patch('/changePassword', {
         password,
         newPassword,
+      });
+      toast.success(`Your password has been changed!`, {
+        style: tostStyleSuccess,
       });
       return response.data;
     } catch (error) {

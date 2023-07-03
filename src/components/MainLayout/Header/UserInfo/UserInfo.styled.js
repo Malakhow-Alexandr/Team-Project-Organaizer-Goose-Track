@@ -21,6 +21,7 @@ export const HeaderUserName = styled.h3`
   font-weight: ${props => props.theme.fontWeights.bold};
   font-size: ${props => props.theme.fontSizes.xs};
   line-height: 18px;
+  text-align: center;
   color: ${props => props.theme.colors.primary_text_switch};
 
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {

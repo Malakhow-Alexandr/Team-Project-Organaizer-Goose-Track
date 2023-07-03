@@ -8,6 +8,7 @@ export const TaskContainer = styled.ul`
   list-style: none;
   padding: 0;
   justify-content: center;
+  align-content: space-between;
   overflow-x: scroll;
   @media screen and (min-width: 1440px) {
     justify-content: center;
@@ -18,7 +19,8 @@ export const TaskContainer = styled.ul`
 
 export const StretchContainer = styled.div`
   display: flex;
-  align-self: baseline;
+  /* align-self: baseline; */
+  align-content: space-between;
 
   @media screen and (min-width: 1440px) {
     justify-content: center;

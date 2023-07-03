@@ -9,10 +9,10 @@ export const WrapForm = styled.div`
   border-radius: 8px;
 
   padding: 48px 18px;
-  background-color: ${props => props.theme.colors.modal_window};
-  color: ${p => p.theme.colors.modal_form_content};
+  background-color: ${props => props.theme.colors.second_background_switch};
+  color: ${p => p.theme.colors.user_text_switch};
 
-  @media screen and (min-width: ${p => p.theme.breakpoints.mobile}) {
+  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
     padding: 40px 28px;
     max-width: 396px;
     width: 396px;
@@ -45,7 +45,7 @@ export const Input = styled.input`
   border: ${p => p.theme.colors.user_input_border};
   padding-left: 18px;
 
-  color: ${p => p.theme.colors.primary_text_mode};
+  color: ${p => p.theme.colors.primary_text_switch};
   &::-webkit-calendar-picker-indicator {
     display: none;
   }

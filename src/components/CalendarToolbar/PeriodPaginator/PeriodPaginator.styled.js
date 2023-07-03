@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
     align-items: center;
   }
 `;
-export const PeriodPaginatorButton = styled.button`
+export const PeriodPaginatorButton = styled.p`
   display: flex;
   width: 140px;
   height: 30px;
@@ -61,7 +61,7 @@ export const Button1 = styled.button`
   width: 38px;
   background-color: ${theme.colors.third_background_switch};
   font-size: ${theme.fontSizes.l};
-  color: ${theme.colors.third_text_switch};
+  color: ${theme.colors.second_text_switch};
   border: ${theme.borders.normal};
   border-color: ${theme.colors.calendar_border_color_switch};
   border-radius: ${theme.radii.small};
@@ -70,6 +70,7 @@ export const Button1 = styled.button`
   cursor: pointer;
   &:hover {
     background-color: ${theme.colors.background_switch};
+    color: ${theme.colors.third_text_switch};
   }
 
   @media screen and (min-width: ${theme.breakpoints.table}) {
@@ -83,7 +84,7 @@ export const Button2 = styled.button`
   width: 38px;
   background-color: ${theme.colors.third_background_switch};
   font-size: ${theme.fontSizes.l};
-  color: ${theme.colors.primary_text_switch};
+  color: ${theme.colors.second_text_switch};
   border: ${theme.borders.normal};
   border-color: ${theme.colors.calendar_border_color_switch};
   border-radius: ${theme.radii.small};
@@ -92,6 +93,7 @@ export const Button2 = styled.button`
   cursor: pointer;
   &:hover {
     background-color: ${theme.colors.background_switch};
+    color: ${theme.colors.primary_text_switch};
   }
 
   @media screen and (min-width: ${theme.breakpoints.table}) {

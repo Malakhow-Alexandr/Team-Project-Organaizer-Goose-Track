@@ -22,6 +22,7 @@ export const theme = {
     muted: '#F7F6F9',
     closeButton: '#111111',
     textarea: '#F6F6F6',
+    disabled: '#c9cdd3',
 
     // Theme toggler
 
@@ -75,6 +76,20 @@ export const theme = {
 
     statistics_tooltip_text: 'var(--statistics-tooltip-text)',
     //light rgba(33, 34, 44, 0.6) => dark rgba(255, 255, 255, 0.7);
+
+    calendar_shadow_switch: 'var(--chalendar-shadow)',
+    //light rgba(0, 0, 0, 0.36) => dark rgba(255, 255, 255, 0.3);
+
+    scroll_сolor: 'var(--scroll-color)',
+
+    bg_scroll_color: 'var(--bg-scroll-color)',
+
+    texarea_bg: 'var(--textarea-bg)',
+    rating_text: 'var(--rating-text)',
+    cancel_btn: 'var(--cancel-btn)',
+    pencil_btn_bg: 'var(--pencil-btn-bg)',
+    trash_btn_bg: 'var(--trash-btn-bg)',
+    empty_star: 'var( --empty-star-bg)',
   },
 
   fonts: {

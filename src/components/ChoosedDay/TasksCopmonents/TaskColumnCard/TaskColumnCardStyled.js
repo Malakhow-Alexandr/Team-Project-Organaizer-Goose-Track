@@ -1,15 +1,6 @@
 import { theme } from 'theme';
 import styled from 'styled-components';
 
-function getRandomColor() {
-  var letters = '0123456789ABCDEF';
-  var color = '#';
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
 export const TaskListItem = styled.li`
   border-radius: 8px;
   width: 100%;
@@ -22,19 +13,6 @@ export const TaskListItem = styled.li`
   }
 
   transition: all ease-in-out 250ms;
-`;
-
-export const AvatorTaskList = styled.img`
-  border: 1.8px solid ${theme.colors.primary};
-  margin-right: 8px;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  overflow: hidden;
-  display: block;
-  height: auto;
-  align-self: safe;
-  justify-content: flex-start;
 `;
 
 export const TextAvatar = styled.p`
@@ -51,11 +29,7 @@ export const TextAvatar = styled.p`
   align-items: center;
   justify-content: center;
   font-family: ${theme.fonts.text};
-  font-weight: ${theme.fontWeights.medium};
-  background-color: ${getRandomColor()};
-
-  /* align-self: safe; */
-  /* justify-content: flex-start; */
+  font-weight: ${theme.fontWeights.heading};
 `;
 
 export const TaskStatue = styled.p`
@@ -80,7 +54,7 @@ export const TaskStatue = styled.p`
     }
   }};
   padding: 0 12px 0 12px;
-  font-weight: ${theme.fontWeights.medium};
+  font-weight: ${theme.fontWeights.heading};
   line-height: 0.83;
   align-self: flex-end;
   margin-right: auto;
@@ -101,4 +75,19 @@ export const TaskText = styled.p`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+`;
+export const UserPhoto = styled.img`
+  box-sizing: border-box;
+
+  width: 32px;
+  height: 32px;
+  margin-right: 8px;
+
+  border: 1.8px solid ${props => props.theme.colors.primary};
+  border-radius: 50%;
+
+  @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
+    width: 32px;
+    height: 32px;
+  }
 `;

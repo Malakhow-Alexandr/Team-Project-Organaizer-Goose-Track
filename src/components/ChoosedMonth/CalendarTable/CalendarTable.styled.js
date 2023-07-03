@@ -25,8 +25,8 @@ export const CurrentDay = styled.div`
   }
 `;
 export const DayWrapper = styled.div`
-  height: 26px;
-  width: 26px;
+  height: 25px;
+  width: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -40,31 +40,30 @@ export const DayWrapper = styled.div`
   }
 `;
 export const CellWrapper = styled.div`
-  width: 47px;
-  height: 94px;
-  padding: 2px;
+  min-width: 45px;
+  min-height: 84px;
+  padding: 1px;
   border-block-end: 1px solid rgba(220, 227, 229, 0.8);
   border-inline-end: 1px solid rgba(220, 227, 229, 0.8);
   &:nth-child(7n) {
     border-right: none;
   }
   cursor: ${props => (props.isSelectedMonth ? 'pointer' : 'auto')};
-  color: ${props => (props.isSelectedMonth ? '#343434' : 'lightgrey')};
   transition: box-shadow 300ms linear;
   &:hover,
   &:focus {
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.2), 0px 4px 4px rgba(0, 0, 0, 0.16),
-      1px 4px 6px rgba(0, 0, 0, 0.36);
+    box-shadow: 0px 1px 1px ${p => p.theme.colors.calendar_shadow_switch},
+      0px 4px 4px ${p => p.theme.colors.calendar_shadow_switch},
+      1px 4px 6px ${p => p.theme.colors.calendar_shadow_switch};
   }
 
   @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
-    width: 100px;
-    height: 144px;
+    min-width: 100px;
+    min-height: 125px;
     padding: 4px;
   }
   @media screen and (min-width: ${p => p.theme.breakpoints.desktop}) {
-    width: 155px;
-    height: 125px;
+    min-width: 155px;
     padding: 8px;
   }
 `;

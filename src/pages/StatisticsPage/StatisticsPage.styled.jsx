@@ -3,23 +3,34 @@ import styled from 'styled-components';
 export const StatisticsPageContainer = styled.section`
   background-color: ${p => p.theme.colors.third_background_switch};
   border-radius: 16px;
+  margin-left: auto;
+  margin-right: auto;
   @media screen and (max-width: ${p => p.theme.breakpoints.mobile}) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     max-width: 335px;
+    border-radius: 16px;
+    padding-top: 28px;
+    padding-bottom: 70px;
+    padding-left: 1px;
+    padding-right: 1px;
   }
 
   @media screen and (min-width: 376px) and (max-width: 768px) {
     width: 335px;
     border-radius: 16px;
     padding-top: 28px;
-    padding-bottom: 135px;
+    padding-bottom: 70px;
     padding-left: 14px;
     padding-right: 14px;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     width: 704px;
-    padding-top: 140px;
-    padding-bottom: 224px;
+    padding-top: 100px;
+    padding-bottom: 100px;
     padding-left: 32px;
     padding-right: 32px;
   }
@@ -34,9 +45,10 @@ export const StatisticsPageContainer = styled.section`
 `;
 
 export const HeadContainer = styled.section`
-  border-radius: 20px;
-  border: 0.8px solid;
-  border-color: ${p => p.theme.colors.statistics_border_color_switch};
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 40px;
+
   @media screen and (max-width: 375px) {
     max-width: 307px;
   }
@@ -46,22 +58,29 @@ export const HeadContainer = styled.section`
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
+    display: flex;
     width: 640px;
+    align-items: center;
   }
 
   @media screen and (min-width: 1440px) {
+    display: flex;
     width: 860px;
+    align-items: center;
   }
 `;
 
 export const ChartContainer = styled.section`
   margin-top: auto;
+  margin-left: auto;
+  margin-right: auto;
   background-color: ${p => p.theme.colors.third_background_switch};
   border-radius: 20px;
   border: 0.8px solid;
   border-color: ${p => p.theme.colors.statistics_border_color_switch};
   @media screen and (max-width: 375px) {
-    max-width: 307px;
+    display: block;
+    max-width: 260px;
   }
 
   @media screen and (min-width: 376px) and (max-width: 767px) {

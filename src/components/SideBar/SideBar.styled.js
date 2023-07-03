@@ -10,7 +10,6 @@ export const SideBarContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
   padding: 24px 20px;
 
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
@@ -25,6 +24,7 @@ export const SideBarContainer = styled.div`
 `;
 
 export const LogoutBtn = styled.button`
+  margin-top: auto;
   display: flex;
   gap: 11px;
   align-items: center;

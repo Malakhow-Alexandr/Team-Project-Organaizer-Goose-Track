@@ -7,8 +7,10 @@ import {
 
 import gooseImg1x from '../../../../images/header/goose_active_task.webp';
 import gooseImg2x from '../../../../images/header/goose_active_task@2x.webp';
+import { useTranslation } from 'react-i18next';
 
 export const DayPageTitle = () => {
+  const { t } = useTranslation();
   return (
     <TitleWrapper>
       <img
@@ -19,10 +21,9 @@ export const DayPageTitle = () => {
         alt="goose"
       />
       <div>
-        <HeaderTitle>Calendar</HeaderTitle>
+        <HeaderTitle>{t('Calendar')}</HeaderTitle>
         <TextMessage>
-          <TextMessageSpan>Let go</TextMessageSpan> of the past and focus on the
-          present!
+          <TextMessageSpan>{t('Let go')}</TextMessageSpan> {t('of_the past and focus on the present!')}
         </TextMessage>
       </div>
     </TitleWrapper>

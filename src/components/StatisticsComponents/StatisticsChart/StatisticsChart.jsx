@@ -24,17 +24,13 @@ import {
   BarCustomLabel,
   TitleCustomLabel,
 } from './StatisticsChartCustomComponents';
-
-// const byMonth = {
-//   todo: 14,
-//   inProgress: 33,
-//   done: 33,
-// };
+import { useTranslation } from 'react-i18next';
 
 export const StatisticsChart = ({ selectedDay }) => {
   const dispatch = useDispatch();
-  const statistics = useSelector(selectTasksStatistics);
 
+  const statistics = useSelector(selectTasksStatistics);
+  const { t } = useTranslation();
   const { statisticsByDay, statisticsByMonth } = statistics;
   useEffect(() => {
     if (selectedDay !== '') {
@@ -44,23 +40,23 @@ export const StatisticsChart = ({ selectedDay }) => {
 
   const data = [
     {
-      name: 'To Do',
-      by_Month: statisticsByMonth?.todo ?? 0,
-      by_Day: statisticsByDay?.todo ?? 0,
+      name: t('To Do'),
+      by_Month: statisticsByMonth?.todo ?? 0 + '%',
+      by_Day: statisticsByDay?.todo ?? 0 + '%',
     },
     {
-      name: 'In Progress',
-      by_Month: statisticsByMonth?.inProgress ?? 0,
-      by_Day: statisticsByDay?.inProgress ?? 0,
+      name: t('In Action'),
+      by_Month: statisticsByMonth?.inProgress ?? 0 + '%',
+      by_Day: statisticsByDay?.inProgress ?? 0 + '%',
     },
     {
-      name: 'Done',
-      by_Month: statisticsByMonth?.done ?? 0,
-      by_Day: statisticsByDay?.done ?? 0,
+      name: t('Done'),
+      by_Month: statisticsByMonth?.done ?? 0 + '%',
+      by_Day: statisticsByDay?.done ?? 0 + '%',
     },
   ];
   return (
-    <ResponsiveContainer width="100%" height="100%">
+    <ResponsiveContainer minWidth={250} minHeight={300}>
       <BarChart
         data={data}
         margin={{
@@ -107,7 +103,7 @@ export const StatisticsChart = ({ selectedDay }) => {
           tick={<CustomYAxisTick />}
         >
           <Label
-            value="Tasks"
+            value={t('Tasks')}
             position="insideTop"
             angle={0}
             offset={-43}

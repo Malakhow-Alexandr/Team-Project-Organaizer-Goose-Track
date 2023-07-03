@@ -10,6 +10,7 @@ import {
   DateContainer,
   DayNumber,
 } from './DayCalendarHead.styled';
+import { useTranslation } from 'react-i18next';
 
 const chooseIndexOfCurrentDay = date => {
   switch (date.toString().slice(0, 3).toUpperCase()) {
@@ -39,6 +40,7 @@ const dateParts = currentDay =>
 export function DayCalendarHead({ clickChooseDay }) {
   const navigate = useNavigate();
   const { currentDay } = useParams();
+  const { t } = useTranslation();
 
   const year = dateParts(currentDay)?.[0];
   const month = dateParts(currentDay)?.[1] - 1;
@@ -48,7 +50,7 @@ export function DayCalendarHead({ clickChooseDay }) {
 
   const [choosedDay, setChoosedDay] = useState(dayFromParams);
 
-  const daysOfWeek = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+  const daysOfWeek = [t('MON'), t('TUE'), t('WED'), t('THU'), t('FRI'), t('SAT'), t('SUN')];
 
   const handleClickDay = (day, dayValue, monthValue, yearValue) => {
     const dateClickObject = {
@@ -88,7 +90,7 @@ export function DayCalendarHead({ clickChooseDay }) {
 
         return (
           <WeekInfoWrapper key={dateKey}>
-            <DayOfWeek key={dayOfWeek}>{dayOfWeek}</DayOfWeek>
+            <DayOfWeek key={dayOfWeek}>{t(dayOfWeek)}</DayOfWeek>
             <DateContainer
               key={dateKey}
               onClick={() => {

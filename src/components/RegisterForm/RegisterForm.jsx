@@ -8,18 +8,21 @@ import {
   FormLabel,
   FormTitle,
   IconWrap,
+  SuccessMessage,
 } from '../RegisterForm/RegisterForm.styled';
 import * as Yup from 'yup';
 import { FiLogIn } from 'react-icons/fi';
 import { BiCheckCircle, BiErrorCircle } from 'react-icons/bi';
 
 import { IoEyeOutline, IoEyeOff } from 'react-icons/io5';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from 'redux/auth/operations';
 import { useTranslation } from 'react-i18next';
+import { selectAuthIsLoading } from 'redux/auth/selectors';
+import { LoaderForBtn } from 'components/LoaderForBtn/LoaderForBtn';
 
 const regExp =
-  /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
+  /^([A-z0-9_-]+\.)*[A-z0-9_-]+@[A-z0-9_-]+(\.[A-z0-9_-]+)*\.[A-z]{2,6}$/;
 
 const FormSchema = Yup.object().shape({
   name: Yup.string().min(2).max(35).required('Required'),
@@ -34,6 +37,7 @@ const FormSchema = Yup.object().shape({
 export const RegisterForm = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const isLoading = useSelector(selectAuthIsLoading);
 
   const [passwordType, setPasswordType] = useState('password');
 
@@ -78,7 +82,9 @@ export const RegisterForm = () => {
                 autoComplete="off"
                 placeholder="Enter your name"
               />
-              {isValid('name') === 'is-valid' && <p>{t('This is a CORRECT name')}</p>}
+              {isValid('name') === 'is-valid' && (
+                <SuccessMessage>{t('This is a CORRECT name')}</SuccessMessage>
+              )}
               <IconWrap>
                 {isValid('name') === 'is-valid' && <BiCheckCircle />}
                 {isValid('name') === 'is-invalid' && <BiErrorCircle />}
@@ -95,7 +101,7 @@ export const RegisterForm = () => {
                 placeholder="Enter email"
               />
               {isValid('email') === 'is-valid' && (
-                <p>{t('This is a CORRECT email')}</p>
+                <SuccessMessage>{t('This is a CORRECT email')}</SuccessMessage>
               )}
               <IconWrap>
                 {isValid('email') === 'is-valid' && <BiCheckCircle />}
@@ -113,7 +119,9 @@ export const RegisterForm = () => {
                 placeholder="Enter password"
               />
               {isValid('password') === 'is-valid' && (
-                <p>{t('This is a CORRECT password')}</p>
+                <SuccessMessage>
+                  {t('This is a CORRECT password')}
+                </SuccessMessage>
               )}
               <IconWrap onClick={togglePassword}>
                 {passwordType === 'text' ? <IoEyeOff /> : <IoEyeOutline />}
@@ -121,8 +129,14 @@ export const RegisterForm = () => {
               <ErrorMessage name="password" component="div" />
             </FormLabel>
             <Button type="submit">
-              {t('Sign Up')}
-              <FiLogIn strokeWidth="3" />
+              {isLoading ? (
+                <LoaderForBtn />
+              ) : (
+                <>
+                  {t('Sign Up')}
+                  <FiLogIn strokeWidth="3" />
+                </>
+              )}
             </Button>
           </Form>
         );

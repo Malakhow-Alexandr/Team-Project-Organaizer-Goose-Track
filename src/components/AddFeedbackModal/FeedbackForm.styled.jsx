@@ -2,27 +2,43 @@ import styled from 'styled-components';
 import { CgTrash } from 'react-icons/cg';
 import { RxPencil1 } from 'react-icons/rx';
 
+
 import {
   Form as FormikForm,
   Field as FormikField,
   ErrorMessage as FormikError,
 } from 'formik';
 
+export const FeedbackFormContainer = styled.div`
+  background-color: ${props => props.theme.colors.modal_window};
+  /* padding: 20px 2px; */
+
+  /* @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
+    padding: 32px;
+  } */
+`;
+
 export const Form = styled(FormikForm)`
+  max-width: 296px;
   display: flex;
   flex-direction: column;
   gap: 5px;
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
+
+  background-color: ${props => props.theme.colors.modal_window};
+
+  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
+    width: 404px;
+  }
 `;
 
-export const RatingLabel = styled.p`
+export const Title = styled.p`
   font-family: ${props => props.theme.fonts.heading};
   font-weight: ${props => props.theme.fontWeights.normal};
   font-size: ${props => props.theme.fontSizes.xs};
   line-height: 1.17;
-  color: ${props => props.theme.colors.text};
+  color: ${props => props.theme.colors.rating_text};
   margin: 0 0 8px;
 `;
 
@@ -30,22 +46,19 @@ export const FormField = styled.label`
   margin-bottom: 10px;
 `;
 
-// export const RatingField = styled(FormikField)`
-//   display: flex;
-//   flex-direction: row;
-// `;
-
 export const TextareaField = styled(FormikField)`
-  width: 100%;
-  height: 127px;
-  padding: 14px 18px;
-  border: 1px solid ${props => props.theme.colors.textarea};
-  background-color: ${props => props.theme.colors.textarea};
+  width: 296px;
+  height: 130px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  background: ${props => props.theme.colors.texarea_bg};
   border-radius: ${props => props.theme.radii.small};
   font-family: ${props => props.theme.fonts.heading};
   font-weight: ${props => props.theme.fontWeights.heading};
   font-size: ${props => props.theme.fontSizes.s};
   line-height: 1.29;
+  color: ${props => props.theme.colors.third_text_switch};
   resize: none;
 
   ::placeholder {
@@ -53,17 +66,22 @@ export const TextareaField = styled(FormikField)`
     font-weight: ${props => props.theme.fontWeights.heading};
     font-size: ${props => props.theme.fontSizes.s};
     line-height: 1.29;
-    color: ${props => props.theme.colors.text};
+    color: ${props => props.theme.colors.third_text_switch};
   }
 
   :focus {
     outline: none;
   }
+
+  @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
+    width: 404px;
+    height: 127px;
+    padding: 14px 18px;
+  }
 `;
 
-
 export const ErrorMessage = styled(FormikError)`
-  color: #a36303;
+  color: ${props => props.theme.colors.third_text_switch};
   font-weight: 500;
   font-size: 10px;
 `;
@@ -76,90 +94,81 @@ export const RatingBtnOverlay = styled.div`
 
 export const SaveFeedbackBtn = styled.button`
   display: flex;
-
   align-items: center;
   justify-content: center;
   width: 198px;
   height: 46px;
-
+  margin: 0;
   font-family: ${props => props.theme.fonts.heading};
   font-style: ${props => props.theme.fonts.heading};
   font-weight: ${props => props.theme.fontWeights.medium};
   font-size: ${props => props.theme.fontSizes.s};
+  letter-spacing: -0.02em;
   line-height: 1.33;
   color: ${props => props.theme.colors.white};
-
-  letter-spacing: -0.02em;
-
   background: ${props => props.theme.colors.primary};
-  box-shadow: ${props => props.theme.shadows.boxShadow};
   border: ${props => props.theme.borders.none};
   border-radius: ${props => props.theme.radii.small};
   cursor: pointer;
   &:hover,
   &:focus {
     background: ${props => props.theme.colors.secondary};
+    box-shadow: ${props => props.theme.shadows.boxShadow};
   }
 `;
 
 export const CancelFeedbackBtn = styled.button`
   display: flex;
-
   align-items: center;
   justify-content: center;
   width: 198px;
   height: 46px;
-
+  margin: 0;
   font-family: ${props => props.theme.fonts.heading};
   font-style: ${props => props.theme.fonts.heading};
   font-weight: ${props => props.theme.fontWeights.medium};
   font-size: ${props => props.theme.fontSizes.s};
-  line-height: 1.33;
-  color: ${props => props.theme.colors.text};
-
   letter-spacing: -0.02em;
-
-  background: #e5edfa;
-  box-shadow: ${props => props.theme.shadows.boxShadow};
+  line-height: 1.33;
+  color: ${props => props.theme.colors.third_text_switch};
+  background: ${props => props.theme.colors.cancel_btn};
   border: ${props => props.theme.borders.none};
   border-radius: ${props => props.theme.radii.small};
   cursor: pointer;
   &:hover,
   &:focus {
     background: ${props => props.theme.colors.secondary};
+    box-shadow: ${props => props.theme.shadows.boxShadow};
   }
 `;
 
 export const EditFeedbackBtn = styled.button`
   display: flex;
-
   align-items: center;
   justify-content: center;
   width: 198px;
   height: 46px;
-
+  margin: 0;
   font-family: ${props => props.theme.fonts.heading};
   font-style: ${props => props.theme.fonts.heading};
   font-weight: ${props => props.theme.fontWeights.medium};
   font-size: ${props => props.theme.fontSizes.s};
+  letter-spacing: -0.02em;
   line-height: 1.33;
   color: ${props => props.theme.colors.white};
-
-  letter-spacing: -0.02em;
-
   background: ${props => props.theme.colors.primary};
-  box-shadow: ${props => props.theme.shadows.boxShadow};
   border: ${props => props.theme.borders.none};
   border-radius: ${props => props.theme.radii.small};
   cursor: pointer;
   &:hover,
   &:focus {
     background: ${props => props.theme.colors.secondary};
+    box-shadow: ${props => props.theme.shadows.boxShadow};
   }
 `;
 
 export const EditButtonContainer = styled.div`
-height: 30px;
+  height: 30px;
   display: flex;
   margin-bottom: 5px;
   justify-content: space-between;
@@ -178,8 +187,7 @@ export const PencilBtn = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: ${props =>
-    props.theme.colors.side_bar_hover_task_buttons_background_switch};
+  background: ${props => props.theme.colors.pencil_btn_bg};
   cursor: pointer;
   &:hover,
   &:focus {
@@ -194,8 +202,7 @@ export const TrashBtn = styled.div`
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: ${props =>
-    props.theme.colors.side_bar_hover_task_buttons_background_switch};
+  background: ${props => props.theme.colors.trash_btn_bg};
   cursor: pointer;
   &:hover,
   &:focus {
@@ -211,6 +218,8 @@ export const Pencil = styled(RxPencil1)`
     color: #ffffff;
   }
 `;
+
+
 export const Trash = styled(CgTrash)`
   color: #ea3d65;
   size: 16;
@@ -219,4 +228,5 @@ export const Trash = styled(CgTrash)`
     color: #ffffff;
   }
 `;
+
 
