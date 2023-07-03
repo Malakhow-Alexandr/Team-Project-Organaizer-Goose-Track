@@ -6,7 +6,9 @@ import {
   FrontEndIcon,
   BackEndIcon,
   LinksList,
-  Links,
+  LinkBack,
+  LinkFront,
+  LinkSwagger,
   TeamInfoWrapper,
   CopyIcon,
   ButtonTeam,
@@ -43,31 +45,31 @@ export const Footer = () => {
         </TeamInfoWrapper>
         <LinksList>
           <li>
-            <Links
-              href="https://github.com/Siryi-Oleksandr/goose-track-backend.git"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <BackEndIcon />
-            </Links>
-          </li>
-          <li>
-            <Links
-              href="https://github.com/Malakhow-Alexandr/Team-Project-Organaizer-Goose-Track"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FrontEndIcon />
-            </Links>
-          </li>
-          <li>
-            <Links
+          <LinkSwagger
               href="https://goose-track-verq.onrender.com/api-docs/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <SwaggerIcon />
-            </Links>
+            </LinkSwagger>
+          </li>
+          <li>
+            <LinkFront
+              href="https://github.com/Malakhow-Alexandr/Team-Project-Organaizer-Goose-Track"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FrontEndIcon />
+            </LinkFront>
+          </li>
+          <li> <LinkBack
+              href="https://github.com/Siryi-Oleksandr/goose-track-backend.git"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BackEndIcon />
+            </LinkBack>
+            
           </li>
           <li></li>
         </LinksList>
