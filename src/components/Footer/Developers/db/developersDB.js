@@ -125,4 +125,13 @@ export const developers = [
     linkedin: 'https://www.linkedin.com/in/oleksii-savka-062868269',
     avatar: require('../../../../images/developers/savka.jpg'),
   },
+  {
+    name: 'Dmytro',
+    surName: 'Datsiuk',
+    position: 'Developer',
+    telegram: 'https://t.me/Dimbe',
+    git: 'https://github.com/DmytroDatsiuk',
+    linkedin: 'https://www.linkedin.com/in/dmytro-datsiuk-283673246/',
+    avatar: require('../../../../images/developers/datsiuk.jpeg'),
+  },
 ];
