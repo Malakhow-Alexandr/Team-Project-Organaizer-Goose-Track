@@ -1,5 +1,5 @@
 import React from 'react';
-import sprite from '../../../icons/sprite.svg';
+import sprite from '../../../../icons/sprite.svg';
 import {
   Avatar,
   AvatarWrapper,

@@ -9,7 +9,7 @@ import {
 
 import sprite from 'icons/sprite.svg';
 import { developers } from '../db/developersDB';
-import { DeveloperCard } from '../DeveloperCard';
+import { DeveloperCard } from '../DevelopersCard/DeveloperCard';
 
 const SlickRight = ({ currentSlide, slideCount, ...props }) => (
   <div
