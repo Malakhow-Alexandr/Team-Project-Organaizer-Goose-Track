@@ -42,28 +42,14 @@ export const LinksList = styled.ul`
 export const LinksListItem = styled.li``;
 
 export const Links = styled.a`
+  position: relative;
   display: block;
   padding-top: 30px;
   padding-bottom: 30px;
-`;
-
-export const SwaggerIcon = styled(SiSwagger)`
-  width: 30px;
-  height: 30px;
   transition: all 250ms ease;
-  &:hover {
-    fill: #fff;
-    transform: scale(1.3);
-  }
-`;
-
-export const FrontEndIcon = styled(VscGithubInverted)`
-  width: 30px;
-  height: 30px;
-  transition: all 250ms ease;
-  &:hover {
-    fill: #fff;
-    transform: scale(1.3);
+  &:hover &:focus {
+    transform: scale(1.2);
+    color: ${theme.colors.white};
   }
 `;
 
@@ -71,9 +57,87 @@ export const BackEndIcon = styled(VscGithub)`
   width: 30px;
   height: 30px;
   transition: all 250ms ease;
-  &:hover {
+  
+`;
+export const LinkBack = styled(Links)`
+  &:hover::before,
+  &:focus::before {
+    opacity: 1;
+  }
+  &:before {
+    content: 'Back';
+    opacity: 0;
+    position: absolute;
+    color: ${theme.colors.white};
+    font-family: ${theme.fonts.inter};
+    font-weight: 600;
+    transition: opacity 250ms ease;
+    top: 6px;
+    left: -1px;
+    
+  }
+  &:hover ${BackEndIcon} {
     fill: #fff;
-    transform: scale(1.3);
+    transform: scale(1.2);
+  }
+`;
+
+export const FrontEndIcon = styled(VscGithubInverted)`
+  width: 30px;
+  height: 30px;
+  transition: all 250ms ease;
+ 
+`;
+
+export const LinkFront = styled(Links)`
+  &:hover::before,
+  &:focus::before {
+    opacity: 1;
+  }
+  &::before {
+    content: 'Front';
+    opacity: 0;
+    position: absolute;
+    color: ${theme.colors.white};
+    font-family: ${theme.fonts.inter};
+    font-weight: 600;
+    transition: opacity 250ms ease;
+    top: 6px;
+    left: -1px;
+  }
+
+  &:hover ${FrontEndIcon} {
+    fill: #fff;
+    transform: scale(1.2);
+  }
+`;
+
+export const SwaggerIcon = styled(SiSwagger)`
+  width: 30px;
+  height: 30px;
+  transition: all 250ms ease;
+ 
+`;
+
+export const LinkSwagger = styled(Links)`
+  &:hover::before,
+  &:focus::before {
+    opacity: 1;
+  }
+  &::before {
+    content: 'Swagger';
+    opacity: 0;
+    position: absolute;
+    color: ${theme.colors.white};
+    font-family: ${theme.fonts.inter};
+    font-weight: 600;
+    transition: opacity 250ms ease;
+    top: 6px;
+    left: -22px;
+  }
+  &:hover ${SwaggerIcon}{
+    fill: #fff;
+    transform: scale(1.2);
   }
 `;
 
@@ -81,10 +145,5 @@ export const ButtonTeam = styled.button`
   background-color: transparent;
   border: ${p => p.theme.borders.none};
   cursor: pointer;
-  transition: all 250ms ease;
-  height: 100%;
-
-  &:hover {
-    color: #fff;
-  }
 `;
+
