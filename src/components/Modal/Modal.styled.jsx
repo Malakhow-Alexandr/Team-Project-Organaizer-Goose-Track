@@ -21,6 +21,7 @@ export const ModalContainer = styled.div`
   padding: 40px 18px;
   min-width: 303px;
   min-height: 336px;
+  max-height: 95vh;
   box-sizing: border-box;
   border: ${props => props.theme.borders.normal} rgba(220, 227, 229, 0.8);
   background-color: ${props => props.theme.colors.second_background_switch};
@@ -50,7 +51,7 @@ export const CloseBtn = styled.button`
 `;
 
 export const MyCloseIcon = styled(CloseIcon)`
-  stroke: ${p => p.theme.colors.primary_text_switch};
+  stroke: ${props => props.theme.colors.primary_text_switch};
   :hover {
     stroke: rgb(62, 133, 243);
     transition: stroke 250ms linear 0s;

@@ -76,3 +76,9 @@ export const BackEndIcon = styled(VscGithub)`
     transform: scale(1.3);
   }
 `;
+
+export const ButtonTeam = styled.button`
+  background-color: transparent;
+  border: ${p => p.theme.borders.none};
+  cursor: pointer;
+`;
