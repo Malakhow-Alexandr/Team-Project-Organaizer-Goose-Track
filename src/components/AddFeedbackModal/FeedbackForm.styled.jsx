@@ -43,11 +43,15 @@ export const Title = styled.p`
 `;
 
 export const FormField = styled.label`
-  margin-bottom: 10px;
+  margin-bottom: 0;
+`;
+
+export const StarsField = styled.div`
+  margin-bottom: 20px;
 `;
 
 export const TextareaField = styled(FormikField)`
-  width: 296px;
+  width: 100%;
   height: 130px;
   padding: 12px 14px;
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -74,14 +78,14 @@ export const TextareaField = styled(FormikField)`
   }
 
   @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
-    width: 404px;
+    width: 100%;
     height: 127px;
     padding: 14px 18px;
   }
 `;
 
 export const ErrorMessage = styled(FormikError)`
-  color: ${props => props.theme.colors.third_text_switch};
+  color: ${props => props.theme.colors.rating_text};
   font-weight: 500;
   font-size: 10px;
 `;
@@ -90,13 +94,14 @@ export const RatingBtnOverlay = styled.div`
   display: flex;
   flex-direction: row;
   gap: 5px;
+  margin-top: 14px;
 `;
 
 export const SaveFeedbackBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 198px;
+  width: 100%;
   height: 46px;
   margin: 0;
   font-family: ${props => props.theme.fonts.heading};
@@ -121,7 +126,7 @@ export const CancelFeedbackBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 198px;
+  width: 100%;
   height: 46px;
   margin: 0;
   font-family: ${props => props.theme.fonts.heading};
@@ -146,7 +151,7 @@ export const EditFeedbackBtn = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 198px;
+  width: 100%;
   height: 46px;
   margin: 0;
   font-family: ${props => props.theme.fonts.heading};
