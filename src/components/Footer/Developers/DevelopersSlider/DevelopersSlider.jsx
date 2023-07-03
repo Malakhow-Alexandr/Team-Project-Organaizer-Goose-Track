@@ -43,27 +43,28 @@ const settings = {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 3,
+  slidesToShow: developers.length >= 3 ? 3 : developers.length, // Adjusted slidesToShow
   slidesToScroll: 1,
   adaptiveHeight: true,
-  // autoplay: true,
+  autoplay: true,
   autoplaySpeed: 3000,
   responsive: [
     {
       breakpoint: 1439,
       settings: {
-        slidesToShow: 2,
+        slidesToShow: developers.length >= 2 ? 2 : developers.length, // Adjusted slidesToShow
       },
     },
     {
       breakpoint: 767,
       settings: {
-        slidesToShow: 1,
+        slidesToShow: developers.length >= 1 ? 1 : developers.length, // Adjusted slidesToShow
       },
     },
   ],
   nextArrow: <SlickRight />,
   prevArrow: <SlickLeft />,
+  edgeFriction: 0,
 };
 
 export const DevelopersSlider = () => {

@@ -27,8 +27,12 @@ export const ModalDevelopers = ({ children, onClose }) => {
   );
 
   useEffect(() => {
+    const body = document.body;
+    body.classList.add('no-scroll'); // Add class to disable scrolling
+
     document.addEventListener('keydown', handleKeyPress);
     return () => {
+      body.classList.remove('no-scroll'); // Remove class to re-enable scrolling
       document.removeEventListener('keydown', handleKeyPress);
     };
   }, [handleKeyPress]);
