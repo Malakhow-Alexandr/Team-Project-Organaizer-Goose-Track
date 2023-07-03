@@ -35,27 +35,39 @@ export const Footer = () => {
               <CopyIcon />
             </span>
             2023
-            <ButtonTeam
-              onClick={handleShowModal}
-              aria-label="open-developers-modal"
-            >
-              GoIT Students
-            </ButtonTeam>
           </p>
+          <ButtonTeam
+            onClick={handleShowModal}
+            aria-label="open-developers-modal"
+          >
+            GoIT Students
+          </ButtonTeam>
         </TeamInfoWrapper>
         <LinksList>
           <li>
-            <Links href="https://github.com/Siryi-Oleksandr/goose-track-backend.git">
+            <Links
+              href="https://github.com/Siryi-Oleksandr/goose-track-backend.git"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <BackEndIcon />
             </Links>
           </li>
           <li>
-            <Links href="https://github.com/Malakhow-Alexandr/Team-Project-Organaizer-Goose-Track">
+            <Links
+              href="https://github.com/Malakhow-Alexandr/Team-Project-Organaizer-Goose-Track"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <FrontEndIcon />
             </Links>
           </li>
           <li>
-            <Links href="https://goose-track-verq.onrender.com/api-docs/">
+            <Links
+              href="https://goose-track-verq.onrender.com/api-docs/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <SwaggerIcon />
             </Links>
           </li>

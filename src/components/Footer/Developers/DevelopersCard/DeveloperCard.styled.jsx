@@ -7,8 +7,9 @@ export const CardContainer = styled.div`
   background-color: ${p => p.theme.colors.muted};
   border-radius: 7px;
   padding-bottom: 20px;
+  overflow: hidden;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
-    0px 2px 1px rgba(0, 0, 0, 0.2);
+    0px 2px 1px rgba(0, 0, 0, 0.2), 0px 2px 2px rgba(0, 0, 0, 0.1);
 `;
 
 export const AvatarWrapper = styled.div`
@@ -41,15 +42,22 @@ export const SocialLinks = styled.ul`
 export const SocialLinkItem = styled.li`
   background-color: ${p => p.theme.colors.muted};
 
-  &:hover,
+  /* &:hover,
   &:focus {
     background-color: ${p => p.theme.colors.lightBlue};
-  }
+  } */
 `;
 
 export const Icon = styled.svg`
-  width: 24px;
-  height: 24px;
+  width: 30px;
+  height: 30px;
+  transition: all 250ms ease;
+
+  &:hover,
+  &:focus {
+    fill: ${p => p.theme.colors.primary};
+    transform: scale(1.2);
+  }
 `;
 
 export const Link = styled.a`
@@ -59,11 +67,12 @@ export const Link = styled.a`
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  transition: transform 0.3s, background-color 0.3s;
+  transition: all 250ms ease;
 
-  &:hover,
+  /* &:hover,
   &:focus {
     background-color: #72c2f8;
-    transform: scale(1.05);
-  }
+    fill: ${p => p.theme.colors.white};
+    transform: scale(1.2);
+  } */
 `;

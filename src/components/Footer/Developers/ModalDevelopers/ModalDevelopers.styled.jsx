@@ -20,7 +20,6 @@ export const ModalContainer = styled.div`
   position: relative;
   padding: 40px 18px;
   min-width: 303px;
-  min-height: 336px;
   max-height: 95vh;
   box-sizing: border-box;
   border: ${props => props.theme.borders.normal} rgba(220, 227, 229, 0.8);
