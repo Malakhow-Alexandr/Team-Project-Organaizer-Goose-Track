@@ -7,7 +7,7 @@ import React from 'react';
 // Публічний та Приватний роутер в залежності від наявності userAccessToken, котрий приходить від BACKEND
 import { PublicRoute } from './AuthRoutes/PublicRoute';
 import { PrivateRoute } from './AuthRoutes/PrivateRoute';
-import { updateAccessToken } from '../redux/auth/authSlice';
+import { updateAccessToken, updateLoginGoogle } from '../redux/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { currentUser } from 'redux/auth/operations';
 import { selectAuthIsLoading, selectIsRefreshing } from 'redux/auth/selectors';
@@ -49,6 +49,7 @@ export const App = () => {
 
     if (accessToken) {
       dispatch(updateAccessToken(accessToken));
+      dispatch(updateLoginGoogle());
     }
 
     if (refreshToken) {

@@ -34,6 +34,7 @@ const initialState = {
   user: newUser,
   accessToken: null,
   isLoggedIn: false,
+  isLoggedGoogle: false,
   isRefreshing: false,
   isLoading: false,
   error: null,
@@ -45,6 +46,9 @@ const authSlice = createSlice({
   reducers: {
     updateAccessToken: (state, { payload }) => {
       state.accessToken = payload;
+    },
+    updateLoginGoogle: state => {
+      state.isLoggedGoogle = true;
     },
   },
   extraReducers: builder => {
@@ -81,6 +85,7 @@ const authSlice = createSlice({
         state.user = newUser;
         state.accessToken = null;
         state.isLoggedIn = false;
+        state.isLoggedGoogle = false;
         state.isRefreshing = false;
         state.isLoading = false;
         state.error = null;
@@ -91,6 +96,7 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
         state.isRefreshing = false;
         state.isLoading = false;
+        state.isLoggedGoogle = false;
         state.error = null;
       })
       .addCase(currentUser.pending, state => {
@@ -109,7 +115,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { updateAccessToken } = authSlice.actions;
+export const { updateAccessToken, updateLoginGoogle } = authSlice.actions;
 
 const authPersistConfig = {
   key: 'auth',
