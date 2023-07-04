@@ -40,12 +40,12 @@ export const AuthSection = () => {
           </h1>
           <nav>
             <LoginLink to="login">
-              {t('Log in')}
+              {t('Log In')}
               <svg height="13.5" width="13.5">
                 <use href={sprite + '#icon-enter'}></use>
               </svg>
             </LoginLink>
-            <RegisterLink to="register">{t('Sign up')}</RegisterLink>
+            <RegisterLink to="register">{t('Sign Up')}</RegisterLink>
           </nav>
         </ContentWrapper>
       </Header>

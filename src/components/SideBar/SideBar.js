@@ -36,7 +36,7 @@ Hook для приховування компонента SideBar
       <UserNav toggleShowSideBar={toggleShowSideBar} />
 
       <LogoutBtn type="button" onClick={handelLogOut}>
-        {t('Logout')}
+        {t('Log Out')}
         <LogoutBtnIcon />
       </LogoutBtn>
     </SideBarContainer>
