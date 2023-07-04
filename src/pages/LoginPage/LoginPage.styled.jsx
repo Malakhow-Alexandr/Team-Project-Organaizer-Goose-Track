@@ -24,7 +24,7 @@ export const GoBackBtn = styled.button`
   gap: 4px;
   align-items: center;
   justify-content: center;
-  width: 100px;
+  width: 110px;
   height: 30px;
   margin-bottom: 8px;
 
