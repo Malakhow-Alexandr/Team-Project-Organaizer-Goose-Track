@@ -133,10 +133,7 @@ https://malakhow-alexandr.github.io/Team-Project-Organaizer-Goose-Track/
 [![Node.js](https://img.shields.io/static/v1?label=&message=Node.js&color=2ea44f)](https://)
 [![HTML](https://img.shields.io/static/v1?label=&message=HTML&color=2ea44f)](https://)
 [![CSS - SASS](https://img.shields.io/static/v1?label=CSS&message=SASS&color=2ea44f)](https://)
-[![Figma](https://img.shields.io/static/v1?label=&message=Figma&color=2ea44f)](https://)
 [![Git](https://img.shields.io/static/v1?label=&message=Git&color=2ea44f)](https://)
-[![GitHub](https://img.shields.io/static/v1?label=&message=GitHub&color=2ea44f)](https://)
-[![VS Code](https://img.shields.io/static/v1?label=&message=VS+Code&color=2ea44f)](https://)
 
 ### Frameworks:
 
