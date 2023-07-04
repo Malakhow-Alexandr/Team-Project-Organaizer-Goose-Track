@@ -148,22 +148,39 @@ export const RadioButtonCustom = styled.span`
   height: 10px;
   border: 1px solid #ccc;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: ${props => {
+    switch (props.value) {
+      case 'low':
+        return '#72C2F8';
+      case 'medium':
+        return '#F3B249';
+      case 'high':
+        return '#EA3D65';
+      default:
+        return 'black';
+    }
+  }};
 
   /* Define different colors for each radio button */
   ${RadioContainer}:nth-child(1) ${RadioButtonsInput}:checked + & {
     background-color: #72c2f8;
     border-color: #72c2f8;
+    outline: 2px solid #72c2f8;
+    outline-offset: 2px;
   }
 
   ${RadioContainer}:nth-child(2) ${RadioButtonsInput}:checked + & {
     background-color: #f3b249;
     border-color: #f3b249;
+    outline: 2px solid#f3b249;
+    outline-offset: 2px;
   }
 
   ${RadioContainer}:nth-child(3) ${RadioButtonsInput}:checked + & {
     background-color: #ea3d65;
     border-color: #ea3d65;
+    outline: 2px solid #ea3d65;
+    outline-offset: 2px;
   }
 `;
 
@@ -175,11 +192,9 @@ export const WrapButton = styled.div`
 export const IconEditPen = styled(EditPen)`
   width: 14.5px;
   height: 14.5px;
-  /* fill: red; */
 `;
 
 export const IconPlus = styled(Plus)`
   width: 11.67px;
   height: 11.67px;
-  fill: red;
 `;
