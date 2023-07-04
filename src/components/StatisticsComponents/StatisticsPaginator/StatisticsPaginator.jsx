@@ -1,33 +1,21 @@
 import { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
 import { format, addDays, subDays } from 'date-fns';
-import { Puff } from 'react-loader-spinner';
 import { StatisticsDatePicker } from '../StatisticsDatePicker/StatisticsDatePicker';
-import { selectIsLoading } from 'redux/tasks/selectors';
+
 import {
   StatisticsPaginatorDateButton,
   StatisticsDateWrapper,
   StatisticsButton1,
   StatisticsButton2,
   StatisticsChangeButtonsWrapper,
-  SpinnerWrapperComponent,
 } from './StatisticsPaginator.styled';
 
 export const StatisticsPeriodPaginator = ({ onChange }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
   const [isOpen, setIsOpen] = useState(false);
-  const isLoading = useSelector(selectIsLoading);
 
-  // useEffect(() => {
-  //   const handleClickOutside = event => {
-  //     console.log(event.currentTarget);
-  //   };
 
-  //   document.addEventListener('mousedown', handleClickOutside);
-  //   return () => {
-  //     document.removeEventListener('mousedown', handleClickOutside);
-  //   };
-  // }, []);
+
   const onDatePickerChange = newDate => {
     setIsOpen(!isOpen);
     setCurrentDate(newDate);
@@ -82,18 +70,7 @@ export const StatisticsPeriodPaginator = ({ onChange }) => {
           }}
         >
           {formatDateForFront(currentDate)}
-          <SpinnerWrapperComponent>
-            {isLoading && (
-              <Puff
-                height="28"
-                width="28"
-                radius={1}
-                color="#ffffff"
-                ariaLabel="puff-loading"
-                visible={true}
-              />
-            )}
-          </SpinnerWrapperComponent>
+       
         </StatisticsPaginatorDateButton>
 
         {isOpen && (

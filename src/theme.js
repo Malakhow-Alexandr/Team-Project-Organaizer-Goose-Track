@@ -139,4 +139,7 @@ export const theme = {
     table: '768px',
     desktop: '1440px',
   },
+  transition: {
+    hover: "all 250ms ease-in-out",
+  },
 };

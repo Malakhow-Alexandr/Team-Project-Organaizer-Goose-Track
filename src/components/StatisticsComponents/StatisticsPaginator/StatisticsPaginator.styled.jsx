@@ -35,14 +35,4 @@ export const StatisticsButton2 = styled(Button2)`
   }
 `;
 
-export const SpinnerWrapperComponent = styled.span`
-  position: absolute;
-  top: 2;
 
-  @media screen and (max-width: 767px) {
-    left: 110px;
-  }
-  @media screen and (min-width: 768px) {
-    left: 135px;
-  }
-`;

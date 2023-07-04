@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://Malakhow-Alexandr.github.io/Team-Project-Organaizer-Goose-Track/",
   "dependencies": {
+    "@garvae/react-waving-flag": "^1.0.9",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.13.6",
     "@mui/styled-engine-sc": "^5.12.0",
