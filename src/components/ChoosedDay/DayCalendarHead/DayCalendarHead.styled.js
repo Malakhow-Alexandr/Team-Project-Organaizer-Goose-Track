@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { theme } from 'theme';
 
 export const Container = styled.div`
-  max-width: 335px;
   height: 74px;
+  max-width: 335px;
   padding: 18px 20px;
   background: var(--mainWhite);
   border: ${theme.borders.normal};
@@ -13,8 +13,8 @@ export const Container = styled.div`
   background-color: ${theme.colors.third_background_switch};
 
   @media screen and (min-width: 768px) {
-    max-width: 704px;
     height: 68px;
+    max-width: 704px;
     margin-bottom: 16px;
     padding: 14px 32px;
   }
