@@ -34,16 +34,12 @@ export const FormWrapper = styled.div`
 
 export const ImageWrap = styled.div`
   position: absolute;
-  bottom: 50%;
-  left: 50%;
-  width: 400px;
-  height: 416px;
-
-  transform: translate(-170%, 93%);
+  bottom: 0;
+  left: 49px;
 
   img {
     display: block;
-    max-width: 100%;
+    width: 400px;
     height: auto;
   }
 
