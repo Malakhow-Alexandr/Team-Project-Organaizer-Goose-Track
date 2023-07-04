@@ -6,6 +6,7 @@ import { BiCopyright } from 'react-icons/bi';
 import { theme } from 'theme';
 
 export const FooterStyled = styled.footer`
+  margin-top: auto;
   background-color: ${theme.colors.primary};
 `;
 
@@ -49,8 +50,8 @@ export const CreatedBy = styled.p`
   color: ${theme.colors.white};
   font-size: 14px;
   font-weight: 600;
-  @media screen and (max-width: 1439px){
-    display: none
+  @media screen and (max-width: 1439px) {
+    display: none;
   }
 `;
 export const TeamButton = styled.button`
@@ -72,10 +73,9 @@ export const TeamButton = styled.button`
   display: inline-block;
   outline: none;
 
-  @media screen and (min-width:1440px){
+  @media screen and (min-width: 1440px) {
     font-size: 18px;
-  font-weight: 600;
-    
+    font-weight: 600;
   }
   &:hover {
     color: ${theme.colors.white};
@@ -111,8 +111,12 @@ export const TeamButton = styled.button`
 `;
 export const LinksList = styled.ul`
   margin-left: auto;
+ 
   display: flex;
   gap: 15px;
+  @media screen and (min-width:768px){
+    margin-right:30px;
+  }
 `;
 export const LinksListItem = styled.li``;
 
