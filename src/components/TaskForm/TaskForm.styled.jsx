@@ -42,10 +42,36 @@ export const Input = styled.input`
 
   background: transparent;
   border-radius: 8px;
-  border: ${p => p.theme.colors.user_input_border};
+  border: 1px solid ${p => p.theme.colors.user_input_border};
   padding-left: 18px;
 
   color: ${p => p.theme.colors.primary_text_switch};
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+`;
+
+export const InputTime = styled.input`
+  max-width: 126px;
+  height: 42px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid ${p => p.theme.colors.user_input_border};
+  cursor: pointer;
+
+  color: ${p => p.theme.colors.primary_text_switch};
+  font-size: 14px;
+  font-family: Inter;
+  font-weight: 600;
+  line-height: 18px;
+
+  @media (min-width: 768px) {
+    max-width: 163px;
+    height: 46px;
+    padding: 14px 18px;
+  }
+
   &::-webkit-calendar-picker-indicator {
     display: none;
   }
