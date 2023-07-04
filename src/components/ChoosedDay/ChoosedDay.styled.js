@@ -6,13 +6,13 @@ export const TasksColumnsListWrapper = styled.div`
   position: relative;
   align-items: flex-start;
   justify-content: center;
-  width: 335px;
+  max-width: 335px;
 
   @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
-    width: 704px;
+    max-width: 704px;
   }
 
   @media screen and (min-width: ${p => p.theme.breakpoints.desktop}) {
-    width: 1087px;
+    max-width: 1087px;
   }
 `;
