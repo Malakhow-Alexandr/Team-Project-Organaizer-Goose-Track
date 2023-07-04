@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const TasksColumnsListWrapper = styled.div`
   display: flex;
+  max-width: 335px;
   flex-direction: column;
   position: relative;
   align-items: flex-start;
   justify-content: center;
-  max-width: 335px;
 
   @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
     max-width: 704px;
