@@ -9,6 +9,7 @@ import {
   LeftField,
   Main,
   RightColumnWrapper,
+  Wrap,
 } from './MainLayout.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'redux/auth/selectors';
@@ -34,20 +35,21 @@ const MainLayout = () => {
   };
 
   return (
-    <Container>
-      <Main>
-        <LeftColumnWrapper showSideBar={showSideBar}>
-          <LeftField />
-          <SideBar toggleShowSideBar={toggleShowSideBar} />
-        </LeftColumnWrapper>
+    <Wrap>
+      <LeftColumnWrapper showSideBar={showSideBar}>
+        <LeftField />
+        <SideBar toggleShowSideBar={toggleShowSideBar} />
+      </LeftColumnWrapper>
+      <Container>
+        <Main>
+          <RightColumnWrapper>
+            <Header toggleShowSideBar={toggleShowSideBar} />
 
-        <RightColumnWrapper>
-          <Header toggleShowSideBar={toggleShowSideBar} />
-
-          <Outlet />
-        </RightColumnWrapper>
-      </Main>
-    </Container>
+            <Outlet />
+          </RightColumnWrapper>
+        </Main>
+      </Container>
+    </Wrap>
   );
 };
 
