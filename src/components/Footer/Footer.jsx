@@ -11,8 +11,11 @@ import {
   LinkSwagger,
   TeamInfoWrapper,
   CopyIcon,
-  ButtonTeam,
+  TeamButton,
+  YearInfo,
+  CreatedBy
 } from './Footer.styled';
+import { WavingFlagCustom } from './WavingFlag';
 import { DevelopersModal } from './Developers/DevelopersModal/DevelopersModal';
 
 export const Footer = () => {
@@ -30,19 +33,21 @@ export const Footer = () => {
     <FooterStyled>
       <Wrapper>
         <TeamInfoWrapper>
-          <p>
+          <YearInfo>
             <span>
               <CopyIcon />
             </span>
             2023
-          </p>
-          <ButtonTeam
+          </YearInfo>
+          <CreatedBy>Created with love by</CreatedBy>
+          <TeamButton
             onClick={handleShowModal}
             aria-label="open-developers-modal"
           >
             GoIT Students
-          </ButtonTeam>
+          </TeamButton>
         </TeamInfoWrapper>
+        <WavingFlagCustom/>
         <LinksList>
           <li>
           <LinkSwagger
