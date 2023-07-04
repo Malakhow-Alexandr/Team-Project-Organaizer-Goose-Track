@@ -40,7 +40,7 @@ export const DayWrapper = styled.div`
   }
 `;
 export const CellWrapper = styled.div`
-  min-width: 35px;
+  min-width: 30px;
   min-height: 84px;
   padding: 1px;
   border-block-end: 1px solid rgba(220, 227, 229, 0.8);

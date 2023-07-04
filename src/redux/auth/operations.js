@@ -44,7 +44,7 @@ const tostStyleError = {
   color: '#3E85F3',
 };
 
-const tostStyleSuccess = {
+export const tostStyleSuccess = {
   borderRadius: '8px',
   background: '#3E85F3',
   color: '#ffffff',
