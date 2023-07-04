@@ -28,15 +28,17 @@ export const ScrollToTop = () => {
       scrollProgress.addEventListener('click', () => {
         document.documentElement.scrollTop = 0;
       });
-      scrollProgress.style.background = `conic-gradient(rgb(${
+      scrollProgress.style.background = `conic-gradient(rgba(${
         scrollValue - 38
-      }, ${scrollValue + 33}, ${scrollValue + 143}) ${scrollValue}%, rgb(${
+      }, ${scrollValue * 1.33}, ${scrollValue * 2.43},${
+        0.7 + scrollValue * 0.003
+      }) ${scrollValue}%, rgba(${scrollValue + 155}, ${scrollValue + 155}, ${
         scrollValue + 155
-      }, ${scrollValue + 155}, ${scrollValue + 155}) ${scrollValue}%)`;
+      }, ${0.7 + scrollValue * 0.003}) ${scrollValue}%)`;
 
-      icon.style.color = `rgb(${scrollValue - 38}, ${scrollValue + 33}, ${
-        scrollValue + 143
-      }`;
+      icon.style.color = `rgb(${scrollValue - 38}, ${scrollValue * 1.33}, ${
+        scrollValue * 2.43
+      }, ${0.7 + scrollValue * 0.003})`;
     }
   };
   window.onscroll = calcScrollValue;

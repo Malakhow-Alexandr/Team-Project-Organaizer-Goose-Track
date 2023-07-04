@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const Container = styled.div`
   #scroll-progress {
     position: fixed;
-    right: 15px;
+    right: 50%;
+    transform: translate(410%, 0);
 
     height: 40px;
     width: 40px;
@@ -13,7 +14,6 @@ export const Container = styled.div`
 
     border-radius: 50%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    color: rgb(62, 133, 243);
     cursor: pointer;
 
     &:hover {
@@ -25,7 +25,16 @@ export const Container = styled.div`
     }
 
     @media screen and (min-width: 768px) {
-      right: 10px;
+      right: 50%;
+      transform: translate(490%, 0);
+
+      height: 70px;
+      width: 70px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      right: 50%;
+      transform: translate(950%, 0);
 
       height: 70px;
       width: 70px;
