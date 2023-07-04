@@ -5,6 +5,7 @@ import {
   EditButton,
   FormGroup,
   Input,
+  InputTime,
   Label,
   RadioButtonsInput,
   RadioButtonsLabel,
@@ -99,7 +100,7 @@ export const TaskForm = ({ initialData, onClose }) => {
         <FormGroup>
           <Label>
             {t('Start')}
-            <Input
+            <InputTime
               id="time"
               type="time"
               name="start"
@@ -110,7 +111,7 @@ export const TaskForm = ({ initialData, onClose }) => {
           </Label>
           <Label>
             {t('End')}
-            <Input
+            <InputTime
               type="time"
               name="end"
               value={informationTask.end}

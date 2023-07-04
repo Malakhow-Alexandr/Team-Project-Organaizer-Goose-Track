@@ -59,7 +59,6 @@ export const registerUser = createAsyncThunk(
         email,
         password,
       });
-      console.log(response.data);
       localStorage.setItem('refreshToken', response.data.refreshToken);
       setToken(response.data.accessToken);
       toast.success(`Welcome, ${response.data.user.name}!`, {
@@ -83,7 +82,6 @@ export const loginUser = createAsyncThunk(
   async ({ email, password }, thunkAPI) => {
     try {
       const response = await instance.post('/login', { email, password });
-      console.log(response.data);
       localStorage.setItem('refreshToken', response.data.refreshToken);
       setToken(response.data.accessToken);
       toast.success(`Welcome back, ${response.data.user.name}!`, {
@@ -152,8 +150,6 @@ export const updateUser = createAsyncThunk(
           'Content-Type': 'multipart/form-data',
         },
       });
-
-      console.log(response.data);
       toast.success(`Your account has been updated!`, {
         style: tostStyleSuccess,
       });

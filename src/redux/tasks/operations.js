@@ -6,7 +6,6 @@ export const getAllTasks = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await instance.get('/tasks');
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -16,11 +15,9 @@ export const getAllTasks = createAsyncThunk(
 
 export const getMonthTasks = createAsyncThunk(
   'tasks/getMonthTasks',
-  // date format YYYY-MM-DD
   async (date, thunkAPI) => {
     try {
       const response = await instance.get(`/tasks?month=${date}`);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -30,11 +27,9 @@ export const getMonthTasks = createAsyncThunk(
 
 export const getDayTasks = createAsyncThunk(
   'tasks/getDayTasks',
-  // date format YYYY-MM-DD
   async (date, thunkAPI) => {
     try {
       const response = await instance.get(`/tasks?day=${date}`);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -47,7 +42,6 @@ export const getTaskById = createAsyncThunk(
   async (id, thunkAPI) => {
     try {
       const response = await instance.get(`/tasks/${id}`);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -67,7 +61,6 @@ export const createTask = createAsyncThunk(
         category,
         date,
       });
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -87,7 +80,6 @@ export const updateTask = createAsyncThunk(
         category,
         date,
       });
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -114,7 +106,6 @@ export const changeTaskCategory = createAsyncThunk(
       const response = await instance.patch(`/tasks/category/${id}`, {
         category,
       });
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -128,7 +119,6 @@ export const getTasksStatistics = createAsyncThunk(
     try {
       // date format YYYY-MM-DD
       const response = await instance.get(`/tasks/statistics/?day=${date}`);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
