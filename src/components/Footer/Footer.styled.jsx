@@ -36,7 +36,7 @@ export const CopyIcon = styled(BiCopyright)`
 export const TeamInfoWrapper = styled.div`
   display: flex;
   gap: 7px;
-  align-items: center;
+  align-items: baseline;
 `;
 export const YearInfo = styled.p`
   font-family: ${theme.fonts.inter};
