@@ -43,7 +43,7 @@ const settings = {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: developers.length >= 3 ? 3 : developers.length, // Adjusted slidesToShow
+  slidesToShow: 3,
   slidesToScroll: 1,
   adaptiveHeight: true,
   autoplay: true,
@@ -52,13 +52,13 @@ const settings = {
     {
       breakpoint: 1439,
       settings: {
-        slidesToShow: developers.length >= 2 ? 2 : developers.length, // Adjusted slidesToShow
+        slidesToShow: 2,
       },
     },
     {
       breakpoint: 767,
       settings: {
-        slidesToShow: developers.length >= 1 ? 1 : developers.length, // Adjusted slidesToShow
+        slidesToShow: 1,
       },
     },
   ],

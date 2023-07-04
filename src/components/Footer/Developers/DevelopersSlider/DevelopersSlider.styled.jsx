@@ -46,9 +46,6 @@ export const ReviewsContainer = styled.section`
 
   & .slick-track {
     display: flex;
-    align-items: center;
-    justify-content: center;
-
     @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
       gap: 20px;
     }
