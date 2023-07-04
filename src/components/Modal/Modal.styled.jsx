@@ -54,6 +54,6 @@ export const MyCloseIcon = styled(CloseIcon)`
   stroke: ${props => props.theme.colors.primary_text_switch};
   :hover {
     stroke: rgb(62, 133, 243);
-    transition: stroke 250ms linear 0s;
+    transition: ${props => props.theme.transition.hover};
   }
 `;

@@ -125,13 +125,4 @@ export const developers = [
     linkedin: 'https://www.linkedin.com/in/dmytro-datsiuk-283673246/',
     avatar: require('../../../../images/developers/datsiuk.jpeg'),
   },
-  // {
-  //   name: 'Vitaliy',
-  //   surName: 'Hrytsun',
-  //   position: 'Developer',
-  //   telegram: 'https://t.me/DeusExReborn',
-  //   git: 'https://github.com/Deus2214',
-  //   linkedin: 'https://www.linkedin.com/in/віталій-грицун-742538263/',
-  //   avatar: require('../../../images/developers/hrytsun.jpeg'),
-  // },
 ];

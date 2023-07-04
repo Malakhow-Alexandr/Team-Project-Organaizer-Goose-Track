@@ -41,17 +41,12 @@ export const SocialLinks = styled.ul`
 
 export const SocialLinkItem = styled.li`
   background-color: ${p => p.theme.colors.muted};
-
-  /* &:hover,
-  &:focus {
-    background-color: ${p => p.theme.colors.lightBlue};
-  } */
 `;
 
 export const Icon = styled.svg`
   width: 30px;
   height: 30px;
-  transition: all 250ms ease;
+  transition: ${props => props.theme.transition.hover};
 
   &:hover,
   &:focus {
@@ -67,12 +62,5 @@ export const Link = styled.a`
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  transition: all 250ms ease;
-
-  /* &:hover,
-  &:focus {
-    background-color: #72c2f8;
-    fill: ${p => p.theme.colors.white};
-    transform: scale(1.2);
-  } */
+  transition: ${props => props.theme.transition.hover};
 `;

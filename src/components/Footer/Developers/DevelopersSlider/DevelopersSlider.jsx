@@ -46,7 +46,7 @@ const settings = {
   slidesToShow: 3,
   slidesToScroll: 1,
   adaptiveHeight: true,
-  // autoplay: true,
+  autoplay: true,
   autoplaySpeed: 3000,
   responsive: [
     {
