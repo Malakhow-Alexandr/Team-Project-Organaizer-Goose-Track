@@ -40,6 +40,7 @@ instance.interceptors.response.use(
 
 const tostStyleError = {
   borderRadius: '8px',
+  border: '1px solid red',
   background: '#13151A',
   color: '#3E85F3',
 };

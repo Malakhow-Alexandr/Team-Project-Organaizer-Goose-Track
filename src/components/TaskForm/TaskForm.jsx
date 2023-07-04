@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import {
   WrapForm,
   Form,
@@ -31,6 +32,13 @@ const emptyTask = {
   category: 'in-progress',
 };
 
+const tostStyleError = {
+  borderRadius: '8px',
+  border: '1px solid red',
+  background: '#13151A',
+  color: '#3E85F3',
+};
+
 export const TaskForm = ({ initialData, onClose }) => {
   const { t } = useTranslation();
   const [informationTask, setInformationTask] = useState(emptyTask);
@@ -56,7 +64,9 @@ export const TaskForm = ({ initialData, onClose }) => {
 
   useEffect(() => {
     if (!error || !dateSave) return;
-    alert(`Data save error`);
+    toast.error(`Data save error`, {
+      style: tostStyleError,
+    });
   }, [error, dateSave]);
 
   const handleChange = event => {
@@ -70,7 +80,9 @@ export const TaskForm = ({ initialData, onClose }) => {
     e.preventDefault();
 
     if (informationTask.start > informationTask.end) {
-      alert('Start time cannot be later than end time');
+      toast.error('Start time cannot be later than end time', {
+        style: tostStyleError,
+      });
       return;
     }
 

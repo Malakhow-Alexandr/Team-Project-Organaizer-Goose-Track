@@ -50,7 +50,15 @@ export function DayCalendarHead({ clickChooseDay }) {
 
   const [choosedDay, setChoosedDay] = useState(dayFromParams);
 
-  const daysOfWeek = [t('MON'), t('TUE'), t('WED'), t('THU'), t('FRI'), t('SAT'), t('SUN')];
+  const daysOfWeek = [
+    t('MON'),
+    t('TUE'),
+    t('WED'),
+    t('THU'),
+    t('FRI'),
+    t('SAT'),
+    t('SUN'),
+  ];
 
   const handleClickDay = (day, dayValue, monthValue, yearValue) => {
     const dateClickObject = {
@@ -107,7 +115,7 @@ export function DayCalendarHead({ clickChooseDay }) {
         );
       }),
     [daysOfWeek, currentDate, currentDay, chooseIndexOfCurrentDay]
-  ); /* eslint-enable react-hooks/exhaustive-deps */
+  );
 
   return (
     <Container>

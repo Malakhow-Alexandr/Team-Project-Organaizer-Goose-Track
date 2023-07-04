@@ -20,9 +20,7 @@ export const ButtonTask = styled.button`
   @media screen and (min-width: 768px) {
     width: 301px;
   }
-  //------------------
 
-  //------------------
   border-radius: ${theme.radii.small};
   transition: background 250ms linear;
   &:hover {

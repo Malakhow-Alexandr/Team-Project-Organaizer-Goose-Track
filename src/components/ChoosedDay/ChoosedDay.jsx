@@ -25,18 +25,16 @@ const ChoosedDay = () => {
   }, [currentDay, dispatch]);
 
   const [sortedTasks, setSortedTasks] = useState(emptySortedTask);
-  // Функція для сортування масиву за полем "start time"
+
   function sortByStartTime(array) {
     return array.sort((a, b) => b.start.localeCompare(a.start));
   }
 
-  // Функція для фільтрації масиву об'єктів за конкретним днем
   function filterByDate(array, currentDay) {
     return array.filter(item => item.date === currentDay);
   }
 
   useEffect(() => {
-    // Оновлена функція для отримання трьох масивів об'єктів за категорією та відсортованих за датою
     function getCategorizedArrays(data, targetDate) {
       const filteredData = filterByDate(data, targetDate);
 

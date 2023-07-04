@@ -19,12 +19,7 @@ export const WrapForm = styled.div`
   }
 `;
 
-export const Form = styled.form`
-  /* padding: '40px 28px';
-  display: 'block';
-  position: 'relative'; */
-  /* background-color: ${p => p.theme.colors.modal_window}; */
-`;
+export const Form = styled.form``;
 
 export const Label = styled.label`
   display: inline-flex;
