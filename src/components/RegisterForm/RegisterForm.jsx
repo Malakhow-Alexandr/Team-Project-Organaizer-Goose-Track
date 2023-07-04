@@ -42,7 +42,6 @@ export const RegisterForm = () => {
 
   const [passwordType, setPasswordType] = useState('password');
   const [password, setPassword] = useState('');
-  // const [error, setError] = useState(false);
 
   const togglePassword = () => {
     if (passwordType === 'password') {
@@ -56,9 +55,6 @@ export const RegisterForm = () => {
     const { values, errors } = useFormikContext();
 
     useEffect(() => {
-      // if (errors.password) {
-      //   setError(true);
-      // }
       setPassword(values.password);
     }, [errors.password, values]);
 

@@ -35,11 +35,9 @@ const FormValidSchema = Yup.object().shape({
 });
 
 const PasswordPage = () => {
-  // Oleksandr Filippov
   const [password, setPassword] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [error, setError] = useState(false);
-  // Oleksandr Filippov
   const [oldPasswordType, setOldPasswordType] = useState('password');
   const [newPasswordType, setNewPasswordType] = useState('password');
   const [newPassword, setNewPassword] = useState('');
