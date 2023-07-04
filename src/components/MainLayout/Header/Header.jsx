@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { useTasks } from '../../../hooks/useTasks';
 
@@ -34,14 +34,8 @@ const getTypePage = pathname => {
 
 const Header = ({ toggleShowSideBar }) => {
   const { pathname } = useLocation();
-
-  const { isNotDoneTask, getAllTasks } = useTasks();
+  const { isNotDoneTask } = useTasks();
   const { t } = useTranslation();
-
-  useEffect(() => {
-    getAllTasks();
-    console.log(isNotDoneTask);
-  }, [getAllTasks, isNotDoneTask]);
 
   const typePage = getTypePage(pathname);
 
