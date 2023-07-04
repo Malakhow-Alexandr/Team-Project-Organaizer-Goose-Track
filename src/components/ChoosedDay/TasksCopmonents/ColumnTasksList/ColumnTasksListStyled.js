@@ -8,9 +8,7 @@ export const TaskListBox = styled.ul`
   list-style: none;
   position: relative;
 
-  /* overflow: visible; */
   z-index: 0;
-  //add
 
   flex-grow: 1;
 `;

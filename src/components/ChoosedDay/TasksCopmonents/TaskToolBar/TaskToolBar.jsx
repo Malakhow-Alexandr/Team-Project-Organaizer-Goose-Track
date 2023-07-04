@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 import {
   BoxIconBth,
   IconBthArrow,
@@ -15,6 +16,13 @@ import { selectError } from 'redux/tasks/selectors';
 import { Portal } from '../Portal/Portal';
 import { usePopper } from 'react-popper';
 import { correctToolBarTitle } from '../helper/helper';
+
+const tostStyleError = {
+  borderRadius: '8px',
+  border: '1px solid red',
+  background: '#13151A',
+  color: '#3E85F3',
+};
 
 export const TasklToolBar = ({
   toolbarData,
@@ -57,7 +65,9 @@ export const TasklToolBar = ({
       enableDrag();
     }
     if (error) {
-      alert(`wrong category`);
+      toast.error(`wrong category`, {
+        style: tostStyleError,
+      });
     }
   };
 
@@ -71,7 +81,9 @@ export const TasklToolBar = ({
       dispatch(deleteTask(id));
     }
     if (error) {
-      alert(`Unable to find Task`);
+      toast.error(`Unable to find Task`, {
+        style: tostStyleError,
+      });
     }
   };
 
