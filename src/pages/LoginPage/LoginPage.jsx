@@ -44,7 +44,7 @@ const LoginPage = () => {
         </GoBackBtn>
         <LoginForm />
       </FormWrapper>
-      <AuthNavigate link="/register" text="Sign Up" />
+      <AuthNavigate link="/register" text={t('Sign Up')} />
       <LoginWithGoogleBtn />
     </FormContainer>
   );

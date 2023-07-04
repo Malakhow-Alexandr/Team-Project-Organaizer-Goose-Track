@@ -17,10 +17,11 @@ import {
 } from './Footer.styled';
 import { WavingFlagCustom } from './WavingFlag';
 import { DevelopersModal } from './Developers/DevelopersModal/DevelopersModal';
+import { useTranslation } from 'react-i18next';
 
 export const Footer = () => {
   const [showModal, setShowModal] = useState(false);
-
+const { t } = useTranslation();
   const handleCloseModal = () => {
     setShowModal(false);
   };
@@ -39,12 +40,12 @@ export const Footer = () => {
             </span>
             2023
           </YearInfo>
-          <CreatedBy>Created with love by</CreatedBy>
+          <CreatedBy>{t('Created with love by')}</CreatedBy>
           <TeamButton
             onClick={handleShowModal}
             aria-label="open-developers-modal"
           >
-            GoIT Students
+            {t('GoIT Students')}
           </TeamButton>
         </TeamInfoWrapper>
         <WavingFlagCustom/>
