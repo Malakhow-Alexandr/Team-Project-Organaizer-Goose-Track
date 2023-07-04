@@ -46,8 +46,9 @@ export const ReviewsContainer = styled.section`
 
   & .slick-track {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
+    margin-left: 4px;
 
     @media screen and (min-width: ${p => p.theme.breakpoints.table}) {
       gap: 20px;
@@ -55,9 +56,9 @@ export const ReviewsContainer = styled.section`
   }
 
   & .slick-list {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
 
     overflow: hidden;
   }

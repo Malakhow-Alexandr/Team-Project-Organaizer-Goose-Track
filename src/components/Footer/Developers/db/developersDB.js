@@ -35,15 +35,6 @@ export const developers = [
     linkedin: 'https://www.linkedin.com/in/anatoliikobzar',
     avatar: require('../../../../images/developers/kobzar.jpg'),
   },
-  // {
-  //   name: 'Vitaliy',
-  //   surName: 'Hrytsun',
-  //   position: 'Developer',
-  //   telegram: 'https://t.me/DeusExReborn',
-  //   git: 'https://github.com/Deus2214',
-  //   linkedin: 'https://www.linkedin.com/in/віталій-грицун-742538263/',
-  //   avatar: require('../../../images/developers/hrytsun.jpeg'),
-  // },
   {
     name: 'Oleksandr',
     surName: 'Siryi',
@@ -111,7 +102,7 @@ export const developers = [
     name: 'Nadiia',
     surName: 'Holub',
     position: 'Developer',
-    telegram: '',
+    telegram: 'https://t.me/NadiiaHolub',
     git: 'https://github.com/NadyaGolub',
     linkedin: 'https://www.linkedin.com/in/nadiia-holub/',
     avatar: require('../../../../images/developers/holub.jpeg'),
@@ -134,4 +125,13 @@ export const developers = [
     linkedin: 'https://www.linkedin.com/in/dmytro-datsiuk-283673246/',
     avatar: require('../../../../images/developers/datsiuk.jpeg'),
   },
+  // {
+  //   name: 'Vitaliy',
+  //   surName: 'Hrytsun',
+  //   position: 'Developer',
+  //   telegram: 'https://t.me/DeusExReborn',
+  //   git: 'https://github.com/Deus2214',
+  //   linkedin: 'https://www.linkedin.com/in/віталій-грицун-742538263/',
+  //   avatar: require('../../../images/developers/hrytsun.jpeg'),
+  // },
 ];
