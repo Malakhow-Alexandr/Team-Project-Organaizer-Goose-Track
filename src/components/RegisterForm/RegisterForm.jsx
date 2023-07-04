@@ -97,7 +97,7 @@ export const RegisterForm = () => {
                 name="name"
                 type="text"
                 autoComplete="off"
-                placeholder="Enter your name"
+                placeholder={t('Enter your name')}
               />
               {isValid('name') === 'is-valid' && (
                 <SuccessMessage>{t('This is a CORRECT name')}</SuccessMessage>
@@ -115,7 +115,7 @@ export const RegisterForm = () => {
                 name="email"
                 type="text"
                 autoComplete="off"
-                placeholder="Enter email"
+                placeholder={t('Enter email')}
               />
               {isValid('email') === 'is-valid' && (
                 <SuccessMessage>{t('This is a CORRECT email')}</SuccessMessage>
@@ -133,7 +133,7 @@ export const RegisterForm = () => {
                 name="password"
                 type={passwordType}
                 autoComplete="off"
-                placeholder="Enter password"
+                placeholder={t('Enter password')}
               />
               {isValid('password') === 'is-valid' && (
                 <SuccessMessage>

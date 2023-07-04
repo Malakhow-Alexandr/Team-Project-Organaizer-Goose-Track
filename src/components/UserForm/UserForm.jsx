@@ -182,7 +182,7 @@ const UserForm = () => {
             <InputName>{t('User Name')}</InputName>
             <Input
               name="name"
-              placeholder="User Name"
+              placeholder={t('User Name')}
               value={values.name || ''}
               onChange={handleInputChange}
               onBlur={handleBlur}
@@ -216,7 +216,7 @@ const UserForm = () => {
             <Input
               name="email"
               value={values.email || ''}
-              placeholder="Email"
+              placeholder={t('Email')}
               onChange={handleInputChange}
               onBlur={handleBlur}
               className={errors.email && touched.email ? 'InvalidInput' : ''}
@@ -246,7 +246,7 @@ const UserForm = () => {
             <Input
               name="telegram"
               value={values.telegram || ''}
-              placeholder="Add your telegram"
+              placeholder={t('Add your telegram')}
               onChange={handleInputChange}
               onBlur={handleBlur}
               className={
@@ -260,7 +260,7 @@ const UserForm = () => {
           {/* change password */}
           {!isLogedGoogle && (
             <WrapperInput>
-              <AuthNavigate link={'/password'} text={'Change password'} />
+              <AuthNavigate link={'/password'} text={t('changePassword')} />
             </WrapperInput>
           )}
         </Wrapper>

@@ -41,7 +41,7 @@ const RegisterPage = () => {
         </GoBackBtn>
         <RegisterForm />
       </FormWrapper>
-      <AuthNavigate link="/login" text="Log In" />
+      <AuthNavigate link="/login" text={t('Log In')} />
       <LoginWithGoogleBtn />
     </FormContainer>
   );

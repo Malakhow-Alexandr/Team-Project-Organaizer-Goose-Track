@@ -126,7 +126,7 @@ const PasswordPage = () => {
                 name="oldPassword"
                 type={oldPasswordType}
                 autoComplete="off"
-                placeholder="Enter old password"
+                placeholder={t('Enter old password')}
               />
               {isValid('oldPassword') === 'is-valid' && (
                 <SuccessMessage>
@@ -151,7 +151,7 @@ const PasswordPage = () => {
                   values.newPassword = e.target.value;
                 }}
                 autoComplete="off"
-                placeholder="Enter new password"
+                placeholder={t('Enter new password')}
               />
               {isValid('newPassword') === 'is-valid' && (
                 <SuccessMessage>
@@ -177,7 +177,7 @@ const PasswordPage = () => {
                   values.repeatNewPassword = e.target.value;
                 }}
                 autoComplete="off"
-                placeholder="Repeat new password"
+                placeholder={t('Repeat new password')}
               />
               {passwordIsMatch && (
                 <PasswordIsMatch>
@@ -198,9 +198,9 @@ const PasswordPage = () => {
 
             <BtnForgotPass
               type="button"
-              onClick={() => alert('Wait, soon all will be OK')}
+              onClick={() => alert(t('Wait, soon all will be OK'))}
             >
-              Forgot your password?
+              {t('Forgot your password?')}
             </BtnForgotPass>
           </Form>
         );
