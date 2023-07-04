@@ -53,6 +53,7 @@ export const Input = styled.input`
 
 export const FormGroup = styled.div`
   display: flex;
+  width: 100%;
   justify-content: space-between;
   gap: 14px;
   margin: 0;
