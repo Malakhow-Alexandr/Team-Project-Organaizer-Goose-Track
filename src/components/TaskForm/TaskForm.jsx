@@ -131,7 +131,7 @@ export const TaskForm = ({ initialData, onClose }) => {
                 checked={informationTask.priority === 'low'}
                 onChange={handleChange}
               />
-              <RadioButtonCustom />
+              <RadioButtonCustom value="low" />
               {t('Low')}
             </RadioButtonsLabel>
           </RadioContainer>
@@ -144,7 +144,7 @@ export const TaskForm = ({ initialData, onClose }) => {
                 checked={informationTask.priority === 'medium'}
                 onChange={handleChange}
               />
-              <RadioButtonCustom />
+              <RadioButtonCustom value="medium" />
               {t('Medium')}
             </RadioButtonsLabel>
           </RadioContainer>
@@ -157,7 +157,7 @@ export const TaskForm = ({ initialData, onClose }) => {
                 checked={informationTask.priority === 'high'}
                 onChange={handleChange}
               />
-              <RadioButtonCustom />
+              <RadioButtonCustom value="high" />
               {t('High')}
             </RadioButtonsLabel>
           </RadioContainer>
