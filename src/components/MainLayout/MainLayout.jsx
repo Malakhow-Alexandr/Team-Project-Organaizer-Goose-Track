@@ -44,7 +44,6 @@ const MainLayout = () => {
         <Main>
           <RightColumnWrapper>
             <Header toggleShowSideBar={toggleShowSideBar} />
-
             <Outlet />
           </RightColumnWrapper>
         </Main>
