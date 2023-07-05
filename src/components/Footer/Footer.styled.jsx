@@ -58,7 +58,7 @@ export const TeamButton = styled.button`
   display: block;
   border: none;
   border-radius: 5px;
-  width: 120px;
+  width: 123px;
   height: 40px;
   color: ${theme.colors.white};
   padding: 0;
