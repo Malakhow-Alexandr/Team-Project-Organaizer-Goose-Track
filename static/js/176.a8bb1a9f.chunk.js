@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[176],{14176:function(e,r,t){t.r(r);var a=t(39230),c=t(80184);r.default=function(){var e=(0,a.$G)().t;return(0,c.jsx)("div",{children:(0,c.jsx)("h2",{children:e("Password Recovery Page")})})}}}]);
+//# sourceMappingURL=176.a8bb1a9f.chunk.js.map
