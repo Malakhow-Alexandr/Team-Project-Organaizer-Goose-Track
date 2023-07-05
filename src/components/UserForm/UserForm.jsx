@@ -95,7 +95,7 @@ const UserForm = () => {
           }
           setIsFormChanged(false);
         } catch (error) {
-          console.log(error.message);
+          return error
         }
       },
     });
@@ -135,7 +135,6 @@ const UserForm = () => {
     }
     setFieldValue('avatar', file);
     setIsFormChanged(true);
-    console.log(file.size)
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setUserAvatar(imageUrl);
