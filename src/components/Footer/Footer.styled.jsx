@@ -41,7 +41,7 @@ export const TeamInfoWrapper = styled.div`
 export const YearInfo = styled.p`
   font-family: ${theme.fonts.inter};
   color: ${theme.colors.white};
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
 `;
 
@@ -111,11 +111,11 @@ export const TeamButton = styled.button`
 `;
 export const LinksList = styled.ul`
   margin-left: auto;
- 
+
   display: flex;
   gap: 15px;
-  @media screen and (min-width:768px){
-    margin-right:30px;
+  @media screen and (min-width: 768px) {
+    margin-right: 30px;
   }
 `;
 export const LinksListItem = styled.li``;
