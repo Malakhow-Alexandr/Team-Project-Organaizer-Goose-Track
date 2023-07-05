@@ -102,7 +102,7 @@ https://malakhow-alexandr.github.io/Team-Project-Organaizer-Goose-Track/
 
 ### Features
 
-- User Registration: To access the app's full functionality, users need to
+- User Registration: To access the app's full functionality, users need to,
   register an account. Without registration, users can only view the app's
   layout page with a brief description and feedback from other users. Google
 
