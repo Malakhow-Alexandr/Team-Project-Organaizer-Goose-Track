@@ -3,7 +3,7 @@ import { ReactComponent as LogoutIcon } from '../../images/sideBar/logout-icon.s
 
 export const SideBarContainer = styled.div`
   width: 100%;
-  height: inherit;
+  height: 100vh;
 
   background-color: ${props => props.theme.colors.second_background_switch};
 
