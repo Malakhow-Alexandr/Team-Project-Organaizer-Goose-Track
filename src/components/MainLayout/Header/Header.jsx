@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { useTasks } from '../../../hooks/useTasks';
 
@@ -34,14 +34,8 @@ const getTypePage = pathname => {
 
 const Header = ({ toggleShowSideBar }) => {
   const { pathname } = useLocation();
-
-  const { isNotDoneTask, getAllTasks } = useTasks();
+  const { isNotDoneTask } = useTasks();
   const { t } = useTranslation();
-
-  useEffect(() => {
-    getAllTasks();
-    console.log(isNotDoneTask);
-  }, [getAllTasks, isNotDoneTask]);
 
   const typePage = getTypePage(pathname);
 
@@ -62,24 +56,23 @@ const Header = ({ toggleShowSideBar }) => {
         <RxHamburgerMenu size={34} color="var(--primary-text)" />
       </MobileMenuButton>
 
-      <HeaderTitle>
-        {typePage === 'account' && t('User Profile')}
-        {typePage === 'month' && t('Calendar')}
-        {typePage === 'statistics' && t('Statistics')}
-      </HeaderTitle>
-
       {typePage === 'day' && isNotDoneTask ? (
         <DayPageTitle />
       ) : (
-        <HeaderTitle>{t('Calendar')}</HeaderTitle>
+        <HeaderTitle>
+          {typePage === 'account' && t('User Profile')}
+          {typePage === 'month' && t('Calendar')}
+          {typePage === 'day' && t('Calendar')}
+          {typePage === 'statistics' && t('Statistics')}
+        </HeaderTitle>
       )}
 
       <RightSectionHeader>
         <AddFeedbackBtn handleShowModal={handleShowModal} />
       </RightSectionHeader>
-      <LanguageFlagsBtn/>
+      <LanguageFlagsBtn />
       <ThemeToggler />
-     
+
       <UserInfo toggleShowSideBar={toggleShowSideBar} />
 
       {showModal && <AddFeedbackModal onClose={handleCloseModal} />}

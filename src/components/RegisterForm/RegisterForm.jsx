@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Formik } from 'formik';
+import React, { useState, useEffect } from 'react';
+import { Formik, useFormikContext } from 'formik';
 import {
   Button,
   ErrorMessage,
@@ -17,6 +17,7 @@ import { BiCheckCircle, BiErrorCircle } from 'react-icons/bi';
 import { IoEyeOutline, IoEyeOff } from 'react-icons/io5';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser } from 'redux/auth/operations';
+import { PassDifficultyScale } from '../passDifficultyScale/passDifficultyScale';
 import { useTranslation } from 'react-i18next';
 import { selectAuthIsLoading } from 'redux/auth/selectors';
 import { LoaderForBtn } from 'components/LoaderForBtn/LoaderForBtn';
@@ -40,6 +41,7 @@ export const RegisterForm = () => {
   const isLoading = useSelector(selectAuthIsLoading);
 
   const [passwordType, setPasswordType] = useState('password');
+  const [password, setPassword] = useState('');
 
   const togglePassword = () => {
     if (passwordType === 'password') {
@@ -47,6 +49,16 @@ export const RegisterForm = () => {
       return;
     }
     setPasswordType('password');
+  };
+
+  const FormObserver = () => {
+    const { values, errors } = useFormikContext();
+
+    useEffect(() => {
+      setPassword(values.password);
+    }, [errors.password, values]);
+
+    return null;
   };
 
   return (
@@ -72,6 +84,7 @@ export const RegisterForm = () => {
 
         return (
           <Form>
+            <FormObserver />
             <FormTitle>{t('Sign Up')}</FormTitle>
             <FormLabel className={isValid('name')}>
               {t('Name')}
@@ -80,7 +93,7 @@ export const RegisterForm = () => {
                 name="name"
                 type="text"
                 autoComplete="off"
-                placeholder="Enter your name"
+                placeholder={t('Enter your name')}
               />
               {isValid('name') === 'is-valid' && (
                 <SuccessMessage>{t('This is a CORRECT name')}</SuccessMessage>
@@ -98,7 +111,7 @@ export const RegisterForm = () => {
                 name="email"
                 type="text"
                 autoComplete="off"
-                placeholder="Enter email"
+                placeholder={t('Enter email')}
               />
               {isValid('email') === 'is-valid' && (
                 <SuccessMessage>{t('This is a CORRECT email')}</SuccessMessage>
@@ -116,7 +129,7 @@ export const RegisterForm = () => {
                 name="password"
                 type={passwordType}
                 autoComplete="off"
-                placeholder="Enter password"
+                placeholder={t('Enter password')}
               />
               {isValid('password') === 'is-valid' && (
                 <SuccessMessage>
@@ -127,6 +140,7 @@ export const RegisterForm = () => {
                 {passwordType === 'text' ? <IoEyeOff /> : <IoEyeOutline />}
               </IconWrap>
               <ErrorMessage name="password" component="div" />
+              <PassDifficultyScale password={password} />
             </FormLabel>
             <Button type="submit">
               {isLoading ? (

@@ -155,7 +155,7 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
               <TextareaField
                 component="textarea"
                 type="text"
-                placeholder="Enter text"
+                placeholder={t('Enter text')}
                 name="text"
                 value={props.values.text || feedbackText}
                 onChange={props.handleChange}

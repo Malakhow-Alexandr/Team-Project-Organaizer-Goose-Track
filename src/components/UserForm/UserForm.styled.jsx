@@ -5,7 +5,7 @@ import { DatePicker } from '@mui/x-date-pickers';
 export const Container = styled.div`
   max-width: 335px;
   background-color: ${props => props.theme.colors.background_switch};
-
+  margin: 0 auto;
   @media (min-width: 768px) {
     max-width: 100%;
     min-width: 704px;
@@ -156,7 +156,6 @@ export const InputName = styled.label`
   color: ${props => props.theme.colors.user_label_color_switch};
 `;
 export const Input = styled.input`
-  min-width: 250px;
   height: 42px;
   padding-left: 14px;
   padding-right: 14px;
@@ -172,7 +171,7 @@ export const Input = styled.input`
     font-size: 14px;
     font-weight:600;
     color: ${props => props.theme.colors.primary_text_switch};
-  
+
   `};
   background-color: transparent;
   &::placeholder {
@@ -210,7 +209,7 @@ export const SubmitBtn = styled.button`
   padding-bottom: 14px;
   padding-left: 50px;
   padding-right: 50px;
-  width: 200px;
+  max-width: 200px;
   height: 46px;
   font-family: ${props => props.theme.fonts.text};
   font-weight: ${props => props.theme.fontWeights.heading};
@@ -265,7 +264,6 @@ export const StyledDataPicker = styled(DatePicker)`
   }
 
   .MuiOutlinedInput-root {
-    min-width: 250px;
     height: 44px;
     padding-left: 14px;
     padding-right: 14px;

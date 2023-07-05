@@ -19,12 +19,7 @@ export const WrapForm = styled.div`
   }
 `;
 
-export const Form = styled.form`
-  /* padding: '40px 28px';
-  display: 'block';
-  position: 'relative'; */
-  /* background-color: ${p => p.theme.colors.modal_window}; */
-`;
+export const Form = styled.form``;
 
 export const Label = styled.label`
   display: inline-flex;
@@ -42,7 +37,7 @@ export const Input = styled.input`
 
   background: transparent;
   border-radius: 8px;
-  border: ${p => p.theme.colors.user_input_border};
+  border: 1px solid ${p => p.theme.colors.user_input_border};
   padding-left: 18px;
 
   color: ${p => p.theme.colors.primary_text_switch};
@@ -51,8 +46,35 @@ export const Input = styled.input`
   }
 `;
 
+export const InputTime = styled.input`
+  max-width: 126px;
+  height: 42px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: transparent;
+  border: 1px solid ${p => p.theme.colors.user_input_border};
+  cursor: pointer;
+
+  color: ${p => p.theme.colors.primary_text_switch};
+  font-size: 14px;
+  font-family: Inter;
+  font-weight: 600;
+  line-height: 18px;
+
+  @media (min-width: 768px) {
+    max-width: 163px;
+    height: 46px;
+    padding: 14px 18px;
+  }
+
+  &::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+`;
+
 export const FormGroup = styled.div`
   display: flex;
+  width: 100%;
   justify-content: space-between;
   gap: 14px;
   margin: 0;
@@ -121,22 +143,39 @@ export const RadioButtonCustom = styled.span`
   height: 10px;
   border: 1px solid #ccc;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: ${props => {
+    switch (props.value) {
+      case 'low':
+        return '#72C2F8';
+      case 'medium':
+        return '#F3B249';
+      case 'high':
+        return '#EA3D65';
+      default:
+        return 'black';
+    }
+  }};
 
   /* Define different colors for each radio button */
   ${RadioContainer}:nth-child(1) ${RadioButtonsInput}:checked + & {
     background-color: #72c2f8;
     border-color: #72c2f8;
+    outline: 2px solid #72c2f8;
+    outline-offset: 2px;
   }
 
   ${RadioContainer}:nth-child(2) ${RadioButtonsInput}:checked + & {
     background-color: #f3b249;
     border-color: #f3b249;
+    outline: 2px solid#f3b249;
+    outline-offset: 2px;
   }
 
   ${RadioContainer}:nth-child(3) ${RadioButtonsInput}:checked + & {
     background-color: #ea3d65;
     border-color: #ea3d65;
+    outline: 2px solid #ea3d65;
+    outline-offset: 2px;
   }
 `;
 
@@ -148,11 +187,9 @@ export const WrapButton = styled.div`
 export const IconEditPen = styled(EditPen)`
   width: 14.5px;
   height: 14.5px;
-  /* fill: red; */
 `;
 
 export const IconPlus = styled(Plus)`
   width: 11.67px;
   height: 11.67px;
-  fill: red;
 `;

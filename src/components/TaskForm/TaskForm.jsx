@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import { toast } from 'react-hot-toast';
 import {
   WrapForm,
   Form,
   EditButton,
   FormGroup,
   Input,
+  InputTime,
   Label,
   RadioButtonsInput,
   RadioButtonsLabel,
@@ -28,6 +30,13 @@ const emptyTask = {
   end: '00:00',
   priority: 'low',
   category: 'in-progress',
+};
+
+const tostStyleError = {
+  borderRadius: '8px',
+  border: '1px solid red',
+  background: '#13151A',
+  color: '#3E85F3',
 };
 
 export const TaskForm = ({ initialData, onClose }) => {
@@ -55,7 +64,9 @@ export const TaskForm = ({ initialData, onClose }) => {
 
   useEffect(() => {
     if (!error || !dateSave) return;
-    alert(`Data save error`);
+    toast.error(`Data save error`, {
+      style: tostStyleError,
+    });
   }, [error, dateSave]);
 
   const handleChange = event => {
@@ -69,7 +80,9 @@ export const TaskForm = ({ initialData, onClose }) => {
     e.preventDefault();
 
     if (informationTask.start > informationTask.end) {
-      alert('Start time cannot be later than end time');
+      toast.error('Start time cannot be later than end time', {
+        style: tostStyleError,
+      });
       return;
     }
 
@@ -99,7 +112,7 @@ export const TaskForm = ({ initialData, onClose }) => {
         <FormGroup>
           <Label>
             {t('Start')}
-            <Input
+            <InputTime
               id="time"
               type="time"
               name="start"
@@ -110,7 +123,7 @@ export const TaskForm = ({ initialData, onClose }) => {
           </Label>
           <Label>
             {t('End')}
-            <Input
+            <InputTime
               type="time"
               name="end"
               value={informationTask.end}
@@ -130,7 +143,7 @@ export const TaskForm = ({ initialData, onClose }) => {
                 checked={informationTask.priority === 'low'}
                 onChange={handleChange}
               />
-              <RadioButtonCustom />
+              <RadioButtonCustom value="low" />
               {t('Low')}
             </RadioButtonsLabel>
           </RadioContainer>
@@ -143,7 +156,7 @@ export const TaskForm = ({ initialData, onClose }) => {
                 checked={informationTask.priority === 'medium'}
                 onChange={handleChange}
               />
-              <RadioButtonCustom />
+              <RadioButtonCustom value="medium" />
               {t('Medium')}
             </RadioButtonsLabel>
           </RadioContainer>
@@ -156,7 +169,7 @@ export const TaskForm = ({ initialData, onClose }) => {
                 checked={informationTask.priority === 'high'}
                 onChange={handleChange}
               />
-              <RadioButtonCustom />
+              <RadioButtonCustom value="high" />
               {t('High')}
             </RadioButtonsLabel>
           </RadioContainer>

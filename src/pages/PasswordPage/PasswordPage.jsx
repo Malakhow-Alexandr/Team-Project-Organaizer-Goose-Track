@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Formik } from 'formik';
+import React, { useState, useEffect } from 'react';
+import { Formik, useFormikContext } from 'formik';
 import {
   Button,
   ErrorMessage,
@@ -11,6 +11,7 @@ import {
   SuccessMessage,
   PasswordIsMatch,
   WrongPassword,
+  BtnForgotPass,
 } from '../PasswordPage/PasswordPage.styled';
 import * as Yup from 'yup';
 import { IoEyeOutline, IoEyeOff } from 'react-icons/io5';
@@ -18,6 +19,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { selectAuthIsLoading } from 'redux/auth/selectors';
 import { LoaderForBtn } from 'components/LoaderForBtn/LoaderForBtn';
+import { PassDifficultyScale } from '../../components/passDifficultyScale/passDifficultyScale';
 import { changePassword } from 'redux/auth/operations';
 
 const FormValidSchema = Yup.object().shape({
@@ -33,6 +35,9 @@ const FormValidSchema = Yup.object().shape({
 });
 
 const PasswordPage = () => {
+  const [password, setPassword] = useState('');
+  // eslint-disable-next-line no-unused-vars
+  const [error, setError] = useState(false);
   const [oldPasswordType, setOldPasswordType] = useState('password');
   const [newPasswordType, setNewPasswordType] = useState('password');
   const [newPassword, setNewPassword] = useState('');
@@ -72,6 +77,19 @@ const PasswordPage = () => {
     setRepeatNewPassword('');
   };
 
+  const FormObserver = () => {
+    const { values, errors } = useFormikContext();
+
+    useEffect(() => {
+      if (errors.newPassword) {
+        setError(true);
+      }
+      setPassword(values.newPassword);
+    }, [errors.newPassword, values]);
+
+    return null;
+  };
+
   return (
     <Formik
       initialValues={initialState}
@@ -96,7 +114,9 @@ const PasswordPage = () => {
 
         return (
           <Form>
+            <FormObserver />
             <FormTitle>{t('Change your password')}</FormTitle>
+
             <FormLabel className={isValid('oldPassword')}>
               {t('Old password')}
               <Field
@@ -104,7 +124,7 @@ const PasswordPage = () => {
                 name="oldPassword"
                 type={oldPasswordType}
                 autoComplete="off"
-                placeholder="Enter old password"
+                placeholder={t('Enter old password')}
               />
               {isValid('oldPassword') === 'is-valid' && (
                 <SuccessMessage>
@@ -116,6 +136,7 @@ const PasswordPage = () => {
               </IconWrap>
               <ErrorMessage name="oldPassword" component="div" />
             </FormLabel>
+
             <FormLabel className={isValid('newPassword')}>
               {t('New password')}
               <Field
@@ -128,7 +149,7 @@ const PasswordPage = () => {
                   values.newPassword = e.target.value;
                 }}
                 autoComplete="off"
-                placeholder="Enter new password"
+                placeholder={t('Enter new password')}
               />
               {isValid('newPassword') === 'is-valid' && (
                 <SuccessMessage>
@@ -139,7 +160,9 @@ const PasswordPage = () => {
                 {newPasswordType === 'text' ? <IoEyeOff /> : <IoEyeOutline />}
               </IconWrap>
               <ErrorMessage name="newPassword" component="div" />
+              <PassDifficultyScale password={password} />
             </FormLabel>
+
             <FormLabel className={isValid('repeatNewPassword')}>
               {t('Repeat new password')}
               <Field
@@ -152,7 +175,7 @@ const PasswordPage = () => {
                   values.repeatNewPassword = e.target.value;
                 }}
                 autoComplete="off"
-                placeholder="Repeat new password"
+                placeholder={t('Repeat new password')}
               />
               {passwordIsMatch && (
                 <PasswordIsMatch>
@@ -165,11 +188,18 @@ const PasswordPage = () => {
               <IconWrap onClick={showNewPassword}>
                 {newPasswordType === 'text' ? <IoEyeOff /> : <IoEyeOutline />}
               </IconWrap>
-              <ErrorMessage name="repeatNewPassword" component="div" />
             </FormLabel>
+
             <Button type="submit" disabled={!passwordIsMatch}>
               {isLoading ? <LoaderForBtn /> : <>{t('Change')}</>}
             </Button>
+
+            <BtnForgotPass
+              type="button"
+              onClick={() => alert(t('Wait, soon all will be OK'))}
+            >
+              {t('Forgot your password?')}
+            </BtnForgotPass>
           </Form>
         );
       }}

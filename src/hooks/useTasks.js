@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
-import { selectAllTasks } from '../redux/tasks/selectors';
+import { selectTasks } from '../redux/tasks/selectors';
 import { getAllTasks } from '../redux/tasks/operations';
 
 export const useTasks = () => {
@@ -14,11 +14,16 @@ export const useTasks = () => {
   const [isNotDoneTask, setIsNotDoneTask] = useState(false);
   const prevNumMonth = useRef(null);
 
-  const tasks = useSelector(selectAllTasks);
-  const fetchTaskById = id => {
-    const foundTask = tasks.find(task => task._id === id);
-    return foundTask;
-  };
+  const tasks = useSelector(selectTasks);
+
+  useEffect(() => {
+    if (tasks.length > 0) {
+      const foundNotDoneTask = tasks.find(
+        element => element.category !== 'done'
+      );
+      setIsNotDoneTask(!!foundNotDoneTask);
+    }
+  }, [tasks]);
 
   useEffect(() => {
     if (!currentDay) {
@@ -49,5 +54,5 @@ export const useTasks = () => {
     }
   }, [numActiveMonth, workDate, dispatch]);
 
-  return { tasks, isNotDoneTask, fetchTaskById, getAllTasks };
+  return { tasks, isNotDoneTask };
 };

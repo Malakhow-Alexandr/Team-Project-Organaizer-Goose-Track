@@ -4,9 +4,6 @@ import { theme } from 'theme';
 export const Container = styled.div`
   width: 100%;
 
-  padding-left: 0;
-  padding-right: 0;
-
   margin-left: auto;
   margin-right: auto;
 
@@ -60,7 +57,9 @@ export const LeftField = styled.div`
 
 export const RightColumnWrapper = styled.div`
   flex-grow: 1;
-  padding: 0 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 40px;
   background-color: ${props => props.theme.colors.background_switch};
 
   overflow: hidden;
@@ -68,6 +67,7 @@ export const RightColumnWrapper = styled.div`
 
   ::-webkit-scrollbar {
     width: 6px;
+    /* display: none; */
   }
 
   ::-webkit-scrollbar-track {
@@ -76,6 +76,7 @@ export const RightColumnWrapper = styled.div`
 
   ::-webkit-scrollbar-thumb {
     background: ${theme.colors.scroll_color};
+    /* visibility: hidden; */
   }
 
   ::-webkit-scrollbar-track-piece {
@@ -83,8 +84,14 @@ export const RightColumnWrapper = styled.div`
     border: none;
   }
 
+  /* :active::-webkit-scrollbar-thumb {
+    visibility: visible;
+  } */
+
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
-    padding: 0 32px;
+    padding-left: 30px;
+    padding-right: 32px;
+    padding-bottom: 32px;
     overflow-y: auto;
     &::-webkit-scrollbar {
       width: 8px;
@@ -92,7 +99,6 @@ export const RightColumnWrapper = styled.div`
   }
 
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
-    padding: 0 32px;
     overflow: auto;
   }
 `;

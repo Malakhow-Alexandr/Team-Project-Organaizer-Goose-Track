@@ -1,4 +1,3 @@
-//Функциія коррекції заголовків
 export const correctTitle = value => {
   if (value === 'done') {
     return value.charAt(0).toUpperCase() + value.slice(1);
@@ -7,7 +6,7 @@ export const correctTitle = value => {
     return title.substr(0, 2) + ' ' + title.substr(2, 8).toLowerCase();
   }
 };
-//Функція коррекції для тулбра
+
 export const toolTitle = value => {
   if (value === 'done') {
     return value;

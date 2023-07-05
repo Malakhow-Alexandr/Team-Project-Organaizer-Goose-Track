@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from 'hooks/useAuth';
 import { updateUser } from 'redux/auth/operations';
 import * as Yup from 'yup';
@@ -25,6 +25,8 @@ import {
 } from './UserForm.styled';
 import { useTranslation } from 'react-i18next';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
+import { selectIsLoggedGoogle } from 'redux/auth/selectors';
+import { toast } from 'react-hot-toast';
 
 const phoneRegexp = /^(\d{2})\s\((\d{3})\)\s(\d{3})\s(\d{2})\s(\d{2})$/;
 const skypeNumberRegexp = /^\+[1-9]\d{0,2}[.-]?\d{1,14}$/;
@@ -56,16 +58,22 @@ export const validationSchema = Yup.object().shape({
   telegram: Yup.string().max(35, 'Too Long!').notRequired(),
 });
 
+const tostStyleError = {
+  borderRadius: '8px',
+  background: '#13151A',
+  color: '#3E85F3',
+};
+
+
 const UserForm = () => {
   const { t } = useTranslation();
-
+  const isLogedGoogle = useSelector(selectIsLoggedGoogle);
   const dispatch = useDispatch();
   const { user } = useAuth();
- 
+
   const [userAvatar, setUserAvatar] = useState(user.avatarURL);
   const [birthdayDate, setBirthdayDate] = useState(null);
   const [isFormChanged, setIsFormChanged] = useState(false);
-
   const { errors, touched, values, handleSubmit, handleBlur, setFieldValue } =
     useFormik({
       initialValues: {
@@ -110,9 +118,24 @@ const UserForm = () => {
   };
 
   const handleAvatarUpload = event => {
-    setFieldValue('avatar', event.currentTarget.files[0]);
-    setIsFormChanged(true);
+    
     const file = event.currentTarget.files[0];
+    if(file.type !== 'image/png' && file.type !== 'image/jpeg') {
+      toast.error(`Invalid file format! Please choose a PNG or JPEG image!`, {
+        style: tostStyleError,
+      });
+      return
+    }
+
+    if(file.size >= 2000000) {
+      toast.error(`Selected file is too large! Please select a file under 2KB in size!`, {
+        style: tostStyleError,
+      });
+      return
+    }
+    setFieldValue('avatar', file);
+    setIsFormChanged(true);
+    console.log(file.size)
     if (file) {
       const imageUrl = URL.createObjectURL(file);
       setUserAvatar(imageUrl);
@@ -181,7 +204,7 @@ const UserForm = () => {
             <InputName>{t('User Name')}</InputName>
             <Input
               name="name"
-              placeholder="User Name"
+              placeholder={t('User Name')}
               value={values.name || ''}
               onChange={handleInputChange}
               onBlur={handleBlur}
@@ -196,6 +219,7 @@ const UserForm = () => {
             <InputName>{t('Birthday')}</InputName>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <StyledDataPicker
+                disableFuture
                 closeOnSelect={true}
                 slotProps={{
                   textField: {
@@ -215,7 +239,7 @@ const UserForm = () => {
             <Input
               name="email"
               value={values.email || ''}
-              placeholder="Email"
+              placeholder={t('Email')}
               onChange={handleInputChange}
               onBlur={handleBlur}
               className={errors.email && touched.email ? 'InvalidInput' : ''}
@@ -245,19 +269,23 @@ const UserForm = () => {
             <Input
               name="telegram"
               value={values.telegram || ''}
-              placeholder="Add your telegram"
+              placeholder={t('Add your telegram')}
               onChange={handleInputChange}
               onBlur={handleBlur}
-              className={errors.telegram && touched.telegram ? 'InvalidInput' : ''}
+              className={
+                errors.telegram && touched.telegram ? 'InvalidInput' : ''
+              }
             />
             {errors.telegram && touched.telegram && (
               <ErrorMessage>{errors.telegram}</ErrorMessage>
             )}
           </WrapperInput>
           {/* change password */}
-          <WrapperInput>
-            <AuthNavigate link={'/password'} text={'Change password'} />
-          </WrapperInput>
+          {!isLogedGoogle && (
+            <WrapperInput>
+              <AuthNavigate link={'/password'} text={t('changePassword')} />
+            </WrapperInput>
+          )}
         </Wrapper>
         <SubmitBtn disabled={!isFormChanged} type="submit">
           {t('Save changes')}

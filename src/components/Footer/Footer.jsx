@@ -6,53 +6,76 @@ import {
   FrontEndIcon,
   BackEndIcon,
   LinksList,
-  Links,
+  LinkBack,
+  LinkFront,
+  LinkSwagger,
   TeamInfoWrapper,
   CopyIcon,
-  ButtonTeam,
+  TeamButton,
+  YearInfo,
+  CreatedBy
 } from './Footer.styled';
+import { WavingFlagCustom } from './WavingFlag';
 import { DevelopersModal } from './Developers/DevelopersModal/DevelopersModal';
+import { useTranslation } from 'react-i18next';
 
 export const Footer = () => {
   const [showModal, setShowModal] = useState(false);
-
+const { t } = useTranslation();
   const handleCloseModal = () => {
     setShowModal(false);
-    console.log('closed');
   };
 
   const handleShowModal = () => {
     setShowModal(true);
-    console.log('opened');
   };
 
   return (
     <FooterStyled>
       <Wrapper>
         <TeamInfoWrapper>
-          <p>
+          <YearInfo>
             <span>
               <CopyIcon />
             </span>
             2023
-            <ButtonTeam onClick={handleShowModal}>GoIT Students</ButtonTeam>
-          </p>
+          </YearInfo>
+          <CreatedBy>{t('Created with love by')}</CreatedBy>
+          <TeamButton
+            onClick={handleShowModal}
+            aria-label="open-developers-modal"
+          >
+            {t('GoIT Students')}
+          </TeamButton>
         </TeamInfoWrapper>
+        <WavingFlagCustom/>
         <LinksList>
           <li>
-            <Links href="https://github.com/Siryi-Oleksandr/goose-track-backend.git">
-              <BackEndIcon />
-            </Links>
-          </li>
-          <li>
-            <Links href="https://github.com/Malakhow-Alexandr/Team-Project-Organaizer-Goose-Track">
-              <FrontEndIcon />
-            </Links>
-          </li>
-          <li>
-            <Links href="https://goose-track-verq.onrender.com/api-docs/">
+          <LinkSwagger
+              href="https://goose-track-verq.onrender.com/api-docs/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <SwaggerIcon />
-            </Links>
+            </LinkSwagger>
+          </li>
+          <li>
+            <LinkFront
+              href="https://github.com/Malakhow-Alexandr/Team-Project-Organaizer-Goose-Track"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FrontEndIcon />
+            </LinkFront>
+          </li>
+          <li> <LinkBack
+              href="https://github.com/Siryi-Oleksandr/goose-track-backend.git"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <BackEndIcon />
+            </LinkBack>
+            
           </li>
           <li></li>
         </LinksList>

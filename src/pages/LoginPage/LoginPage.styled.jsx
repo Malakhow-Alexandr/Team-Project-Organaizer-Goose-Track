@@ -2,15 +2,12 @@ import styled from 'styled-components';
 
 export const ImageWrap = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(80%, -30%);
-  width: 368px;
-  height: 521px;
+  bottom: 19px;
+  right: 60px;
 
   img {
     display: block;
-    max-width: 100%;
+    width: 368px;
     height: auto;
   }
 
@@ -24,7 +21,7 @@ export const GoBackBtn = styled.button`
   gap: 4px;
   align-items: center;
   justify-content: center;
-  width: 100px;
+  width: 110px;
   height: 30px;
   margin-bottom: 8px;
 

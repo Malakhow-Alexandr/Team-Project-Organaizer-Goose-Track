@@ -6,16 +6,13 @@ import { ReactComponent as Pencil } from '../../../../icons/pencil-01.svg';
 import { ReactComponent as Trash } from '../../../../icons/trash-04.svg';
 
 export const BoxIconBth = styled.div`
-  /* position: relative; */
   z-index: 100;
   height: 15px;
 
   &::after {
     content: '';
     display: block;
-    /* position: absolute;
-    top: 0;
-    left: 0; */
+
     background: transparent;
     width: 100%;
     height: 10px;
