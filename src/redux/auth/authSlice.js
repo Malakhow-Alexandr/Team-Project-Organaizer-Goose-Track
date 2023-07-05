@@ -24,10 +24,8 @@ const newUser = {
   name: '',
   email: '',
   avatarURL: '',
-  avatarID: '',
   phone: '',
   birthday: '',
-  skype: '',
 };
 
 const initialState = {
