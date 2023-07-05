@@ -11,7 +11,6 @@ import {
   SuccessMessage,
   PasswordIsMatch,
   WrongPassword,
-  BtnForgotPass,
 } from '../PasswordPage/PasswordPage.styled';
 import * as Yup from 'yup';
 import { IoEyeOutline, IoEyeOff } from 'react-icons/io5';
@@ -36,8 +35,6 @@ const FormValidSchema = Yup.object().shape({
 
 const PasswordPage = () => {
   const [password, setPassword] = useState('');
-  // eslint-disable-next-line no-unused-vars
-  const [error, setError] = useState(false);
   const [oldPasswordType, setOldPasswordType] = useState('password');
   const [newPasswordType, setNewPasswordType] = useState('password');
   const [newPassword, setNewPassword] = useState('');
@@ -81,9 +78,6 @@ const PasswordPage = () => {
     const { values, errors } = useFormikContext();
 
     useEffect(() => {
-      if (errors.newPassword) {
-        setError(true);
-      }
       setPassword(values.newPassword);
     }, [errors.newPassword, values]);
 
@@ -193,13 +187,6 @@ const PasswordPage = () => {
             <Button type="submit" disabled={!passwordIsMatch}>
               {isLoading ? <LoaderForBtn /> : <>{t('Change')}</>}
             </Button>
-
-            <BtnForgotPass
-              type="button"
-              onClick={() => alert(t('Wait, soon all will be OK'))}
-            >
-              {t('Forgot your password?')}
-            </BtnForgotPass>
           </Form>
         );
       }}
