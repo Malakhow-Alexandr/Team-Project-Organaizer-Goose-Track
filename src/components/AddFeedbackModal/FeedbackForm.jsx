@@ -56,7 +56,6 @@ export const FeedbackForm = ({ userFeedback, userRating, onClose }) => {
   }, [userRating, userFeedback]);
 
   const handleFeedbackSubmit = (values, { resetForm }) => {
-    console.log(values);
     if (userFeedback || userRating) {
       dispatch(updateReviewByOwn({ text: values.text, rating: values.rating }));
       setIsEditOpen(false);
