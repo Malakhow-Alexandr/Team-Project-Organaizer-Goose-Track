@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import { theme } from 'theme';
 
+export const Wrap = styled.main`
+  display: flex;
+  height: 100vh;
+`;
+
 export const Container = styled.div`
   width: 100%;
 
@@ -16,11 +21,11 @@ export const Container = styled.div`
   }
 
   @media screen and (min-width: ${props => props.theme.breakpoints.desktop}) {
-    max-width: ${props => props.theme.breakpoints.desktop};
+    max-width: 1151px;
   }
 `;
 
-export const Main = styled.main`
+export const Main = styled.div`
   position: relative;
 
   display: flex;
@@ -67,7 +72,6 @@ export const RightColumnWrapper = styled.div`
 
   ::-webkit-scrollbar {
     width: 6px;
-    /* display: none; */
   }
 
   ::-webkit-scrollbar-track {
@@ -76,17 +80,12 @@ export const RightColumnWrapper = styled.div`
 
   ::-webkit-scrollbar-thumb {
     background: ${theme.colors.scroll_color};
-    /* visibility: hidden; */
   }
 
   ::-webkit-scrollbar-track-piece {
     background: transparent;
     border: none;
   }
-
-  /* :active::-webkit-scrollbar-thumb {
-    visibility: visible;
-  } */
 
   @media screen and (min-width: ${props => props.theme.breakpoints.table}) {
     padding-left: 30px;
